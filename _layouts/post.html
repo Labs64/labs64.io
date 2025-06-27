@@ -1,0 +1,150 @@
+---
+layout: default
+---
+<div class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+
+        <div class="post-meta">
+            <ul>
+                <li>
+                    <time pubdate datetime="{{ page.date | date: '%Y-%m-%d' }}"
+                          title="{{ page.date | date: '%b %-d, %Y' }}">{{ page.date | date: "%b %-d, %Y" }}
+                    </time>
+                </li>
+                <li>
+                    <address class="author">&nbsp;by
+                        {% if page.author.name %}
+                          {% assign author_name = page.author.name %}
+                        {% else %}
+                          {% assign author_name = site.title %}
+                        {% endif %}
+
+                        {% if page.author.url %}
+                          <a href="{{ page.author.url }}" target="_blank">{{ author_name }}</a>
+                        {% else %}
+                          {{ author_name }}
+                        {% endif %}
+                    </address>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-md-8 NL_post">
+            <article class="post-content">
+                {% if page.image.url %}
+                  {% unless page.image.hide %}
+                    {% if page.image.width %}
+                      {% assign image_width = page.image.width %}
+                    {% else %}
+                      {% assign image_width = '100%' %}
+                    {% endif %}
+                <img src="{{ page.image.url }}" alt="{{ page.title }}" class="blog-thumbnail" width="{{ image_width }}">
+                  {% endunless %}
+                {% endif %}
+                {{ content }}
+                <p class="blog_img_credit">{% include credit-tracker.html image=page.image.url %}</p>
+            </article>
+
+            {% if site.addthis_pub_id %}
+            <div class="NL_share_icons">{% include addthis.html %}</div>
+            {% endif %}
+            {% if site.disqus_shortname %}
+            <div class="NL_disqus">{% include disqus.html %}</div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-3 col-md-offset-1 NL_other_posts">
+            <h3>Related Posts</h3>
+
+            <!-- Related Posts (prev/next) -->
+            {% assign previous_page = page.previous %}
+            {% if previous_page and previous_page.layout != 'post' %}
+              {% assign previous_page = previous_page.previous %}
+            {% endif %}
+            {% if previous_page %}
+            <div class="NL_related_post">
+                <span class="watermark">Previous</span>
+                <a href="{{previous_page.url}}">
+                    <img src="{{ previous_page.image.url }}" alt="{{ previous_page.title }}" class="NL_post_img" />
+                    <div>
+                        <time class="NL_post_time" pubdate datetime="{{ previous_page.date | date: '%Y-%m-%d' }}"
+                             title="{{ previous_page.date | date: '%b %-d, %Y' }}">{{ previous_page.date | date: "%b %-d, %Y" }}
+                        </time>
+                        <h4>{{previous_page.title}}</h4>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+
+            {% assign next_page = page.next %}
+            {% if next_page and next_page.layout != 'post' %}
+              {% assign next_page = next_page.next %}
+            {% endif %}
+            {% if next_page %}
+            <div class="NL_related_post">
+                <span class="watermark">Next</span>
+                <a href="{{next_page.url}}">
+                    <img src="{{ next_page.image.url }}" alt="{{ next_page.title }}" class="NL_post_img" />
+                    <div>
+                        <time class="NL_post_time" pubdate datetime="{{ next_page.date | date: '%Y-%m-%d' }}"
+                             title="{{ next_page.date | date: '%b %-d, %Y' }}">{{ next_page.date | date: "%b %-d, %Y" }}
+                        </time>
+                        <h4>{{next_page.title}}</h4>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+
+            <!-- Related Posts (tag) -->
+            {% for post in site.related_posts %}
+              {% if post.url != page.url and post.url != previous_page.url and post.url != next_page.url %}
+                {% for tag in page.tags %}
+                  {% if post.tags contains tag %}
+            <div class="NL_related_post">
+                <span class="watermark">{{ tag }}</span>
+                <a href="{{post.url}}">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="NL_post_img" />
+                    <div>
+                        <time class="NL_post_time" pubdate datetime="{{ post.date | date: '%Y-%m-%d' }}"
+                              title="{{ post.date | date: '%b %-d, %Y' }}">{{ post.date | date: "%b %-d, %Y" }}
+                        </time>
+                        <h4>{{post.title}}</h4>
+                    </div>
+                </a>
+            </div>
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+
+            <!-- Recommended Posts -->
+            {% if site.blog_recommended_posts %}
+              {% for recommended_post in site.blog_recommended_posts %}
+                {% if recommended_post != page.url and recommended_post != previous_page.url and recommended_post != next_page.url %}
+                  {% for post in site.posts %}
+                    {% if recommended_post == post.url %}
+            <div class="NL_related_post">
+                <span class="watermark">Recommended</span>
+                <a href="{{post.url}}">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="NL_post_img" />
+                    <div>
+                        <time class="NL_post_time" pubdate datetime="{{ post.date | date: '%Y-%m-%d' }}"
+                              title="{{ post.date | date: '%b %-d, %Y' }}">{{ post.date | date: "%b %-d, %Y" }}
+                        </time>
+                        <h4>{{post.title}}</h4>
+                    </div>
+                </a>
+            </div>
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

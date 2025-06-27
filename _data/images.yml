@@ -1,0 +1,16 @@
+# Excluded images
+
+- id: labs64io-promo-00
+  source: /img/labs64.io-promo-00.png
+  exclude: true
+
+# Images attribution
+
+- id: labs64-io-ecosystem
+  source: /img/blog/labs64-io-ecosystem.png
+  title: "Labs64.IO Ecosystem"
+  caption: "Labs64.IO Ecosystem"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io

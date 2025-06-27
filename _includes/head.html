@@ -1,0 +1,62 @@
+<head>
+    <meta charset="utf-8">
+    {% if page.no-cache %}
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    {% endif %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} | {{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ',' }},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+    <meta name="author" content="{{ site.copyright }}">
+    <meta name="copyright" content="{{ site.copyright }}">
+    <meta name="robots" content="INDEX, FOLLOW">
+    {% if page.fragmented %}
+    <meta name="fragment" content="!">
+    {% endif %}
+
+    <!-- Prefetch resources -->
+    {% if site.dns_prefetch %}
+      {% for dns_prefetch in site.dns_prefetch %}
+      <link rel="dns-prefetch" href="{{ dns_prefetch }}">
+      {% endfor %}
+    {% endif %}
+    {% if page.prefetch %}
+      {% for page_prefetch in page.prefetch %}
+      <link rel="prefetch" href="{{ page_prefetch | prepend: site.baseurl | prepend: site.url }}">
+      {% endfor %}
+    {% endif %}
+
+    {% include cookieconsent.html %}
+    {% include analytics.html %}
+    {% include opengraph.html %}
+    {% include twittercard.html %}
+    {% include dublincore.html %}
+
+    <!-- Custom Fonts, CSS -->
+    <link rel="stylesheet" href="{{ '/css/roboto.css' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/font-awesome.4.5.0.min.css' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/slick.1.8.1.css' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/slick-theme.1.8.1.css' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/labs64.css' | prepend: site.baseurl | prepend: site.url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
+    <link rel="stylesheet" href="{{ '/css/labs64-style.css' | prepend: site.baseurl | prepend: site.url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | prepend: site.baseurl | prepend: site.url }}">
+
+    {% if page.canonical %}
+      {% if page.canonical contains 'http' %}
+        {% assign canonical = page.canonical %}
+      {% else %}
+        {% assign canonical = page.canonical | replace:'index.html','' | prepend: site.baseurl | prepend: site.url %}
+      {% endif %}
+      <link rel="canonical" href="{{ canonical }}">
+    {% else %}
+      {% assign canonical = page.url | prepend: site.baseurl | prepend: site.url %}
+      <link rel="canonical" href="{{ canonical }}">
+    {% endif %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://labs64.io/feed.xml">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | prepend: site.baseurl | prepend: site.url }}">
+</head>

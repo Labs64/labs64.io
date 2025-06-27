@@ -1,0 +1,42 @@
+# Company
+- title: "About"
+  url: "https://www.labs64.com/about-us/"
+  section: "Company"
+
+- title: "Contact"
+  url: "https://www.labs64.com/contact/"
+  section: "Company"
+
+# Learn
+- title: Blog
+  url: "/blog/"
+  section: "Documentation"
+
+- title: GitHub
+  url: "https://github.com/topics/labs64-io"
+  section: "Documentation"
+
+- title: NetLicensing
+  url: "https://netlicensing.io"
+  section: "Documentation"
+
+- title: GuideChimp
+  url: "https://www.labs64.com/guidechimp/"
+  section: "Documentation"
+
+# Legal
+- title: "Terms of Service"
+  url: "https://www.labs64.com/legal/terms-of-service/website/"
+  section: "Legal"
+
+- title: "Privacy Policy"
+  url: "https://www.labs64.com/legal/privacy-policy/"
+  section: "Legal"
+
+- title: "Cookies Policy"
+  url: "https://www.labs64.com/legal/privacy-policy/cookies-policy/"
+  section: "Legal"
+
+- title: "Imprint"
+  url: "https://www.labs64.com/imprint/"
+  section: "Legal"
