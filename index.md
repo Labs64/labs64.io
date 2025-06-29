@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "The Labs64.IO Ecosystem: Your Agile Business Workflow Powerhouse"
+title: "Your Agile Business Workflow Powerhouse"
 description: "The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps"
 permalink: /
 sitemap:
