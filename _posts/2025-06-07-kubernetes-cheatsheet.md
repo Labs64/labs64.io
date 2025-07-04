@@ -6,7 +6,7 @@ author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io
 image:
-  url: /img/blog/labs64-io-ecosystem.png
+  url: /img/blog/kubernetes-cheatsheet.png
 tags:
   - Kubernetes
   - K8s

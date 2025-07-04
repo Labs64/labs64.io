@@ -50,3 +50,21 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: local-k8s
+  source: /img/blog/local-k8s.png
+  title: "Local k8s cluster"
+  caption: "Local k8s cluster"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: kubernetes-cheatsheet
+  source: /img/blog/kubernetes-cheatsheet.png
+  title: "Kubernetes Cheatsheet"
+  caption: "Kubernetes Cheatsheet"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
