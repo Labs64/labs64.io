@@ -77,3 +77,12 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: labs64io-helm-schema-generation
+  source: /img/blog/labs64io-helm-schema-generation.jpg
+  title: "Labs64.IO Helm Chart Schema Generation"
+  caption: "Labs64.IO Helm Chart Schema Generation"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
