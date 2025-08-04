@@ -95,3 +95,12 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: pod-metrics-in-kubernetes
+  source: /img/blog/pod-metrics-in-kubernetes.jpg
+  title: "Observing Pod Metrics in Kubernetes"
+  caption: "Observing Pod Metrics in Kubernetes"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
