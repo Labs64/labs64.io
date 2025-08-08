@@ -131,3 +131,21 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: configuring-traefik-middleware-for-kubernetes
+  source: /img/blog/configuring-traefik-middleware-for-kubernetes.jpeg
+  title: "Configuring Traefik Middleware for Kubernetes"
+  caption: "Configuring Traefik Middleware for Kubernetes"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: securing-microservices-with-keycloak-and-traefik-authproxy
+  source: /img/blog/securing-microservices-with-keycloak-and-traefik-authproxy.jpeg
+  title: "Securing Microservices with Keycloak and Traefik AuthProxy"
+  caption: "Securing Microservices with Keycloak and Traefik AuthProxy"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
