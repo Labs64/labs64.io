@@ -36,8 +36,6 @@ When a request arrives, the filter checks if there are enough tokens in the buck
 
 This approach effectively smooths out traffic, preventing bursts from overwhelming your services while still allowing some flexibility.
 
------
-
 ## Step-by-Step Configuration Guide
 
 Let's walk through the full configuration, from dependencies to a fully-functioning route.
@@ -125,8 +123,6 @@ spring:
 ```
 
 In this example, the route `/api/v1/audit/**` will be limited. Each unique IP address can make **10 requests per second**, with the ability to handle a **burst of up to 20 requests**.
-
------
 
 ## Common Use Cases and Best Practices
 

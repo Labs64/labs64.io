@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kubernetes (K8s) Cheatsheet"
-description: "A quick reference for common Kubernetes commands, concepts, and YAML configurations."
+description: "Master Kubernetes with this all-in-one cheatsheet. Covers kubectl, deployments, services, storage, networking, and troubleshooting commands"
 author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io
