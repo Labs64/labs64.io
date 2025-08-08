@@ -106,7 +106,7 @@
   creditlink: https://labs64.io
 
 - id: spring-cloud-gateway-rate-limiter
-  source: /img/blog/scg-rate-limiter.png
+  source: /img/blog/spring-cloud-gateway-rate-limiter.png
   title: "Protecting Your APIs in Spring Cloud Gateway"
   caption: "Protecting Your APIs in Spring Cloud Gateway"
   license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode

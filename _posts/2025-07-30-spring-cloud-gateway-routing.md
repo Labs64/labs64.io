@@ -6,7 +6,7 @@ author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io
 image:
-  url: /img/blog/scg-routing.jpg
+  url: /img/blog/spring-cloud-gateway-routing.jpg
 tags:
   - Spring Cloud Gateway
   - Microservices
