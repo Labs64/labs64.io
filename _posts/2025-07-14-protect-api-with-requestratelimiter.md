@@ -6,7 +6,7 @@ author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io
 image:
-  url: /img/blog/scg-rate-limiter.png
+  url: /img/blog/spring-cloud-gateway-rate-limiter.png
 tags:
   - Spring Cloud Gateway
   - RequestRateLimiter

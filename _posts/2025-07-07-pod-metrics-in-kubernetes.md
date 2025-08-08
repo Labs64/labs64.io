@@ -89,11 +89,11 @@ Notice the absence of CPU and Memory columns.
 ### Pods metrics after installing metrics-server
 
 ```
-┌──────────────────────────────────────────────────────────────────────── pods(labs64io)[3] ──────────────────────────────────────────────────┐
-│ NAME↑                                  READY    STATUS     RESTARTS    CPU    MEM     %CPU/R     %CPU/L     %MEM/R     %MEM/L IP            │
-│ labs64io-api-gateway-567c5dc67-pmp2n   1/1      Running           5      7    338          7        n/a         66        n/a 10.1.12.164   │
-│ labs64io-auditflow-799455476c-w4xnh    2/2      Running          10      8    384          8        n/a         75        n/a 10.1.12.162   │
-│ labs64io-ecommerce-577ddc46c-2l7hz     1/1      Running           5      7    368          7        n/a         72        n/a 10.1.12.154   │
+┌─────────────────────────────────────────────────────────────── pods(labs64io)[3] ──────────────────────────────────────────────────┐
+│ NAME↑                                  READY    STATUS     RESTARTS    CPU    MEM     %CPU/R     %CPU/L     %MEM/R     %MEM/L IP   │
+│ api-gateway-567c5dc67-pmp2n   1/1      Running           5      7    338          7        n/a         66        n/a 10.1.12.164   │
+│ auditflow-799455476c-w4xnh    2/2      Running          10      8    384          8        n/a         75        n/a 10.1.12.162   │
+│ ecommerce-577ddc46c-2l7hz     1/1      Running           5      7    368          7        n/a         72        n/a 10.1.12.154   │
 ```
 
 The `CPU` and `MEM` columns (along with their percentage counterparts relative to requests/limits) are now populated, providing immediate visibility into resource consumption at a glance. This transformation underscores the critical role metrics-server plays in making these metrics accessible.

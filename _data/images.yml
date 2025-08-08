@@ -105,7 +105,7 @@
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
 
-- id: scg-rate-limiter
+- id: spring-cloud-gateway-rate-limiter
   source: /img/blog/scg-rate-limiter.png
   title: "Protecting Your APIs in Spring Cloud Gateway"
   caption: "Protecting Your APIs in Spring Cloud Gateway"
@@ -118,6 +118,15 @@
   source: /img/blog/master-kubernetes-probes.jpg
   title: "Master Kubernetes Probes"
   caption: "Master Kubernetes Probes"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: spring-cloud-gateway-routing
+  source: /img/blog/spring-cloud-gateway-routing.jpg
+  title: "Spring Cloud Gateway Routing for Microservices"
+  caption: "Spring Cloud Gateway Routing for Microservices"
   license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
   author: "Labs64.IO"
   publisher: "Labs64.IO"

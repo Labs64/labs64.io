@@ -9,6 +9,16 @@ image:
   url: /img/blog/master-kubernetes-probes.jpg
 tags:
   - k8s
+  - kubernetes
+  - helm
+  - readiness
+  - liveness
+  - probes
+  - spring-boot
+  - actuator
+  - health-checks
+  - devops
+  - cloud-native
 ---
 
 When deploying applications on Kubernetes, simply having a container run isn't enough. For true reliability, you need to make sure your application is both **healthy** and **ready** to handle requests. This is where **liveness probes** and **readiness probes** come in. These simple health checks are performed by the Kubelet to manage your container's lifecycle and ensure your service stays available.
