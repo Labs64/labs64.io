@@ -38,8 +38,15 @@ no-cache: true
 </div>
 
 <section id="articles" class="js-packery" data-packery-options='{ "itemSelector": ".card", "gutter": 10 }'>
+    {% assign exclude_tags = "internal,draft,private" | split: "," %}
     {% for post in site.posts %}
-    {% if post.layout == 'post' %}
+    {% assign hide_post = false %}
+    {% for tag in post.tags %}
+      {% if exclude_tags contains tag %}
+        {% assign hide_post = true %}
+      {% endif %}
+    {% endfor %}
+    {% if post.layout == "post" and hide_post == false %}
     <div class="card radius shadowDepth1">
         <div class="card__image border-tlr-radius">
             <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">
