@@ -2,7 +2,8 @@
 
 # Labs64.IO Ecosystem :: Your Agile Business Workflow Powerhouse
 
-Visit Labs64 at https://labs64.io
+[![Website](https://img.shields.io/badge/Website-labs64.io-E14817.svg)](https://labs64.io)
+[![📖 Documentation](https://img.shields.io/badge/📖-Documentation-AB6543.svg)](https://github.com/Labs64/labs64.io-docs)
 
 ## Run
 
