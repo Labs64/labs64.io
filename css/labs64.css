@@ -4,6 +4,11 @@ sitemap:
   exclude: true
 ---
 
+/*----------  Zoho  -----------*/
+.formsubmit.zcwf_button {
+    background: transparent linear-gradient(0deg, #E14817 0%, #E14817 100%) !important;
+}
+
 /*----------  Typography  -----------*/
 body {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
@@ -1680,6 +1685,7 @@ a.NL_pricing_tooltip {
     width: 20%;
     float: left;
 }
+
 @media (min-width: 768px) {
 .col-sm-15 {
         width: 20%;
