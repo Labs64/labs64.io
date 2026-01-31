@@ -32,7 +32,23 @@ no-cache: true
                 <span>Gone are the days of monolithic applications slowing you down. The Labs64.IO Ecosystem empowers you with a suite of independent microservices, each a self-contained unit. This modular design means you can rapidly build, deploy, and iterate on specific business functionalities without affecting your entire system. Launch new features, adapt to market demands, and outpace your competition with unprecedented speed and agility.</span>
             </article>
         </section>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-md-12 NL_form_light NL_block">
+        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
+            <h2>Join Ecosystem Insiders</h2>
+            <span>Be the first to build on the new ecosystem.</span>
+            <br>
+            <script id = 'formScript313099000024369001' src = 'https://crm.zoho.eu/crm/WebFormServeServlet?rid=b9653ac6f1ea187694002f8ae9548390e28b552e859319ea656451f8800addc241f20b0e1fc47057ff6c96a5c868ffcegidcbf3c9b40022370d6b88ed01cb518e088d588244750aa9053d338e528379810f&script=$sYG'>
+</script>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <article id="scalability" class="cbp-so-side cbp-so-side-left">
                 <h2>Resilient & Independently Scalable</h2>

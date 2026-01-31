@@ -27,6 +27,8 @@ stage_banner_image: "../img/labs64io-stage-banner-01.png"
 blog_placeholder_image: "/img/blog/blog-placeholder.jpg"
 blog_recommended_posts:
   - /blog/2025/05/23/welcome-to-the-labs64io-ecosystem-diary/
+  - /blog/2025/06/16/helm-chart-documentation/
+  - /blog/2025/08/07/securing-microservices-with-keycloak-and-traefik-authproxy/
 
 # TopNav sticker
 topnav_enabled: false
@@ -37,8 +39,8 @@ topnav_sticker_onclick: ""
 topnav_sticker_target: "_self"
 
 # SEO
-google_analytics_tracking_id: "UA-32654174-1"
-#google_analytics_tracking_id:
+#google_analytics_tracking_id: "UA-32654174-1"
+google_analytics_tracking_id:
 #yandex_metrika_tracking_id: "61860391"
 yandex_metrika_tracking_id:
 
