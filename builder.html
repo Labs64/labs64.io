@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Labs64.IO Ecosystem – Modular open-source backbone for modern SaaS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffffff 0%, #f3f4f6 45%, #e5e7eb 100%);
+      color: #111827;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .layout {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7),
+        0 3px 6px rgba(15, 23, 42, 0.25);
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #fff7ed;
+      color: #7B2A10;
+      border: 1px solid #F2951C;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #F08B53, #E14817);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(0.9);
+      }
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #F08B53, #E14817);
+      color: #fffbeb;
+      box-shadow: 0 8px 20px rgba(248, 113, 22, 0.4);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(248, 113, 22, 0.5);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #E14817;
+      border: 2px solid #E14817;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: #fff7ed;
+      transform: translateY(-1px);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #AB6543, #7B2A10);
+      color: #f0fdf4;
+      box-shadow: 0 8px 20px rgba(245, 150, 72, 0.4);
+    }
+
+    .btn-success:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(245, 150, 72, 0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #6b7280;
+      border: 1px solid #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: #f9fafb;
+    }
+
+    .service-catalog {
+      width: 240px;
+      flex-shrink: 0;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.1),
+        0 0 0 1px rgba(148, 163, 184, 0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin-right: 12px;
+    }
+
+    .catalog-header {
+      padding: 16px 18px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .catalog-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .catalog-subtitle {
+      font-size: 10px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .catalog-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .catalog-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .catalog-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .catalog-list::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 4px;
+    }
+
+    .catalog-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      cursor: pointer;
+      transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    .catalog-item:hover {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+      transform: translateX(2px);
+    }
+
+    .catalog-item.selected {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border-color: #334155;
+      color: #e5e7eb;
+    }
+
+    .catalog-item.selected:hover {
+      background: linear-gradient(135deg, #1e293b, #334155);
+    }
+
+    .catalog-item.selected .catalog-item-name {
+      color: #e5e7eb;
+    }
+
+    .catalog-item.selected .catalog-item-tags {
+      color: #94a3b8;
+    }
+
+    .catalog-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .catalog-item-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .catalog-item-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+
+    .catalog-item-tags {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .catalog-item-check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      border: 2px solid #d1d5db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      transition: all 200ms ease;
+    }
+
+    .catalog-item.selected .catalog-item-check {
+      background: linear-gradient(135deg, #F08B53, #E14817);
+      border-color: #E14817;
+      color: #fff;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .scene {
+      position: relative;
+      flex: 1;
+      border-radius: 20px;
+      background: linear-gradient(160deg, #f9fafb 0%, #f3f4f6 30%, #e5e7eb 100%);
+      box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.2),
+        0 0 0 1px rgba(148, 163, 184, 0.3);
+      overflow: hidden;
+      min-height: 640px;
+      transition: margin-right 300ms ease;
+    }
+
+    .scene.panel-open {
+      margin-right: 0;
+    }
+
+    .scene-header {
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 10;
+    }
+
+    .scene-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+
+    .scene-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .stats {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      display: flex;
+      gap: 10px;
+      font-size: 11px;
+      color: #6b7280;
+      z-index: 10;
+    }
+
+    .stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e5e7eb;
+      backdrop-filter: blur(8px);
+      font-weight: 600;
+    }
+
+    .stat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #E14817;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .workspace {
+      position: absolute;
+      inset: 60px 20px 95px 20px;
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, #ffffff 0%, #f3f4f6 42%, #e5e7eb 100%);
+      box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.9),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .connections {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cubes-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    .foundation {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      width: min(85%, 960px);
+      height: 62px;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at top, rgba(249, 250, 251, 0.25), transparent 65%),
+        linear-gradient(135deg, #0f172a, #1e293b 45%, #0f172a 100%);
+      box-shadow:
+        0 24px 48px rgba(15, 23, 42, 0.8),
+        0 0 0 1px rgba(31, 41, 55, 1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      color: #e5e7eb;
+      z-index: 10;
+    }
+
+    .foundation-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .foundation-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: conic-gradient(from 210deg, #F08B53, #E14817, #F2951C, #F08B53);
+      box-shadow:
+        0 0 0 2px rgba(15, 23, 42, 0.8),
+        0 4px 12px rgba(251, 146, 60, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .foundation-center {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 500;
+    }
+
+    .foundation-right {
+      display: flex;
+      gap: 8px;
+      font-size: 10px;
+    }
+
+    .foundation-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.25);
+      background: rgba(15, 23, 42, 0.6);
+      font-weight: 600;
+    }
+
+    .side-panel {
+      position: relative;
+      width: 0;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: -8px 0 30px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      transition: width 300ms ease, margin-left 300ms ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .side-panel.open {
+      width: 480px;
+      margin-left: 16px;
+    }
+
+    .panel-header {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+      flex-shrink: 0;
+    }
+
+    .panel-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .panel-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 200ms ease;
+    }
+
+    .panel-close:hover {
+      background: rgba(148, 163, 184, 0.2);
+      color: #e5e7eb;
+    }
+
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .panel-actions {
+      padding: 16px 20px;
+      border-top: 1px solid #e5e7eb;
+      background: #f9fafb;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .chart-tree {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chart-item {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 200ms ease;
+    }
+
+    .chart-item:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+    }
+
+    .chart-header {
+      padding: 14px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .chart-header:hover {
+      background: #f9fafb;
+    }
+
+    .chart-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chart-icon {
+      font-size: 18px;
+    }
+
+    .chart-expand {
+      font-size: 12px;
+      color: #6b7280;
+      transition: transform 200ms ease;
+    }
+
+    .chart-item.expanded .chart-expand {
+      transform: rotate(180deg);
+    }
+
+    .chart-files {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+    }
+
+    .chart-item.expanded .chart-files {
+      max-height: 600px;
+    }
+
+    .file-item {
+      padding: 10px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+
+    .file-item:last-child {
+      border-bottom: none;
+    }
+
+    .file-item:hover {
+      background: #f3f4f6;
+    }
+
+    .file-name {
+      font-size: 13px;
+      color: #374151;
+      font-family: 'Courier New', monospace;
+    }
+
+    .file-icon {
+      font-size: 16px;
+    }
+
+    .chart-badge {
+      display: inline-flex;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #F08B53, #E14817);
+      color: #fffbeb;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .preview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .preview-modal.open {
+      display: flex;
+    }
+
+    .preview-container {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.4);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      animation: modalSlideIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalSlideIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .preview-header {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e5e7eb;
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .preview-file-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .preview-chart-name {
+      font-size: 12px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    .preview-file-name {
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      color: #e5e7eb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .preview-btn {
+      background: rgba(148, 163, 184, 0.2);
+      border: none;
+      color: #e5e7eb;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+
+    .preview-btn:hover {
+      background: rgba(148, 163, 184, 0.3);
+    }
+
+    .preview-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      background: #f9fafb;
+    }
+
+    .preview-code {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e5e7eb;
+      white-space: pre;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .cube {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+      user-select: none;
+      -webkit-user-drag: none;
+      animation: cube-in 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: filter 200ms ease;
+    }
+
+    .cube:hover {
+      filter: brightness(1.05);
+    }
+
+    .cube.dragging {
+      cursor: grabbing;
+      z-index: 20;
+      filter: brightness(1.1) drop-shadow(0 20px 40px rgba(15, 23, 42, 0.4));
+    }
+
+    @keyframes cube-in {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4) rotateY(180deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+      }
+    }
+
+    .cube-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .cube-3d {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      left: 50%;
+      top: 50%;
+      margin-left: -80px;
+      margin-top: -110px;
+      transform-style: preserve-3d;
+      transform: rotateX(-28deg) rotateY(38deg);
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      backface-visibility: visible;
+    }
+
+    .face-front {
+      transform: translateZ(80px);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.9)),
+        linear-gradient(135deg, #ffffff, #f9fafb);
+      border: 2px solid #e5e7eb;
+      box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 1),
+        0 0 0 1px rgba(203, 213, 225, 0.8);
+      color: #111827;
+    }
+
+    .face-back {
+      transform: translateZ(-80px) rotateY(180deg);
+      background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+      border: 2px solid #cbd5e1;
+    }
+
+    .face-top {
+      transform: rotateX(90deg) translateZ(80px);
+      background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+      border: 2px solid #d1d5db;
+      box-shadow:
+        0 -4px 12px rgba(15, 23, 42, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .face-bottom {
+      transform: rotateX(-90deg) translateZ(80px);
+      background: linear-gradient(135deg, #1f2937, #111827);
+      border: 2px solid #0f172a;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+    }
+
+    .face-left {
+      transform: rotateY(-90deg) translateZ(80px);
+      color: #f9fafb;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      box-shadow: -4px 0 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .face-right {
+      transform: rotateY(90deg) translateZ(80px);
+      color: #f9fafb;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      box-shadow: 4px 0 12px rgba(15, 23, 42, 0.3);
+    }
+
+    .cube-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .service-name {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: none;
+      line-height: 1.3;
+      color: #0f172a;
+    }
+
+    .service-tags {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .type-pill {
+      margin-top: 4px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cube-shadow {
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      transform: translateX(-50%);
+      width: 130px;
+      height: 32px;
+      border-radius: 999px 999px 0 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(15, 23, 42, 0.35) 0, rgba(15, 23, 42, 0.18) 50%, transparent 75%);
+      opacity: 0.9;
+    }
+
+    .connection-wire-glow {
+      stroke: rgba(203, 213, 225, 0.4);
+      stroke-width: 8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 12 8;
+      filter: blur(4px);
+    }
+
+    .connection-wire {
+      stroke: rgba(148, 163, 184, 0.6);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 12 8;
+      filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.15));
+    }
+
+    .connection-wire.active {
+      animation: wirePulse 2500ms ease-in-out infinite;
+    }
+
+    @keyframes wirePulse {
+
+      0%,
+      100% {
+        stroke: rgba(148, 163, 184, 0.6);
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke: rgba(148, 163, 184, 0.8);
+        stroke-dashoffset: 20;
+      }
+    }
+
+    .tag-api {
+      background: linear-gradient(135deg, #F08B53, #E14817);
+    }
+
+    .tag-data {
+      background: linear-gradient(135deg, #AB6543, #7B2A10);
+    }
+
+    .tag-auth {
+      background: linear-gradient(135deg, #F2951C, #F08B53);
+    }
+
+    .tag-analytics {
+      background: linear-gradient(135deg, #E14817, #F08B53);
+    }
+
+    .tag-ui {
+      background: linear-gradient(135deg, #7B2A10, #AB6543);
+    }
+
+    .tag-licensing {
+      background: linear-gradient(135deg, #F08B53, #F2951C);
+    }
+
+    .tag-security {
+      background: linear-gradient(135deg, #3B82F6, #1E40AF);
+    }
+
+    .tag-payment {
+      background: linear-gradient(135deg, #10B981, #047857);
+    }
+
+    .tag-integration {
+      background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    }
+
+    .tag-ai {
+      background: linear-gradient(135deg, #EC4899, #BE185D);
+    }
+
+    @media (max-width: 1200px) {
+      .side-panel.open {
+        width: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .controls {
+        justify-content: flex-start;
+      }
+
+      .side-panel.open {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 400px;
+        z-index: 100;
+        margin-left: 0;
+      }
+
+      .foundation-center {
+        display: none;
+      }
+
+      .service-catalog {
+        width: 180px;
+        margin-right: 8px;
+      }
+
+      .catalog-item-name {
+        font-size: 11px;
+      }
+
+      .catalog-item-tags {
+        font-size: 8px;
+      }
+
+      .cube {
+        width: 160px;
+        height: 160px;
+      }
+
+      .cube-3d {
+        width: 120px;
+        height: 120px;
+        margin-left: -60px;
+        margin-top: -80px;
+      }
+
+      .cube-face {
+        width: 120px;
+        height: 120px;
+      }
+
+      .preview-modal {
+        padding: 20px;
+      }
+
+      .preview-container {
+        max-height: 95vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-title">Labs64.IO Ecosystem</div>
+        <div>
+          Modular open-source backbone for modern SaaS
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn btn-success" id="btnGenerate" disabled>
+          ⎈ Generate Helm Charts
+        </button>
+        <button class="btn btn-ghost" id="btnReset">Reset</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="service-catalog" id="serviceCatalog">
+        <div class="catalog-header">
+          <div class="catalog-title">Services</div>
+          <div class="catalog-subtitle">Click to add to canvas</div>
+        </div>
+        <div class="catalog-list" id="catalogList"></div>
+      </div>
+      <div class="scene" id="scene">
+        <div class="scene-header">
+          <span class="scene-label">Foundation view</span>
+          <span class="scene-title">Composable SaaS Building Blocks</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat-chip">
+            <span class="stat-dot"></span>
+            <span>Services: <span id="stat-services">0</span> / <span id="stat-total">13</span></span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-dot" style="background:#94a3b8;"></span>
+            <span>Connections: <span id="stat-connections">0</span></span>
+          </div>
+        </div>
+
+        <div class="workspace" id="workspace">
+          <div class="grid"></div>
+          <svg class="connections" id="connections"></svg>
+          <div class="cubes-layer" id="cubesLayer"></div>
+        </div>
+
+        <div class="foundation">
+          <div class="foundation-left">
+            <div class="foundation-logo">IO</div>
+            <span>LABS64.IO</span>
+          </div>
+          <div class="foundation-center">
+            Agile Business Workflow Powerhouse
+          </div>
+          <div class="foundation-right">
+            <span class="foundation-pill">SaaS</span>
+            <span class="foundation-pill">Services</span>
+            <span class="foundation-pill">Backbone</span>
+            <span class="foundation-pill">Integrations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-panel" id="sidePanel">
+        <div class="panel-header">
+          <div class="panel-title">⎈ Helm Charts</div>
+          <button class="panel-close" id="panelClose">×</button>
+        </div>
+        <div class="panel-content" id="panelContent">
+          <!-- Chart tree will be populated here -->
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-success" style="flex: 1;" id="btnDownload">
+            📦 Download ZIP
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview Modal -->
+  <div class="preview-modal" id="previewModal">
+    <div class="preview-container">
+      <div class="preview-header">
+        <div class="preview-file-info">
+          <div class="preview-chart-name" id="previewChartName"></div>
+          <div class="preview-file-name" id="previewFileName"></div>
+        </div>
+        <div class="preview-actions">
+          <button class="preview-btn" id="btnCopy">📋 Copy</button>
+          <button class="preview-btn" id="btnClosePreview">✕ Close</button>
+        </div>
+      </div>
+      <div class="preview-content">
+        <pre class="preview-code" id="previewCode"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SERVICES = [
+      { name: "License and Entitlements Management", tags: ["ai", "api", "data", "licensing"], port: 8000 },
+      { name: "Subscription Management", tags: ["api", "data", "licensing"], port: 8001 },
+      { name: "Usage Metering", tags: ["analytics", "data", "licensing"], port: 8002 },
+      { name: "Identity and Access Management", tags: ["auth"], port: 8003 },
+      { name: "Checkout", tags: ["payment", "ui"], port: 8004 },
+      { name: "Payment Gateway", tags: ["api", "payment"], port: 8005 },
+      { name: "Invoicing", tags: ["payment", "data"], port: 8006 },
+      { name: "Tenant Management", tags: ["tenant", "auth"], port: 8007 },
+      { name: "Customer Portal", tags: ["tenant", "ui"], port: 8008 },
+      { name: "Onboarding", tags: ["ui"], port: 8009 },
+      { name: "Tokenization", tags: ["security", "data"], port: 8010 },
+      { name: "Fraud Prevention", tags: ["ai", "security", "analytics"], port: 8011 },
+      { name: "Logging and Audit Trails", tags: ["analytics", "data"], port: 8012 },
+      { name: "Observability and Monitoring", tags: ["security", "analytics"], port: 8013 },
+      { name: "Reporting and Analytics", tags: ["ai", "analytics", "data"], port: 8014 },
+      { name: "AI Services", tags: ["ai", "integration"], port: 8015 },
+      { name: "Partner and Reseller Management", tags: ["api", "data"], port: 8016 },
+      { name: "Data Export and Integrations", tags: ["integration", "data"], port: 8017 },
+      { name: "Scheduling", tags: ["api"], port: 8018 },
+      { name: "Notifications", tags: ["api", "data", "integration"], port: 8019 }
+    ];
+
+    const TYPE_COLORS = {
+      api: { left: "#F08B53", right: "#E14817" },
+      data: { left: "#AB6543", right: "#7B2A10" },
+      auth: { left: "#F2951C", right: "#F08B53" },
+      analytics: { left: "#E14817", right: "#F08B53" },
+      ui: { left: "#7B2A10", right: "#AB6543" },
+      licensing: { left: "#F08B53", right: "#F2951C" },
+      security: { left: "#3B82F6", right: "#1E40AF" },
+      payment: { left: "#10B981", right: "#047857" },
+      integration: { left: "#8B5CF6", right: "#6D28D9" },
+      ai: { left: "#EC4899", right: "#BE185D" }
+    };
+
+    const workspace = document.getElementById("workspace");
+    const cubesLayer = document.getElementById("cubesLayer");
+    const svg = document.getElementById("connections");
+    const statServices = document.getElementById("stat-services");
+    const statTotal = document.getElementById("stat-total");
+    const statConnections = document.getElementById("stat-connections");
+    const catalogList = document.getElementById("catalogList");
+    const btnGenerate = document.getElementById("btnGenerate");
+    const btnReset = document.getElementById("btnReset");
+    const btnDownload = document.getElementById("btnDownload");
+    const sidePanel = document.getElementById("sidePanel");
+    const scene = document.getElementById("scene");
+    const panelContent = document.getElementById("panelContent");
+    const panelClose = document.getElementById("panelClose");
+    const previewModal = document.getElementById("previewModal");
+    const previewChartName = document.getElementById("previewChartName");
+    const previewFileName = document.getElementById("previewFileName");
+    const previewCode = document.getElementById("previewCode");
+    const btnClosePreview = document.getElementById("btnClosePreview");
+    const btnCopy = document.getElementById("btnCopy");
+
+    let cubes = [];
+    let usedServiceNames = new Set();
+    let dragging = null;
+    let generatedZip = null;
+    let generatedFiles = {};
+
+    statTotal.textContent = SERVICES.length.toString();
+
+    // Set up button event listeners
+    btnGenerate.addEventListener('click', function () {
+      generateHelmCharts();
+    });
+
+    btnReset.addEventListener('click', function () {
+      clearServices();
+    });
+
+    btnDownload.addEventListener('click', function () {
+      downloadZip();
+    });
+
+    panelClose.addEventListener('click', function () {
+      closePanel();
+    });
+
+    btnClosePreview.addEventListener('click', function () {
+      closePreview();
+    });
+
+    btnCopy.addEventListener('click', function () {
+      copyToClipboard();
+    });
+
+    previewModal.addEventListener('click', function (e) {
+      if (e.target === previewModal) {
+        closePreview();
+      }
+    });
+
+    function pickPrimaryTag(tags) {
+      const priority = ["payment", "security", "ai", "integration", "auth", "analytics", "api", "data", "licensing", "ui"];
+      for (let i = 0; i < priority.length; i++) {
+        if (tags.indexOf(priority[i]) !== -1) {
+          return priority[i];
+        }
+      }
+      return tags[0] || "api";
+    }
+
+    function updateButtons() {
+      btnGenerate.disabled = cubes.length === 0;
+    }
+
+    function removeCubeByName(serviceName) {
+      for (let i = cubes.length - 1; i >= 0; i--) {
+        if (cubes[i].config.name === serviceName) {
+          cubes[i].el.remove();
+          cubes.splice(i, 1);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function toggleService(serviceDef, catalogItem) {
+      if (usedServiceNames.has(serviceDef.name)) {
+        usedServiceNames.delete(serviceDef.name);
+        removeCubeByName(serviceDef.name);
+        catalogItem.classList.remove('selected');
+      } else {
+        usedServiceNames.add(serviceDef.name);
+        createCube(serviceDef);
+        catalogItem.classList.add('selected');
+      }
+      updateStatsAndConnections();
+      updateButtons();
+    }
+
+    function buildCatalog() {
+      catalogList.innerHTML = '';
+      for (let i = 0; i < SERVICES.length; i++) {
+        var def = SERVICES[i];
+        var item = document.createElement('div');
+        item.className = 'catalog-item';
+        var primaryTag = pickPrimaryTag(def.tags);
+        var colors = TYPE_COLORS[primaryTag] || TYPE_COLORS.api;
+
+        item.innerHTML =
+          '<div class="catalog-swatch" style="background: linear-gradient(135deg, ' + colors.left + ', ' + colors.right + ')"></div>' +
+          '<div class="catalog-item-info">' +
+          '<div class="catalog-item-name">' + def.name + '</div>' +
+          '<div class="catalog-item-tags">' + def.tags.join(' · ') + '</div>' +
+          '</div>' +
+          '<div class="catalog-item-check">✓</div>';
+
+        (function (serviceDef, catalogItem) {
+          catalogItem.addEventListener('click', function () {
+            toggleService(serviceDef, catalogItem);
+          });
+        })(def, item);
+
+        catalogList.appendChild(item);
+      }
+    }
+
+    function clearServices() {
+      cubes = [];
+      usedServiceNames.clear();
+      cubesLayer.innerHTML = "";
+      svg.innerHTML = "";
+      closePanel();
+      // Deselect all catalog items
+      var items = catalogList.querySelectorAll('.catalog-item');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.remove('selected');
+      }
+      updateStatsAndConnections();
+      updateButtons();
+    }
+
+    function createCube(config) {
+      const rect = workspace.getBoundingClientRect();
+      const margin = 160;
+      const x = margin + Math.random() * (rect.width - margin * 2);
+      const y = margin + Math.random() * (rect.height - margin * 2);
+
+      const cubeEl = document.createElement("div");
+      cubeEl.className = "cube";
+      cubeEl.style.left = x + "px";
+      cubeEl.style.top = y + "px";
+
+      const primaryTag = pickPrimaryTag(config.tags);
+      const colors = TYPE_COLORS[primaryTag] || TYPE_COLORS.api;
+
+      const shadowDiv = document.createElement("div");
+      shadowDiv.className = "cube-shadow";
+
+      const containerDiv = document.createElement("div");
+      containerDiv.className = "cube-container";
+
+      const cube3dDiv = document.createElement("div");
+      cube3dDiv.className = "cube-3d";
+
+      const frontFace = document.createElement("div");
+      frontFace.className = "cube-face face-front";
+      const cubeContent = document.createElement("div");
+      cubeContent.className = "cube-content";
+      cubeContent.innerHTML = '<div class="service-name">' + config.name + '</div>' +
+        '<div class="service-tags">' + config.tags.join(" · ") + '</div>' +
+        '<div class="type-pill">' + primaryTag + '</div>';
+      frontFace.appendChild(cubeContent);
+
+      const backFace = document.createElement("div");
+      backFace.className = "cube-face face-back";
+
+      const topFace = document.createElement("div");
+      topFace.className = "cube-face face-top";
+
+      const bottomFace = document.createElement("div");
+      bottomFace.className = "cube-face face-bottom";
+
+      const leftFace = document.createElement("div");
+      leftFace.className = "cube-face face-left";
+      leftFace.style.background = "linear-gradient(180deg, " + colors.left + ", #111827)";
+
+      const rightFace = document.createElement("div");
+      rightFace.className = "cube-face face-right";
+      rightFace.style.background = "linear-gradient(180deg, " + colors.right + ", #0a0e14)";
+
+      cube3dDiv.appendChild(frontFace);
+      cube3dDiv.appendChild(backFace);
+      cube3dDiv.appendChild(topFace);
+      cube3dDiv.appendChild(bottomFace);
+      cube3dDiv.appendChild(leftFace);
+      cube3dDiv.appendChild(rightFace);
+
+      containerDiv.appendChild(cube3dDiv);
+
+      cubeEl.appendChild(shadowDiv);
+      cubeEl.appendChild(containerDiv);
+
+      cubesLayer.appendChild(cubeEl);
+
+      const cube = {
+        id: Date.now() + Math.random(),
+        config: config,
+        el: cubeEl,
+        x: x,
+        y: y
+      };
+      cubes.push(cube);
+
+      cubeEl.addEventListener("mousedown", function (e) { startDrag(e, cube); });
+      cubeEl.addEventListener("touchstart", function (e) { startDrag(e.touches[0], cube); }, { passive: false });
+    }
+
+    function startDrag(evt, cube) {
+      evt.preventDefault();
+      const rect = workspace.getBoundingClientRect();
+      dragging = {
+        cube: cube,
+        rect: rect,
+        startClientX: evt.clientX,
+        startClientY: evt.clientY,
+        startX: cube.x,
+        startY: cube.y
+      };
+      cube.el.classList.add("dragging");
+      document.addEventListener("mousemove", onDragMove);
+      document.addEventListener("mouseup", endDrag);
+      document.addEventListener("touchmove", onDragTouch, { passive: false });
+      document.addEventListener("touchend", endDrag);
+    }
+
+    function onDragMove(evt) {
+      updateDrag(evt.clientX, evt.clientY);
+    }
+
+    function onDragTouch(evt) {
+      evt.preventDefault();
+      const t = evt.touches[0];
+      updateDrag(t.clientX, t.clientY);
+    }
+
+    function updateDrag(clientX, clientY) {
+      if (!dragging) return;
+      const dx = clientX - dragging.startClientX;
+      const dy = clientY - dragging.startClientY;
+
+      const rect = dragging.rect;
+      let x = dragging.startX + dx;
+      let y = dragging.startY + dy;
+
+      const padding = 140;
+      x = Math.max(padding, Math.min(rect.width - padding, x));
+      y = Math.max(padding, Math.min(rect.height - padding, y));
+
+      dragging.cube.x = x;
+      dragging.cube.y = y;
+      dragging.cube.el.style.left = x + "px";
+      dragging.cube.el.style.top = y + "px";
+
+      drawConnections();
+    }
+
+    function endDrag() {
+      if (!dragging) return;
+      dragging.cube.el.classList.remove("dragging");
+      dragging = null;
+      document.removeEventListener("mousemove", onDragMove);
+      document.removeEventListener("mouseup", endDrag);
+      document.removeEventListener("touchmove", onDragTouch);
+      document.removeEventListener("touchend", endDrag);
+      updateStatsAndConnections();
+    }
+
+    function shareTag(a, b) {
+      for (let i = 0; i < a.config.tags.length; i++) {
+        if (b.config.tags.indexOf(a.config.tags[i]) !== -1) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function drawConnections() {
+      const rect = workspace.getBoundingClientRect();
+      svg.setAttribute("viewBox", "0 0 " + rect.width + " " + rect.height);
+      svg.innerHTML = '';
+
+      let connectionCount = 0;
+
+      for (let i = 0; i < cubes.length; i++) {
+        for (let j = i + 1; j < cubes.length; j++) {
+          const a = cubes[i];
+          const b = cubes[j];
+          if (!shareTag(a, b)) continue;
+
+          connectionCount++;
+
+          const x1 = a.x;
+          const y1 = a.y;
+          const x2 = b.x;
+          const y2 = b.y;
+
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const midX = (x1 + x2) / 2;
+          const midY = (y1 + y2) / 2;
+
+          const sag = Math.min(70, dist * 0.28);
+          const nx = -dy / dist;
+          const ny = dx / dist;
+
+          const cx1 = midX + nx * sag;
+          const cy1 = midY + ny * sag;
+
+          const pathData = "M " + x1 + " " + y1 + " Q " + cx1 + " " + cy1 + " " + x2 + " " + y2;
+
+          const glow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          glow.setAttribute("d", pathData);
+          glow.setAttribute("class", "connection-wire-glow");
+          svg.appendChild(glow);
+
+          const wire = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          wire.setAttribute("d", pathData);
+          wire.setAttribute("class", "connection-wire active");
+          svg.appendChild(wire);
+        }
+      }
+
+      statConnections.textContent = connectionCount.toString();
+    }
+
+    function updateStatsAndConnections() {
+      statServices.textContent = cubes.length.toString();
+      drawConnections();
+    }
+
+    function refreshLayoutConnections() {
+      updateStatsAndConnections();
+      window.requestAnimationFrame(function () {
+        updateStatsAndConnections();
+      });
+    }
+
+    function toKebabCase(str) {
+      return str.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    function generateChartYaml(service) {
+      const serviceName = toKebabCase(service.name);
+      return "apiVersion: v2\nname: " + serviceName + "\ndescription: A Helm chart for " + service.name + " service\ntype: application\nversion: 1.0.0\nappVersion: \"1.0.0\"\nkeywords:\n" + service.tags.map(function (tag) { return "  - " + tag; }).join('\n') + "\nmaintainers:\n  - name: Labs64 Team\n    email: info@labs64.com\n    url: https://labs64.io\n";
+    }
+
+    function generateValuesYaml(service) {
+      const serviceName = toKebabCase(service.name);
+      return "# Default values for " + serviceName + "\nreplicaCount: 2\n\nimage:\n  repository: labs64/" + serviceName + "\n  pullPolicy: IfNotPresent\n  tag: \"1.0.0\"\n\nservice:\n  type: ClusterIP\n  port: " + service.port + "\n\nresources:\n  limits:\n    cpu: 500m\n    memory: 512Mi\n  requests:\n    cpu: 250m\n    memory: 256Mi\n\nenv:\n  - name: SERVICE_NAME\n    value: \"" + service.name + "\"\n  - name: SERVICE_PORT\n    value: \"" + service.port + "\"\n" + service.tags.map(function (tag, idx) { return "  - name: SERVICE_TAG_" + (idx + 1) + "\n    value: \"" + tag + "\""; }).join('\n') + "\n";
+    }
+
+    function generateDeploymentYaml(service) {
+      const serviceName = toKebabCase(service.name);
+      return "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: {{ include \"" + serviceName + ".fullname\" . }}\n  labels:\n    {{- include \"" + serviceName + ".labels\" . | nindent 4 }}\nspec:\n  replicas: {{ .Values.replicaCount }}\n  selector:\n    matchLabels:\n      {{- include \"" + serviceName + ".selectorLabels\" . | nindent 6 }}\n  template:\n    metadata:\n      labels:\n        {{- include \"" + serviceName + ".selectorLabels\" . | nindent 8 }}\n    spec:\n      containers:\n      - name: {{ .Chart.Name }}\n        image: \"{{ .Values.image.repository }}:{{ .Values.image.tag }}\"\n        imagePullPolicy: {{ .Values.image.pullPolicy }}\n        ports:\n        - containerPort: {{ .Values.service.port }}\n        resources:\n          {{- toYaml .Values.resources | nindent 12 }}\n        {{- with .Values.env }}\n        env:\n          {{- toYaml . | nindent 12 }}\n        {{- end }}\n";
+    }
+
+    function generateServiceYaml(service) {
+      const serviceName = toKebabCase(service.name);
+      return "apiVersion: v1\nkind: Service\nmetadata:\n  name: {{ include \"" + serviceName + ".fullname\" . }}\n  labels:\n    {{- include \"" + serviceName + ".labels\" . | nindent 4 }}\nspec:\n  type: {{ .Values.service.type }}\n  ports:\n    - port: {{ .Values.service.port }}\n      targetPort: {{ .Values.service.port }}\n      protocol: TCP\n  selector:\n    {{- include \"" + serviceName + ".selectorLabels\" . | nindent 4 }}\n";
+    }
+
+    function generateHelpersYaml(service) {
+      const serviceName = toKebabCase(service.name);
+      return "{{- define \"" + serviceName + ".name\" -}}\n{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix \"-\" }}\n{{- end }}\n\n{{- define \"" + serviceName + ".fullname\" -}}\n{{- printf \"%s-%s\" .Release.Name .Chart.Name | trunc 63 | trimSuffix \"-\" }}\n{{- end }}\n\n{{- define \"" + serviceName + ".chart\" -}}\n{{- printf \"%s-%s\" .Chart.Name .Chart.Version | replace \"+\" \"_\" | trunc 63 }}\n{{- end }}\n\n{{- define \"" + serviceName + ".labels\" -}}\nhelm.sh/chart: {{ include \"" + serviceName + ".chart\" . }}\n{{ include \"" + serviceName + ".selectorLabels\" . }}\napp.kubernetes.io/version: {{ .Chart.AppVersion | quote }}\napp.kubernetes.io/managed-by: {{ .Release.Service }}\n{{- end }}\n\n{{- define \"" + serviceName + ".selectorLabels\" -}}\napp.kubernetes.io/name: {{ include \"" + serviceName + ".name\" . }}\napp.kubernetes.io/instance: {{ .Release.Name }}\n{{- end }}\n";
+    }
+
+    function generateReadme(service) {
+      const serviceName = toKebabCase(service.name);
+      return "# " + service.name + " Helm Chart\n\nHelm chart for " + service.name + " - part of Labs64.IO Ecosystem.\n\n## Installation\n\n```bash\nhelm install " + serviceName + " ./" + serviceName + "\n```\n\n## Configuration\n\n| Parameter | Default |\n|-----------|---------|\n| replicaCount | 2 |\n| image.tag | 1.0.0 |\n| service.port | " + service.port + " |\n";
+    }
+
+    function generateNotesText() {
+      return "Thank you for installing {{ .Chart.Name }}!\n\nYour release is named {{ .Release.Name }}.\n\nTo learn more about the release, try:\n\n  $ helm status {{ .Release.Name }}\n  $ helm get all {{ .Release.Name }}\n";
+    }
+
+    function generateUmbrellaChartYaml() {
+      const dependencies = [];
+      for (let i = 0; i < cubes.length; i++) {
+        const serviceName = toKebabCase(cubes[i].config.name);
+        dependencies.push("  - name: " + serviceName + "\n    version: \"1.0.0\"\n    repository: \"file://./../" + serviceName + "\"");
+      }
+      return "apiVersion: v2\nname: labs64-ecosystem\ndescription: Labs64.IO Ecosystem - Umbrella Chart (BOM)\ntype: application\nversion: 1.0.0\nappVersion: \"1.0.0\"\nkeywords:\n  - labs64\n  - ecosystem\n  - saas\n  - platform\nmaintainers:\n  - name: Labs64 Team\n    email: info@labs64.com\n    url: https://labs64.io\ndependencies:\n" + dependencies.join('\n') + "\n";
+    }
+
+    function generateUmbrellaValuesYaml() {
+      const values = [];
+      for (let i = 0; i < cubes.length; i++) {
+        const serviceName = toKebabCase(cubes[i].config.name);
+        values.push(serviceName + ":\n  enabled: true\n  replicaCount: 2");
+      }
+      return "# Labs64.IO Ecosystem - Umbrella Chart Values\n# Override values for sub-charts here\n\nglobal:\n  namespace: labs64-ecosystem\n\n" + values.join('\n\n') + "\n";
+    }
+
+    function generateUmbrellaReadme() {
+      const servicesList = [];
+      for (let i = 0; i < cubes.length; i++) {
+        servicesList.push("- " + cubes[i].config.name);
+      }
+      return "# Labs64.IO Ecosystem - Umbrella Chart\n\nThis is a Bill of Materials (BOM) umbrella Helm chart that deploys the complete Labs64.IO Ecosystem.\n\n## Included Services\n\n" + servicesList.join('\n') + "\n\n## Prerequisites\n\n- Kubernetes 1.20+\n- Helm 3.0+\n\n## Installation\n\n```bash\n# Install all services at once\nhelm dependency update ./labs64-ecosystem\nhelm install labs64-ecosystem ./labs64-ecosystem\n\n# Install with custom namespace\nhelm install labs64-ecosystem ./labs64-ecosystem --create-namespace --namespace labs64\n```\n\n## Support\n\nFor support, visit [https://labs64.io](https://labs64.io)\n";
+    }
+
+    function generateHelmignore() {
+      return "# Patterns to ignore\n.git/\n.DS_Store\n";
+    }
+
+    function generateUmbrellaHelmignore() {
+      return "# Patterns to ignore\n.git/\n.DS_Store\ncharts/\n*.tgz\n";
+    }
+
+    function generateHelmCharts() {
+      if (cubes.length === 0) return;
+
+      const zip = new JSZip();
+      generatedFiles = {};
+
+      for (let i = 0; i < cubes.length; i++) {
+        const service = cubes[i].config;
+        const serviceName = toKebabCase(service.name);
+        const chartFolder = zip.folder(serviceName);
+        const templatesFolder = chartFolder.folder("templates");
+
+        const chartYaml = generateChartYaml(service);
+        const valuesYaml = generateValuesYaml(service);
+        const readmeMd = generateReadme(service);
+        const helmignore = generateHelmignore();
+        const deploymentYaml = generateDeploymentYaml(service);
+        const serviceYaml = generateServiceYaml(service);
+        const helpersTpl = generateHelpersYaml(service);
+        const notesTxt = generateNotesText();
+
+        chartFolder.file("Chart.yaml", chartYaml);
+        chartFolder.file("values.yaml", valuesYaml);
+        chartFolder.file("README.md", readmeMd);
+        chartFolder.file(".helmignore", helmignore);
+
+        templatesFolder.file("deployment.yaml", deploymentYaml);
+        templatesFolder.file("service.yaml", serviceYaml);
+        templatesFolder.file("_helpers.tpl", helpersTpl);
+        templatesFolder.file("NOTES.txt", notesTxt);
+
+        generatedFiles[serviceName + "/Chart.yaml"] = chartYaml;
+        generatedFiles[serviceName + "/values.yaml"] = valuesYaml;
+        generatedFiles[serviceName + "/README.md"] = readmeMd;
+        generatedFiles[serviceName + "/.helmignore"] = helmignore;
+        generatedFiles[serviceName + "/templates/deployment.yaml"] = deploymentYaml;
+        generatedFiles[serviceName + "/templates/service.yaml"] = serviceYaml;
+        generatedFiles[serviceName + "/templates/_helpers.tpl"] = helpersTpl;
+        generatedFiles[serviceName + "/templates/NOTES.txt"] = notesTxt;
+      }
+
+      const umbrellaFolder = zip.folder("labs64-ecosystem");
+      const umbrellaChartYaml = generateUmbrellaChartYaml();
+      const umbrellaValuesYaml = generateUmbrellaValuesYaml();
+      const umbrellaReadme = generateUmbrellaReadme();
+      const umbrellaHelmignore = generateUmbrellaHelmignore();
+
+      umbrellaFolder.file("Chart.yaml", umbrellaChartYaml);
+      umbrellaFolder.file("values.yaml", umbrellaValuesYaml);
+      umbrellaFolder.file("README.md", umbrellaReadme);
+      umbrellaFolder.file(".helmignore", umbrellaHelmignore);
+
+      generatedFiles["labs64-ecosystem/Chart.yaml"] = umbrellaChartYaml;
+      generatedFiles["labs64-ecosystem/values.yaml"] = umbrellaValuesYaml;
+      generatedFiles["labs64-ecosystem/README.md"] = umbrellaReadme;
+      generatedFiles["labs64-ecosystem/.helmignore"] = umbrellaHelmignore;
+
+      generatedZip = zip;
+
+      displayChartTree();
+      openPanel();
+    }
+
+    function displayChartTree() {
+      const chartItems = [];
+
+      chartItems.push(
+        '<div class="chart-item" data-chart="umbrella">' +
+        '<div class="chart-header" onclick="toggleChart(this)">' +
+        '<div class="chart-name">' +
+        '<span class="chart-icon">📦</span>' +
+        'labs64-ecosystem' +
+        '<span class="chart-badge">Umbrella</span>' +
+        '</div>' +
+        '<span class="chart-expand">▼</span>' +
+        '</div>' +
+        '<div class="chart-files">' +
+        '<div class="file-item" data-chart="labs64-ecosystem" data-file="Chart.yaml"><span class="file-name">Chart.yaml</span><span class="file-icon">📄</span></div>' +
+        '<div class="file-item" data-chart="labs64-ecosystem" data-file="values.yaml"><span class="file-name">values.yaml</span><span class="file-icon">⚙️</span></div>' +
+        '<div class="file-item" data-chart="labs64-ecosystem" data-file="README.md"><span class="file-name">README.md</span><span class="file-icon">📖</span></div>' +
+        '<div class="file-item" data-chart="labs64-ecosystem" data-file=".helmignore"><span class="file-name">.helmignore</span><span class="file-icon">🚫</span></div>' +
+        '</div>' +
+        '</div>'
+      );
+
+      for (let i = 0; i < cubes.length; i++) {
+        const serviceName = toKebabCase(cubes[i].config.name);
+        chartItems.push(
+          '<div class="chart-item" data-chart="' + serviceName + '">' +
+          '<div class="chart-header" onclick="toggleChart(this)">' +
+          '<div class="chart-name">' +
+          '<span class="chart-icon">⎈</span>' +
+          serviceName +
+          '</div>' +
+          '<span class="chart-expand">▼</span>' +
+          '</div>' +
+          '<div class="chart-files">' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="Chart.yaml"><span class="file-name">Chart.yaml</span><span class="file-icon">📄</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="values.yaml"><span class="file-name">values.yaml</span><span class="file-icon">⚙️</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="README.md"><span class="file-name">README.md</span><span class="file-icon">📖</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="templates/deployment.yaml"><span class="file-name">templates/deployment.yaml</span><span class="file-icon">🚀</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="templates/service.yaml"><span class="file-name">templates/service.yaml</span><span class="file-icon">🌐</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="templates/_helpers.tpl"><span class="file-name">templates/_helpers.tpl</span><span class="file-icon">🔧</span></div>' +
+          '<div class="file-item" data-chart="' + serviceName + '" data-file="templates/NOTES.txt"><span class="file-name">templates/NOTES.txt</span><span class="file-icon">📝</span></div>' +
+          '</div>' +
+          '</div>'
+        );
+      }
+
+      panelContent.innerHTML = '<div class="chart-tree">' + chartItems.join('') + '</div>';
+
+      // Add click listeners to file items
+      const fileItems = document.querySelectorAll('.file-item');
+      for (let i = 0; i < fileItems.length; i++) {
+        fileItems[i].addEventListener('click', function () {
+          const chart = this.getAttribute('data-chart');
+          const file = this.getAttribute('data-file');
+          showPreview(chart, file);
+        });
+      }
+    }
+
+    function toggleChart(header) {
+      const item = header.parentElement;
+      item.classList.toggle('expanded');
+    }
+
+    function openPanel() {
+      sidePanel.classList.add('open');
+      scene.classList.add('panel-open');
+      refreshLayoutConnections();
+      setTimeout(refreshLayoutConnections, 320);
+    }
+
+    function closePanel() {
+      sidePanel.classList.remove('open');
+      scene.classList.remove('panel-open');
+      refreshLayoutConnections();
+      setTimeout(refreshLayoutConnections, 320);
+    }
+
+    function showPreview(chartName, fileName) {
+      const filePath = chartName + "/" + fileName;
+      const content = generatedFiles[filePath];
+
+      if (!content) {
+        console.error("File not found:", filePath);
+        return;
+      }
+
+      previewChartName.textContent = chartName;
+      previewFileName.textContent = fileName;
+      previewCode.textContent = content;
+      previewModal.classList.add('open');
+    }
+
+    function closePreview() {
+      previewModal.classList.remove('open');
+    }
+
+    function copyToClipboard() {
+      const content = previewCode.textContent;
+      navigator.clipboard.writeText(content).then(function () {
+        btnCopy.textContent = "✓ Copied!";
+        setTimeout(function () {
+          btnCopy.textContent = "📋 Copy";
+        }, 2000);
+      });
+    }
+
+    function downloadZip() {
+      if (!generatedZip) return;
+
+      generatedZip.generateAsync({ type: "blob" }).then(function (content) {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(content);
+        link.download = "labs64-helm-charts.zip";
+        link.click();
+      });
+    }
+
+    window.addEventListener("load", function () {
+      buildCatalog();
+    });
+
+    window.addEventListener("resize", function () {
+      refreshLayoutConnections();
+    });
+
+    // Make toggleChart accessible globally
+    window.toggleChart = toggleChart;
+  </script>
+</body>
+
+</html>
