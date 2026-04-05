@@ -67,6 +67,7 @@ ingressroute:
 
 Next, you need a Helm template that transforms the values from `values.yaml` into a Kubernetes `Middleware` manifest. This template should be in a file named `templates/middleware.yaml`.
 
+{% raw %}
 ```yaml
 # templates/middleware.yaml
 
@@ -79,6 +80,7 @@ spec:
 {{- toYaml .Values.ingressroute.middleware.spec | nindent 2 }}
 {{- end -}}
 ```
+{% endraw %}
 
 This template is designed to be reusable and safe:
 
@@ -90,6 +92,7 @@ This template is designed to be reusable and safe:
 
 The final step is to instruct your `IngressRoute` to use the middleware you've defined. This is done within your `templates/ingressroute.yaml` file.
 
+{% raw %}
 ```yaml
 # labs64.io-helm-charts/charts/api-gateway/templates/ingressroute.yaml
 
@@ -113,6 +116,7 @@ spec:
       {{- end }}
 {{- end }}
 ```
+{% endraw %}
 
 The key part of this template is the `middlewares` section. It conditionally renders a reference to the middleware resource if a name is provided in `values.yaml`. The `name` field here must exactly match the `metadata.name` generated in the `middleware.yaml` template. This ensures that the `IngressRoute` correctly applies the custom logic to all matching requests.
 

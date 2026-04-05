@@ -5,17 +5,12 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     {% endif %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %} | {{ site.title }}</title>
+    <title>{% if page.title and page.title != site.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ',' }},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
     <meta name="author" content="{{ site.copyright }}">
     <meta name="copyright" content="{{ site.copyright }}">
     <meta name="robots" content="INDEX, FOLLOW">
-    {% if page.fragmented %}
-    <meta name="fragment" content="!">
-    {% endif %}
 
     <!-- Prefetch resources -->
     {% if site.dns_prefetch %}
@@ -34,6 +29,7 @@
     {% include opengraph.html %}
     {% include twittercard.html %}
     {% include dublincore.html %}
+    {% include jsonld.html %}
 
     <!-- Custom Fonts, CSS -->
     <link rel="stylesheet" href="{{ '/css/roboto.css' | prepend: site.baseurl | prepend: site.url }}">
@@ -57,6 +53,6 @@
       {% assign canonical = page.url | prepend: site.baseurl | prepend: site.url %}
       <link rel="canonical" href="{{ canonical }}">
     {% endif %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://labs64.io/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | prepend: site.baseurl | prepend: site.url }}">
 </head>

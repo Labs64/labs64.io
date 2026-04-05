@@ -1,0 +1,115 @@
+---
+layout: page
+title: "Driving Innovation in Business Automation: The Labs64.IO Journey"
+description: "Follow our journey in business automation. Practical advice, tech insights, and strategies for agile workflows."
+tags:
+- Blog
+- Journal
+- Announcement
+- News
+- Diary
+- Agile workflow automation
+- Business process automation
+- Microservices architecture
+- DevOps best practices
+- Software development
+- Cloud native solutions
+- Enterprise software
+- Digital transformation
+- Workflow management
+- Scalable solutions
+- Custom software development
+- API integration
+- Business agility
+- IT infrastructure
+- Productivity tools
+- SaaS solutions
+- Continuous delivery
+- System integration
+- Technical insights
+no-cache: true
+use_packery: true
+---
+<div class="row NL_banner">
+    <div class="col-md-6 col-md-offset-3 NL_about_page">
+        <h1>Labs64.IO Ecosystem Diary</h1>
+        <span>Get ready for a candid look behind the scenes as we build Labs64.IO Ecosystem the Agile Business Workflow Powerhouse of interconnected microservices for your business.</span>
+    </div>
+</div>
+
+<div class="row">
+    <p class="col-md-6 col-md-offset-3 NL_block">{% include google-search.html %}</p>
+</div>
+
+<section id="articles" class="js-packery" data-packery-options='{ "itemSelector": ".card", "gutter": 10 }'>
+    {% for post in paginator.posts %}
+    {% if post.layout == 'post' %}
+    <div class="card radius shadowDepth1">
+        <div class="card__image border-tlr-radius">
+            <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}">
+                <img src="{% if post.image.url %}{{ post.image.url }}{% else %}{{ site.blog_placeholder_image }}{% endif %}"
+                     alt="{{ post.title }}" class="border-tlr-radius" loading="lazy">
+            </a>
+        </div>
+        <div class="card__content card__padding">
+            <div class="card__meta">
+                <ul>
+                    <li>
+                        <time datetime="{{ post.date | date: '%Y-%m-%d' }}"
+                              title="{{ post.date | date: '%b %-d, %Y' }}">{{ post.date | date: "%b %-d, %Y" }}
+                        </time>
+                    </li>
+                    <li>
+                        <address class="author">&nbsp;by
+                            {% if post.author.name %}
+                              {% assign author_name = post.author.name %}
+                            {% else %}
+                              {% assign author_name = site.title %}
+                            {% endif %}
+
+                            {% if post.author.url %}
+                              <a href="{{ post.author.url }}" target="_blank">{{ author_name }}</a>
+                            {% else %}
+                              {{ author_name }}
+                            {% endif %}
+                        </address>
+                    </li>
+                </ul>
+            </div>
+            <article class="card__article">
+                <header>
+                    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+                </header>
+                {{ post.excerpt }}
+            </article>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</section>
+
+{% if paginator.total_pages > 1 %}
+<div class="row NL_block">
+    <nav class="col-md-8 col-md-offset-2" aria-label="Blog pagination">
+        <ul class="pager">
+            {% if paginator.previous_page %}
+            <li class="previous">
+                <a href="{{ paginator.previous_page_path | prepend: site.baseurl | prepend: site.url }}">&larr; Newer Posts</a>
+            </li>
+            {% else %}
+            <li class="previous disabled"><span>&larr; Newer Posts</span></li>
+            {% endif %}
+
+            <li><span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span></li>
+
+            {% if paginator.next_page %}
+            <li class="next">
+                <a href="{{ paginator.next_page_path | prepend: site.baseurl | prepend: site.url }}">Older Posts &rarr;</a>
+            </li>
+            {% else %}
+            <li class="next disabled"><span>Older Posts &rarr;</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endif %}

@@ -5,11 +5,15 @@ layout: compress
 <html lang="en">
 {% include head.html %}
 <body>
+<a href="#wrapper" class="sr-only sr-only-focusable">Skip to content</a>
 {% include nav.html %}
 <div id="wrapper">
     {{ content }}
 </div>
 {% include footer.html %}
 {% include js.html %}
+{% if page.guidechimp %}
+  {% include guidechimp.html %}
+{% endif %}
 </body>
 </html>

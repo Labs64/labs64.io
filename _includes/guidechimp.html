@@ -1,0 +1,34 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/guidechimp@4/dist/guidechimp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/guidechimp@4/dist/guidechimp.css"/>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/guidechimp@4/dist/plugins/licensing.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/guidechimp@4/dist/plugins/multiPage.js"></script>
+
+<script>
+    var searchParams = new URLSearchParams(window.location.search);
+
+    GuideChimp.extend(guideChimpPluginLicensing, { id: "INLIC" });
+
+    if (typeof guideChimpPluginMultiPage !== "undefined") {
+        GuideChimp.extend(guideChimpPluginMultiPage);
+    }
+
+    if (searchParams.get('guidechimp') === 'on' && searchParams.get('tour') === 'licensing-models') {
+        setTimeout(function () {
+            guideChimpLicensingModels.start();
+        }, 1000);
+    } else if (searchParams.get('guidechimp') === 'on' && searchParams.get('tour') === 'features') {
+        setTimeout(function () {
+            guideChimpFeatures.start();
+        }, 1000);
+    }
+</script>
+
+<style>
+    .gc-tooltip {
+        max-width: 455px;
+    }
+    .gc-description {
+        max-height: 550px;
+    }
+</style>

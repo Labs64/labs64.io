@@ -89,9 +89,11 @@ dependencies:
 
 Template call example:
 
+{% raw %}
 ```
 {{- include "chart-libs.deployment" . }}
 ```
+{% endraw %}
 
 This approach helps you:
 - Eliminate repetition
