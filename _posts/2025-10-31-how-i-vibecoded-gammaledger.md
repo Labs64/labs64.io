@@ -6,7 +6,7 @@ author:
   name: An Indie Dev Fueled by Curiosity (and ☕)
   url: https://gammaledger.com
 image:
-  url: https://raw.githubusercontent.com/r-brown/GammaLedger/refs/heads/main/assets/img/gammaledger-banner-03.png
+  url: https://raw.githubusercontent.com/r-brown/GammaLedger/refs/heads/main/assets/images/gammaledger-banner-03.png
 tags:
   - internal
   - AI-Assisted Development
