@@ -1,5 +1,4 @@
 {% if page.layout == 'post' %}
-<!-- JSON-LD Article structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,6 +26,57 @@
     "@type": "WebPage",
     "@id": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
   }
+}
+</script>
+{% elsif page.url == '/' or page.url == '/index.html' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.title }}",
+  "url": "{{ '/' | prepend: site.baseurl | prepend: site.url }}",
+  "logo": "{{ '/img/labs64-logo.png' | prepend: site.baseurl | prepend: site.url }}",
+  "description": "{{ site.description }}"
+}
+</script>
+{% elsif page.url contains '/products/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ page.title }}",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "{{ page.description }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.title }}"
+  }
+}
+</script>
+{% elsif page.url == '/pricing/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I mix Open Source and Enterprise modules?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can start with the Community edition and upgrade specific modules to Enterprise licenses as your compliance or support requirements evolve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the \"Managed SaaS option\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment."
+      }
+    }
+  ]
 }
 </script>
 {% endif %}
