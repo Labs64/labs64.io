@@ -31,19 +31,47 @@
             <ul class="nav navbar-nav navbar-right NL_main_menu">
                 {% for page in site.data.navigation %}
                 {% if page.title %}
+                {% if page.subitems %}
+                {% assign subcount = page.subitems | size %}
+                <li class="NL_dropdown{% if subcount > 12 %} NL_dropdown--wide{% endif %}">
+                    <a class="page-link NL_dropdown-toggle {{ page.class }}" href="#" data-toggle="dropdown">
+                        {% if page.icon %}
+                        <i class="fa {{ page.icon }}"></i>
+                        {% endif %}
+                        {{ page.title }}
+                        <i class="fa fa-chevron-down NL_dropdown-arrow"></i>
+                    </a>
+                    <div class="NL_dropdown-menu">
+                        <div class="NL_dropdown-grid">
+                            {% for subitem in page.subitems %}
+                            {% if subitem.url contains 'http' %}
+                            {% assign sublink = subitem.url %}
+                            {% else %}
+                            {% assign sublink = subitem.url | prepend: site.baseurl | prepend: site.url %}
+                            {% endif %}
+                            <a class="NL_dropdown-item" href="{{ sublink }}">
+                                <span class="NL_dropdown-item-title">{{ subitem.title }}</span>
+                                <span class="NL_dropdown-item-desc">{{ subitem.description }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+                {% else %}
                 {% if page.url contains 'http' %}
                 {% assign link = page.url %}
                 {% else %}
                 {% assign link = page.url | prepend: site.baseurl | prepend: site.url %}
                 {% endif %}
                 <li>
-                    <a class="page-link {{ page.class }}" href="{{ link }}">
+                    <a class="page-link {{ page.class }}" href="{{ link }}"{% if page.target %} target="{{ page.target }}"{% endif %}>
                         {% if page.icon %}
                         <i class="fa {{ page.icon }}"></i>
                         {% endif %}
                         {{ page.title }}
                     </a>
                 </li>
+                {% endif %}
                 {% endif %}
                 {% endfor %}
             </ul>

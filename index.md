@@ -16,7 +16,7 @@ use_slick: true
         <div class="row">
             <div id="contact" class="col-md-4 col-md-offset-4">
                 <a href="https://github.com/topics/labs64-io"
-                   class="NL_button button_main NL_light_btn" role="button"><i class="fa fa-eye"></i>GitHub</a>
+                   class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-eye"></i>GitHub</a>
             </div>
         </div>
     </div>
@@ -26,12 +26,12 @@ use_slick: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Unmatched Agility & Speed to Market" title="Unmatched Agility & Speed to Market">
+                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Cloud-Native & Kubernetes Ready" title="Cloud-Native & Kubernetes Ready">
             </figure>
             <article id="speed-to-market" class="cbp-so-side cbp-so-side-right">
-                <h2>Unmatched Agility & Speed to Market</h2>
+                <h2>Cloud-Native & Kubernetes Ready</h2>
 
-                <span>Gone are the days of monolithic applications slowing you down. The Labs64.IO Ecosystem empowers you with a suite of independent microservices, each a self-contained unit. This modular design means you can rapidly build, deploy, and iterate on specific business functionalities without affecting your entire system. Launch new features, adapt to market demands, and outpace your competition with unprecedented speed and agility.</span>
+                <span>Distributed via shared Helm charts and optimized for ArgoCD. Deploy the Labs64.IO Ecosystem on any cloud provider or bare-metal Kubernetes cluster with confidence.</span>
             </article>
         </section>
     </div>
@@ -53,45 +53,45 @@ use_slick: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <article id="scalability" class="cbp-so-side cbp-so-side-left">
-                <h2>Resilient & Independently Scalable</h2>
+                <h2>API-First & Polyglot</h2>
 
-                <span>Built on a foundation of loosely coupled microservices, Labs64.IO offers superior resilience. If one service encounters an issue, the rest of your ecosystem remains operational, preventing system-wide failures. Furthermore, each microservice scales independently, allowing you to allocate resources precisely where needed, optimizing performance and cost efficiency. Say goodbye to over-provisioning and hello to intelligent, targeted scaling.</span>
+                <span>We believe in using the right tool for the job. Java for high-performance transactions, Python for flexible integrations, and Vue 3 for reactive UIs. All communicating via strict, OpenAPI-first contracts.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Resilient & Independently Scalable" title="Resilient & Independently Scalable">
+                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="API-First & Polyglot" title="API-First & Polyglot">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Focus on Your Core Business, We Handle the Essentials" title="Focus on Your Core Business, We Handle the Essentials">
+                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Built-in Observability" title="Built-in Observability">
             </figure>
             <article id="core-business" class="cbp-so-side cbp-so-side-right">
-                <h2>Focus on Your Core Business, We Handle the Essentials</h2>
+                <h2>Built-in Observability</h2>
 
-                <span>Why reinvent the wheel? The Labs64.IO Ecosystem provides essential, robust, and highly optimized business tools – from secure payment processing and automated invoicing to comprehensive auditing and advanced AI assistance. By leveraging our pre-built, interconnected services, your teams can dedicate their valuable time and expertise to innovating and refining your core products and services, rather than managing complex infrastructure.</span>
+                <span>Don't guess what's happening. Our modules come with OpenTelemetry Java Agents, Tempo for traces, Micrometer/Prometheus for metrics, and Loki for logs—all auto-instrumented via our Helm charts.</span>
             </article>
         </section>
 
         <section class="cbp-so-section">
             <article id="tailored-solutions" class="cbp-so-side cbp-so-side-left">
-                <h2>Tailored Solutions, Zero Bloat</h2>
+                <h2>Fair Dual Licensing</h2>
 
-                <span>Our modular approach means you only integrate the services your business truly needs. Forget about bloated, all-in-one solutions with unnecessary features. The Labs64.IO Ecosystem allows for unparalleled customization, giving you the power to select and combine microservices to create a perfectly tailored workflow solution that minimizes overhead and maximizes efficiency for your unique operational requirements.</span>
+                <span>Start free with our Open Source community edition. Scale to our Enterprise tier when you need commercial protections, dedicated SLAs, and expert architecture consulting.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-04.png' | prepend: site.baseurl | prepend: site.url }}" alt="Tailored Solutions, Zero Bloat" title="Tailored Solutions, Zero Bloat">
+                <img src="{{ '/img/labs64.io-promo-04.png' | prepend: site.baseurl | prepend: site.url }}" alt="Fair Dual Licensing" title="Fair Dual Licensing">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-05.png' | prepend: site.baseurl | prepend: site.url }}" alt="Enhanced Security & Compliance, Simplified" title="Enhanced Security & Compliance, Simplified">
+                <img src="{{ '/img/labs64.io-promo-05.png' | prepend: site.baseurl | prepend: site.url }}" alt="Security & Identity at the Edge" title="Security & Identity at the Edge">
             </figure>
             <article id="security-and-ompliance" class="cbp-so-side cbp-so-side-right">
-                <h2>Enhanced Security & Compliance, Simplified</h2>
+                <h2>Security & Identity at the Edge</h2>
 
-                <span>Protecting sensitive data and maintaining compliance is paramount. With microservices like Tokenization and Identity and Access Management (IAM) built into the Labs64.IO Ecosystem, we provide the tools to securely handle confidential information, manage user access, and maintain comprehensive audit trails. Reduce your compliance burden and safeguard your customers' data with a system designed for robust security from the ground up.</span>
+                <span>Zero-trust architecture built-in. Our Auth Gateway leverages Traefik, Keycloak OIDC, and Cedar policies to enforce strict network and access controls before requests ever hit your internal services.</span>
             </article>
         </section>
     </div>

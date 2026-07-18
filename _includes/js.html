@@ -31,6 +31,13 @@
         var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
         $('.NL_main_menu a').each(function () {
             var $link = $(this);
+            var href = $link.attr('href');
+            
+            // Skip dropdown toggles and empty links
+            if (!href || href === '#') {
+                return;
+            }
+
             var linkUrl = new URL($link[0].href, window.location.origin);
 
             // Only highlight menu entries that point to this site.
@@ -43,6 +50,12 @@
             if (linkPath === currentPath) {
                 $link.attr('aria-current', 'page');
                 $link.closest('li').addClass('active');
+                
+                // Highlight parent dropdown if inside one
+                var $dropdown = $link.closest('.NL_dropdown');
+                if ($dropdown.length) {
+                    $dropdown.addClass('active');
+                }
             }
         });
 

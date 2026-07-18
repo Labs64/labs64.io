@@ -1,11 +1,75 @@
+- title: Why Labs64.IO
+  url: "/why-labs64io/"
+
+- title: Platform
+  url: "#"
+  subitems:
+    - title: "Polyglot Microservices"
+      description: "Domain-optimized tech stacks"
+      url: "/platform/polyglot/"
+    - title: "API-First / Contract-Driven"
+      description: "Strict OpenAPI boundaries"
+      url: "/platform/api-first/"
+    - title: "Stateless Scalability"
+      description: "Seamless horizontal auto-scaling"
+      url: "/platform/scalability/"
+    - title: "Cloud-Native Kubernetes"
+      description: "Containerized ecosystem orchestration"
+      url: "/platform/kubernetes/"
+    - title: "Zero-Trust Edge Proxy"
+      description: "Secure ingress via Traefik Authproxy"
+      url: "/platform/zero-trust/"
+    - title: "Federated Identity Management"
+      description: "Keycloak OIDC centralized auth"
+      url: "/platform/identity/"
+    - title: "Policy-as-Code Authorization"
+      description: "Cedar RBAC permissions"
+      url: "/platform/authorization/"
+    - title: "Business Telemetry Abstraction"
+      description: "Decoupled domain metrics"
+      url: "/platform/telemetry/"
+
+- title: Products
+  url: "#"
+  subitems:
+    - title: "AuditFlow"
+      description: "Immutable record of all critical system activities"
+      url: "/products/auditflow/"
+    - title: "Payment Gateway"
+      description: "Facilitate seamless and secure online payments"
+      url: "/products/payment-gateway/"
+    - title: "Checkout"
+      description: "Self-service hub for customers"
+      url: "/products/checkout/"
+    - title: "Invoicing"
+      description: "Automate the entire invoicing process"
+      url: "/products/invoicing/"
+    - title: "Auth Gateway"
+      description: "Centralize and manage user identities"
+      url: "/products/auth-gateway/"
+    - title: "AI & MCP Gateway"
+      description: "Integrate intelligent automation and predictive capabilities"
+      url: "/products/ai-assistance/"
+    - title: "NetLicensing"
+      description: "Entitlement checks and metered licensing"
+      url: "https://netlicensing.io"
+    - title: "GuideChimp"
+      description: "Guided tours for SaaS onboarding"
+      url: "https://www.labs64.com/guidechimp/"
+
+- title: Pricing
+  url: "/pricing/"
+
+- title: Enterprise
+  url: "/enterprise/"
+
+- title: Open Source
+  url: "/open-source/"
+
 - title: Blog
   url: "/blog/"
 
-- title: GitHub
+- title: '<span class="sr-only">GitHub</span>'
+  icon: "fa-github"
   url: "https://github.com/topics/labs64-io"
-
-- title: NetLicensing
-  url: "https://netlicensing.io"
-
-- title: GuideChimp
-  url: "https://www.labs64.com/guidechimp/"
+  target: "_blank"
