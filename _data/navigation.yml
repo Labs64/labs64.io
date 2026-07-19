@@ -23,7 +23,7 @@
       description: "Keycloak OIDC centralized auth"
       url: "/platform/identity/"
     - title: "Policy-as-Code Authorization"
-      description: "Cedar RBAC permissions"
+      description: "RBAC permissions"
       url: "/platform/authorization/"
     - title: "Business Telemetry Abstraction"
       description: "Decoupled domain metrics"

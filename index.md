@@ -91,7 +91,7 @@ use_slick: true
             <article id="security-and-ompliance" class="cbp-so-side cbp-so-side-right">
                 <h2>Security & Identity at the Edge</h2>
 
-                <span>Zero-trust architecture built-in. Our Auth Gateway leverages Traefik, Keycloak OIDC, and Cedar policies to enforce strict network and access controls before requests ever hit your internal services.</span>
+                <span>Zero-trust architecture built-in. Our Auth Gateway leverages Traefik, Keycloak OIDC, and Cerbos policies to enforce strict network and access controls before requests ever hit your internal services.</span>
             </article>
         </section>
     </div>

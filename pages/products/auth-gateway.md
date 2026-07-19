@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Auth Gateway: Federated Identity and RBAC at the Edge"
-description: "Secure your microservices with zero-trust architecture, Keycloak integration, and Cedar-based policies using the Labs64.IO Auth Gateway."
+description: "Secure your microservices with zero-trust architecture, Keycloak integration, and Cerbos-based policies using the Labs64.IO Auth Gateway."
 permalink: /products/auth-gateway/
 use_cbpscroller: true
 ---
@@ -27,11 +27,11 @@ use_cbpscroller: true
 
         <section class="cbp-so-section">
             <article class="cbp-so-side cbp-so-side-left">
-                <h2>Cedar-Based Policies & Auth Context</h2>
-                <span>Define highly granular, verifiable permission rules using the Cedar policy language. The gateway translates external tokens into a standardized internal context, passing it downstream safely.</span>
+                <h2>Cerbos-Based Policies & Auth Context</h2>
+                <span>Define highly granular, verifiable permission rules using the Cerbos policy language. The gateway translates external tokens into a standardized internal context, passing it downstream safely.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Cedar Policies">
+                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Cerbos Policies">
             </figure>
         </section>
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Policy-as-Code Authorization"
-description: "Cedar RBAC permissions"
+description: "RBAC permissions"
 permalink: /platform/authorization/
 use_cbpscroller: true
 ---
@@ -9,7 +9,7 @@ use_cbpscroller: true
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Policy-as-Code Authorization</h1>
-        <span>We decoupled authorization from business logic. Labs64.IO uses AWS Cedar to evaluate fine-grained, policy-as-code permissions at runtime.</span>
+        <span>We decoupled authorization from business logic. Labs64.IO uses Cerbos to evaluate fine-grained, policy-as-code permissions at runtime.</span>
     </div>
 </div>
 

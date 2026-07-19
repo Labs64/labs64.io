@@ -21,7 +21,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Strict Ingress Validation</h2>
-                <span>Requests are immediately validated against Keycloak OIDC tokens and precise Cedar permission policies.</span>
+                <span>Requests are immediately validated against Keycloak OIDC tokens and precise Cerbos permission policies.</span>
             </article>
         </section>
         <section class="cbp-so-section">
