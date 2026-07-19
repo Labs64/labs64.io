@@ -9,7 +9,7 @@ use_cbpscroller: true
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Why Labs64.IO?</h1>
-        <span>Modern businesses require agility, resilience, and scale. Monolithic, closed-source ERP and billing platforms often slow you down with rigid structures and vendor lock-in. The **Labs64.IO Ecosystem** was engineered to provide a better way.</span>
+        <span>Modern businesses require agility, resilience, and scale. Monolithic, closed-source ERP and billing platforms often slow you down with rigid structures and vendor lock-in. The <strong>Labs64.IO Ecosystem</strong> was engineered to provide a better way.</span>
     </div>
 </div>
 
@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="No Vendor Lock-In">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="No Vendor Lock-In">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>No Vendor Lock-In</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>We believe in using the right tool for the job. Our ecosystem embraces a polyglot approach with Java, Python, and Vue 3. Because our architecture is entirely modular, you only deploy the services you actually need.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Polyglot & Modular">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Polyglot & Modular">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Built-in Observability">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Built-in Observability">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Built-in Observability</h2>

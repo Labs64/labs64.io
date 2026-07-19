@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Strict Ingress Validation">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Strict Ingress Validation">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Strict Ingress Validation</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>Internal services do not expose public endpoints. They completely rely on the edge proxy for authentication checks.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Internal Isolation">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Internal Isolation">
             </figure>
         </section>
 

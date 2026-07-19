@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Compliance Ready">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Compliance Ready">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Compliance Ready & Tamper-Proof</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>Capture rich, highly queryable context rather than plain text strings. Seamlessly route logs to external sinks (e.g., S3, Datadog, ELK) using our pluggable <code>auditflow-sink</code> integrations.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Structured JSON">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Structured JSON">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="How It Works">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="How It Works">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>How It Works</h2>

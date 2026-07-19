@@ -11,7 +11,7 @@
             <div itemscope itemtype="https://schema.org/WebSite">
                 <a itemprop="url" class="navbar-brand NL_logo" href="{{ site.url }}">
                     <img alt="{{ site.company }}"
-                         src="{{ '/img/labs64-avatar-30x30.png' | prepend: site.baseurl | prepend: site.url }}"/>
+                         src="{{ '/img/labs64-avatar-30x30.png' | relative_url }}"/>
                     <span itemprop="name">{{ site.company }}</span>
                     <meta itemprop="description" content="{{ site.description }}"/>
                 </a>
@@ -21,7 +21,7 @@
             <div class="NL_topnav_sticker">
                 <a href="{{ site.topnav_sticker_url }}" onclick="{{ site.topnav_sticker_onclick }}" target="{{ site.topnav_sticker_target }}">
                     <img alt="{{ site.topnav_sticker_text }}"
-                         src="{{ site.topnav_sticker_image | prepend: site.baseurl | prepend: site.url }}"/>
+                         src="{{ site.topnav_sticker_image | relative_url }}"/>
                 </a>
             </div>
             {% endif %}
@@ -47,7 +47,7 @@
                             {% if subitem.url contains 'http' %}
                             {% assign sublink = subitem.url %}
                             {% else %}
-                            {% assign sublink = subitem.url | prepend: site.baseurl | prepend: site.url %}
+                            {% assign sublink = subitem.url | relative_url %}
                             {% endif %}
                             <a class="NL_dropdown-item" href="{{ sublink }}" role="menuitem">
                                 <span class="NL_dropdown-item-title">{{ subitem.title }}</span>
@@ -61,7 +61,7 @@
                 {% if page.url contains 'http' %}
                 {% assign link = page.url %}
                 {% else %}
-                {% assign link = page.url | prepend: site.baseurl | prepend: site.url %}
+                {% assign link = page.url | relative_url %}
                 {% endif %}
                 <li>
                     <a class="page-link {{ page.class }}" href="{{ link }}"{% if page.target %} target="{{ page.target }}"{% endif %}>

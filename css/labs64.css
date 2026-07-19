@@ -887,6 +887,13 @@ div.in > .NL_accordion_content {
 
 /* Mobile dropdown styles */
 @media screen and (max-width: 767px) {
+    /* The 0.95 opacity on .NL_navbar is a desktop scroll-through nicety; once the
+       collapse menu expands the navbar to full page height on mobile, the same
+       transparency lets hero/body content bleed through the open menu. */
+    .NL_navbar {
+        opacity: 1;
+    }
+
     .NL_dropdown-menu {
         position: static;
         transform: none;

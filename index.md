@@ -26,7 +26,7 @@ use_slick: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Cloud-Native & Kubernetes Ready" title="Cloud-Native & Kubernetes Ready">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Cloud-Native & Kubernetes Ready" title="Cloud-Native & Kubernetes Ready">
             </figure>
             <article id="speed-to-market" class="cbp-so-side cbp-so-side-right">
                 <h2>Cloud-Native & Kubernetes Ready</h2>
@@ -58,13 +58,13 @@ use_slick: true
                 <span>We believe in using the right tool for the job. Java for high-performance transactions, Python for flexible integrations, and Vue 3 for reactive UIs. All communicating via strict, OpenAPI-first contracts.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="API-First & Polyglot" title="API-First & Polyglot">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="API-First & Polyglot" title="API-First & Polyglot">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Built-in Observability" title="Built-in Observability">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Built-in Observability" title="Built-in Observability">
             </figure>
             <article id="core-business" class="cbp-so-side cbp-so-side-right">
                 <h2>Built-in Observability</h2>
@@ -80,13 +80,13 @@ use_slick: true
                 <span>Start free with our Open Source community edition. Scale to our Enterprise tier when you need commercial protections, dedicated SLAs, and expert architecture consulting.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-04.png' | prepend: site.baseurl | prepend: site.url }}" alt="Fair Dual Licensing" title="Fair Dual Licensing">
+                <img src="{{ '/img/labs64.io-promo-04.png' | relative_url }}" alt="Fair Dual Licensing" title="Fair Dual Licensing">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-05.png' | prepend: site.baseurl | prepend: site.url }}" alt="Security & Identity at the Edge" title="Security & Identity at the Edge">
+                <img src="{{ '/img/labs64.io-promo-05.png' | relative_url }}" alt="Security & Identity at the Edge" title="Security & Identity at the Edge">
             </figure>
             <article id="security-and-ompliance" class="cbp-so-side cbp-so-side-right">
                 <h2>Security & Identity at the Edge</h2>

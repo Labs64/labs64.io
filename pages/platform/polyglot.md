@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Optimized Performance">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Optimized Performance">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Optimized Performance</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>For AI assistance and data engineering, we utilize Python and FastAPI for rapid prototyping and robust ecosystem support.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Flexible Integrations">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Flexible Integrations">
             </figure>
         </section>
     </div>

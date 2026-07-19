@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Auto-Instrumented Traces">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Auto-Instrumented Traces">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Auto-Instrumented Traces</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>Application metrics and logs are systematically aggregated via Prometheus and Loki for rapid root-cause analysis.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Centralized Analytics">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Centralized Analytics">
             </figure>
         </section>
 

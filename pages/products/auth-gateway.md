@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Zero-Trust Architecture">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Zero-Trust Architecture">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Zero-Trust Architecture at the Edge</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>Define highly granular, verifiable permission rules using the Cerbos policy language. The gateway translates external tokens into a standardized internal context, passing it downstream safely.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Cerbos Policies">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Cerbos Policies">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Simplify Microservices">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Simplify Microservices">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Simplify Downstream Services</h2>

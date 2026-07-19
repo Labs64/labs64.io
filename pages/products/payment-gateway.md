@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Eliminate Vendor Lock-In">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Eliminate Vendor Lock-In">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Eliminate Vendor Lock-In</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>A single RESTful API for handling subscriptions, one-time payments, and refunds. The gateway automatically translates proprietary PSP webhooks into standardized internal events for your ecosystem.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Unified Abstraction">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Unified Abstraction">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Invoicing & Security">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Invoicing & Security">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Automated Invoicing & Secure Handling</h2>

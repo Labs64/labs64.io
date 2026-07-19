@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Helm Standardization">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Helm Standardization">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Helm Standardization</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>Kubernetes continuously monitors service health, automatically restarting failed pods and rerouting traffic.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Self-Healing Ecosystem">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Self-Healing Ecosystem">
             </figure>
         </section>
 

@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Seamless Integration">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Seamless Integration">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Seamless Integration</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>Allow users to easily upgrade, downgrade, or cancel their plans without manual intervention. Provide transparent access to past invoices and transaction receipts directly within your app.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Subscription Management">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Subscription Management">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Powered by the Ecosystem">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Powered by the Ecosystem">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Powered by the Ecosystem</h2>

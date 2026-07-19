@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Design Before Code">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Design Before Code">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Design Before Code</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>No manual boilerplate. Our services rely on OpenAPI-generated models and interfaces directly in `target/generated-sources`.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Automated SDKs">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Automated SDKs">
             </figure>
         </section>
 

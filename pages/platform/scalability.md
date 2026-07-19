@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Elastic Workloads">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Elastic Workloads">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Elastic Workloads</h2>
@@ -30,7 +30,7 @@ use_cbpscroller: true
                 <span>Scaling compute is easy, but scaling data is hard. We use a strictly decoupled database-per-service model to prevent bottlenecks.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Database-Per-Service">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Database-Per-Service">
             </figure>
         </section>
 

@@ -50,4 +50,4 @@ Disallow:
 # common rules
 User-agent: *
 Disallow:
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml

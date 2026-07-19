@@ -9,7 +9,7 @@ use_cbpscroller: true
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Enterprise Edition</h1>
-        <span>For organizations that require guaranteed uptime, commercial licensing protections, and expert guidance, the **Labs64.IO Enterprise Edition** is the definitive choice.</span>
+        <span>For organizations that require guaranteed uptime, commercial licensing protections, and expert guidance, the <strong>Labs64.IO Enterprise Edition</strong> is the definitive choice.</span>
     </div>
 </div>
 
@@ -17,7 +17,7 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | prepend: site.baseurl | prepend: site.url }}" alt="Commercial Licensing">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Commercial Licensing">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Commercial Licensing</h2>
@@ -31,13 +31,13 @@ use_cbpscroller: true
                 <span>When billing issues arise, you need immediate answers. Enterprise customers receive priority support channels and guaranteed response times directly from the engineers who built the ecosystem.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | prepend: site.baseurl | prepend: site.url }}" alt="Dedicated Support">
+                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Dedicated Support">
             </figure>
         </section>
 
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | prepend: site.baseurl | prepend: site.url }}" alt="Managed SaaS Option">
+                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Managed SaaS Option">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Managed SaaS Option</h2>

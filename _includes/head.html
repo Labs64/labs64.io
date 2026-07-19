@@ -20,7 +20,7 @@
     {% endif %}
     {% if page.prefetch %}
       {% for page_prefetch in page.prefetch %}
-      <link rel="prefetch" href="{{ page_prefetch | prepend: site.baseurl | prepend: site.url }}">
+      <link rel="prefetch" href="{{ page_prefetch | relative_url }}">
       {% endfor %}
     {% endif %}
 
@@ -32,15 +32,15 @@
     {% include jsonld.html %}
 
     <!-- Custom Fonts, CSS -->
-    <link rel="stylesheet" href="{{ '/css/roboto.css' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ '/css/font-awesome.4.5.0.min.css' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ '/css/slick.1.8.1.css' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ '/css/slick-theme.1.8.1.css' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ '/css/labs64.css' | prepend: site.baseurl | prepend: site.url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
-    <link rel="stylesheet" href="{{ '/css/labs64-style.css' | prepend: site.baseurl | prepend: site.url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ '/css/roboto.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/font-awesome.4.5.0.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/slick.1.8.1.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/slick-theme.1.8.1.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/labs64.css' | relative_url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
+    <link rel="stylesheet" href="{{ '/css/labs64-style.css' | relative_url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | relative_url }}">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | relative_url }}">
 
     {% if page.canonical %}
       {% if page.canonical contains 'http' %}

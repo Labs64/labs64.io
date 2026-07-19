@@ -1,15 +1,15 @@
-<script src="{{ '/js/jquery-1.12.4.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
-<script src="{{ '/js/bootstrap.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
+<script src="{{ '/js/jquery-1.12.4.min.js' | relative_url }}"></script>
+<script src="{{ '/js/bootstrap.min.js' | relative_url }}"></script>
 {% if page.use_cbpscroller %}
-<script src="{{ '/js/modernizr-custom.js' | prepend: site.baseurl | prepend: site.url }}"></script>
-<script src="{{ '/js/classie.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
-<script src="{{ '/js/cbpScroller.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
+<script src="{{ '/js/modernizr-custom.js' | relative_url }}"></script>
+<script src="{{ '/js/classie.min.js' | relative_url }}"></script>
+<script src="{{ '/js/cbpScroller.min.js' | relative_url }}"></script>
 {% endif %}
 {% if page.use_slick %}
-<script src="{{ '/js/slick.1.8.1.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
+<script src="{{ '/js/slick.1.8.1.min.js' | relative_url }}"></script>
 {% endif %}
 {% if page.use_packery %}
-<script src="{{ '/js/packery.pkgd.1.4.3.min.js' | prepend: site.baseurl | prepend: site.url }}"></script>
+<script src="{{ '/js/packery.pkgd.1.4.3.min.js' | relative_url }}"></script>
 {% endif %}
 {% if site.addthis_pub_id %}
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ site.addthis_pub_id }}" async="async"></script>

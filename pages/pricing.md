@@ -210,7 +210,7 @@ permalink: /pricing/
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Pricing & Licensing</h1>
-        <span>The Labs64.IO Ecosystem operates on a **Dual Licensing** model. This allows developers and startups to build freely with our open-source tools, while providing enterprises with the commercial protections, support, and managed services they require to scale securely.</span>
+        <span>The Labs64.IO Ecosystem operates on a <strong>Dual Licensing</strong> model. This allows developers and startups to build freely with our open-source tools, while providing enterprises with the commercial protections, support, and managed services they require to scale securely.</span>
     </div>
 </div>
 
