@@ -6,14 +6,16 @@ layout: default
         <h1 class="post-title">{{ page.title }}</h1>
 
         <div class="post-meta">
-            <ul>
+            <ul style="list-style: none; padding: 0; display: flex; gap: 15px; color: #767676; flex-wrap: wrap;">
                 <li>
+                    <i class="fa fa-calendar"></i>
                     <time pubdate datetime="{{ page.date | date: '%Y-%m-%d' }}"
                           title="{{ page.date | date: '%b %-d, %Y' }}">{{ page.date | date: "%b %-d, %Y" }}
                     </time>
                 </li>
                 <li>
-                    <address class="author">&nbsp;by
+                    <i class="fa fa-user"></i>
+                    <address class="author" style="display: inline;">
                         {% if page.author.name %}
                           {% assign author_name = page.author.name %}
                         {% else %}
@@ -21,7 +23,7 @@ layout: default
                         {% endif %}
 
                         {% if page.author.url %}
-                          <a href="{{ page.author.url }}" target="_blank">{{ author_name }}</a>
+                          <a href="{{ page.author.url }}" target="_blank" style="color: #E14817;">{{ author_name }}</a>
                         {% else %}
                           {{ author_name }}
                         {% endif %}

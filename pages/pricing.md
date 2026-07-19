@@ -60,7 +60,7 @@ permalink: /pricing/
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: #E14817;
+    background: #d95e14;
     color: white;
     font-size: 12px;
     font-weight: 700;
@@ -68,7 +68,7 @@ permalink: /pricing/
     letter-spacing: 1px;
     padding: 6px 16px;
     border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(225, 72, 23, 0.3);
+    box-shadow: 0 4px 6px rgba(217, 94, 20, 0.3);
     white-space: nowrap;
 }
 
@@ -92,37 +92,6 @@ permalink: /pricing/
 
 .enterprise .pricing-subtitle {
     color: #ffdcb3;
-}
-
-.pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 40px 0;
-    flex-grow: 1;
-}
-
-.pricing-features li {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 16px;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #334155;
-}
-
-.enterprise .pricing-features li {
-    color: #ffffff;
-}
-
-.pricing-features i {
-    margin-right: 12px;
-    margin-top: 4px;
-    color: #E14817;
-    font-size: 18px;
-}
-
-.enterprise .pricing-features i {
-    color: #ffbba3;
 }
 
 .btn-pricing {
@@ -149,16 +118,47 @@ permalink: /pricing/
 }
 
 .btn-enterprise {
-    background: #E14817;
+    background: #d95e14;
     color: #ffffff;
     border: none;
-    box-shadow: 0 4px 6px rgba(225, 72, 23, 0.2);
+    box-shadow: 0 4px 6px rgba(217, 94, 20, 0.2);
 }
 
 .btn-enterprise:hover {
-    background: #c43b10;
+    background: #b54a0d;
     color: #ffffff;
-    box-shadow: 0 6px 10px rgba(225, 72, 23, 0.3);
+    box-shadow: 0 6px 10px rgba(217, 94, 20, 0.3);
+}
+
+.comparison-section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.comparison-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+}
+
+.comparison-table th.center, .comparison-table td.center {
+    text-align: center;
 }
 
 .faq-section {
@@ -177,7 +177,7 @@ permalink: /pricing/
 }
 
 .faq-item {
-    flex: 1;
+    flex: 1 1 calc(50% - 30px);
     min-width: 320px;
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -205,18 +205,6 @@ permalink: /pricing/
     line-height: 1.6;
     margin: 0;
 }
-
-@media (max-width: 768px) {
-    .pricing-card.enterprise {
-        transform: scale(1);
-    }
-    .pricing-card.enterprise:hover {
-        transform: translateY(-4px);
-    }
-    .pricing-grid {
-        gap: 40px;
-    }
-}
 </style>
 
 <div class="row NL_main_banner">
@@ -235,13 +223,6 @@ permalink: /pricing/
                 <h2 class="pricing-title">Community Edition</h2>
                 <div class="pricing-subtitle">Open Source & Free Forever. Perfect for developers, startups, and teams who want to self-host and manage their own infrastructure.</div>
                 
-                <ul class="pricing-features">
-                    <li><i class="fa fa-check-circle"></i> Full access to source code</li>
-                    <li><i class="fa fa-check-circle"></i> Apache 2.0 / AGPL Licenses</li>
-                    <li><i class="fa fa-check-circle"></i> Self-hosted via Helm and ArgoCD</li>
-                    <li><i class="fa fa-check-circle"></i> Community support via GitHub issues</li>
-                </ul>
-                
                 <a href="https://github.com/topics/labs64-io" class="btn-pricing btn-community"><i class="fa fa-github"></i> Get Started on GitHub</a>
             </div>
 
@@ -251,18 +232,56 @@ permalink: /pricing/
                 <h2 class="pricing-title">Enterprise Edition</h2>
                 <div class="pricing-subtitle">Commercial License & Support. Designed for organizations requiring commercial protections, dedicated SLAs, and expert guidance.</div>
                 
-                <ul class="pricing-features">
-                    <li><i class="fa fa-check-circle"></i> Commercial license (No copyleft restrictions)</li>
-                    <li><i class="fa fa-check-circle"></i> Priority SLAs and dedicated support channels</li>
-                    <li><i class="fa fa-check-circle"></i> Architectural consulting and integration assistance</li>
-                    <li><i class="fa fa-check-circle"></i> Optional Managed SaaS deployment</li>
-                </ul>
-                
-                <a href="mailto:info@labs64.io" class="btn-pricing btn-enterprise">Contact Sales</a>
+                <a href="mailto:sales@labs64.io" class="btn-pricing btn-enterprise">Contact Sales</a>
             </div>
 
         </div>
     </div>
+</div>
+
+<div class="comparison-section">
+    <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #853E29; font-size: 32px;">Feature Comparison</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th class="center">Community</th>
+                <th class="center">Enterprise</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Source code access</td>
+                <td class="center"><i class="fa fa-check text-success"></i></td>
+                <td class="center"><i class="fa fa-check text-success"></i></td>
+            </tr>
+            <tr>
+                <td>License</td>
+                <td class="center">AGPL / Apache 2.0</td>
+                <td class="center">Commercial (No copyleft)</td>
+            </tr>
+            <tr>
+                <td>Self-hosted (Helm / ArgoCD)</td>
+                <td class="center"><i class="fa fa-check text-success"></i></td>
+                <td class="center"><i class="fa fa-check text-success"></i></td>
+            </tr>
+            <tr>
+                <td>Support</td>
+                <td class="center">Community (GitHub issues)</td>
+                <td class="center">Dedicated SLAs & Support Channels</td>
+            </tr>
+            <tr>
+                <td>Architectural consulting</td>
+                <td class="center"><i class="fa fa-times text-muted"></i></td>
+                <td class="center"><i class="fa fa-check text-success"></i></td>
+            </tr>
+            <tr>
+                <td>Managed SaaS Deployment</td>
+                <td class="center"><i class="fa fa-times text-muted"></i></td>
+                <td class="center">Optional Add-on</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="faq-section">
@@ -278,7 +297,17 @@ permalink: /pricing/
                 
                 <div class="faq-item">
                     <h3 class="faq-question">What is the "Managed SaaS option"?</h3>
-                    <p class="faq-answer">Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment. <a href="mailto:info@labs64.io" style="color: #E14817; font-weight: 600; text-decoration: none;">Contact us</a> for a custom quote.</p>
+                    <p class="faq-answer">Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment. <a href="mailto:info@labs64.io" style="color: #d95e14; font-weight: 600; text-decoration: none;">Contact us</a> for a custom quote.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What is Dual Licensing?</h3>
+                    <p class="faq-answer">Dual licensing allows us to distribute our software under two different sets of terms. The AGPL ensures the code remains open, while the Commercial license allows enterprises to embed and extend our tools without open-sourcing their own proprietary code.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I upgrade from Community to Enterprise?</h3>
+                    <p class="faq-answer">Upgrading is a seamless process of swapping out the community Docker images for enterprise-licensed images in your Helm configuration. Contact our sales team and we will provide you with the enterprise registry credentials.</p>
                 </div>
             </div>
         </div>

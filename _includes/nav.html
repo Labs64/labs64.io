@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed NL_mobile_menu" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -28,20 +28,20 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right NL_main_menu">
+            <ul class="nav navbar-nav navbar-right NL_main_menu" role="menubar">
                 {% for page in site.data.navigation %}
                 {% if page.title %}
                 {% if page.subitems %}
                 {% assign subcount = page.subitems | size %}
-                <li class="NL_dropdown{% if subcount > 12 %} NL_dropdown--wide{% endif %}">
-                    <a class="page-link NL_dropdown-toggle {{ page.class }}" href="#" data-toggle="dropdown">
+                <li class="NL_dropdown{% if subcount > 12 %} NL_dropdown--wide{% endif %}" role="none">
+                    <a class="page-link NL_dropdown-toggle {{ page.class }}" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
                         {% if page.icon %}
                         <i class="fa {{ page.icon }}"></i>
                         {% endif %}
                         {{ page.title }}
                         <i class="fa fa-chevron-down NL_dropdown-arrow"></i>
                     </a>
-                    <div class="NL_dropdown-menu">
+                    <div class="NL_dropdown-menu" role="menu">
                         <div class="NL_dropdown-grid">
                             {% for subitem in page.subitems %}
                             {% if subitem.url contains 'http' %}
@@ -49,7 +49,7 @@
                             {% else %}
                             {% assign sublink = subitem.url | prepend: site.baseurl | prepend: site.url %}
                             {% endif %}
-                            <a class="NL_dropdown-item" href="{{ sublink }}">
+                            <a class="NL_dropdown-item" href="{{ sublink }}" role="menuitem">
                                 <span class="NL_dropdown-item-title">{{ subitem.title }}</span>
                                 <span class="NL_dropdown-item-desc">{{ subitem.description }}</span>
                             </a>
