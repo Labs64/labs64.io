@@ -70,6 +70,7 @@ paginate_path: "/blog/page:num/"
 
 # Exclude these files from production _site
 exclude:
+  - vendor
   - Gemfile
   - Gemfile.lock
   - LICENSE
