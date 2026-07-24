@@ -33,7 +33,7 @@ blog_recommended_posts:
 # TopNav sticker
 topnav_enabled: false
 topnav_sticker_text: "GitHub"
-topnav_sticker_url: "https://github.com/topics/labs64-io"
+topnav_sticker_url: "https://github.com/Labs64/labs64.io-workspace"
 topnav_sticker_image: "/img/banner-top-empty.png"
 topnav_sticker_onclick: ""
 topnav_sticker_target: "_self"

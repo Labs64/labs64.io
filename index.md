@@ -14,8 +14,12 @@ use_slick: true
         <h1>Labs64.IO Ecosystem: Agile Business Workflow Powerhouse</h1>
         <span>The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps.</span>
         <div class="row">
-            <div id="contact" class="col-md-4 col-md-offset-4">
-                <a href="https://github.com/topics/labs64-io"
+            <div id="contact" class="col-md-4 col-md-offset-2">
+                <a href="https://github.com/Labs64/labs64.io-workspace"
+                   class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Get Started</a>
+            </div>
+            <div class="col-md-4">
+                <a href="https://github.com/Labs64/labs64.io-workspace"
                    class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-eye"></i>GitHub</a>
             </div>
         </div>

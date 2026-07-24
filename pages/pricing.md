@@ -223,7 +223,7 @@ permalink: /pricing/
                 <h2 class="pricing-title">Community Edition</h2>
                 <div class="pricing-subtitle">Open Source & Free Forever. Perfect for developers, startups, and teams who want to self-host and manage their own infrastructure.</div>
                 
-                <a href="https://github.com/topics/labs64-io" class="btn-pricing btn-community"><i class="fa fa-github"></i> Get Started on GitHub</a>
+                <a href="https://github.com/Labs64/labs64.io-workspace" class="btn-pricing btn-community"><i class="fa fa-github"></i> Get Started on GitHub</a>
             </div>
 
             <!-- Enterprise Edition -->

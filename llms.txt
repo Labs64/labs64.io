@@ -84,6 +84,7 @@ Primary pages:
 
 External ecosystem links surfaced in site navigation/footer:
 - https://github.com/topics/labs64-io
+- https://github.com/Labs64/labs64.io-workspace
 - https://netlicensing.io
 - https://www.labs64.com/guidechimp/
 - https://www.labs64.com/about-us/
