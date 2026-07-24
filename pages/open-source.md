@@ -21,7 +21,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>The Community Edition</h2>
-                <span>The core of the Labs64.IO Ecosystem is entirely open source and free forever. Modules are licensed under Apache 2.0 or AGPL, ensuring you have the freedom to inspect, modify, and self-host the code.</span>
+                <span>The core of the Labs64.IO Ecosystem is entirely open source and free forever. Community modules are licensed under Apache 2.0 or AGPL, ensuring you have the freedom to inspect, modify, and self-host the code.</span>
             </article>
         </section>
 
