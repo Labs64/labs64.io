@@ -257,7 +257,7 @@ permalink: /pricing/
             </tr>
             <tr>
                 <td>License</td>
-                <td class="center">AGPL / Apache 2.0</td>
+                <td class="center">Apache 2.0</td>
                 <td class="center">Commercial (No copyleft)</td>
             </tr>
             <tr>
@@ -302,7 +302,7 @@ permalink: /pricing/
 
                 <div class="faq-item">
                     <h3 class="faq-question">What is Dual Licensing?</h3>
-                    <p class="faq-answer">Dual licensing allows us to distribute our software under two different sets of terms. The AGPL ensures the code remains open, while the Commercial license allows enterprises to embed and extend our tools without open-sourcing their own proprietary code.</p>
+                    <p class="faq-answer">Dual licensing allows us to distribute our software under two different sets of terms. The Apache 2.0 ensures the code remains open, while the Commercial license allows enterprises to embed and extend our tools without open-sourcing their own proprietary code.</p>
                 </div>
 
                 <div class="faq-item">

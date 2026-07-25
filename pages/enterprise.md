@@ -21,7 +21,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Commercial Licensing</h2>
-                <span>Avoid the complexities of Open Source copyleft licenses (like AGPL) in your proprietary stack. The Enterprise Edition provides a clean, commercial license for all modules.</span>
+                <span>Avoid the complexities of Open Source copyleft licenses (like Apache 2.0) in your proprietary stack. The Enterprise Edition provides a clean, commercial license for all modules.</span>
             </article>
         </section>
 

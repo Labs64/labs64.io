@@ -18,10 +18,6 @@ use_slick: true
                 <a href="https://github.com/Labs64/labs64.io-workspace"
                    class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Get Started</a>
             </div>
-            <div class="col-md-4">
-                <a href="https://github.com/Labs64/labs64.io-workspace"
-                   class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-eye"></i>GitHub</a>
-            </div>
         </div>
     </div>
 </div>
