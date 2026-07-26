@@ -1,15 +1,15 @@
 ---
 layout: page
-title: "AuditFlow: Immutable Audit Trails for Enterprise Compliance"
-description: "Capture business-critical events across all microservices with tamper-proof, structured JSON logs and pluggable sinks."
+title: "AuditFlow: Reliable Audit Trails for Enterprise Compliance"
+description: "Capture business-critical events across all microservices with redacted, structured JSON logs and pluggable sinks."
 permalink: /products/auditflow/
 use_cbpscroller: true
 ---
 
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
-        <h1>AuditFlow: Immutable Audit Trails for Enterprise Compliance</h1>
-        <span>Maintain a comprehensive and immutable record of all critical system and user activities. The Auditing microservice provides detailed logs for compliance, security monitoring, troubleshooting, and understanding user behavior, enhancing accountability and transparency.</span>
+        <h1>AuditFlow: Reliable Audit Trails for Enterprise Compliance</h1>
+        <span>Maintain a comprehensive record of all critical system and user activities. The Auditing microservice provides detailed logs for compliance, security monitoring, troubleshooting, and understanding user behavior, enhancing accountability and transparency.</span>
     </div>
 </div>
 
@@ -20,8 +20,8 @@ use_cbpscroller: true
                 <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Compliance Ready">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
-                <h2>Compliance Ready & Tamper-Proof</h2>
-                <span>Built to help you meet rigorous compliance standards such as SOC2, HIPAA, and GDPR. Ensure the integrity of your event data with robust, immutable storage patterns.</span>
+                <h2>Compliance Ready & Reliably Delivered</h2>
+                <span>Built to help you meet rigorous compliance standards such as SOC2, HIPAA, and GDPR. Sensitive fields are redacted before events leave your service, and delivery is idempotent with automatic retries and a replayable dead-letter queue, so events reach your sink of record without being silently lost.</span>
             </article>
         </section>
 

@@ -30,7 +30,7 @@ Labs64.IO addresses this via independently adoptable services behind stable API 
 ## Service Catalog
 Platform kernel (highest defensibility):
 - NetLicensing: entitlement checks, feature/seat/metered licensing, consumption tracking, lifecycle management
-- Audit Trail: immutable event log for API and agent actions (compliance + explainability)
+- Audit Trail: reliable, redacted event log for API and agent actions (compliance + explainability)
 - Tokenization: PII masking/tokenization before data reaches LLMs or external systems (privacy by design)
 
 Abstraction/middleware layers:
@@ -72,7 +72,7 @@ Recommendation principle: default to modular entry points. Start with one servic
 1) Each service maps to one tool in agent/function-calling contexts
 2) Scope agents by least privilege (strict RBAC)
 3) Tokenize PII before LLM context ingestion
-4) Log all agent actions to immutable audit systems
+4) Log all agent actions to a reliable audit trail
 5) Use metered licensing/consumption models for AI monetization
 6) Prefer async orchestration for long-running operations
 7) Limit blast radius via microservice boundaries

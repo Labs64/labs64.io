@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Fair, Transparent Dual Licensing"
-description: "Understand the Labs64.IO dual licensing model. Choose between our free Open Source community edition and our fully-supported Enterprise tier."
+title: "Open Core: Apache 2.0 Forever, Enterprise Add-Ons"
+description: "Labs64.IO Community Edition is Apache 2.0 and stays Apache 2.0, forever. Enterprise Edition adds capability, assurance, and SLAs on top — it never takes anything back."
 permalink: /pricing/
 ---
 
@@ -210,7 +210,7 @@ permalink: /pricing/
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Pricing & Licensing</h1>
-        <span>The Labs64.IO Ecosystem operates on a <strong>Dual Licensing</strong> model. This allows developers and startups to build freely with our open-source tools, while providing enterprises with the commercial protections, support, and managed services they require to scale securely.</span>
+        <span>The Labs64.IO Ecosystem is <strong>open core</strong>. Everything in the Community Edition — core, SDKs, contracts, clients, and every shipped integration — is licensed Apache 2.0 and stays that way forever; nothing is ever moved out of it. The Enterprise Edition adds capability, dedicated SLAs, and managed services on top, for teams that need to scale with guarantees.</span>
     </div>
 </div>
 
@@ -258,7 +258,7 @@ permalink: /pricing/
             <tr>
                 <td>License</td>
                 <td class="center">Apache 2.0</td>
-                <td class="center">Commercial (No copyleft)</td>
+                <td class="center">Commercial (additive modules)</td>
             </tr>
             <tr>
                 <td>Self-hosted (Helm / ArgoCD)</td>
@@ -282,6 +282,9 @@ permalink: /pricing/
             </tr>
         </tbody>
     </table>
+    <p style="text-align: center; max-width: 700px; margin: 24px auto 0; color: #64748b;">
+        <strong>No take-backs:</strong> nothing that ships in the Community Edition is ever removed or relicensed. Enterprise Edition only adds — it never forks the Community codebase or changes its behavior.
+    </p>
 </div>
 
 <div class="faq-section">
@@ -301,8 +304,8 @@ permalink: /pricing/
                 </div>
 
                 <div class="faq-item">
-                    <h3 class="faq-question">What is Dual Licensing?</h3>
-                    <p class="faq-answer">Dual licensing allows us to distribute our software under two different sets of terms. The Apache 2.0 ensures the code remains open, while the Commercial license allows enterprises to embed and extend our tools without open-sourcing their own proprietary code.</p>
+                    <h3 class="faq-question">What is Open Core?</h3>
+                    <p class="faq-answer">Open core means the Community Edition — core, SDKs, contracts, clients, and every shipped integration — is Apache 2.0 and free forever, with nothing ever taken back or relicensed. Enterprise Edition is a separate, additive layer: extra modules, endpoints, and capabilities under a commercial license, built on top of the same Community release rather than a fork of it.</p>
                 </div>
 
                 <div class="faq-item">

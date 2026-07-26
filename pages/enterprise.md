@@ -21,7 +21,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Commercial Licensing</h2>
-                <span>Avoid the complexities of Open Source copyleft licenses (like Apache 2.0) in your proprietary stack. The Enterprise Edition provides a clean, commercial license for all modules.</span>
+                <span>The Community Edition is Apache 2.0 — permissive, not copyleft, and free to embed without restriction. Enterprise Edition isn't a licensing workaround; it's an additive set of modules under a commercial license, for teams that want capability, assurance, and support guarantees on top of the open core.</span>
             </article>
         </section>
 

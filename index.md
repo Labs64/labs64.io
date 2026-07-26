@@ -14,7 +14,7 @@ use_slick: true
         <h1>Labs64.IO Ecosystem: Agile Business Workflow Powerhouse</h1>
         <span>The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps.</span>
         <div class="row">
-            <div id="contact" class="col-md-4 col-md-offset-2">
+            <div id="contact" class="col-md-8 col-md-offset-2">
                 <a href="https://github.com/Labs64/labs64.io-workspace"
                    class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Get Started</a>
             </div>
@@ -75,12 +75,12 @@ use_slick: true
 
         <section class="cbp-so-section">
             <article id="tailored-solutions" class="cbp-so-side cbp-so-side-left">
-                <h2>Fair Dual Licensing</h2>
+                <h2>Open Core, Apache 2.0 Forever</h2>
 
-                <span>Start free with our Open Source community edition. Scale to our Enterprise tier when you need commercial protections, dedicated SLAs, and expert architecture consulting.</span>
+                <span>Start free with our Apache 2.0 Community Edition — nothing in it is ever taken back. Add our Enterprise Edition when you need extra capability, dedicated SLAs, and expert architecture consulting.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-04.png' | relative_url }}" alt="Fair Dual Licensing" title="Fair Dual Licensing">
+                <img src="{{ '/img/labs64.io-promo-04.png' | relative_url }}" alt="Open Core, Apache 2.0 Forever" title="Open Core, Apache 2.0 Forever">
             </figure>
         </section>
 

@@ -33,7 +33,7 @@
   url: "#"
   subitems:
     - title: "AuditFlow"
-      description: "Immutable record of all critical system activities"
+      description: "Reliable, redacted record of all critical system activities"
       url: "/products/auditflow/"
     - title: "Payment Gateway"
       description: "Facilitate seamless and secure online payments"
