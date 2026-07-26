@@ -96,6 +96,11 @@ permalink: /roadmap/
 <div class="roadmap-section">
     <p class="roadmap-lead"><strong>No module has reached 1.0 yet. AuditFlow is the first module targeting a 1.0 release.</strong> Everything below reflects where each module actually stands today, not where it's headed.</p>
 
+    <div class="roadmap-callout">
+      <h2>Before you connect real money: Payment Gateway</h2>
+      <p>Payment Gateway's PSP webhook signature verification is incomplete. Do not connect it to live funds until this is resolved — treat any current deployment as sandbox-only for payment flows.</p>
+    </div>
+
     <h2>Module status</h2>
     <p>This table is generated directly from the same data file that drives every module page and the navigation menu, so it cannot drift out of sync with what those pages say.</p>
 
@@ -139,9 +144,4 @@ permalink: /roadmap/
 
     <h2>Security posture</h2>
     <p>Security hardening is ongoing ahead of 1.0.</p>
-
-    <div class="roadmap-callout">
-      <h2>Before you connect real money: Payment Gateway</h2>
-      <p>Payment Gateway's PSP webhook signature verification is incomplete. Do not connect it to live funds until this is resolved — treat any current deployment as sandbox-only for payment flows.</p>
-    </div>
 </div>
