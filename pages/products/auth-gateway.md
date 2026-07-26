@@ -14,12 +14,6 @@ use_cbpscroller: true
 </div>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        {% include module-banner.html id="auth-gateway" %}
-    </div>
-</div>
-
-<div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
@@ -58,7 +52,7 @@ use_cbpscroller: true
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to secure your stack?</h2>
             <span>Run Auth Gateway locally as part of the guided onboarding path.</span>
-            <a href="{{ '/get-started/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
                 Get started
             </a>
             {%- assign m = site.data.modules | where: "id", "auth-gateway" | first -%}

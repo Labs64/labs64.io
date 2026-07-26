@@ -14,12 +14,6 @@ use_cbpscroller: true
 </div>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        {% include module-banner.html id="invoicing" %}
-    </div>
-</div>
-
-<div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
@@ -27,7 +21,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Planned scope</h2>
-                <span>Planned scope: automating the entire invoicing process, from creation and delivery to tracking and reconciliation. When built, Invoicing will aim to streamline billing, cut down on manual errors, and improve visibility into cash flow, offering flexible invoicing models to suit your business needs. This is intent, not a shipped module — check the roadmap for status before planning around it.</span>
+                <span>Planned scope: automating the entire invoicing process, from creation and delivery to tracking and reconciliation. When built, Invoicing will aim to streamline billing, cut down on manual errors, and improve visibility into cash flow, offering flexible invoicing models to suit your business needs. This is intent, not a shipped module — nothing here should be planned around yet.</span>
             </article>
         </section>
     </div>
@@ -36,10 +30,10 @@ use_cbpscroller: true
 <div class="row">
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Follow the roadmap</h2>
-            <span>Invoicing isn't built yet. See where it sits on the roadmap and what's already shipping today.</span>
-            <a href="{{ '/roadmap/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                View the roadmap
+            <h2>See what's already shipping</h2>
+            <span>Invoicing isn't built yet. AuditFlow, Auth Gateway, Checkout, Payment Gateway, and Customer Portal are already live — run one of them to see the ecosystem today.</span>
+            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
+                Get started
             </a>
             <p><a href="https://github.com/Labs64/labs64.io-workspace">Or explore Labs64.IO on GitHub</a></p>
         </div>

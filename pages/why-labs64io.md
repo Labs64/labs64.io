@@ -52,7 +52,7 @@ use_cbpscroller: true
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to build?</h2>
             <span>See the 3-tier path from running one module to running your own cluster.</span>
-            <a href="{{ '/get-started/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
                 Get started
             </a>
         </div>

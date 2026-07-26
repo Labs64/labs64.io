@@ -55,7 +55,7 @@ use_cbpscroller: true
             <a href="https://github.com/Labs64/labs64.io-workspace" class="NL_button button_main NL_dark_btn NL_wide_btn">
                 <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
             </a>
-            <p><a href="{{ '/get-started/' | relative_url }}">Or get started running it locally</a></p>
+            <p><a href="/docs/getting-started/">Or get started running it locally</a></p>
         </div>
     </div>
 </div>

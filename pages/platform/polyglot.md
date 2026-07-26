@@ -41,7 +41,7 @@ use_cbpscroller: true
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to see how it fits together?</h2>
             <span>See how the Java, Python, and Vue services fit together across the module map.</span>
-            <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+            <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
                 See how it fits together
             </a>
         </div>

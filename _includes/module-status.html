@@ -11,5 +11,5 @@ Status labels and CSS classes are defined here only.
     {%- when 'exploring' -%}{%- assign label = 'Exploring' -%}
     {%- else -%}{%- assign label = m.status -%}
   {%- endcase -%}
-  <span class="NL_status NL_status--{{ m.status }}">{{ label }}{% if m.version %} · {{ m.version }}{% endif %}</span>
+  <span class="NL_status NL_status--{{ m.status }}">{{ label }}</span>
 {%- endif -%}

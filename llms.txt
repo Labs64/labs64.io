@@ -28,7 +28,7 @@ SaaS teams repeatedly rebuild non-differentiating infrastructure (identity, paym
 Labs64.IO addresses this via independently adoptable services behind stable API contracts, available as self-hosted or managed deployments.
 
 ## Service Catalog
-Module status is single-sourced from the site's module data and rendered on each module's page and on `/roadmap/`; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Five modules exist today, two are on the roadmap and do not ship yet.
+Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Five modules exist today, two are planned and do not ship yet.
 
 Available today:
 - AuditFlow (beta, v0.0.3): redacted, structured event routing to pluggable sinks (compliance + explainability). Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
@@ -37,7 +37,7 @@ Available today:
 - Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. No frontend; payment-gateway-fe is a placeholder. Repo: https://github.com/Labs64/labs64.io-payment-gateway
 - Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-customer-portal
 
-On the roadmap, not shipping yet:
+Planned, not shipping yet:
 - Invoicing (planned): billing and invoice automation. Not started; no repository yet.
 - AI & MCP Gateway (exploring): agent-callable commerce APIs. Design stage only; not scheduled.
 

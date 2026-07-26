@@ -1,9 +1,6 @@
 - title: Why Labs64.IO
   url: "/why-labs64io/"
 
-- title: Get Started
-  url: "/get-started/"
-
 - title: Architecture
   url: "#"
   subitems:
@@ -37,14 +34,7 @@
 
 - title: Modules
   url: "#"
-  groups:
-    - label: "Available now"
-      modules: [auditflow, auth-gateway, checkout, payment-gateway, customer-portal]
-    - label: "Planned"
-      modules: [invoicing, ai-mcp-gateway]
-
-- title: Roadmap
-  url: "/roadmap/"
+  modules: [auditflow, auth-gateway, checkout, payment-gateway, customer-portal, invoicing, ai-mcp-gateway]
 
 - title: Editions
   url: "#"
@@ -58,6 +48,9 @@
     - title: "Open Source"
       description: "How we build in the open"
       url: "/open-source/"
+
+- title: Docs
+  url: "/docs/index.html"
 
 - title: Blog
   url: "/blog/"

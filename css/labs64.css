@@ -1637,12 +1637,18 @@ article.cbp-so-side-left h2 {
     line-height: 2px;
     margin-top: 8px;
     margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid #853E29;
     color: #853E29 !important;
 }
 
 .NL_button.NL_wide_btn {
     max-width: 400px;
+}
+
+.NL_button.NL_cta_btn {
+    padding: 1.1em 2em;
 }
 
 .NL_button.NL_dark_btn::before {
@@ -2140,17 +2146,4 @@ a.NL_pricing_tooltip {
 .NL_module_banner--alpha { border-left-color: #8a5a00; }
 .NL_module_banner--beta  { border-left-color: #1f6f43; }
 .NL_module_banner_status { margin: 0 0 8px; }
-.NL_module_banner_gaps_title { margin: 12px 0 4px; font-weight: 700; }
-.NL_module_banner_gaps { margin: 0 0 8px; padding-left: 20px; }
 .NL_module_banner_more { margin: 8px 0 0; font-size: 14px; color: #64748b; }
-
-/* Nav dropdown group labels — see the groups: branch in _includes/nav.html */
-.NL_dropdown-group-label {
-    display: block;
-    padding: 8px 12px 4px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #94a3b8;
-}

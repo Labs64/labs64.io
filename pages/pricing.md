@@ -232,7 +232,7 @@ permalink: /pricing/
                 <h2 class="pricing-title">Enterprise Edition</h2>
                 <div class="pricing-subtitle">Commercial License & Support. Designed for organizations requiring commercial protections, dedicated SLAs, and expert guidance.</div>
                 
-                <a href="mailto:sales@labs64.io" class="btn-pricing btn-enterprise">Contact Sales</a>
+                <a href="mailto:info@labs64.io" class="btn-pricing btn-enterprise">Contact Sales</a>
             </div>
 
         </div>

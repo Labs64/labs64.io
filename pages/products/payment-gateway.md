@@ -15,7 +15,9 @@ use_cbpscroller: true
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        {% include module-banner.html id="payment-gateway" %}
+        <p style="background:#fef2f2;border-left:4px solid #b91c1c;color:#7f1d1d;padding:12px 16px;border-radius:8px;">
+            <strong>Before you connect real money:</strong> PSP webhook signature verification is incomplete. Do not connect Payment Gateway to live funds until this is resolved — treat any current deployment as sandbox-only for payment flows.
+        </p>
     </div>
 </div>
 
@@ -58,7 +60,7 @@ use_cbpscroller: true
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to integrate the Payment Gateway?</h2>
             <span>Run Payment Gateway locally as part of the guided onboarding path.</span>
-            <a href="{{ '/get-started/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
                 Get started
             </a>
             {%- assign m = site.data.modules | where: "id", "payment-gateway" | first -%}

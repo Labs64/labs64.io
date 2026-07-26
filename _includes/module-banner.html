@@ -18,16 +18,8 @@ Usage: {% include module-banner.html id="payment-gateway" %}
         Design stage only. This may or may not ship.
     {%- endcase -%}
   </p>
-  {%- if m.known_gaps and m.known_gaps != empty %}
-  <p class="NL_module_banner_gaps_title">Known gaps today</p>
-  <ul class="NL_module_banner_gaps">
-    {%- for gap in m.known_gaps %}
-    <li>{{ gap }}</li>
-    {%- endfor %}
-  </ul>
-  {%- endif %}
   <p class="NL_module_banner_more">
-    No module has reached 1.0 yet — see the <a href="{{ '/roadmap/' | relative_url }}">roadmap</a>.
+    No module has reached 1.0 yet.
   </p>
 </div>
 {%- endif -%}

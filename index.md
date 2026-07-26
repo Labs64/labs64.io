@@ -15,8 +15,8 @@ use_slick: true
         <span>The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps.</span>
         <div class="row">
             <div id="contact" class="col-md-8 col-md-offset-2">
-                <a href="{{ '/get-started/' | relative_url }}"
-                   class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Run it locally</a>
+                <a href="/docs/getting-started/"
+                   class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Getting Started</a>
             </div>
         </div>
     </div>
