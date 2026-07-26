@@ -20,6 +20,15 @@
   url: "https://github.com/Labs64/labs64.io-workspace"
   section: "Documentation"
 
+# Products
+- title: "NetLicensing"
+  url: "https://netlicensing.io"
+  section: "Products"
+
+- title: "GuideChimp"
+  url: "https://www.labs64.com/guidechimp/"
+  section: "Products"
+
 # Legal
 - title: "Terms of Service"
   url: "https://www.labs64.com/legal/terms-of-service/website/"
