@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Payment Gateway: One API, Multiple PSPs"
-description: "Unify your billing logic with the Labs64.IO Payment Gateway. A single abstraction layer over Stripe, PayPal, and other providers."
+description: "Unify your billing logic with the Labs64.IO Payment Gateway. A single abstraction layer over payment service providers, extensible via a provider SPI."
 permalink: /products/payment-gateway/
 use_cbpscroller: true
 ---
@@ -9,7 +9,7 @@ use_cbpscroller: true
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Payment Gateway: One API, Multiple PSPs</h1>
-        <span>Facilitate seamless and secure online payments. The Payment Gateway microservice integrates with various payment processors, enabling you to accept a wide range of payment methods and manage transactions efficiently.</span>
+        <span>Facilitate seamless and secure online payments. The Payment Gateway microservice provides a common abstraction over payment service providers, so you can accept payments and manage transactions through one API.</span>
     </div>
 </div>
 
@@ -27,14 +27,14 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Eliminate Vendor Lock-In</h2>
-                <span>Don't tie your core business logic to a single payment processor. Switch PSPs without code changes, route transactions dynamically to the most cost-effective provider, and standardize webhook handling across different platforms.</span>
+                <span>Don't tie your core business logic to a single payment processor. Payment Gateway's PSP abstraction (SPI) lets you add a new provider as a self-contained module — implementing <code>PaymentProvider</code> and, optionally, <code>ProviderCheckoutSupport</code> / <code>ProviderWebhookSupport</code> — without changing existing code, and standardizes webhook handling across whichever providers you add.</span>
             </article>
         </section>
 
         <section class="cbp-so-section">
             <article class="cbp-so-side cbp-so-side-left">
                 <h2>Unified Abstraction & Webhook Normalization</h2>
-                <span>A single RESTful API for handling subscriptions, one-time payments, and refunds. The gateway automatically translates proprietary PSP webhooks into standardized internal events for your ecosystem.</span>
+                <span>A single RESTful API for one-time and recurring payments. The gateway automatically translates proprietary PSP webhooks into standardized internal events for your ecosystem.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
                 <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Unified Abstraction">
@@ -46,8 +46,8 @@ use_cbpscroller: true
                 <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Invoicing & Security">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
-                <h2>Automated Invoicing & Secure Handling</h2>
-                <span>Seamlessly trigger automated invoicing workflows upon successful charges. Works in tandem with the Auth Gateway to ensure all payment requests are strictly authenticated and authorized at the edge.</span>
+                <h2>Idempotent Payments & Secure Handling</h2>
+                <span>Idempotent, distributed-lock-backed payment processing means retries never double-charge. Works in tandem with the Auth Gateway to ensure all payment requests are strictly authenticated and authorized at the edge.</span>
             </article>
         </section>
     </div>

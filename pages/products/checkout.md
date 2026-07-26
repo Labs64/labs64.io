@@ -1,15 +1,15 @@
 ---
 layout: page
-title: "Checkout: A Self-Service Hub for Your Customers"
-description: "Provide a seamless, drop-in monetization layer for your SaaS products with the Labs64.IO Checkout module."
+title: "Checkout: Whitelabel Checkout and Order Workflow"
+description: "A whitelabel checkout page and order workflow for the Labs64.IO Ecosystem — purchase orders, transactions, and payment through one drop-in flow."
 permalink: /products/checkout/
 use_cbpscroller: true
 ---
 
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
-        <h1>Checkout: A Self-Service Monetization Hub</h1>
-        <span>Provide your customers with a self-service hub that can be fully branded to match your company's identity. This whitelabel portal empowers customers to manage their accounts, view invoices, access licensed products, and more, enhancing customer satisfaction and reducing support inquiries.</span>
+        <h1>Checkout: Whitelabel Checkout and Order Workflow</h1>
+        <span>A checkout page and order workflow that can be fully branded to match your company's identity. Checkout takes a buyer from a purchase order through payment initiation to a completed transaction — currency and tax validation, PSP payment execution, and order events published for the rest of the ecosystem to consume.</span>
     </div>
 </div>
 
@@ -27,14 +27,14 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Seamless Integration</h2>
-                <span>Designed to sit flawlessly on top of the Labs64.IO Ecosystem, Checkout provides a ready-made UI/API layer so you don't have to build customer billing portals from scratch. Embed or link to the checkout flow directly from your main application.</span>
+                <span>Designed to sit flawlessly on top of the Labs64.IO Ecosystem, Checkout provides a ready-made Vue 3 frontend and Spring Boot backend so you don't have to build a checkout page from scratch. Embed or link to the checkout flow directly from your main application.</span>
             </article>
         </section>
 
         <section class="cbp-so-section">
             <article class="cbp-so-side cbp-so-side-left">
-                <h2>Subscription Management & History</h2>
-                <span>Allow users to easily upgrade, downgrade, or cancel their plans without manual intervention. Provide transparent access to past invoices and transaction receipts directly within your app.</span>
+                <h2>Purchase Orders & Transactions</h2>
+                <span>Checkout owns Purchase Orders — items, prices, quantities, currency and tax validation, and calculated totals — and the Checkout Transactions created when a buyer initiates payment, stored in Checkout's own PostgreSQL database. Consent tracking ensures required consents are accepted before checkout proceeds.</span>
             </article>
             <figure class="cbp-so-side cbp-so-side-right">
                 <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Subscription Management">
@@ -47,7 +47,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Powered by the Ecosystem</h2>
-                <span>Checkout deeply integrates with the Labs64.IO Payment Gateway for transaction processing and the Auth Gateway for secure identity management, ensuring a frictionless and secure user experience.</span>
+                <span>Checkout calls the Labs64.IO Payment Gateway to execute payments and the Auth Gateway for secure identity management, then publishes order and checkout events to RabbitMQ — where AuditFlow picks them up for the audit trail — ensuring a frictionless and secure user experience.</span>
             </article>
         </section>
     </div>

@@ -189,10 +189,11 @@ permalink: /architecture/
         </p>
 
         <h2>Module map</h2>
+        {%- assign available_modules = site.data.modules | where: "group", "available" -%}
         <p>
-            Five modules exist today. Each is a separate repository, ships independently, and communicates
-            with the others only through REST calls that cross the gateway above, or through events over
-            RabbitMQ into AuditFlow.
+            {{ available_modules.size }} modules exist today. Each is a separate repository, ships independently,
+            and communicates with the others only through REST calls that cross the gateway above, or through
+            events over RabbitMQ into AuditFlow.
         </p>
 
         <table class="arch-table">
@@ -204,9 +205,7 @@ permalink: /architecture/
                 </tr>
             </thead>
             <tbody>
-                {%- assign map_modules = "auditflow,auth-gateway,checkout,payment-gateway,customer-portal" | split: "," -%}
-                {%- for mid in map_modules -%}
-                {%- assign m = site.data.modules | where: "id", mid | first -%}
+                {%- for m in available_modules -%}
                 <tr>
                     <td><a href="{{ m.url | relative_url }}">{{ m.name }}</a></td>
                     <td>{% include module-status.html id=m.id %}</td>

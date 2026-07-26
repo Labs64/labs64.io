@@ -34,8 +34,8 @@ Available today:
 - AuditFlow (beta, v0.0.3): redacted, structured event routing to pluggable sinks (compliance + explainability). Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
 - Auth Gateway (beta, v0.0.2): one authenticated edge for every module — Traefik + Keycloak OIDC + Cerbos policy. Repo: https://github.com/Labs64/labs64.io-authproxy
 - Checkout (alpha): whitelabel checkout and order workflow. No tagged release yet; a cross-tenant read gap is under review. Repo: https://github.com/Labs64/labs64.io-checkout
-- Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-payment-gateway
-- Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. Repo: https://github.com/Labs64/labs64.io-customer-portal
+- Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. No frontend; payment-gateway-fe is a placeholder. Repo: https://github.com/Labs64/labs64.io-payment-gateway
+- Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-customer-portal
 
 On the roadmap, not shipping yet:
 - Invoicing (planned): billing and invoice automation. Not started; no repository yet.

@@ -10,6 +10,7 @@ permalink: /roadmap/
     padding: 40px 0;
     max-width: 900px;
     margin: 0 auto;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .roadmap-lead {
@@ -36,28 +37,28 @@ permalink: /roadmap/
     margin-bottom: 0;
 }
 
-.NL_roadmap_table {
+.road-table {
     width: 100%;
     border-collapse: collapse;
     margin: 24px 0;
     background: #fff;
 }
 
-.NL_roadmap_table th,
-.NL_roadmap_table td {
+.road-table th,
+.road-table td {
     padding: 14px 16px;
     text-align: left;
     vertical-align: top;
     border-bottom: 1px solid #e2e8f0;
 }
 
-.NL_roadmap_table th {
+.road-table th {
     background: #f8fafc;
     font-weight: 700;
     color: #334155;
 }
 
-.NL_roadmap_table ul {
+.road-table ul {
     margin: 0;
     padding-left: 18px;
 }
@@ -104,7 +105,7 @@ permalink: /roadmap/
     <h2>Module status</h2>
     <p>This table is generated directly from the same data file that drives every module page and the navigation menu, so it cannot drift out of sync with what those pages say.</p>
 
-    <table class="NL_roadmap_table">
+    <table class="road-table">
       <thead>
         <tr><th>Module</th><th>Status</th><th>Known gaps today</th></tr>
       </thead>
@@ -144,4 +145,16 @@ permalink: /roadmap/
 
     <h2>Security posture</h2>
     <p>Security hardening is ongoing ahead of 1.0.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12 NL_form_light NL_block">
+        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
+            <h2>Want to see today's status for yourself?</h2>
+            <span>Run any module locally and check its behavior against what this page says — no need to take our word for it.</span>
+            <a href="{{ '/get-started/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                Get started
+            </a>
+        </div>
+    </div>
 </div>

@@ -48,7 +48,7 @@ permalink: /get-started/
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #d95e14;
+    color: #853E29;
     margin-bottom: 8px;
 }
 
@@ -88,7 +88,7 @@ permalink: /get-started/
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #d95e14;
+    color: #853E29;
     background: #fdf1e7;
     padding: 4px 12px;
     border-radius: 999px;
@@ -174,7 +174,7 @@ permalink: /get-started/
 }
 
 .gs-callout a {
-    color: #d95e14;
+    color: #853E29;
     font-weight: 600;
 }
 
@@ -196,17 +196,17 @@ permalink: /get-started/
         <div class="gs-overview-grid">
             <a href="#tier-1" class="gs-overview-card">
                 <span class="gs-overview-tier">Tier 1</span>
-                <h3 class="gs-overview-title">One module</h3>
+                <p class="gs-overview-title">One module</p>
                 <p class="gs-overview-desc">Clone AuditFlow and run it on its own with <code>just up</code>. The fastest way to see one part of the ecosystem end to end.</p>
             </a>
             <a href="#tier-2" class="gs-overview-card">
                 <span class="gs-overview-tier">Tier 2</span>
-                <h3 class="gs-overview-title">The whole ecosystem</h3>
-                <p class="gs-overview-desc">Clone the workspace repo, fetch all 12 modules, and bring up a local k3d cluster behind the auth gateway.</p>
+                <p class="gs-overview-title">The whole ecosystem</p>
+                <p class="gs-overview-desc">Clone the workspace repo, fetch all 12 repositories, and bring up a local k3d cluster behind the auth gateway.</p>
             </a>
             <a href="#tier-3" class="gs-overview-card">
                 <span class="gs-overview-tier">Tier 3</span>
-                <h3 class="gs-overview-title">Your own cluster</h3>
+                <p class="gs-overview-title">Your own cluster</p>
                 <p class="gs-overview-desc">Add the published Helm charts to a cluster you already run — local, AWS, or bring-your-own infrastructure.</p>
             </a>
         </div>
@@ -222,9 +222,9 @@ permalink: /get-started/
             {% include module-banner.html id="auditflow" %}
 
             <h3>Prerequisites</h3>
-            <p>Docker, Java 25, Maven, and <code>just</code>. The canonical, versioned list — with install commands for each tool — lives in one place; this page doesn't repeat it:</p>
+            <p>Docker, Java 25, Maven, and <code>just</code> — all four are required for this tier specifically, because AuditFlow's own <code>justfile</code> runs Maven directly on your host. The canonical, versioned install commands live in one place; this page doesn't repeat them:</p>
             <div class="gs-callout">
-                <p>See the <a href="https://github.com/Labs64/labs64.io-workspace#-prerequisites" target="_blank" rel="noopener">Prerequisites table in the workspace README</a>.</p>
+                <p>Docker and <code>just</code> are in the <a href="https://github.com/Labs64/labs64.io-workspace#-prerequisites" target="_blank" rel="noopener">workspace README's Prerequisites table</a>. Java 25 and Maven are listed just below that table, under its "Optional tools" heading — optional there because Tier 2's build is containerized, but required for this tier.</p>
             </div>
             <p>Java 25 specifically is enforced by a Maven build plugin — an older JDK on your <code>PATH</code> will fail the build before it gets anywhere near AuditFlow's code.</p>
 
@@ -238,11 +238,11 @@ just up</code></pre>
 
             <h3>You'll know it worked when…</h3>
             <p>Publish an event and watch it route:</p>
-            <pre><code>curl -sS -X POST http://localhost:8080/audit/publish \
+            <pre><code>curl -sS -i -X POST http://localhost:8080/audit/publish \
   -H 'Content-Type: application/json' \
-  -d '{"eventType":"demo.event","payload":{"hello":"world"}}'</code></pre>
+  -d '{"eventType":"demo.event","sourceSystem":"get-started-demo","extra":{"hello":"world"}}'</code></pre>
             <ul class="gs-checklist">
-                <li>The <code>curl</code> command above returns a response instead of a connection error.</li>
+                <li>The <code>curl</code> command above prints <code>HTTP/1.1 200</code> and an <code>X-Audit-Event-Id</code> response header — not a <code>400</code>/<code>403</code> error body. A response of any kind is not enough; it needs to be that specific status and header.</li>
                 <li>Swagger UI at <a href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a> loads and lists the AuditFlow API.</li>
                 <li>The transformer's docs at <a href="http://localhost:8081/docs">http://localhost:8081/docs</a> and the sink's docs at <a href="http://localhost:8082/docs">http://localhost:8082/docs</a> both load.</li>
                 <li>The RabbitMQ management UI at <a href="http://localhost:15673">http://localhost:15673</a> (<code>guest</code> / <code>guest</code>) shows the event moving through its queues.</li>
@@ -255,9 +255,9 @@ just up</code></pre>
             <p>The workspace repo is the entry point that orchestrates all 12 independent repositories with one <code>justfile</code>: it clones every module, builds every image, and deploys the lot to a local k3d cluster behind the auth gateway.</p>
 
             <h3>Prerequisites</h3>
-            <p>Everything from Tier 1, plus k3d, Helm, the <code>helm-diff</code> plugin, Helmfile, and kubectl — or skip installing any of it individually and open the repo in the bundled DevContainer instead.</p>
+            <p>Docker and <code>just</code> from Tier 1, plus k3d, Helm, the <code>helm-diff</code> plugin, Helmfile, and kubectl — or skip installing any of it individually and open the repo in the bundled DevContainer instead. Unlike Tier 1, you do <strong>not</strong> need Java or Maven on your host for this tier: the workspace's <code>just build</code> runs Maven inside a builder container.</p>
             <div class="gs-callout">
-                <p>Full versions and install commands: <a href="https://github.com/Labs64/labs64.io-workspace#-prerequisites" target="_blank" rel="noopener">Prerequisites table in the workspace README</a>.</p>
+                <p>Full versions and install commands for Docker, k3d, Helm, Helmfile, kubectl, and <code>just</code>: <a href="https://github.com/Labs64/labs64.io-workspace#-prerequisites" target="_blank" rel="noopener">Prerequisites table in the workspace README</a>.</p>
             </div>
 
             <h3>Commands</h3>
@@ -275,7 +275,7 @@ just up          # build images, create the k3d cluster, deploy</code></pre>
             <ul class="gs-checklist">
                 <li><code>http://gateway.localhost</code> responds, instead of connection-refused — the edge is routing.</li>
                 <li>The aggregated API docs served by the <code>api-docs</code> chart list endpoints from more than one module, not just one.</li>
-                <li><code>kubectl get pods</code> against the local cluster shows a pod for each cloned module, in a <code>Running</code> state.</li>
+                <li><code>kubectl get pods</code> against the local cluster shows a running pod for each of the five deployable modules — auditflow, auth-gateway, checkout, payment-gateway, customer-portal — not one for every cloned repository (most of the 12 don't ship a workload at all).</li>
             </ul>
         </div>
 
