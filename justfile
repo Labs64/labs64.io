@@ -54,3 +54,11 @@ publish draft_filename:
     NEW_PATH="_posts/${DATE_PREFIX}-${BASE_NAME}"
     mv "$DRAFT_PATH" "$NEW_PATH"
     echo "✅ Published $DRAFT_PATH to $NEW_PATH"
+
+# Fail if a banned marketing claim reappears (see specs/2026-07-26-*)
+claim-check:
+    ./scripts/claim-check.sh
+
+# Fail if any pre-existing permalink stopped resolving
+permalink-check: build
+    ./scripts/permalink-check.sh

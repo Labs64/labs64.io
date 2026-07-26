@@ -31,7 +31,31 @@
             <ul class="nav navbar-nav navbar-right NL_main_menu" role="menubar">
                 {% for page in site.data.navigation %}
                 {% if page.title %}
-                {% if page.subitems %}
+                {% if page.groups %}
+                <li class="NL_dropdown" role="none">
+                    <a class="page-link NL_dropdown-toggle {{ page.class }}" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">
+                        {% if page.icon %}<i class="fa {{ page.icon }}"></i>{% endif %}
+                        {{ page.title }}
+                        <i class="fa fa-chevron-down NL_dropdown-arrow"></i>
+                    </a>
+                    <div class="NL_dropdown-menu" role="menu">
+                        <div class="NL_dropdown-grid">
+                            {% for group in page.groups %}
+                            <span class="NL_dropdown-group-label">{{ group.label }}</span>
+                            {% for mid in group.modules %}
+                            {% assign m = site.data.modules | where: "id", mid | first %}
+                            {% if m %}
+                            <a class="NL_dropdown-item" href="{{ m.url | relative_url }}" role="menuitem">
+                                <span class="NL_dropdown-item-title">{{ m.name }} {% include module-status.html id=mid %}</span>
+                                <span class="NL_dropdown-item-desc">{{ m.tagline }}</span>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+                {% elsif page.subitems %}
                 {% assign subcount = page.subitems | size %}
                 <li class="NL_dropdown{% if subcount > 12 %} NL_dropdown--wide{% endif %}" role="none">
                     <a class="page-link NL_dropdown-toggle {{ page.class }}" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menuitem">

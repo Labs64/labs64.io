@@ -40,13 +40,11 @@ use_cbpscroller: true
 <div class="row">
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to explore the code?</h2>
-            <span>Join the Labs64.IO Ecosystem and start building modern digital commerce platforms today.</span>
-            <form action="https://github.com/Labs64/labs64.io-workspace" method="GET">
-                <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                    <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
-                </button>
-            </form>
+            <h2>Ready to see how it fits together?</h2>
+            <span>See where the Traefik Authproxy sits in the request path, in front of every module.</span>
+            <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                See how it fits together
+            </a>
         </div>
     </div>
 </div>

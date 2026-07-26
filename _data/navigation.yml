@@ -1,9 +1,15 @@
 - title: Why Labs64.IO
   url: "/why-labs64io/"
 
-- title: Platform
+- title: Get Started
+  url: "/get-started/"
+
+- title: Architecture
   url: "#"
   subitems:
+    - title: "Architecture Overview"
+      description: "How the modules fit together"
+      url: "/architecture/"
     - title: "Polyglot Microservices"
       description: "Domain-optimized tech stacks"
       url: "/platform/polyglot/"
@@ -29,42 +35,29 @@
       description: "Decoupled domain metrics"
       url: "/platform/telemetry/"
 
-- title: Products
+- title: Modules
+  url: "#"
+  groups:
+    - label: "Available now"
+      modules: [auditflow, auth-gateway, checkout, payment-gateway, customer-portal]
+    - label: "Planned"
+      modules: [invoicing, ai-mcp-gateway]
+
+- title: Roadmap
+  url: "/roadmap/"
+
+- title: Editions
   url: "#"
   subitems:
-    - title: "AuditFlow"
-      description: "Reliable, redacted record of all critical system activities"
-      url: "/products/auditflow/"
-    - title: "Payment Gateway"
-      description: "Facilitate seamless and secure online payments"
-      url: "/products/payment-gateway/"
-    - title: "Checkout"
-      description: "Self-service hub for customers"
-      url: "/products/checkout/"
-    - title: "Invoicing"
-      description: "Automate the entire invoicing process"
-      url: "/products/invoicing/"
-    - title: "Auth Gateway"
-      description: "Centralize and manage user identities"
-      url: "/products/auth-gateway/"
-    - title: "AI & MCP Gateway"
-      description: "Integrate intelligent automation and predictive capabilities"
-      url: "/products/ai-assistance/"
-    - title: "NetLicensing"
-      description: "Entitlement checks and metered licensing"
-      url: "https://netlicensing.io"
-    - title: "GuideChimp"
-      description: "Guided tours for SaaS onboarding"
-      url: "https://www.labs64.com/guidechimp/"
-
-- title: Pricing
-  url: "/pricing/"
-
-- title: Enterprise
-  url: "/enterprise/"
-
-- title: Open Source
-  url: "/open-source/"
+    - title: "Pricing & Licensing"
+      description: "Apache 2.0 forever, plus Enterprise add-ons"
+      url: "/pricing/"
+    - title: "Enterprise Edition"
+      description: "Additive modules, SLAs, managed options"
+      url: "/enterprise/"
+    - title: "Open Source"
+      description: "How we build in the open"
+      url: "/open-source/"
 
 - title: Blog
   url: "/blog/"

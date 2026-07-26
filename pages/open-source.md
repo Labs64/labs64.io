@@ -41,7 +41,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Contribute to the Ecosystem</h2>
-                <span>We welcome contributions across all 10 of our independent Git repositories. Whether it's adding a new PSP to the Payment Gateway, creating a new AuditFlow sink, or improving our Helm charts, your PRs are always welcome.</span>
+                <span>We welcome contributions across every repository in the workspace. Whether it's adding a new PSP to the Payment Gateway, creating a new AuditFlow sink, or improving our Helm charts, your PRs are always welcome.</span>
             </article>
         </section>
     </div>
@@ -51,12 +51,11 @@ use_cbpscroller: true
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Join the community</h2>
-            <span>Join the Labs64.IO Ecosystem and start building modern digital commerce platforms today.</span>
-            <form action="https://github.com/Labs64/labs64.io-workspace" method="GET">
-                <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                    <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
-                </button>
-            </form>
+            <span>Explore the code on GitHub, then run it yourself with the guided onboarding path.</span>
+            <a href="https://github.com/Labs64/labs64.io-workspace" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
+            </a>
+            <p><a href="{{ '/get-started/' | relative_url }}">Or get started running it locally</a></p>
         </div>
     </div>
 </div>

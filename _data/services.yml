@@ -8,8 +8,12 @@
   section: "Company"
 
 # Learn
-- title: "Ecosystem Docs"
-  url: "https://labs64.io/docs/"
+- title: "Architecture"
+  url: "/architecture/"
+  section: "Documentation"
+
+- title: "Docs Repository"
+  url: "https://github.com/Labs64/labs64.io-docs"
   section: "Documentation"
 
 - title: Blog
@@ -19,6 +23,15 @@
 - title: GitHub
   url: "https://github.com/Labs64/labs64.io-workspace"
   section: "Documentation"
+
+# Products
+- title: "NetLicensing"
+  url: "https://netlicensing.io"
+  section: "Products"
+
+- title: "GuideChimp"
+  url: "https://www.labs64.com/guidechimp/"
+  section: "Products"
 
 # Legal
 - title: "Terms of Service"
