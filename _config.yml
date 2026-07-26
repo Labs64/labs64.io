@@ -84,6 +84,8 @@ exclude:
   - _config_dev.yml
   - .gitignore
   - .dockerignore
+  - AGENTS.md
+  - CLAUDE.md
 
 defaults:
   -

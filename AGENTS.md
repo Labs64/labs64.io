@@ -42,6 +42,7 @@ Do not edit generated output:
 - Default to GDPR-aware language for data handling and compliance contexts.
 - Use concise, factual technical claims; avoid unverifiable promises.
 - Preserve existing permalink strategy unless migration/redirect is explicitly requested.
+- Module status, version, and known gaps live **only** in `_data/modules.yml`, rendered via `_includes/module-status.html` / `_includes/module-banner.html`. Never hand-edit a status, version, or module display name into a page or into `navigation.yml` — that creates a second source of truth that will drift.
 
 Copyright and reuse constraints from repository guidance:
 - Do not reuse contents from `_drafts/`, `_posts/`, `img/`, `pages/`, `resources/` outside permitted contexts without approval.
@@ -111,35 +112,35 @@ Notes:
 - `docker-compose.yml` serves with drafts/future posts and merged config (`_config.yml,_config_dev.yml`).
 - `DOCKER_SETUP.md` references using `just serve` or `docker compose ...` directly.
 
-## 7.2 Native (if Ruby toolchain is available)
-```bash
-cd /Users/alexey/work/projects/www/labs64.io
-bundle install
-bundle exec jekyll serve --config _config.yml,_config_dev.yml
-```
+## 7.2 Native Ruby toolchain — broken on this machine
+The native Ruby toolchain is **not usable here**: `Gemfile.lock` pins `BUNDLED WITH 4.0.16`, and that bundler version is not installed (`bundle -v` fails with `Could not find 'bundler' (4.0.16)`). Do not attempt `bundle install` / `bundle exec` directly — **`bundle` must never be invoked directly** on this machine. All builds, doctor checks, and link-proofing go through Docker via the `just` recipes below.
 
 ## 8) Verification Checklist Before Commit
-Run as applicable from repo root.
+Run as applicable from repo root. All of these go through Docker via `just` — never invoke `bundle` directly.
 
 1) Jekyll diagnostics:
 ```bash
-bundle exec jekyll doctor
+just doctor
 ```
 
-2) Build site (native):
+2) Build site:
 ```bash
-bundle exec jekyll build --config _config.yml,_config_dev.yml
+just build
 ```
 
-3) If using Docker containerized workflow:
+3) Banned marketing-claim scan:
 ```bash
-docker compose exec labs64io bundle exec jekyll doctor
-docker compose exec labs64io bundle exec jekyll build --config _config.yml,_config_dev.yml
+just claim-check
 ```
 
-4) Optional link checking (can be noisy on external links):
+4) Permalink regression check (every pre-existing permalink must still resolve; builds first):
 ```bash
-bundle exec htmlproofer ./_site
+just permalink-check
+```
+
+5) Optional link checking (can be noisy on external links):
+```bash
+just proofer
 ```
 
 Manual checks:
