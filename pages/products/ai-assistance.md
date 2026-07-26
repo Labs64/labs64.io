@@ -37,12 +37,11 @@ use_cbpscroller: true
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Follow the roadmap</h2>
-            <span>The AI & MCP Gateway isn't scheduled yet. Join the Labs64.IO Ecosystem on GitHub to follow progress and see what's already shipping today.</span>
-            <form action="https://github.com/Labs64/labs64.io-workspace" method="GET">
-                <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                    <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
-                </button>
-            </form>
+            <span>The AI & MCP Gateway isn't scheduled yet. See where it sits on the roadmap and what's already shipping today.</span>
+            <a href="{{ '/roadmap/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                View the roadmap
+            </a>
+            <p><a href="https://github.com/Labs64/labs64.io-workspace">Or explore Labs64.IO on GitHub</a></p>
         </div>
     </div>
 </div>

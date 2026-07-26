@@ -78,4 +78,4 @@
   status: exploring
   group: planned
   known_gaps:
-    - "Design stage only (RFC-06); not scheduled"
+    - "Design stage only; not scheduled"
