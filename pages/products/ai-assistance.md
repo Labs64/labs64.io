@@ -1,15 +1,15 @@
 ---
 layout: page
-title: "AI Assistance"
-description: "Integrate intelligent automation and predictive capabilities into your workflows."
+title: "AI & MCP Gateway (exploring)"
+description: "Design-stage exploration of agent-callable commerce APIs. Not yet scheduled."
 permalink: /products/ai-assistance/
 use_cbpscroller: true
 ---
 
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
-        <h1>AI Assistance</h1>
-        <span>Integrate intelligent automation and predictive capabilities into your workflows. The AI Assistance microservice can power features like smart recommendations, automated customer support, anomaly detection, and data analysis, enhancing efficiency and delivering a more intelligent user experience.</span>
+        <h1>AI & MCP Gateway (exploring)</h1>
+        <span>Design-stage exploration of what it would take to expose Labs64.IO commerce operations as agent-callable APIs via the Model Context Protocol (MCP). Nothing here is scheduled or built — this is early thinking about the shape of the problem, not a working module.</span>
     </div>
 </div>
 
@@ -23,11 +23,11 @@ use_cbpscroller: true
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="AI Assistance Features">
+                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="AI and MCP Gateway Exploration">
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
-                <h2>Empowering your workflow</h2>
-                <span>Integrate intelligent automation and predictive capabilities into your workflows. The AI Assistance microservice can power features like smart recommendations, automated customer support, anomaly detection, and data analysis, enhancing efficiency and delivering a more intelligent user experience.</span>
+                <h2>What we're exploring</h2>
+                <span>The idea is a gateway that would let AI agents call commerce operations — think checkout, invoicing, or account lookups — through a well-defined, agent-callable API surface using MCP. If it moves forward, it would sit alongside the existing modules rather than replace any of them. None of this is scheduled, and no code exists yet.</span>
             </article>
         </section>
     </div>
@@ -36,8 +36,8 @@ use_cbpscroller: true
 <div class="row">
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to integrate AI Assistance?</h2>
-            <span>Join the Labs64.IO Ecosystem and start building modern digital commerce platforms today.</span>
+            <h2>Follow the roadmap</h2>
+            <span>The AI & MCP Gateway isn't scheduled yet. Join the Labs64.IO Ecosystem on GitHub to follow progress and see what's already shipping today.</span>
             <form action="https://github.com/Labs64/labs64.io-workspace" method="GET">
                 <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
                     <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
