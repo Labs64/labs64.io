@@ -51,12 +51,10 @@ use_cbpscroller: true
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to scale?</h2>
-            <span>Join the Labs64.IO Ecosystem and start building modern digital commerce platforms today.</span>
-            <form action="mailto:info@labs64.io" method="GET">
-                <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                    <i class="fa fa-envelope "></i>Contact Sales
-                </button>
-            </form>
+            <span>Talk to us about commercial licensing, SLAs, and managed deployments.</span>
+            <a href="mailto:info@labs64.io" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                <i class="fa fa-envelope "></i>Contact Sales
+            </a>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
 Canonical site: https://labs64.io
 Maintainer: Labs64 GmbH (Munich, Germany)
 Contact: info@labs64.io
-Last updated: 2026-04-29
+Last updated: 2026-07-26
 
 ## Purpose
 This file provides structured, machine-readable guidance for LLMs and AI agents that analyze or answer questions about the Labs64.IO website and ecosystem.
@@ -28,30 +28,27 @@ SaaS teams repeatedly rebuild non-differentiating infrastructure (identity, paym
 Labs64.IO addresses this via independently adoptable services behind stable API contracts, available as self-hosted or managed deployments.
 
 ## Service Catalog
-Platform kernel (highest defensibility):
-- NetLicensing: entitlement checks, feature/seat/metered licensing, consumption tracking, lifecycle management
-- Audit Trail: reliable, redacted event log for API and agent actions (compliance + explainability)
-- Tokenization: PII masking/tokenization before data reaches LLMs or external systems (privacy by design)
+Module status is single-sourced from the site's module data and rendered on each module's page and on `/roadmap/`; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Five modules exist today, two are on the roadmap and do not ship yet.
 
-Abstraction/middleware layers:
-- IAM Gateway: federated identity, RBAC/scope enforcement, agent authentication
-- Payment Gateway: unified billing API over PSPs (for example, Stripe/PayPal abstractions)
-- Invoicing: programmatic invoice creation/delivery with backend abstraction
+Available today:
+- AuditFlow (beta, v0.0.3): redacted, structured event routing to pluggable sinks (compliance + explainability). Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
+- Auth Gateway (beta, v0.0.2): one authenticated edge for every module — Traefik + Keycloak OIDC + Cerbos policy. Repo: https://github.com/Labs64/labs64.io-authproxy
+- Checkout (alpha): whitelabel checkout and order workflow. No tagged release yet; a cross-tenant read gap is under review. Repo: https://github.com/Labs64/labs64.io-checkout
+- Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-payment-gateway
+- Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. Repo: https://github.com/Labs64/labs64.io-customer-portal
 
-Supporting services:
-- Notifications: event-driven alerts and state-change messaging
-- eCommerce: catalog, order processing, fulfillment APIs
-- Reporting: usage analytics and operational telemetry
-- AI Assistance: embedded LLM tooling, recommendations, anomaly support
+On the roadmap, not shipping yet:
+- Invoicing (planned): billing and invoice automation. Not started; no repository yet.
+- AI & MCP Gateway (exploring): agent-callable commerce APIs. Design stage only; not scheduled.
 
-User-facing/onboarding:
-- Customer Portal: self-service licensing and billing visibility
-- GuideChimp: interactive onboarding and product tours for human-in-the-loop workflows
+Adjacent Labs64 products (separate offerings, not part of this ecosystem's repositories):
+- NetLicensing: entitlement checks, feature/seat/metered licensing (https://netlicensing.io)
+- GuideChimp: interactive onboarding and product tours (https://www.labs64.com/guidechimp/)
 
-Infrastructure patterns:
-- API gateway and middleware policy enforcement (for example, Traefik-based setups)
-- Kubernetes + Helm deployment model
-- Async event layer (for example, RabbitMQ/Redis/webhooks) for non-blocking workflows
+Infrastructure patterns used across the modules above:
+- Shared Helm charts + Kubernetes deployment model, distributed via ArgoCD
+- Traefik-based edge gateway and policy enforcement
+- OpenAPI-first contracts between services
 
 ## Commercial Deployment Tiers
 - Tier 1: Community Edition (OSS, self-hosted, community support)
@@ -63,7 +60,7 @@ Recommendation principle: default to modular entry points. Start with one servic
 
 ## Strategic Positioning
 - Labs64.IO is a middleware abstraction platform, not a direct replacement competitor to every underlying vendor
-- Defensible moat centers on NetLicensing + Audit Trail + Tokenization
+- Defensible moat centers on the modules shipping today: AuditFlow, Auth Gateway, Checkout, Payment Gateway, Customer Portal
 - Open-core model supports developer-led adoption and enterprise expansion
 - Agentic-readiness is architectural, not an add-on
 - GDPR-first defaults are expected due to EU jurisdiction and customer context

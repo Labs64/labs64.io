@@ -8,8 +8,12 @@
   section: "Company"
 
 # Learn
-- title: "Ecosystem Docs"
-  url: "https://labs64.io/docs/"
+- title: "Architecture"
+  url: "/architecture/"
+  section: "Documentation"
+
+- title: "Docs Repository"
+  url: "https://github.com/Labs64/labs64.io-docs"
   section: "Documentation"
 
 - title: Blog

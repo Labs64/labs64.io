@@ -57,12 +57,12 @@ use_cbpscroller: true
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to secure your stack?</h2>
-            <span>Join the Labs64.IO Ecosystem and start building modern digital commerce platforms today.</span>
-            <form action="https://github.com/Labs64/labs64.io-workspace" method="GET">
-                <button type="submit" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                    <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
-                </button>
-            </form>
+            <span>Run Auth Gateway locally as part of the guided onboarding path.</span>
+            <a href="{{ '/get-started/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn">
+                Get started
+            </a>
+            {%- assign m = site.data.modules | where: "id", "auth-gateway" | first -%}
+            <p><a href="{{ m.repo }}">View the Auth Gateway repository</a></p>
         </div>
     </div>
 </div>
