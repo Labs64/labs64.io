@@ -14,6 +14,12 @@ use_cbpscroller: true
 </div>
 
 <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        {% include module-banner.html id="auditflow" %}
+    </div>
+</div>
+
+<div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
             <figure class="cbp-so-side cbp-so-side-left">

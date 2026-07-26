@@ -1,0 +1,81 @@
+# Single source of truth for module identity and status.
+# Rendered by _includes/module-status.html and _includes/module-banner.html.
+# Never hand-write a status or version into a page or into navigation.yml.
+#
+# status: beta | alpha | planned | exploring   (there is deliberately no GA tier)
+# group:  available | planned
+
+- id: auditflow
+  name: "AuditFlow"
+  tagline: "Publish once, route anywhere, lose nothing"
+  url: "/products/auditflow/"
+  repo: "https://github.com/Labs64/labs64.io-auditflow"
+  status: beta
+  version: "0.0.3"
+  group: available
+  known_gaps:
+    - "v1 API contract is not yet frozen"
+
+- id: auth-gateway
+  name: "Auth Gateway"
+  tagline: "One authenticated edge for every module"
+  url: "/products/auth-gateway/"
+  repo: "https://github.com/Labs64/labs64.io-authproxy"
+  status: beta
+  version: "0.0.2"
+  group: available
+  known_gaps: []
+
+- id: checkout
+  name: "Checkout"
+  tagline: "Whitelabel checkout and order workflow"
+  url: "/products/checkout/"
+  repo: "https://github.com/Labs64/labs64.io-checkout"
+  status: alpha
+  group: available
+  known_gaps:
+    - "No tagged release yet"
+    - "Known cross-tenant read gap under review"
+
+- id: payment-gateway
+  name: "Payment Gateway"
+  tagline: "One API across multiple payment providers"
+  url: "/products/payment-gateway/"
+  repo: "https://github.com/Labs64/labs64.io-payment-gateway"
+  status: alpha
+  group: available
+  known_gaps:
+    - "PSP webhook signature verification is incomplete — do not connect to live funds"
+    - "No tagged release yet"
+    - "No frontend; payment-gateway-fe is a placeholder"
+
+- id: customer-portal
+  name: "Customer Portal"
+  tagline: "Self-service portal for your customers"
+  url: "/products/customer-portal/"
+  repo: "https://github.com/Labs64/labs64.io-customer-portal"
+  status: alpha
+  group: available
+  known_gaps:
+    - "Frontend only; the backend is not implemented"
+    - "No tagged release yet"
+
+- id: invoicing
+  name: "Invoicing"
+  tagline: "Billing and invoice automation"
+  url: "/products/invoicing/"
+  repo: ""
+  status: planned
+  group: planned
+  known_gaps:
+    - "Not started; no repository yet"
+
+- id: ai-mcp-gateway
+  name: "AI & MCP Gateway"
+  tagline: "Agent-callable commerce APIs"
+  url: "/products/ai-assistance/"
+  repo: ""
+  status: exploring
+  group: planned
+  known_gaps:
+    - "Design stage only (RFC-06); not scheduled"

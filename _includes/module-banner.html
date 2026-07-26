@@ -1,0 +1,33 @@
+{%- comment -%}
+Full status banner for the top of a module page.
+Usage: {% include module-banner.html id="payment-gateway" %}
+{%- endcomment -%}
+{%- assign m = site.data.modules | where: "id", include.id | first -%}
+{%- if m -%}
+<div class="NL_module_banner NL_module_banner--{{ m.status }}">
+  <p class="NL_module_banner_status">
+    {% include module-status.html id=include.id %}
+    {%- case m.status -%}
+      {%- when 'beta' -%}
+        Deployable and used across the ecosystem. The contract may still change before 1.0.
+      {%- when 'alpha' -%}
+        Runs, but is incomplete and has known gaps. Expect breaking changes.
+      {%- when 'planned' -%}
+        Committed on the roadmap. Not started — nothing to run yet.
+      {%- when 'exploring' -%}
+        Design stage only. This may or may not ship.
+    {%- endcase -%}
+  </p>
+  {%- if m.known_gaps and m.known_gaps != empty %}
+  <p class="NL_module_banner_gaps_title">Known gaps today</p>
+  <ul class="NL_module_banner_gaps">
+    {%- for gap in m.known_gaps %}
+    <li>{{ gap }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  <p class="NL_module_banner_more">
+    No module has reached 1.0 yet — see the <a href="{{ '/roadmap/' | relative_url }}">roadmap</a>.
+  </p>
+</div>
+{%- endif -%}

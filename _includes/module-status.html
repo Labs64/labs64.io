@@ -1,0 +1,15 @@
+{%- comment -%}
+Renders a status badge for a module. Usage: {% include module-status.html id="auditflow" %}
+Status labels and CSS classes are defined here only.
+{%- endcomment -%}
+{%- assign m = site.data.modules | where: "id", include.id | first -%}
+{%- if m -%}
+  {%- case m.status -%}
+    {%- when 'beta' -%}{%- assign label = 'Beta' -%}
+    {%- when 'alpha' -%}{%- assign label = 'Alpha' -%}
+    {%- when 'planned' -%}{%- assign label = 'Planned' -%}
+    {%- when 'exploring' -%}{%- assign label = 'Exploring' -%}
+    {%- else -%}{%- assign label = m.status -%}
+  {%- endcase -%}
+  <span class="NL_status NL_status--{{ m.status }}">{{ label }}{% if m.version %} · {{ m.version }}{% endif %}</span>
+{%- endif -%}
