@@ -25,7 +25,7 @@
     <text x="525" y="106" text-anchor="middle" font-size="12" fill="#e2e8f0">ForwardAuth /auth</text>
 
     <!-- Cerbos PDP -->
-    <rect x="680" y="60" width="150" height="64" rx="8" fill="#d95e14" stroke="#d95e14" stroke-width="2"></rect>
+    <rect x="680" y="60" width="150" height="64" rx="8" fill="#853E29" stroke="#853E29" stroke-width="2"></rect>
     <text x="755" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Cerbos PDP</text>
     <text x="755" y="108" text-anchor="middle" font-size="12" fill="#ffffff">authz decision</text>
 
@@ -57,7 +57,7 @@
     <text x="930" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#475569">Module</text>
 
     <!-- RabbitMQ -->
-    <rect x="680" y="260" width="150" height="64" rx="8" fill="#d95e14" stroke="#d95e14" stroke-width="2"></rect>
+    <rect x="680" y="260" width="150" height="64" rx="8" fill="#853E29" stroke="#853E29" stroke-width="2"></rect>
     <text x="755" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">RabbitMQ</text>
 
     <!-- AuditFlow -->

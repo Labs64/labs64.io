@@ -169,73 +169,7 @@ permalink: /architecture/
         </p>
 
         <div class="arch-diagram">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" role="img" aria-labelledby="labs64io-arch-title labs64io-arch-desc">
-  <title id="labs64io-arch-title">Labs64.IO request and event path</title>
-  <desc id="labs64io-arch-desc">A client request enters through Traefik, which forwards it to traefik-authproxy for ForwardAuth. The authproxy verifies the token and asks the central Cerbos PDP for an authorization decision, then routes the request to the target module. That module publishes domain events to RabbitMQ, which AuditFlow consumes and routes onward to configured sinks.</desc>
-
-  <defs>
-    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"></path>
-    </marker>
-  </defs>
-
-  <g>
-    <rect x="20" y="60" width="140" height="64" rx="8" fill="#ffffff" stroke="#475569" stroke-width="2"></rect>
-    <text x="90" y="97" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">Client</text>
-
-    <rect x="220" y="60" width="150" height="64" rx="8" fill="#853E29" stroke="#853E29" stroke-width="2"></rect>
-    <text x="295" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#e2e8f0">Traefik</text>
-    <text x="295" y="108" text-anchor="middle" font-size="12" fill="#e2e8f0">gateway</text>
-
-    <rect x="430" y="60" width="190" height="64" rx="8" fill="#853E29" stroke="#853E29" stroke-width="2"></rect>
-    <text x="525" y="86" text-anchor="middle" font-size="14" font-weight="700" fill="#e2e8f0">traefik-authproxy</text>
-    <text x="525" y="106" text-anchor="middle" font-size="12" fill="#e2e8f0">ForwardAuth /auth</text>
-
-    <rect x="680" y="60" width="150" height="64" rx="8" fill="#d95e14" stroke="#d95e14" stroke-width="2"></rect>
-    <text x="755" y="90" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Cerbos PDP</text>
-    <text x="755" y="108" text-anchor="middle" font-size="12" fill="#ffffff">authz decision</text>
-
-    <rect x="880" y="60" width="100" height="64" rx="8" fill="#ffffff" stroke="#475569" stroke-width="2"></rect>
-    <text x="930" y="97" text-anchor="middle" font-size="15" font-weight="700" fill="#475569">Module</text>
-
-    <line x1="160" y1="92" x2="212" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="370" y1="92" x2="422" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="620" y1="92" x2="672" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="830" y1="92" x2="872" y2="92" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-  </g>
-
-  <g>
-    <rect x="430" y="150" width="380" height="56" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="1"></rect>
-    <text x="620" y="171" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">On success, authproxy sets trusted headers:</text>
-    <text x="620" y="190" text-anchor="middle" font-size="11" fill="#475569">X-Auth-User, X-Auth-Scopes, X-Auth-Tenant, X-Request-ID</text>
-  </g>
-
-  <line x1="930" y1="124" x2="930" y2="260" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-
-  <g>
-    <rect x="880" y="260" width="100" height="64" rx="8" fill="#ffffff" stroke="#475569" stroke-width="2"></rect>
-    <text x="930" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#475569">Module</text>
-
-    <rect x="680" y="260" width="150" height="64" rx="8" fill="#d95e14" stroke="#d95e14" stroke-width="2"></rect>
-    <text x="755" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">RabbitMQ</text>
-
-    <rect x="430" y="260" width="190" height="64" rx="8" fill="#853E29" stroke="#853E29" stroke-width="2"></rect>
-    <text x="525" y="297" text-anchor="middle" font-size="15" font-weight="700" fill="#e2e8f0">AuditFlow</text>
-
-    <rect x="220" y="260" width="150" height="64" rx="8" fill="#ffffff" stroke="#475569" stroke-width="2"></rect>
-    <text x="295" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#475569">Sinks</text>
-    <text x="295" y="308" text-anchor="middle" font-size="11" fill="#475569">(own persistence)</text>
-
-    <line x1="872" y1="292" x2="838" y2="292" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="672" y1="292" x2="628" y2="292" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="422" y1="292" x2="378" y2="292" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"></line>
-  </g>
-
-  <text x="20" y="40" font-size="13" font-weight="700" fill="#853E29">Request path</text>
-  <text x="20" y="245" font-size="13" font-weight="700" fill="#853E29">Event path (per-tenant pipelines)</text>
-
-  <text x="295" y="345" text-anchor="middle" font-size="11" fill="#475569">Unmatched routes fail closed (403)</text>
-</svg>
+{% include architecture-diagram.svg %}
         </div>
 
         <p>
@@ -290,7 +224,9 @@ permalink: /architecture/
 
         <h2>Database-per-service</h2>
         <p>
-            Each module owns its own logical database, or databases. Credentials are never shared between
+            Each module owns its own logical database, or databases — every module except AuditFlow, which
+            owns no persistent store of its own. Audit events live in each tenant's configured sinks, which
+            are the systems of record. Everywhere a database does exist, credentials are never shared between
             services, and no module connects directly to another module's schema. If one module needs data
             that another module owns, it asks for it across the gateway as a REST call, or reacts to an
             event — it never reaches into the other service's storage.
