@@ -2,8 +2,10 @@
 
 # Labs64.IO Ecosystem :: Your Agile Business Workflow Powerhouse
 
+[![CI](https://github.com/Labs64/labs64.io-website/actions/workflows/labs64io-ci.yml/badge.svg)](https://github.com/Labs64/labs64.io-website/actions/workflows/labs64io-ci.yml)
 [![Website](https://img.shields.io/badge/Website-labs64.io-E14817.svg)](https://labs64.io)
-[![📖 Documentation](https://img.shields.io/badge/📖-Documentation-AB6543.svg)](https://github.com/Labs64/labs64.io-docs)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![📖 Documentation](https://img.shields.io/badge/📖-Documentation-AB6543.svg)](https://labs64.io/docs/index.html)
 
 ## Run
 
