@@ -1,8 +1,11 @@
 _site/
 .sass-cache/
+.jekyll-cache/
+.jekyll-metadata
 .idea
 *.iml
 .DS_Store
 .kiro
 .vscode
 _drafts
+.env
