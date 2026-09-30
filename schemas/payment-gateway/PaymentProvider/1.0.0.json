@@ -1,0 +1,96 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "id", "provider", "name", "description", "recurring" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this payment provider.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/PaymentProvider/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/PaymentProvider/1.0.0.json"
+    },
+    "id" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Unique tenant payment provider identifier.",
+      "readOnly" : true,
+      "example" : "550e8400-e29b-41d4-a716-446655440010"
+    },
+    "provider" : {
+      "type" : "string",
+      "description" : "Globally supported payment provider identifier.",
+      "example" : "stripe"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Display name of the payment provider.",
+      "maxLength" : 255,
+      "example" : "Stripe"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Description of the payment provider.",
+      "maxLength" : 500,
+      "example" : "Credit/Debit Card via Stripe"
+    },
+    "icon" : {
+      "type" : "string",
+      "format" : "byte",
+      "description" : "Base64-encoded icon image data for the PSP.",
+      "nullable" : true,
+      "example" : null
+    },
+    "recurring" : {
+      "type" : "boolean",
+      "description" : "Indicates if the provider supports recurring payments.",
+      "example" : true
+    },
+    "active" : {
+      "type" : "boolean",
+      "description" : "Tenant-level activation state for this payment provider.",
+      "readOnly" : true,
+      "example" : true
+    },
+    "config" : {
+      "type" : "object",
+      "description" : "Tenant PSP configuration. Returned by single-provider, create, and update endpoints that require payment-provider:write scope. Never returned by the list endpoint.",
+      "additionalProperties" : {
+        "type" : "string"
+      },
+      "readOnly" : true,
+      "example" : {
+        "apiKey" : "sk_test_abc123",
+        "webhookSecret" : "whsec_xyz789"
+      }
+    },
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "Tenant payment provider creation timestamp.",
+      "readOnly" : true,
+      "example" : "2026-01-15T10:00:00Z"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "description" : "Tenant payment provider last update timestamp.",
+      "readOnly" : true,
+      "example" : "2026-02-01T14:30:00Z"
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "PaymentProvider",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/PaymentProvider/1.0.0.json",
+  "$defs" : {
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    }
+  }
+}

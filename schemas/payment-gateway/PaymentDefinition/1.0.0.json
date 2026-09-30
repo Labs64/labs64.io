@@ -1,0 +1,78 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "provider", "name", "description", "recurring", "supportedCurrencies", "supportedCountries" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this payment definition.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/PaymentDefinition/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/PaymentDefinition/1.0.0.json"
+    },
+    "provider" : {
+      "type" : "string",
+      "description" : "Globally supported payment provider identifier.",
+      "example" : "stripe"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "Default display name of the payment provider.",
+      "maxLength" : 255,
+      "example" : "Stripe"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "Default description of the payment provider.",
+      "maxLength" : 500,
+      "example" : "Credit/Debit Card via Stripe"
+    },
+    "icon" : {
+      "type" : "string",
+      "format" : "byte",
+      "description" : "Base64-encoded default provider icon image data.",
+      "nullable" : true,
+      "example" : null
+    },
+    "recurring" : {
+      "type" : "boolean",
+      "description" : "Indicates if the provider supports recurring payments.",
+      "example" : true
+    },
+    "supportedCurrencies" : {
+      "type" : "array",
+      "description" : "Supported currency codes for this payment provider.",
+      "items" : {
+        "$ref" : "#/$defs/Currency"
+      },
+      "example" : [ "USD", "EUR" ]
+    },
+    "supportedCountries" : {
+      "type" : "array",
+      "description" : "Supported country codes for this payment provider.",
+      "items" : {
+        "type" : "string",
+        "maxLength" : 2,
+        "pattern" : "^[A-Z]{2}$"
+      },
+      "example" : [ "US", "DE" ]
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "PaymentDefinition",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/PaymentDefinition/1.0.0.json",
+  "$defs" : {
+    "Currency" : {
+      "type" : "string",
+      "description" : "ISO-4217 currency code (3 uppercase letters).",
+      "pattern" : "^[A-Z]{3}$",
+      "example" : "USD"
+    }
+  }
+}

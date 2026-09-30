@@ -1,0 +1,96 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "id", "paymentId", "status", "createdAt", "updatedAt" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this payment transaction.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/PaymentTransaction/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/PaymentTransaction/1.0.0.json"
+    },
+    "id" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Unique payment transaction identifier.",
+      "readOnly" : true,
+      "example" : "550e8400-e29b-41d4-a716-446655440001"
+    },
+    "paymentId" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "ID of the payment this payment transaction belongs to.",
+      "readOnly" : true,
+      "example" : "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "status" : {
+      "$ref" : "#/$defs/PaymentTransactionStatus",
+      "readOnly" : true
+    },
+    "statusDetails" : {
+      "$ref" : "#/$defs/StatusDetails",
+      "description" : "Normalized status details exposed as part of the public API contract. This field is not PSP raw data; PSP-specific technical payload belongs to pspData.",
+      "nullable" : true,
+      "readOnly" : true,
+      "example" : {
+        "code" : "DECLINED",
+        "message" : "The payment was declined by the provider."
+      }
+    },
+    "pspData" : {
+      "type" : "object",
+      "description" : "Sanitized PSP data exposed for debugging and reconciliation. Sensitive values must be filtered by the PSP adapter before storing or returning this field.",
+      "additionalProperties" : true,
+      "readOnly" : true
+    },
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "readOnly" : true,
+      "example" : "2026-02-10T12:34:56Z"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "readOnly" : true,
+      "example" : "2026-02-10T12:34:56Z"
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "PaymentTransaction",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/PaymentTransaction/1.0.0.json",
+  "$defs" : {
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "PaymentTransactionStatus" : {
+      "type" : "string",
+      "description" : "Current status of the payment transaction. PENDING: non-terminal; the payment is awaiting customer/provider action or the PSP did not return a definitive outcome. SUCCESS: terminal; the PSP definitively confirmed successful payment. FAILED: terminal; the PSP definitively confirmed a negative payment outcome, or the customer cancelled or allowed the attempt to expire. A new retry is a new payment transaction.",
+      "enum" : [ "PENDING", "SUCCESS", "FAILED" ]
+    },
+    "StatusDetails" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "description" : "Normalized status details for payment transaction status.",
+      "required" : [ "code", "message" ],
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Stable, machine-readable detail code. Canonical codes are AWAITING_CUSTOMER, PROCESSING, PROVIDER_UNAVAILABLE, PROVIDER_AUTHENTICATION_FAILED, PROVIDER_RESPONSE_INVALID, COMPLETED, PAYMENT_FAILED, DECLINED, CANCELLED, EXPIRED, and PROVIDER_REJECTED. Provider-specific raw statuses belong to pspData and must not be used by clients for gateway orchestration decisions.",
+          "example" : "DECLINED"
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Human-readable status detail message.",
+          "example" : "The payment was declined by the provider."
+        }
+      }
+    }
+  }
+}
