@@ -1,0 +1,234 @@
+{
+  "type" : "object",
+  "description" : "Customer record used to reuse identity, contact, and address information across multiple  purchase orders.\n",
+  "required" : [ "$schema" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this customer representation.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/checkout/Customer/1.0.0.json",
+      "default" : "https://labs64.io/schemas/checkout/Customer/1.0.0.json"
+    }
+  },
+  "allOf" : [ {
+    "$ref" : "#/$defs/CustomerBase"
+  }, {
+    "title" : "InlineObject",
+    "type" : "object",
+    "properties" : {
+      "id" : {
+        "$ref" : "#/$defs/UUID",
+        "readOnly" : true
+      },
+      "createdAt" : {
+        "type" : "string",
+        "format" : "date-time",
+        "readOnly" : true
+      },
+      "updatedAt" : {
+        "type" : "string",
+        "format" : "date-time",
+        "readOnly" : true
+      }
+    }
+  } ],
+  "x-labs64" : {
+    "schema" : {
+      "object" : "Customer",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/checkout/Customer/1.0.0.json",
+  "$defs" : {
+    "CustomerBase" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "description" : "The customer’s first name.",
+          "maxLength" : 255,
+          "example" : "John"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "The customer’s last name.",
+          "maxLength" : 255,
+          "example" : "Doe"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "The customer’s email address.",
+          "maxLength" : 255,
+          "example" : "john.doe@example.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "Phone number for billing purposes.",
+          "maxLength" : 50,
+          "example" : "+1234567890"
+        },
+        "billingInfo" : {
+          "$ref" : "#/$defs/BillingInfo"
+        },
+        "shippingInfo" : {
+          "$ref" : "#/$defs/ShippingInfo",
+          "required" : [ "city", "country", "address1", "postalCode" ]
+        },
+        "extra" : {
+          "$ref" : "#/$defs/Extra",
+          "x-extra-annotation" : "@io.labs64.checkout.validation.ValidExtra"
+        }
+      }
+    },
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "BillingInfo" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "description" : "First name of the person responsible for billing.",
+          "maxLength" : 255,
+          "example" : "John"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "Last name of the person responsible for billing.",
+          "maxLength" : 255,
+          "example" : "Doe"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "Email address for billing purposes.",
+          "maxLength" : 255,
+          "example" : "john.doe@example.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "Phone number for billing purposes.",
+          "maxLength" : 50,
+          "example" : "+1234567890"
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "City of the billing address.",
+          "maxLength" : 100,
+          "example" : "New York"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "Country code of the billing address in ISO 3166-1 alpha-2 format.",
+          "maxLength" : 2,
+          "example" : "US"
+        },
+        "address1" : {
+          "type" : "string",
+          "description" : "Primary street address.",
+          "maxLength" : 255,
+          "example" : "123 Main St"
+        },
+        "address2" : {
+          "type" : "string",
+          "description" : "Secondary street address (optional).",
+          "maxLength" : 255,
+          "example" : "Apt 4B"
+        },
+        "postalCode" : {
+          "type" : "string",
+          "description" : "ZIP or postal code of the billing address.",
+          "maxLength" : 20,
+          "example" : "10001"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State or region of the billing address.",
+          "maxLength" : 50,
+          "example" : "NY"
+        },
+        "vatId" : {
+          "type" : "string",
+          "description" : "Value Added Tax (VAT) identification number of the company for billing purposes \n            (e.g., USt-IdNr. in Germany). Required for B2B transactions in the EU.\n",
+          "example" : "DE123456789"
+        }
+      }
+    },
+    "ShippingInfo" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "description" : "First name of the shipment recipient.",
+          "maxLength" : 255,
+          "example" : "John"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "Last name of the shipment recipient.",
+          "maxLength" : 255,
+          "example" : "Doe"
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "Recipient phone number (preferably in E.164 format; extensions may be included, e.g., \"ext. 123\").",
+          "maxLength" : 50,
+          "example" : "+15687985466"
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "City of the shipping address.",
+          "maxLength" : 100,
+          "example" : "New York"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "Country code of the shipping address in ISO 3166-1 alpha-2 format.",
+          "maxLength" : 2,
+          "example" : "US"
+        },
+        "address1" : {
+          "type" : "string",
+          "description" : "Primary street address.",
+          "maxLength" : 255,
+          "example" : "123 Main St"
+        },
+        "address2" : {
+          "type" : "string",
+          "description" : "Secondary street address (optional).",
+          "maxLength" : 255,
+          "example" : "Apt 4B"
+        },
+        "postalCode" : {
+          "type" : "string",
+          "description" : "ZIP or postal code of the shipping address.",
+          "maxLength" : 20,
+          "example" : "10001"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State or region of the shipping address.",
+          "maxLength" : 50,
+          "example" : "NY"
+        }
+      }
+    },
+    "Extra" : {
+      "type" : "object",
+      "description" : "Custom user-defined fields.",
+      "additionalProperties" : true,
+      "example" : {
+        "source" : "web_portal",
+        "promoCode" : "SUMMER2025"
+      }
+    }
+  }
+}

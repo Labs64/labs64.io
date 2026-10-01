@@ -1,0 +1,259 @@
+{
+  "type" : "object",
+  "description" : "Purchase order holding items and totals for checkout.",
+  "x-class-extra-annotation" : "@io.labs64.checkout.validation.ValidTimeRange",
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this purchase order representation.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/checkout/PurchaseOrder/1.0.0.json",
+      "default" : "https://labs64.io/schemas/checkout/PurchaseOrder/1.0.0.json"
+    }
+  },
+  "allOf" : [ {
+    "$ref" : "#/$defs/PurchaseOrderBase"
+  }, {
+    "title" : "InlineObject",
+    "type" : "object",
+    "properties" : {
+      "id" : {
+        "$ref" : "#/$defs/UUID",
+        "readOnly" : true
+      },
+      "tenantId" : {
+        "type" : "string",
+        "readOnly" : true
+      },
+      "customer" : {
+        "$ref" : "https://labs64.io/schemas/checkout/Customer/1.0.0.json",
+        "readOnly" : true
+      },
+      "netAmount" : {
+        "type" : "integer",
+        "format" : "int64",
+        "readOnly" : true,
+        "description" : "The total amount of all line items, excluding any taxes and shipping, in minor currency units."
+      },
+      "grossAmount" : {
+        "type" : "integer",
+        "format" : "int64",
+        "readOnly" : true,
+        "description" : "The final total amount (net amount + tax amount + shipping cost) in minor currency units."
+      },
+      "taxAmount" : {
+        "type" : "integer",
+        "format" : "int64",
+        "readOnly" : true,
+        "description" : "The total amount of tax applied across all line items in the Purchase Order, in minor currency units."
+      },
+      "createdAt" : {
+        "type" : "string",
+        "format" : "date-time",
+        "readOnly" : true
+      },
+      "updatedAt" : {
+        "type" : "string",
+        "format" : "date-time",
+        "readOnly" : true
+      }
+    }
+  } ],
+  "required" : [ "$schema", "currency" ],
+  "x-labs64" : {
+    "schema" : {
+      "object" : "PurchaseOrder",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/checkout/PurchaseOrder/1.0.0.json",
+  "$defs" : {
+    "PurchaseOrderBase" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "x-class-extra-annotation" : "@io.labs64.checkout.validation.ValidTimeRange",
+      "properties" : {
+        "currency" : {
+          "$ref" : "#/$defs/Currency",
+          "x-extra-annotation" : "@io.labs64.checkout.validation.ValidCurrency"
+        },
+        "items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/$defs/PurchaseOrderItem"
+          },
+          "default" : [ ]
+        },
+        "consents" : {
+          "type" : "array",
+          "description" : "List of consent definitions associated with this purchase order. When checkout is called for this purchase order, the checkout  service validates that all consents marked as required=true are  accepted in the corresponding Checkout Transaction. The service  itself does not define how consents are collected;  it only validates the data provided to the endpoint.\n",
+          "items" : {
+            "$ref" : "#/$defs/ConsentDefinition"
+          },
+          "example" : [ {
+            "id" : "terms_of_service",
+            "label" : "I agree to the Terms of Service.",
+            "url" : "https://merchant.example.com/terms",
+            "required" : true
+          }, {
+            "id" : "privacy_policy",
+            "label" : "I have read and agree to the Privacy Policy.",
+            "url" : "https://merchant.example.com/privacy",
+            "required" : true
+          }, {
+            "id" : "marketing_emails",
+            "label" : "I want to receive news and special offers by email.",
+            "url" : "https://merchant.example.com/privacy#marketing",
+            "required" : false
+          } ]
+        },
+        "startsAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "endsAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "extra" : {
+          "$ref" : "#/$defs/Extra",
+          "x-extra-annotation" : "@io.labs64.checkout.validation.ValidExtra"
+        }
+      }
+    },
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "Currency" : {
+      "type" : "string",
+      "description" : "ISO-4217 currency code (3 uppercase letters).",
+      "pattern" : "^[A-Z]{3}$",
+      "example" : "USD"
+    },
+    "PurchaseOrderItem" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Human-readable name of the item as shown to the buyer in checkout and invoices.\n"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Optional detailed description of the item (used in checkout, emails or invoices).\n"
+        },
+        "url" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "Optional canonical URL of the item in the merchant system, such as a product page.\n"
+        },
+        "image" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "Optional primary image for this order line. Can be a regular URL (https://...) or a data URL (data:image/png;base64,...).\n"
+        },
+        "sku" : {
+          "type" : "string",
+          "description" : "Optional stock keeping unit or internal product code used by the merchant.\n"
+        },
+        "uom" : {
+          "type" : "string",
+          "description" : "Unit of measure for the quantity (e.g. PCS, HOUR, DAY).\n"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unit price in minor currency units (e.g. cents) using the purchase order currency.\n",
+          "minimum" : 0
+        },
+        "quantity" : {
+          "type" : "integer",
+          "description" : "Number of units of this item in the purchase order.\n",
+          "minimum" : 1
+        },
+        "tax" : {
+          "$ref" : "#/$defs/Tax",
+          "x-extra-annotation" : "@io.labs64.checkout.validation.ValidTaxRate"
+        },
+        "extra" : {
+          "$ref" : "#/$defs/Extra",
+          "x-extra-annotation" : "@io.labs64.checkout.validation.ValidExtra"
+        }
+      },
+      "required" : [ "name", "price", "quantity" ]
+    },
+    "ConsentDefinition" : {
+      "type" : "object",
+      "description" : "Describes a single consent item that is associated with a purchase order. Consents are defined by the tenant and are evaluated by the checkout service when the checkout endpoint is called for this  purchase order.\n",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "Stable identifier of the consent. This value is used as the key in the Checkout Transaction consents map and must remain stable for the lifetime of the purchase order.\n",
+          "example" : "terms_of_service"
+        },
+        "label" : {
+          "type" : "string",
+          "description" : "Human-readable text that describes what the buyer is asked to agree to. It is intended to be presented to the buyer by any client integrating with the checkout service.\n",
+          "example" : "I agree to the Terms of Service."
+        },
+        "url" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "Optional URL pointing to the full text of the terms, policy or agreement associated with this consent. A client may use this URL when presenting the consent to the buyer.\n",
+          "example" : "https://merchant.example.com/terms"
+        },
+        "required" : {
+          "type" : "boolean",
+          "description" : "Indicates whether this consent must be accepted by the buyer in order to successfully complete checkout. When true, the checkout  endpoint will reject the request if the corresponding consent is  not accepted in the Checkout Transaction.\n",
+          "example" : true
+        }
+      },
+      "required" : [ "id", "label", "required" ]
+    },
+    "Extra" : {
+      "type" : "object",
+      "description" : "Custom user-defined fields.",
+      "additionalProperties" : true,
+      "example" : {
+        "source" : "web_portal",
+        "promoCode" : "SUMMER2025"
+      }
+    },
+    "Tax" : {
+      "type" : "object",
+      "description" : "Structure defining tax information.",
+      "additionalProperties" : false,
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "description" : "Type of tax (e.g., \"VAT\", \"Sales Tax\", \"GST\").",
+          "example" : "VAT"
+        },
+        "category" : {
+          "type" : "string",
+          "description" : "Tax category code (e.g., 'S' for Standard Rate, 'Z' for Zero Rate).\n",
+          "example" : "S"
+        },
+        "rateType" : {
+          "description" : "Type of rate calculation (percentage of price or fixed amount per unit)",
+          "$ref" : "#/$defs/TaxRateType",
+          "default" : "PERCENTAGE"
+        },
+        "rate" : {
+          "type" : "number",
+          "minimum" : 0,
+          "description" : "The tax rate expressed as an integer in \"minor units\" to avoid floating-point errors. \nExample:\n- For a 19.00% tax rate in EUR, the value is 1900 (19.00 * 100).\n- For a 5.50% tax rate rate in EUR, the value is 550 (5.50 * 100).\n- For 0%, the value is 0.\n"
+        }
+      },
+      "required" : [ "rate" ]
+    },
+    "TaxRateType" : {
+      "type" : "string",
+      "description" : "Defines how the tax rate is applied (as a percentage or a fixed amount).",
+      "enum" : [ "FIXED", "PERCENTAGE" ]
+    }
+  }
+}
