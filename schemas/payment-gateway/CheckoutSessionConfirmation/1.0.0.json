@@ -1,0 +1,40 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "sessionId", "payment", "paymentTransaction" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this checkout session confirmation.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/CheckoutSessionConfirmation/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/CheckoutSessionConfirmation/1.0.0.json"
+    },
+    "sessionId" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Checkout session identifier used by the public confirmation page.",
+      "readOnly" : true
+    },
+    "payment" : {
+      "$ref" : "https://labs64.io/schemas/payment-gateway/ConfirmationPayment/1.0.0.json"
+    },
+    "paymentTransaction" : {
+      "$ref" : "https://labs64.io/schemas/payment-gateway/ConfirmationPaymentTransaction/1.0.0.json"
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "CheckoutSessionConfirmation",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/CheckoutSessionConfirmation/1.0.0.json",
+  "$defs" : {
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    }
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "id", "paymentProviderId", "provider", "status", "type", "createdAt", "updatedAt" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this payment representation.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/Payment/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/Payment/1.0.0.json"
+    },
+    "id" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Unique payment identifier.",
+      "readOnly" : true,
+      "example" : "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "paymentProviderId" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Tenant payment provider instance used by this payment.",
+      "readOnly" : true,
+      "example" : "550e8400-e29b-41d4-a716-446655440010"
+    },
+    "provider" : {
+      "type" : "string",
+      "description" : "Globally supported payment provider identifier used by the tenant payment provider.",
+      "example" : "stripe"
+    },
+    "description" : {
+      "type" : "string",
+      "nullable" : true,
+      "description" : "Human-readable payment description.",
+      "example" : "Order #10001"
+    },
+    "status" : {
+      "$ref" : "#/$defs/PaymentStatus",
+      "readOnly" : true
+    },
+    "type" : {
+      "$ref" : "#/$defs/PaymentType",
+      "readOnly" : true
+    },
+    "recurrence" : {
+      "nullable" : true,
+      "$ref" : "#/$defs/Recurrence",
+      "description" : "Recurring payment rule captured at payment creation time. Null means one-time payment.",
+      "readOnly" : true
+    },
+    "purchaseOrder" : {
+      "$ref" : "#/$defs/PurchaseOrder",
+      "description" : "Full purchase order associated with this payment. Returned in GET /payments/{paymentId} so clients can reconstruct checkout state without a separate lookup.",
+      "readOnly" : true
+    },
+    "billingInfo" : {
+      "$ref" : "#/$defs/BillingInfo",
+      "description" : "Billing information captured at payment creation time.",
+      "readOnly" : true
+    },
+    "shippingInfo" : {
+      "$ref" : "#/$defs/ShippingInfo",
+      "description" : "Shipping information captured at payment creation time.",
+      "readOnly" : true
+    },
+    "extra" : {
+      "$ref" : "#/$defs/Extra",
+      "description" : "Custom user-defined fields captured at payment creation time.",
+      "readOnly" : true
+    },
+    "lastPaymentAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "nullable" : true,
+      "description" : "Last successful payment transaction time.",
+      "readOnly" : true,
+      "example" : "2026-06-08T12:00:00Z"
+    },
+    "nextPaymentAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "nullable" : true,
+      "description" : "Next scheduled recurring payment time.",
+      "readOnly" : true,
+      "example" : "2026-07-08T12:00:00Z"
+    },
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "readOnly" : true,
+      "example" : "2026-02-10T12:00:00Z"
+    },
+    "updatedAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "readOnly" : true,
+      "example" : "2026-02-10T12:34:56Z"
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "Payment",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/Payment/1.0.0.json",
+  "$defs" : {
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "PaymentStatus" : {
+      "type" : "string",
+      "description" : "Current status of the payment. READY: payment is configured and ready to be paid, renewed, or scheduled. INCOMPLETE: payment setup is incomplete; requires user action. PAUSED: payment is temporarily paused but can be resumed. Note: no\n  dedicated pause/resume API operation exists yet; this status is set\n  internally.\nCLOSED: payment is closed and won't be executed anymore.",
+      "enum" : [ "READY", "INCOMPLETE", "PAUSED", "CLOSED" ]
+    },
+    "PaymentType" : {
+      "type" : "string",
+      "description" : "Type of payment.",
+      "enum" : [ "ONE_TIME", "RECURRING" ]
+    },
+    "Recurrence" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "required" : [ "type", "expression", "timezone" ],
+      "properties" : {
+        "type" : {
+          "type" : "string",
+          "description" : "Recurrence expression type.",
+          "enum" : [ "DURATION", "CRON" ],
+          "example" : "DURATION"
+        },
+        "expression" : {
+          "type" : "string",
+          "description" : "ISO-8601 duration/period when type=DURATION, or UNIX 5-field cron expression when type=CRON. Examples: P1M, PT15M, 0 0 1 * *.",
+          "example" : "P1M"
+        },
+        "timezone" : {
+          "type" : "string",
+          "description" : "IANA timezone used to calculate the next payment time.",
+          "example" : "Europe/Kiev"
+        }
+      }
+    },
+    "PurchaseOrder" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "required" : [ "currency", "items", "grossAmount" ],
+      "properties" : {
+        "currency" : {
+          "$ref" : "#/$defs/Currency"
+        },
+        "items" : {
+          "type" : "array",
+          "description" : "Purchase order line items captured as a payment snapshot.",
+          "items" : {
+            "$ref" : "#/$defs/OrderItem"
+          },
+          "default" : [ ]
+        },
+        "netAmount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Optional total amount of all line items excluding taxes/shipping, in minor units. Useful for invoices, audit, and analytics.",
+          "minimum" : 0,
+          "example" : 3000
+        },
+        "grossAmount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Final total amount to be paid, in minor units.",
+          "minimum" : 1,
+          "example" : 3000
+        },
+        "taxAmount" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Total tax amount, in minor units.",
+          "minimum" : 0,
+          "example" : 0
+        }
+      }
+    },
+    "BillingInfo" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "required" : [ "email" ],
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "description" : "First name of the person responsible for billing.",
+          "maxLength" : 255,
+          "example" : "John"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "Last name of the person responsible for billing.",
+          "maxLength" : 255,
+          "example" : "Doe"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "Email address for billing purposes.",
+          "maxLength" : 255,
+          "example" : "john.doe@example.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "Phone number for billing purposes.",
+          "maxLength" : 50,
+          "example" : "+1234567890"
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "City of the billing address.",
+          "maxLength" : 100,
+          "example" : "San Francisco"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "Country code of the billing address in ISO 3166-1 alpha-2 format.",
+          "maxLength" : 2,
+          "example" : "US"
+        },
+        "address1" : {
+          "type" : "string",
+          "description" : "Primary street address.",
+          "maxLength" : 255,
+          "example" : "123 Main St"
+        },
+        "address2" : {
+          "type" : "string",
+          "description" : "Secondary street address (optional).",
+          "maxLength" : 255,
+          "example" : "Apt 4B"
+        },
+        "postalCode" : {
+          "type" : "string",
+          "description" : "ZIP or postal code of the billing address.",
+          "maxLength" : 20,
+          "example" : "94102"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State or region of the billing address.",
+          "maxLength" : 50,
+          "example" : "CA"
+        },
+        "vatId" : {
+          "type" : "string",
+          "description" : "Value Added Tax (VAT) identification number of the company for billing purposes\n(e.g., USt-IdNr. in Germany). Required for B2B transactions in the EU.\n",
+          "example" : "DE123456789"
+        }
+      }
+    },
+    "ShippingInfo" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "firstName" : {
+          "type" : "string",
+          "description" : "First name of the shipment recipient.",
+          "maxLength" : 255,
+          "example" : "John"
+        },
+        "lastName" : {
+          "type" : "string",
+          "description" : "Last name of the shipment recipient.",
+          "maxLength" : 255,
+          "example" : "Doe"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "description" : "Email address for shipping notifications.",
+          "maxLength" : 255,
+          "example" : "john.doe@example.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "Recipient phone number.",
+          "maxLength" : 50,
+          "example" : "+1234567890"
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "City of the shipping address.",
+          "maxLength" : 100,
+          "example" : "San Francisco"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "Country code of the shipping address in ISO 3166-1 alpha-2 format.",
+          "maxLength" : 2,
+          "example" : "US"
+        },
+        "address1" : {
+          "type" : "string",
+          "description" : "Primary street address.",
+          "maxLength" : 255,
+          "example" : "123 Main St"
+        },
+        "address2" : {
+          "type" : "string",
+          "description" : "Secondary street address (optional).",
+          "maxLength" : 255,
+          "example" : "Apt 4B"
+        },
+        "postalCode" : {
+          "type" : "string",
+          "description" : "ZIP or postal code of the shipping address.",
+          "maxLength" : 20,
+          "example" : "94102"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State or region of the shipping address.",
+          "maxLength" : 50,
+          "example" : "CA"
+        }
+      }
+    },
+    "Extra" : {
+      "type" : "object",
+      "description" : "Custom user-defined fields.",
+      "additionalProperties" : true,
+      "example" : {
+        "source" : "web_portal",
+        "promoCode" : "SUMMER2025"
+      }
+    },
+    "Currency" : {
+      "type" : "string",
+      "description" : "ISO-4217 currency code (3 uppercase letters).",
+      "pattern" : "^[A-Z]{3}$",
+      "example" : "USD"
+    },
+    "OrderItem" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "required" : [ "name", "price", "quantity" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Item name.",
+          "maxLength" : 255,
+          "example" : "Widget Pro"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Optional detailed item description.",
+          "example" : "Widget Pro annual license"
+        },
+        "url" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "Optional canonical URL of the item in the merchant system."
+        },
+        "image" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : "Optional primary image URL or data URL for this order line."
+        },
+        "sku" : {
+          "type" : "string",
+          "description" : "Optional stock keeping unit or merchant product code.",
+          "example" : "WIDGET-PRO"
+        },
+        "uom" : {
+          "type" : "string",
+          "description" : "Unit of measure for the quantity.",
+          "example" : "PCS"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unit price in minor units using the purchase order currency.",
+          "minimum" : 0,
+          "example" : 1500
+        },
+        "quantity" : {
+          "type" : "integer",
+          "description" : "Number of units of this item.",
+          "minimum" : 1,
+          "example" : 2
+        },
+        "tax" : {
+          "$ref" : "#/$defs/Tax"
+        },
+        "extra" : {
+          "$ref" : "#/$defs/Extra"
+        }
+      }
+    },
+    "Tax" : {
+      "type" : "object",
+      "additionalProperties" : false,
+      "properties" : {
+        "rate" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Tax rate applied to this line item.",
+          "minimum" : 0,
+          "maximum" : 1,
+          "example" : 0.19
+        }
+      }
+    }
+  }
+}

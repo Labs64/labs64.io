@@ -1,0 +1,84 @@
+{
+  "type" : "object",
+  "additionalProperties" : false,
+  "required" : [ "$schema", "id", "provider", "status", "type", "amount", "currency", "createdAt" ],
+  "properties" : {
+    "$schema" : {
+      "type" : "string",
+      "format" : "uri",
+      "description" : "Canonical URI of the immutable JSON Schema contract for this public payment confirmation projection.",
+      "readOnly" : true,
+      "const" : "https://labs64.io/schemas/payment-gateway/ConfirmationPayment/1.0.0.json",
+      "default" : "https://labs64.io/schemas/payment-gateway/ConfirmationPayment/1.0.0.json"
+    },
+    "id" : {
+      "$ref" : "#/$defs/UUID",
+      "description" : "Payment identifier.",
+      "readOnly" : true
+    },
+    "provider" : {
+      "type" : "string",
+      "description" : "Payment provider used by the payment.",
+      "example" : "paypal"
+    },
+    "status" : {
+      "$ref" : "#/$defs/PaymentStatus",
+      "readOnly" : true
+    },
+    "type" : {
+      "$ref" : "#/$defs/PaymentType",
+      "readOnly" : true
+    },
+    "description" : {
+      "type" : "string",
+      "nullable" : true,
+      "description" : "Public payment description.",
+      "example" : "Order #10001"
+    },
+    "amount" : {
+      "type" : "integer",
+      "format" : "int64",
+      "description" : "Final payment amount in minor units.",
+      "minimum" : 1,
+      "example" : 3000
+    },
+    "currency" : {
+      "$ref" : "#/$defs/Currency"
+    },
+    "createdAt" : {
+      "type" : "string",
+      "format" : "date-time",
+      "readOnly" : true
+    }
+  },
+  "x-labs64" : {
+    "schema" : {
+      "object" : "ConfirmationPayment",
+      "version" : "1.0.0"
+    }
+  },
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://labs64.io/schemas/payment-gateway/ConfirmationPayment/1.0.0.json",
+  "$defs" : {
+    "UUID" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "PaymentStatus" : {
+      "type" : "string",
+      "description" : "Current status of the payment. READY: payment is configured and ready to be paid, renewed, or scheduled. INCOMPLETE: payment setup is incomplete; requires user action. PAUSED: payment is temporarily paused but can be resumed. Note: no\n  dedicated pause/resume API operation exists yet; this status is set\n  internally.\nCLOSED: payment is closed and won't be executed anymore.",
+      "enum" : [ "READY", "INCOMPLETE", "PAUSED", "CLOSED" ]
+    },
+    "PaymentType" : {
+      "type" : "string",
+      "description" : "Type of payment.",
+      "enum" : [ "ONE_TIME", "RECURRING" ]
+    },
+    "Currency" : {
+      "type" : "string",
+      "description" : "ISO-4217 currency code (3 uppercase letters).",
+      "pattern" : "^[A-Z]{3}$",
+      "example" : "USD"
+    }
+  }
+}
