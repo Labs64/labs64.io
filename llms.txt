@@ -9,7 +9,7 @@ Last updated: 2026-07-26
 This file provides structured, machine-readable guidance for LLMs and AI agents that analyze or answer questions about the Labs64.IO website and ecosystem.
 
 ## Repository Role
-This specific repository (`labs64.io-website`) contains the public-facing marketing and documentation site for the ecosystem. It is built with Jekyll and deployed as a static site. It serves as the primary entry point for users discovering and learning about the Labs64.IO ecosystem.
+This specific repository (`labs64.io`) contains the public-facing marketing and documentation site for the ecosystem. It is built with Jekyll and deployed as a static site. It serves as the primary entry point for users discovering and learning about the Labs64.IO ecosystem.
 
 ## Project Snapshot
 Labs64.IO is an API-first, open-core, modular microservices ecosystem for business workflow automation.
