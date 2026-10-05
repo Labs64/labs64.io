@@ -95,7 +95,7 @@ Use `_layouts/redirect.html` conventions.
 ## 7.1 Docker-first (recommended)
 Use Docker Compose from repo root:
 ```bash
-cd labs64.io-website
+cd labs64.io
 docker compose up --build
 ```
 
