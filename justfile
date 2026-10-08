@@ -2,29 +2,29 @@
 default:
     @just --list
 
-# Start the development server (use `just serve -d` to run in background)
+# Start the Jekyll development server
 serve *ARGS:
     @echo "🚀 Starting Jekyll development server..."
     docker compose up --build {{ARGS}}
 
-# Stop the background service
+# Stop the Docker Compose services
 down:
     docker compose down
 
-# View logs
+# Follow the Docker Compose logs
 logs:
     docker compose logs -f
 
-# Clean rebuild (clear cache)
+# Remove containers and volumes, then rebuild and start the server
 clean:
     docker compose down -v
     docker compose up --build
 
-# Run Jekyll doctor to check for issues
+# Check the Jekyll site for configuration problems
 doctor:
     docker compose exec labs64io bundle exec jekyll doctor
 
-# Run html-proofer to check links and HTML validity
+# Check links and HTML in the built site with html-proofer
 proofer:
     docker compose exec labs64io bundle exec htmlproofer ./_site
 
@@ -32,7 +32,7 @@ proofer:
 new-post title:
     ./_new_post.sh "{{title}}"
 
-# Build the static site (one-off)
+# Build the static site once
 build:
     docker compose run --rm labs64io bundle exec jekyll build --config _config.yml
 
@@ -40,7 +40,7 @@ build:
 install:
     docker compose run --rm labs64io bundle install
 
-# Publish a draft post to the posts directory
+# Move a draft into _posts with today's date as the file name prefix
 publish draft_filename:
     #!/usr/bin/env bash
     set -e
@@ -55,10 +55,10 @@ publish draft_filename:
     mv "$DRAFT_PATH" "$NEW_PATH"
     echo "✅ Published $DRAFT_PATH to $NEW_PATH"
 
-# Fail if a banned marketing claim reappears (see specs/2026-07-26-*)
+# Fail if a banned marketing claim shows up in the site
 claim-check:
     ./scripts/claim-check.sh
 
-# Fail if any pre-existing permalink stopped resolving
+# Build the site, then fail if any existing permalink no longer resolves
 permalink-check: build
     ./scripts/permalink-check.sh
