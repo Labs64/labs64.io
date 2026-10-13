@@ -17,11 +17,20 @@
 
 ## Why Website?
 
-This repository is the public face of the platform: what it is, who it is for and where to start. It deliberately holds no onboarding steps, so there is one place to keep them current:
+This repository is the public face of the platform: what it is, who it is for and where to start. It deliberately carries no onboarding steps, so there is exactly one place to keep those correct.
 
 1. **Positioning, not procedures.** Product pages explain value and link to the docs for how.
 2. **One source of truth for modules.** `_data/modules.yml` renders every status and name on the site.
 3. **Readable by machines.** `llms.txt`, a sitemap and a feed are maintained with the content.
+
+**A good fit if**
+
+- You want to fix or improve the website copy, blog or product pages.
+- You are adding a module and need it to appear in the catalogue.
+
+**Probably not what you need if**
+
+- You want to run, configure or integrate a module: the [documentation](https://labs64.io/docs/) is the source for that.
 
 ## Get started
 
@@ -46,16 +55,17 @@ Not sure? You probably want the [documentation](https://labs64.io/docs/) or the 
 
 ### 1. `install.sh`: the quick ecosystem start
 
-The website explains Labs64.IO; the quickest way to see it is to run it. One script installs the gateway, AuditFlow and Payment Gateway on any Kubernetes cluster, then proves it with a real request. No cluster? A throwaway one on your laptop is enough:
+The website explains Labs64.IO; the quickest way to see it is to run it. One script installs the gateway, AuditFlow and Payment Gateway on any Kubernetes cluster, then proves it with a real request.
 
 ```bash
-k3d cluster create labs64io-demo -p "8000:80@loadbalancer" --k3s-arg "--disable=traefik@server:0"   # optional
+# No cluster yet? A throwaway one needs only Docker and k3d:
+k3d cluster create labs64io-demo -p "8000:80@loadbalancer" --k3s-arg "--disable=traefik@server:0"
 
 curl -fsSL https://raw.githubusercontent.com/Labs64/labs64.io-helm-charts/master/install.sh -o install.sh
 bash install.sh
 ```
 
-Press Enter three times to take the defaults. You finish with a gateway you can `curl`, interactive API docs and a working token flow:
+Press Enter three times to take the defaults. A few minutes later you should see:
 
 ```text
   PASS  Obtained a demo access token from mock-oidc
@@ -66,11 +76,11 @@ Press Enter three times to take the defaults. You finish with a gateway you can 
    API docs:  http://localhost:8000/swagger-ui/
 ```
 
-Step-by-step onboarding lives in the [Quickstart](https://labs64.io/docs/getting-started/quickstart/), not on this site. The same script later runs `status`, `stop`, `start` and `uninstall`. This is an evaluation install with a demo identity provider: keep it on a local or private cluster. Details: [Quickstart](https://labs64.io/docs/getting-started/quickstart/) · [`install.sh`](https://github.com/Labs64/labs64.io-helm-charts/blob/master/install.sh).
+Step-by-step onboarding lives in the [Quickstart](https://labs64.io/docs/getting-started/quickstart.html), not on this site. The same script later runs `status`, `stop`, `start` and `uninstall`. This is an evaluation install with a demo identity provider: keep it on a local or private cluster. Details: [Quickstart](https://labs64.io/docs/getting-started/quickstart.html) · [`install.sh`](https://github.com/Labs64/labs64.io-helm-charts/blob/master/install.sh).
 
 ### 2. Kubernetes: on your own cluster
 
-Deployment guidance is owned by the documentation site: [Deploy to your Kubernetes cluster](https://labs64.io/docs/getting-started/deploy-to-kubernetes/) and [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path/).
+Deployment guidance is owned by the documentation site: [Deploy to your Kubernetes cluster](https://labs64.io/docs/getting-started/deploy-to-kubernetes.html) and [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path.html).
 
 ### 3. Docker: on your machine
 
@@ -99,10 +109,12 @@ Everything below is in the [Website documentation](https://labs64.io/docs/):
 
 | I want to… | Read |
 |---|---|
-| Run Labs64.IO in five minutes | [Quickstart](https://labs64.io/docs/getting-started/quickstart/) |
-| Read about each module | [Products](https://labs64.io/products/) |
+| Run Labs64.IO in five minutes | [Quickstart](https://labs64.io/docs/getting-started/quickstart.html) |
+| Read about each module | [Products](https://labs64.io/) |
 | Write a post | [`AGENTS.md`](AGENTS.md) |
-| Compare all the ways to run Labs64.IO | [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path/) |
+| Compare all the ways to run Labs64.IO | [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path.html) |
+
+Something not working? [Troubleshooting your first run](https://labs64.io/docs/getting-started/troubleshooting.html) covers the usual suspects, and you are always welcome to [open an issue](https://github.com/Labs64/labs64.io/issues).
 
 ## Features
 
@@ -155,7 +167,7 @@ Website is one module of the [Labs64.IO Ecosystem](https://labs64.io); [every mo
 
 ## Contributing
 
-Contributions of all sizes are welcome. Fork, branch, run the checks described in [`AGENTS.md`](AGENTS.md), and open a pull request. If you are unsure whether something fits, open an issue first.
+We would love your help. Blog posts and corrections to product pages are the usual changes. Fork the repository, make your change on a branch, run the checks described in [`AGENTS.md`](AGENTS.md) and open a pull request. Not sure whether an idea fits? Open an issue first and we will talk it through; that is a perfectly good way to start.
 
 ## License
 
