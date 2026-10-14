@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![📖 Documentation](https://img.shields.io/badge/📖-Documentation-AB6543.svg)](https://labs64.io/docs/)
 
-<p align="center"><img src="docs/assets/website-hero.svg" alt="Website: visitors, search engines and AI agents read the Labs64.IO website, a Jekyll site with posts, product pages, a module catalogue and machine-readable context." width="880"></p>
+<p align="center"><img src="docs/assets/website-hero.svg" alt="Website: The Labs64.IO Ecosystem at the centre with modules orbiting by maturity: AuditFlow and Auth Gateway in beta, Checkout, Payment Gateway and Customer Portal in alpha, Invoicing and AI &amp; MCP Gateway further out." width="880"></p>
 
 [**Get started**](#get-started) · [Features](#features) · [Architecture](#architecture) · [AI agents](#using-website-with-ai-agents) · [Ecosystem](#the-labs64io-ecosystem) · [Documentation](https://labs64.io/docs/) · [labs64.io](https://labs64.io)
 
