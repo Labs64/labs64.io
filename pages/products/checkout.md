@@ -41,7 +41,7 @@ use_cbpscroller: true
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Powered by the Ecosystem</h2>
-                <span>Checkout calls the Labs64.IO Payment Gateway to execute payments and the Auth Gateway for secure identity management, then publishes order and checkout events to RabbitMQ — where AuditFlow picks them up for the audit trail — ensuring a frictionless and secure user experience.</span>
+                <span>Checkout calls the Labs64.IO Payment Gateway to execute payments and the Auth Gateway for secure identity management, then publishes order and checkout events to AuditFlow for the audit trail — ensuring a frictionless and secure user experience.</span>
             </article>
         </section>
     </div>

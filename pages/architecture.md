@@ -192,8 +192,8 @@ permalink: /architecture/
         {%- assign available_modules = site.data.modules | where: "group", "available" -%}
         <p>
             {{ available_modules.size }} modules exist today. Each is a separate repository, ships independently,
-            and communicates with the others only through REST calls that cross the gateway above, or through
-            events over RabbitMQ into AuditFlow.
+            and communicates with the others only through REST calls that cross the gateway above. Audit events
+            go to AuditFlow's API as well; AuditFlow buffers them on its own message broker, RabbitMQ or Amazon SQS.
         </p>
 
         <table class="arch-table">
@@ -216,9 +216,9 @@ permalink: /architecture/
         </table>
 
         <p>
-            AuditFlow is the one exception to "REST through the gateway": it is reached only by consuming
-            events published to RabbitMQ by the other modules, plus its own pipeline configuration — it does
-            not expose a public write API that other modules call synchronously.
+            AuditFlow accepts events with a single REST call and answers once its message broker (RabbitMQ or
+            Amazon SQS, a configuration choice) has stored them; routing and delivery to the sinks happen
+            asynchronously from there, driven by its pipeline configuration.
         </p>
 
         <h2>Database-per-service</h2>
