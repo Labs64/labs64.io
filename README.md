@@ -10,7 +10,7 @@
 
 <p align="center"><img src="docs/assets/website-hero.svg" alt="Website: The Labs64.IO Ecosystem at the centre with modules orbiting by maturity: AuditFlow and Auth Gateway in beta, Checkout, Payment Gateway and Customer Portal in alpha, Invoicing and AI &amp; MCP Gateway further out." width="880"></p>
 
-[**Get started**](#get-started) · [Features](#features) · [Architecture](#architecture) · [AI agents](#using-website-with-ai-agents) · [Ecosystem](#the-labs64io-ecosystem) · [Documentation](https://labs64.io/docs/) · [labs64.io](https://labs64.io)
+[**Get started**](https://labs64.io/docs/getting-started/) · [Features](#features) · [AI agents](#using-website-with-ai-agents) · [Ecosystem](#the-labs64io-ecosystem) · [Documentation](https://labs64.io/docs/) · [labs64.io](https://labs64.io)
 
 > [!NOTE]
 > Module status, version and display name live only in `_data/modules.yml`. Never hand-write them into a page or the navigation.
@@ -32,90 +32,6 @@ This repository is the public face of the platform: what it is, who it is for an
 
 - You want to run, configure or integrate a module: the [documentation](https://labs64.io/docs/) is the source for that.
 
-## Get started
-
-Four ways in. Pick the one that matches what you have; each is complete on its own.
-
-```
- 1  install.sh             2  Kubernetes             3  Docker                 4  Source
-┌───────────────────────┐ ┌───────────────────────┐ ┌───────────────────────┐ ┌───────────────────────┐
-│ Skip the site: run    │ │ Read how to deploy    │ │ Run the website on    │ │ Write a post, change  │
-│ the platform itself   │ │ in the docs, not      │ │ your machine while    │ │ a page, keep the      │
-│ with one script       │ │ here: guides for your │ │ you edit a post       │ │ permalinks and        │
-│                       │ │ own cluster           │ │                       │ │ redirects intact      │
-├───────────────────────┤ ├───────────────────────┤ ├───────────────────────┤ ├───────────────────────┤
-│ needs  a cluster,     │ │ needs  a browser      │ │ needs  Docker         │ │ needs  Docker, Git    │
-│        kubectl, helm  │ │                       │ │                       │ │                       │
-│ time   ~5 minutes     │ │ time   ~20 minutes    │ │ time   ~2 minutes     │ │ time   a few minutes  │
-└───────────────────────┘ └───────────────────────┘ └───────────────────────┘ └───────────────────────┘
- try the product           plan a real install       edit the site             contribute back
-```
-
-Not sure? You probably want the [documentation](https://labs64.io/docs/) or the Quickstart, not this repository.
-
-### 1. `install.sh`: the quick ecosystem start
-
-The website explains Labs64.IO; the quickest way to see it is to run it. One script installs the gateway, AuditFlow and Payment Gateway on any Kubernetes cluster, then proves it with a real request.
-
-```bash
-# No cluster yet? A throwaway one needs only Docker and k3d:
-k3d cluster create labs64io-demo -p "8000:80@loadbalancer" --k3s-arg "--disable=traefik@server:0"
-
-curl -fsSL https://raw.githubusercontent.com/Labs64/labs64.io-helm-charts/master/install.sh -o install.sh
-bash install.sh
-```
-
-Press Enter three times to take the defaults. A few minutes later you should see:
-
-```text
-  PASS  Obtained a demo access token from mock-oidc
-  PASS  Published a demo audit event (HTTP 200) — first good request succeeded
-
- Labs64.IO is ready.
-   Base URL:  http://localhost:8000
-   API docs:  http://localhost:8000/swagger-ui/
-```
-
-Step-by-step onboarding lives in the [Quickstart](https://labs64.io/docs/getting-started/quickstart.html), not on this site. The same script later runs `status`, `stop`, `start` and `uninstall`. This is an evaluation install with a demo identity provider: keep it on a local or private cluster. Details: [Quickstart](https://labs64.io/docs/getting-started/quickstart.html) · [`install.sh`](https://github.com/Labs64/labs64.io-helm-charts/blob/master/install.sh).
-
-### 2. Kubernetes: on your own cluster
-
-Deployment guidance is owned by the documentation site: [Deploy to your Kubernetes cluster](https://labs64.io/docs/getting-started/deploy-to-kubernetes.html) and [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path.html).
-
-### 3. Docker: on your machine
-
-Only Docker is needed:
-
-```bash
-git clone https://github.com/Labs64/labs64.io.git && cd labs64.io
-docker compose up -d
-```
-
-Open <http://localhost:4000>. Stop it with `docker compose down`.
-
-### 4. Source: build and change it
-
-Posts are Markdown files in `_posts/` named `YYYY-MM-DD-slug.md`; pages, data and layouts follow Jekyll conventions. Before opening a pull request, build the site and check the permalinks:
-
-```bash
-docker compose run --rm labs64io bundle exec jekyll build --config _config.yml   # one-off production build
-```
-
-[`AGENTS.md`](AGENTS.md) lists the content guardrails, the redirect rules and the verification checklist.
-
-### Where next?
-
-Everything below is in the [Website documentation](https://labs64.io/docs/):
-
-| I want to… | Read |
-|---|---|
-| Run Labs64.IO in five minutes | [Quickstart](https://labs64.io/docs/getting-started/quickstart.html) |
-| Read about each module | [Products](https://labs64.io/) |
-| Write a post | [`AGENTS.md`](AGENTS.md) |
-| Compare all the ways to run Labs64.IO | [Choose a deployment path](https://labs64.io/docs/getting-started/choose-a-deployment-path.html) |
-
-Something not working? [Troubleshooting your first run](https://labs64.io/docs/getting-started/troubleshooting.html) covers the usual suspects, and you are always welcome to [open an issue](https://github.com/Labs64/labs64.io/issues).
-
 ## Features
 
 - **Jekyll site**: posts, pages, blog pagination and a module catalogue.
@@ -123,20 +39,6 @@ Something not working? [Troubleshooting your first run](https://labs64.io/docs/g
 - **SEO continuity**: legacy permalinks kept with redirect stubs and a permalink regression check.
 - **Machine-readable context**: `llms.txt`, sitemap and feed.
 - **Docker-first**: serve, build and link-check without installing Ruby.
-
-## Architecture
-
-```
-  ┌──────────────────────────────┐   ┌──────────────────────────────────┐
-  │ index.md · _posts/ · pages/  │   │ _data/modules.yml                │
-  │ content                      │   │ module identity and status       │
-  └──────────────┬───────────────┘   └────────────────┬─────────────────┘
-                 │ Jekyll (layouts, includes)         │ module-status include
-  ┌──────────────▼────────────────────────────────────▼─────────────────┐
-  │ https://labs64.io                                                    │
-  │   /docs  ──► labs64.io-docs (technical reference and onboarding)     │
-  └─────────────────────────────────────────────────────────────────────┘
-```
 
 ## Using Website with AI agents
 
