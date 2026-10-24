@@ -10,7 +10,7 @@
 
 <p align="center"><img src="docs/assets/website-hero.svg" alt="Website: The Labs64.IO Ecosystem at the centre with modules orbiting by maturity: AuditFlow and Auth Gateway in beta, Checkout, Payment Gateway and Customer Portal in alpha, Invoicing and AI &amp; MCP Gateway further out." width="880"></p>
 
-[**Get started**](https://labs64.io/docs/getting-started/) · [Features](#features) · [AI agents](#using-website-with-ai-agents) · [Ecosystem](#the-labs64io-ecosystem) · [Documentation](https://labs64.io/docs/) · [labs64.io](https://labs64.io)
+[**Get started**](https://labs64.io/docs/getting-started/) · [Features](#features) · [AI agents](#using-it-with-ai-agents) · [Ecosystem](#the-labs64io-ecosystem) · [Documentation](https://labs64.io/docs/) · [labs64.io](https://labs64.io)
 
 > [!NOTE]
 > Module status, version and display name live only in `_data/modules.yml`. Never hand-write them into a page or the navigation.
@@ -40,13 +40,9 @@ This repository is the public face of the platform: what it is, who it is for an
 - **Machine-readable context**: `llms.txt`, sitemap and feed.
 - **Docker-first**: serve, build and link-check without installing Ruby.
 
-## Using Website with AI agents
+## Using it with AI agents
 
-The website tells agents what Labs64.IO is and where the authoritative pages are.
-
-- **`llms.txt`.** A machine-readable summary of positioning and the service catalogue.
-- **Facts are in one place.** Module status is data, not prose; an agent should read `_data/modules.yml` rather than infer it from a page.
-- **Working on the site with an agent?** [`AGENTS.md`](AGENTS.md) and [`CLAUDE.md`](CLAUDE.md) describe guardrails and verification.
+The site publishes an `llms.txt` summary for agents, and module status lives in `_data/modules.yml`. The [guide for AI agents](https://labs64.io/docs/introduction/ai-agents.html) covers authentication, retries and errors across all modules. Working on this repository with an agent? [`AGENTS.md`](AGENTS.md) and [`CLAUDE.md`](CLAUDE.md) describe guardrails and verification.
 
 ## The Labs64.IO Ecosystem
 
