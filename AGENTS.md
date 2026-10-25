@@ -190,3 +190,8 @@ Regular tasks:
 - `_config.yml`
 - `_config_dev.yml`
 - `llms.txt`
+
+## 13) Working rules for every change
+
+- Judge the change against the **Quality bar for every change** in `labs64.io-workspace/AGENTS.md`, and say in the pull request how each concern applies, or why it does not. For this site that mostly means: nothing breaks (links, redirects, the feed, search), no unreviewed third-party request is added (privacy and egress), pages stay fast, and the change is verified in the built output (section 8).
+- Every pull request is assigned to its author and added to the `Labs64.IO` GitHub Project (`labs64.io-workspace/AGENTS.md`, "Pull requests").
