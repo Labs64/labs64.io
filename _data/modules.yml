@@ -37,6 +37,14 @@
   status: alpha
   group: available
 
+- id: reporting
+  name: "Reporting"
+  tagline: "Reports over stored events, each customer's own"
+  url: "/products/reporting/"
+  repo: "https://github.com/Labs64/labs64.io-reporting"
+  status: alpha
+  group: available
+
 - id: customer-portal
   name: "Customer Portal"
   tagline: "Self-service portal for your customers"
