@@ -28,13 +28,14 @@ SaaS teams repeatedly rebuild non-differentiating infrastructure (identity, paym
 Labs64.IO addresses this via independently adoptable services behind stable API contracts, available as self-hosted or managed deployments.
 
 ## Service Catalog
-Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Five modules exist today, two are planned and do not ship yet.
+Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Six modules exist today, two are planned and do not ship yet.
 
 Available today:
 - AuditFlow (beta, v0.0.3): redacted, structured event routing to pluggable sinks (compliance + explainability). Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
 - Auth Gateway (beta, v0.0.2): one authenticated edge for every module — Traefik + Keycloak OIDC + Cerbos policy. Repo: https://github.com/Labs64/labs64.io-authproxy
 - Checkout (alpha): whitelabel checkout and order workflow. No tagged release yet; a cross-tenant read gap is under review. Repo: https://github.com/Labs64/labs64.io-checkout
 - Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. No frontend; payment-gateway-fe is a placeholder. Repo: https://github.com/Labs64/labs64.io-payment-gateway
+- Reporting (alpha): read-only reports over the events AuditFlow stored in ClickHouse and S3; a reviewed metric catalogue per tenant, and each customer sees its own rows only. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-reporting
 - Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-customer-portal
 
 Planned, not shipping yet:
