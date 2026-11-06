@@ -174,12 +174,12 @@ permalink: /architecture/
 
         <p>
             <strong>Traefik</strong> receives every request and forwards it to <code>traefik-authproxy</code>
-            at <code>/auth</code> before routing it anywhere else. The authproxy verifies the OIDC/JWT token
+            at <code>/auth</code> before routing it anywhere else. The Auth Gateway verifies the OIDC/JWT token
             on the request, then asks the central <strong>Cerbos PDP</strong> for the authorization decision
             — policy evaluation is centralized, not duplicated per module.
         </p>
         <p>
-            On success, the authproxy emits the trusted header contract that every upstream module relies
+            On success, the Auth Gateway emits the trusted header contract that every upstream module relies
             on: <code>X-Auth-User</code>, <code>X-Auth-Scopes</code>, <code>X-Auth-Tenant</code> (set to
             <code>-</code> when the request is tenant-less), and <code>X-Request-ID</code>. All four are set
             on every 2xx response, and Traefik's <code>authResponseHeaders</code> always overwrite whatever a

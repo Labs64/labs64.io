@@ -20,7 +20,7 @@
       description: "Containerized ecosystem orchestration"
       url: "/platform/kubernetes/"
     - title: "Zero-Trust Edge Proxy"
-      description: "Secure ingress via Traefik Authproxy"
+      description: "Secure ingress via the Auth Gateway"
       url: "/platform/zero-trust/"
     - title: "Federated Identity Management"
       description: "Keycloak OIDC centralized auth"

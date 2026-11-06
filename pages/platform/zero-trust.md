@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Zero-Trust Edge Proxy"
-description: "Secure ingress via Traefik Authproxy"
+description: "Secure ingress via the Auth Gateway"
 permalink: /platform/zero-trust/
 use_cbpscroller: true
 ---
@@ -9,7 +9,7 @@ use_cbpscroller: true
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Zero-Trust Edge Proxy</h1>
-        <span>Security starts at the edge. All inbound traffic is strictly evaluated by a Traefik-based Authproxy acting as our zero-trust entrypoint.</span>
+        <span>Security starts at the edge. All inbound traffic is strictly evaluated by the Traefik-based Auth Gateway acting as our zero-trust entrypoint.</span>
     </div>
 </div>
 
@@ -41,7 +41,7 @@ use_cbpscroller: true
     <div class="col-md-12 NL_form_light NL_block">
         <div class="col-md-8 col-md-offset-2 NL_form_light_text">
             <h2>Ready to see how it fits together?</h2>
-            <span>See where the Traefik Authproxy sits in the request path, in front of every module.</span>
+            <span>See where the Auth Gateway sits in the request path, in front of every module.</span>
             <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
                 See how it fits together
             </a>
