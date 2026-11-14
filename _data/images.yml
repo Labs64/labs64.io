@@ -149,3 +149,507 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: ecosystem-architecture-modules
+  source: /img/blog/ecosystem-architecture-modules.png
+  title: "Labs64.IO modules as Helm charts"
+  caption: "Labs64.IO modules as Helm charts"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: ecosystem-architecture-adoption-steps
+  source: /img/blog/ecosystem-architecture-adoption-steps.png
+  title: "Adopting Labs64.IO one module at a time"
+  caption: "Adopting Labs64.IO one module at a time"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: ecosystem-architecture-you-bring
+  source: /img/blog/ecosystem-architecture-you-bring.png
+  title: "What you bring to a Labs64.IO deployment"
+  caption: "What you bring to a Labs64.IO deployment"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: ecosystem-architecture-request-path
+  source: /img/blog/ecosystem-architecture-request-path.png
+  title: "Request path through the Labs64.IO gateway"
+  caption: "Request path through the Labs64.IO gateway"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: ecosystem-architecture-hero
+  source: /img/blog/ecosystem-architecture-hero.jpg
+  title: "Modules, not a monolith"
+  caption: "Modules, not a monolith"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: api-prefix-gateway-hero
+  source: /img/blog/api-prefix-gateway-hero.jpg
+  title: "Api prefix gateway"
+  caption: "Api prefix gateway"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: api-prefix-gateway-path
+  source: /img/blog/api-prefix-gateway-path.png
+  title: "Api prefix gateway path"
+  caption: "Api prefix gateway path"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-bounded-waits-hero
+  source: /img/blog/auditflow-bounded-waits-hero.jpg
+  title: "Auditflow bounded waits"
+  caption: "Auditflow bounded waits"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-event-time-hero
+  source: /img/blog/auditflow-event-time-hero.jpg
+  title: "Auditflow event time"
+  caption: "Auditflow event time"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-extra-flow
+  source: /img/blog/auditflow-extra-flow.png
+  title: "Auditflow extra flow"
+  caption: "Auditflow extra flow"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-extra-hero
+  source: /img/blog/auditflow-extra-hero.jpg
+  title: "Auditflow extra"
+  caption: "Auditflow extra"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-pipeline-steps-hero
+  source: /img/blog/auditflow-pipeline-steps-hero.jpg
+  title: "Auditflow pipeline steps"
+  caption: "Auditflow pipeline steps"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-pipeline-steps
+  source: /img/blog/auditflow-pipeline-steps.png
+  title: "Auditflow pipeline steps"
+  caption: "Auditflow pipeline steps"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: auditflow-s3-budget-hero
+  source: /img/blog/auditflow-s3-budget-hero.jpg
+  title: "Auditflow s3 budget"
+  caption: "Auditflow s3 budget"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: bounded-wait-limiter
+  source: /img/blog/bounded-wait-limiter.png
+  title: "Bounded wait limiter"
+  caption: "Bounded wait limiter"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: cerbos-authorization-hero
+  source: /img/blog/cerbos-authorization-hero.jpg
+  title: "Cerbos authorization"
+  caption: "Cerbos authorization"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: cerbos-pdp-three-peps
+  source: /img/blog/cerbos-pdp-three-peps.png
+  title: "Cerbos pdp three peps"
+  caption: "Cerbos pdp three peps"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: edge-auth-test-generation
+  source: /img/blog/edge-auth-test-generation.png
+  title: "Edge auth test generation"
+  caption: "Edge auth test generation"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: event-time-window
+  source: /img/blog/event-time-window.png
+  title: "Event time window"
+  caption: "Event time window"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: fastapi-event-loop-timeline
+  source: /img/blog/fastapi-event-loop-timeline.png
+  title: "Fastapi event loop timeline"
+  caption: "Fastapi event loop timeline"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: fastapi-sync-def-hero
+  source: /img/blog/fastapi-sync-def-hero.jpg
+  title: "Fastapi sync def"
+  caption: "Fastapi sync def"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: gateway-api-filter-chain
+  source: /img/blog/gateway-api-filter-chain.png
+  title: "Gateway api filter chain"
+  caption: "Gateway api filter chain"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: gateway-api-traefik-hero
+  source: /img/blog/gateway-api-traefik-hero.jpg
+  title: "Gateway api traefik"
+  caption: "Gateway api traefik"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: idempotency-redis-states
+  source: /img/blog/idempotency-redis-states.png
+  title: "Idempotency redis states"
+  caption: "Idempotency redis states"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: internal-call-before-after
+  source: /img/blog/internal-call-before-after.png
+  title: "Internal call before after"
+  caption: "Internal call before after"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: internal-calls-hero
+  source: /img/blog/internal-calls-hero.jpg
+  title: "Internal calls"
+  caption: "Internal calls"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: labs64-workspace-hero
+  source: /img/blog/labs64-workspace-hero.jpg
+  title: "Labs64 workspace"
+  caption: "Labs64 workspace"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: node-cve-pins-hero
+  source: /img/blog/node-cve-pins-hero.jpg
+  title: "Node cve pins"
+  caption: "Node cve pins"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: node-cve-pins
+  source: /img/blog/node-cve-pins.png
+  title: "Node cve pins"
+  caption: "Node cve pins"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: oidc-issuer-hero
+  source: /img/blog/oidc-issuer-hero.jpg
+  title: "Oidc issuer"
+  caption: "Oidc issuer"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: oidc-issuer-pinning
+  source: /img/blog/oidc-issuer-pinning.png
+  title: "Oidc issuer pinning"
+  caption: "Oidc issuer pinning"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: openapi-auth-declare-hero
+  source: /img/blog/openapi-auth-declare-hero.jpg
+  title: "Openapi auth declare"
+  caption: "Openapi auth declare"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: openapi-auth-pipeline
+  source: /img/blog/openapi-auth-pipeline.png
+  title: "Openapi auth pipeline"
+  caption: "Openapi auth pipeline"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: openapi-resource-fields-hero
+  source: /img/blog/openapi-resource-fields-hero.jpg
+  title: "Openapi resource fields"
+  caption: "Openapi resource fields"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: payment-correlation-hero
+  source: /img/blog/payment-correlation-hero.jpg
+  title: "Payment correlation"
+  caption: "Payment correlation"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: payment-correlation-sequence
+  source: /img/blog/payment-correlation-sequence.png
+  title: "Payment correlation sequence"
+  caption: "Payment correlation sequence"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: payment-idempotency-redis-hero
+  source: /img/blog/payment-idempotency-redis-hero.jpg
+  title: "Payment idempotency redis"
+  caption: "Payment idempotency redis"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: payment-state-policy-hero
+  source: /img/blog/payment-state-policy-hero.jpg
+  title: "Payment state policy"
+  caption: "Payment state policy"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: payment-state-policy
+  source: /img/blog/payment-state-policy.png
+  title: "Payment state policy"
+  caption: "Payment state policy"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: paypal-currency-conversion
+  source: /img/blog/paypal-currency-conversion.png
+  title: "Paypal currency conversion"
+  caption: "Paypal currency conversion"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: paypal-currency-hero
+  source: /img/blog/paypal-currency-hero.jpg
+  title: "Paypal currency"
+  caption: "Paypal currency"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: psp-provider-spi-hero
+  source: /img/blog/psp-provider-spi-hero.jpg
+  title: "Psp provider spi"
+  caption: "Psp provider spi"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: psp-spi-layers
+  source: /img/blog/psp-spi-layers.png
+  title: "Psp spi layers"
+  caption: "Psp spi layers"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: readonly-root-emptydir
+  source: /img/blog/readonly-root-emptydir.png
+  title: "Readonly root emptydir"
+  caption: "Readonly root emptydir"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: readonly-root-hero
+  source: /img/blog/readonly-root-hero.jpg
+  title: "Readonly root"
+  caption: "Readonly root"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: resource-type-decision
+  source: /img/blog/resource-type-decision.png
+  title: "Resource type decision"
+  caption: "Resource type decision"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: robot-edge-tests-hero
+  source: /img/blog/robot-edge-tests-hero.jpg
+  title: "Robot edge tests"
+  caption: "Robot edge tests"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: s3-sink-timeouts
+  source: /img/blog/s3-sink-timeouts.png
+  title: "S3 sink timeouts"
+  caption: "S3 sink timeouts"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: self-describing-schemas-hero
+  source: /img/blog/self-describing-schemas-hero.jpg
+  title: "Self describing schemas"
+  caption: "Self describing schemas"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: self-describing-schemas
+  source: /img/blog/self-describing-schemas.png
+  title: "Self describing schemas"
+  caption: "Self describing schemas"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: stripe-checkout-sequence
+  source: /img/blog/stripe-checkout-sequence.png
+  title: "Stripe checkout sequence"
+  caption: "Stripe checkout sequence"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: stripe-provider-hero
+  source: /img/blog/stripe-provider-hero.jpg
+  title: "Stripe provider"
+  caption: "Stripe provider"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: trusted-header-contract
+  source: /img/blog/trusted-header-contract.png
+  title: "Trusted header contract"
+  caption: "Trusted header contract"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: trusted-header-hero
+  source: /img/blog/trusted-header-hero.jpg
+  title: "Trusted header"
+  caption: "Trusted header"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: workspace-just-flow
+  source: /img/blog/workspace-just-flow.png
+  title: "Workspace just flow"
+  caption: "Workspace just flow"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
+
+- id: s3-sink-context
+  source: /img/blog/s3-sink-context.png
+  title: "Where the S3 sink sits"
+  caption: "Where the S3 sink sits"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+  creditlink: https://labs64.io
