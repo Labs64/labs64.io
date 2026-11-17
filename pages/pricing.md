@@ -43,16 +43,16 @@ permalink: /pricing/
 }
 
 .pricing-card.enterprise {
-    background: linear-gradient(145deg, #853E29 0%, #682e1b 100%);
+    background: linear-gradient(145deg, #7B2A10 0%, #5C200B 100%);
     color: #ffffff;
-    border: 1px solid #682e1b;
+    border: 1px solid #5C200B;
     transform: scale(1.03);
-    box-shadow: 0 20px 25px -5px rgba(133, 62, 41, 0.15), 0 10px 10px -5px rgba(133, 62, 41, 0.08);
+    box-shadow: 0 20px 25px -5px rgba(123, 42, 16, 0.15), 0 10px 10px -5px rgba(123, 42, 16, 0.08);
 }
 
 .pricing-card.enterprise:hover {
     transform: scale(1.03) translateY(-8px);
-    box-shadow: 0 25px 35px -5px rgba(133, 62, 41, 0.25), 0 15px 15px -5px rgba(133, 62, 41, 0.1);
+    box-shadow: 0 25px 35px -5px rgba(123, 42, 16, 0.25), 0 15px 15px -5px rgba(123, 42, 16, 0.1);
 }
 
 .badge-recommended {
@@ -195,7 +195,7 @@ permalink: /pricing/
 .faq-question {
     font-size: 18px;
     font-weight: 700;
-    color: #853E29;
+    color: #7B2A10;
     margin-bottom: 12px;
     margin-top: 0;
 }
@@ -240,7 +240,7 @@ permalink: /pricing/
 </div>
 
 <div class="comparison-section">
-    <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #853E29; font-size: 32px;">Feature Comparison</h2>
+    <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #7B2A10; font-size: 32px;">Feature Comparison</h2>
     <table class="comparison-table">
         <thead>
             <tr>
@@ -290,7 +290,7 @@ permalink: /pricing/
 <div class="faq-section">
     <div class="container">
         <div class="faq-wrapper">
-            <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #853E29; font-size: 32px;">Frequently Asked Questions</h2>
+            <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #7B2A10; font-size: 32px;">Frequently Asked Questions</h2>
             
             <div class="faq-grid">
                 <div class="faq-item">

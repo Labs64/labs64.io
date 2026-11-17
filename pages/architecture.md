@@ -19,7 +19,7 @@ permalink: /architecture/
 
 .arch-section h2 {
     font-weight: 800;
-    color: #853E29;
+    color: #7B2A10;
     font-size: 28px;
     margin-bottom: 16px;
 }
@@ -89,7 +89,7 @@ permalink: /architecture/
 
 .arch-list code {
     background: #e2e8f0;
-    color: #853E29;
+    color: #7B2A10;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9em;
@@ -97,7 +97,7 @@ permalink: /architecture/
 
 .arch-section code {
     background: #e2e8f0;
-    color: #853E29;
+    color: #7B2A10;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9em;
