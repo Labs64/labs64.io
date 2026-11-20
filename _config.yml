@@ -28,7 +28,6 @@ blog_placeholder_image: "/img/blog/blog-placeholder.jpg"
 blog_recommended_posts:
   - /blog/2025/05/23/welcome-to-the-labs64io-ecosystem-diary/
   - /blog/2025/06/16/helm-chart-documentation/
-  - /blog/2025/08/07/securing-microservices-with-keycloak-and-traefik-authproxy/
 
 # TopNav sticker
 topnav_enabled: false
