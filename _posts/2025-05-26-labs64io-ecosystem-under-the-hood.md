@@ -26,7 +26,7 @@ At its core, Labs64.IO is a **microservices-native platform**. What does that me
 
 Microservices architecture structures an application as a collection of small, independent services communicating through APIs. Key components include:
 
-* **API Gateway:** Acts as a reverse proxy, routing requests from clients to the appropriate microservices. It can also handle cross-cutting concerns like authentication, SSL termination, and rate limiting.
+* **Auth Gateway:** Acts as a reverse proxy, routing requests from clients to the appropriate microservices. It can also handle cross-cutting concerns like authentication, SSL termination, and rate limiting.
 * **Individual Microservices:** Each service is responsible for a specific business capability and can be developed, deployed, and scaled independently.
 * **Data Storage:** Each microservice should manage its own database to ensure loose coupling.
 * **Message Broker:** Facilitates asynchronous communication between microservices.

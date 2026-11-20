@@ -9,7 +9,7 @@ image:
   url: /img/blog/trusted-header-hero.jpg
 tags:
   - Authentication
-  - API Gateway
+  - Auth Gateway
   - Zero Trust
   - Multi-Tenancy
   - Spring Boot

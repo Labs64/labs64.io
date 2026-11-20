@@ -12,7 +12,7 @@ tags:
   - RequestRateLimiter
   - Rate Limiting
   - Token Bucket Algorithm
-  - API Gateway
+  - Auth Gateway
   - Microservices
   - Redis
   - API Protection

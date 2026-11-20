@@ -22,7 +22,7 @@ tags:
   - Authorization
   - Kubernetes
   - Helm
-  - API Gateway
+  - Auth Gateway
 ---
 
 An auth proxy is a specialized service that centralizes authentication and authorization for multiple microservices. Instead of implementing security logic in every service, you can use a single proxy to handle these concerns at the edge. The **Traefik Auth Proxy** is a great example of this pattern, using Traefik's `forwardAuth` middleware to intercept requests and enforce access policies.
@@ -53,7 +53,7 @@ This powerful authentication model relies on a few key components working togeth
 
 ### 1\. The Auth Proxy Service (`traefik_authproxy.py`)
 
-This is the core of the system. It's a lightweight **FastAPI** [application](https://github.com/Labs64/labs64.io-api-gateway/tree/master/traefik-authproxy){:target="_blank"}{:rel="noopener nofollow"} that exposes a single `/auth` endpoint. Its responsibilities include:
+This is the core of the system. It's a lightweight **FastAPI** [application](https://github.com/Labs64/labs64.io-authgateway/tree/master/traefik){:target="_blank"}{:rel="noopener nofollow"} that exposes a single `/auth` endpoint. Its responsibilities include:
 
   * Parsing incoming request headers for the JWT and path.
   * Fetching and caching JWKS keys from Keycloak.

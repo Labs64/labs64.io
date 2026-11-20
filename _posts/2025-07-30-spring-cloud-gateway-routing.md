@@ -11,7 +11,7 @@ tags:
   - Spring Cloud Gateway
   - Microservices
   - Routing
-  - API Gateway
+  - Auth Gateway
   - YAML
   - Java
 ---

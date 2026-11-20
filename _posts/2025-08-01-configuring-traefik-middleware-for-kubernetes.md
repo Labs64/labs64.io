@@ -14,7 +14,7 @@ tags:
   - Helm
   - Ingress Controller
   - Microservices
-  - API Gateway
+  - Auth Gateway
   - YAML
   - Custom Resource
   - Custom Resource Definition
@@ -40,7 +40,7 @@ The first step is to declare your middleware's configuration in the `values.yaml
 Here's a practical example using `forwardAuth` to delegate authentication to a dedicated service:
 
 ```yaml
-# labs64.io-helm-charts/charts/api-gateway/values.yaml
+# labs64.io-helm-charts/charts/authgateway/values.yaml
 
 ingressroute:
   enabled: true
@@ -94,7 +94,7 @@ The final step is to instruct your `IngressRoute` to use the middleware you've d
 
 {% raw %}
 ```yaml
-# labs64.io-helm-charts/charts/api-gateway/templates/ingressroute.yaml
+# labs64.io-helm-charts/charts/authgateway/templates/ingressroute.yaml
 
 {{- if .Values.ingressroute.enabled -}}
 apiVersion: traefik.io/v1alpha1

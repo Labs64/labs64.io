@@ -25,7 +25,7 @@ Built with modularity, maintainability, and DevOps automation in mind, it offers
 ```
 labs64.io-helm-charts/
 ├── charts/
-│   ├── api-gateway/
+│   ├── authgateway/
 │   ├── auditflow/
 │   ├── <other-modules>/
 │   ├── chart-libs/
@@ -41,7 +41,7 @@ Let’s walk through the key components in more detail.
 
 ## Application Charts
 
-Each application (e.g. api-gateway, auditflow) is encapsulated as an independent Helm chart (`charts/api-gateway`, `charts/auditflow`) following standard Helm conventions:
+Each application (e.g. authgateway, auditflow) is encapsulated as an independent Helm chart (`charts/authgateway`, `charts/auditflow`) following standard Helm conventions:
 
 Key Files:
 - `Chart.yaml`: Chart metadata, including name, version, and dependencies

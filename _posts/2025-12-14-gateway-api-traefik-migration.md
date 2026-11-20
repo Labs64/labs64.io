@@ -13,7 +13,7 @@ tags:
   - HTTPRoute
   - Helm
   - Ingress
-  - API Gateway
+  - Auth Gateway
 ---
 
 For years, getting HTTP traffic into a Kubernetes cluster meant choosing an ingress controller and then writing its own YAML dialect. Every Helm chart that shipped such routing rules was tied to that one controller, and moving to another meant rewriting every chart.
@@ -76,7 +76,7 @@ The rendered rule for a protected AuditFlow route runs these filters, in this or
 
 The Auth Gateway answers each request with `X-Auth-*` headers that tell the services who the caller is, and the services trust them. If a client could send its own `X-Auth-User` and it survived to the service, the client could impersonate anyone.
 
-So the first filter of every rule, public routes included, removes those headers. Only then does the authentication call run, and only its answer can set them again. This used to be a Traefik middleware too; the native `RequestHeaderModifier` replaced it after a live test proved that native filters run before the `ExtensionRef` authentication call. A comment in the `api-gateway` chart records the decision so nobody reintroduces the old middleware.
+So the first filter of every rule, public routes included, removes those headers. Only then does the authentication call run, and only its answer can set them again. This used to be a Traefik middleware too; the native `RequestHeaderModifier` replaced it after a live test proved that native filters run before the `ExtensionRef` authentication call. A comment in the `chart-libs` gateway template records that the strip is a native filter, so nobody reintroduces the old middleware.
 
 ## The outcome
 

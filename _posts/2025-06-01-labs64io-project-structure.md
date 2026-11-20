@@ -27,7 +27,7 @@ At a high level, our project is segmented into two primary areas: the individual
 
 ## 1. Application Modules: Java/Spring Boot Microservices
 
-You'll notice directories like `labs64.io-api-gateway` at the top level. It's crucial to understand that this is just **one example of many such directories**, each representing a distinct microservice within the Labs64.IO Ecosystem. In the future, you'll find similar structures for other modules like `labs64.io-auditflow`, `labs64.io-payment-gateway`, `labs64.io-invoice-management`, and more.
+You'll notice directories like `labs64.io-authgateway` at the top level. It's crucial to understand that this is just **one example of many such directories**, each representing a distinct microservice within the Labs64.IO Ecosystem. In the future, you'll find similar structures for other modules like `labs64.io-auditflow`, `labs64.io-payment-gateway`, `labs64.io-invoice-management`, and more.
 
 Each of these application module directories typically houses a **Java application built with Spring Boot** and managed by Maven. Here’s how they are organized from a tech stack perspective:
 
@@ -43,8 +43,8 @@ In essence, each `labs64.io-*` directory represents an independently deployable,
 
 Separate from our application code, the `labs64.io-helm-charts` directory is dedicated to defining how all our microservices and their essential infrastructure components are deployed onto Kubernetes. This entire section revolves around the **Helm package manager for Kubernetes**.
 
-* **Centralized Chart Repository (`charts/`):** This core directory contains individual Helm charts for each of our microservices (e.g., `api-gateway`, `auditflow`). Each chart is a self-contained package defining all the Kubernetes resources (Deployments, Services, ConfigMaps, etc.) needed to run a specific microservice.
-* **Configuration with `values.yaml`:** Within each Helm chart, the `values.yaml` file is paramount. It allows us to customize the deployment of a service without altering its core Kubernetes definitions. This is how we manage environment-specific settings (like image versions, resource requests, or feature flags) for our `api-gateway`, `auditflow`, and other services across different Kubernetes clusters.
+* **Centralized Chart Repository (`charts/`):** This core directory contains individual Helm charts for each of our microservices (e.g., `authgateway`, `auditflow`). Each chart is a self-contained package defining all the Kubernetes resources (Deployments, Services, ConfigMaps, etc.) needed to run a specific microservice.
+* **Configuration with `values.yaml`:** Within each Helm chart, the `values.yaml` file is paramount. It allows us to customize the deployment of a service without altering its core Kubernetes definitions. This is how we manage environment-specific settings (like image versions, resource requests, or feature flags) for our `authgateway`, `auditflow`, and other services across different Kubernetes clusters.
 * **Kubernetes Manifest Templates (`templates/`):** These files are the heart of our Helm charts. Written in Go templating language, they dynamically generate the actual Kubernetes YAML manifests. This templating allows us to create flexible and reusable deployment definitions for all our services.
 * **Shared Chart Libraries (`chart-libs/`):** To avoid duplication and promote consistency, this directory contains reusable Helm chart components or sub-charts that can be leveraged across multiple service charts.
 * **Managing Third-Party Infrastructure:** A crucial aspect of our deployment is the `third-party/` directory within `labs64.io-helm-charts`. This is where we manage Helm charts for essential external infrastructure that our microservices rely on. This includes:

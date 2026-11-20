@@ -19,7 +19,7 @@ tags:
   - DevOps
   - CDN
   - WAF
-  - API Gateway
+  - Auth Gateway
   - Load Balancer
   - Message Broker
   - Data Storage
@@ -48,7 +48,7 @@ Imagine a city! Our *Labs64.IO Ecosystem* is like a bustling, well-organized cit
 * **What it is:** Once past the CDN/WAF, requests hit our Load Balancer. This is like a smart traffic cop directing vehicles (user requests) to the right roads. If we have multiple copies of our application running (which we will for reliability and speed), the Load Balancer ensures no single server gets overwhelmed.
 * **What it is for:** It allows us to easily scale our applications by adding more "modules" (servers) without users noticing. It also helps with high availability – if one server has an issue, the Load Balancer just sends traffic to another healthy one.
 
-## 3. The Central Hub & Gatekeeper: API Gateway
+## 3. The Central Hub & Gatekeeper: Auth Gateway
 
 * **What it is:** This is our city's main terminal building. All legitimate traffic flows through here.
     * It acts as a single entry point for all API requests.

@@ -12,7 +12,7 @@ tags:
   - Helm
   - Kubernetes
   - Modular Architecture
-  - API Gateway
+  - Auth Gateway
   - OIDC
   - Bring Your Own Infrastructure
 ---
@@ -49,7 +49,7 @@ Answering both with "yes" needs three things: modules that install independently
 
 ### Part 1: every module is its own Helm chart
 
-Each module is published as a Helm chart of its own: `auditflow`, `payment-gateway`, `checkout`, `customer-portal`, `reporting`, the `api-gateway`, and `authz-pdp` for the central Cerbos policy decision point. An umbrella chart, `labs64io-ecosystem`, installs the whole platform when you want it.
+Each module is published as a Helm chart of its own: `auditflow`, `payment-gateway`, `checkout`, `customer-portal`, `reporting`, the `authgateway`, and `authz-pdp` for the central Cerbos policy decision point. An umbrella chart, `labs64io-ecosystem`, installs the whole platform when you want it.
 
 All of them depend on one shared **library chart**, `chart-libs`. A Helm library chart contains only templates (deployments, services, routes, network policies, probes) and renders nothing by itself; each module chart calls those templates with its own values. A fix to the shared route template reaches every module with a version bump instead of seven separate edits.
 

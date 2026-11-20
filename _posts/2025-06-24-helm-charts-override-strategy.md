@@ -35,14 +35,14 @@ Let's look at the new structure (as seen in the provided image):
 ```
 labs64.io-helm-charts/
 ├── charts/                # Original Helm charts (third-party and internal)
-│   ├── api-gateway/
+│   ├── authgateway/
 │   ├── auditflow/
 │   ├── <other-modules>/
 │   └── third-party/       # OLD: Third-party Helm charts
 │       └── ...
 └── overrides/             # NEW: Centralized override configurations
     ├── ...
-    ├── api-gateway/
+    ├── authgateway/
     ├── auditflow/
     ├── metrics-server/
     ├── opensearch/

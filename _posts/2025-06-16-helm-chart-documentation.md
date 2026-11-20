@@ -72,14 +72,14 @@ helm plugin install https://github.com/ludwigprandtl/helm-schema
 Similarly, you can add a `generate-schema` target to your CI pipelines to automate the schema generation:
 
 ```bash
-helm schema -input charts/api-gateway/values.yaml -output charts/api-gateway/values.schema.json
+helm schema -input charts/authgateway/values.yaml -output charts/authgateway/values.schema.json
 helm schema -input charts/auditflow/values.yaml -output charts/auditflow/values.schema.json
 ```
 
 **Explanation:**
 
-* `helm schema --input charts/api-gateway/values.yaml`: Specifies the `values.yaml` file from which to infer the JSON schema.
-* `--output charts/api-gateway/values.schema.json`: Defines the output path for the generated JSON schema file.
+* `helm schema --input charts/authgateway/values.yaml`: Specifies the `values.yaml` file from which to infer the JSON schema.
+* `--output charts/authgateway/values.schema.json`: Defines the output path for the generated JSON schema file.
 
 Now, running the above commands you will get created `values.schema.json` files for your specified charts. This schema can then be used by IDEs (like *VS Code* with the YAML extension) for auto-completion and validation, or by CI/CD pipelines to ensure `values.yaml` files are correctly structured before deployment.
 
