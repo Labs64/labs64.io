@@ -173,7 +173,7 @@ permalink: /architecture/
         </div>
 
         <p>
-            <strong>Traefik</strong> receives every request and forwards it to <code>traefik-authproxy</code>
+            <strong>Traefik</strong> receives every request and forwards it to the <strong>Auth Gateway</strong>
             at <code>/auth</code> before routing it anywhere else. The Auth Gateway verifies the OIDC/JWT token
             on the request, then asks the central <strong>Cerbos PDP</strong> for the authorization decision
             — policy evaluation is centralized, not duplicated per module.
