@@ -3,10 +3,9 @@
 **labs64.io: the home of the Labs64.IO Ecosystem.**
 *Part of the [Labs64.IO Ecosystem](https://labs64.io): positioning, product pages and the blog; technical documentation lives at labs64.io/docs.*
 
-[![CI](https://github.com/Labs64/labs64.io/actions/workflows/labs64io-ci.yml/badge.svg)](https://github.com/Labs64/labs64.io/actions/workflows/labs64io-ci.yml)
-[![Website](https://img.shields.io/badge/Website-labs64.io-E14817.svg)](https://labs64.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Labs64/labs64.io/labs64io-ci.yml?label=CI&logo=github)](https://github.com/Labs64/labs64.io/actions/workflows/labs64io-ci.yml)
 [![📖 Documentation](https://img.shields.io/badge/📖-Documentation-AB6543.svg)](https://labs64.io/docs/)
+[![Labs64.IO Ecosystem](https://img.shields.io/badge/Labs64.IO-Ecosystem-E14817.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii01IC01IDE1NSAxNTUiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0zIDNoMTM5djEzOUgzWk02OSAzdjEzOWg3VjNaTTQzIDQzdjU5aDI2VjQzWk03NiA0M3Y1OWgyNlY0M1oiLz48cGF0aCBmaWxsPSIjYmJiIiBkPSJNNDkgNDloNDd2NDdINDlaIi8%2BPC9zdmc%2B)](https://labs64.io)
 
 <p align="center"><img src="docs/assets/website-hero.svg" alt="Website: The Labs64.IO Ecosystem at the centre with modules orbiting by maturity: AuditFlow and Auth Gateway in beta, Checkout, Payment Gateway and Customer Portal in alpha, Invoicing and AI &amp; MCP Gateway further out." width="880"></p>
 
