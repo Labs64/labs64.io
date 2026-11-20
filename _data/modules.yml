@@ -17,7 +17,7 @@
   name: "Auth Gateway"
   tagline: "One authenticated edge for every module"
   url: "/products/auth-gateway/"
-  repo: "https://github.com/Labs64/labs64.io-authproxy"
+  repo: "https://github.com/Labs64/labs64.io-authgateway"
   status: beta
   group: available
 

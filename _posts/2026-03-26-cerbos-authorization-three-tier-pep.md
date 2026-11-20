@@ -174,4 +174,4 @@ Because policies are generated, the thing to test is the *decisions*. `auth-poli
 - **Authorization can shape queries,** not only block requests: query plans become database filters.
 - **Fail closed and test decisions.** Errors mean deny, and a truth table proves the policies do what the contract says.
 
-The implementation is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) (`auth-context-java`, `authz-queryplan-jpa`, `auth-policy-cerbos`) and [labs64.io-authproxy](https://github.com/Labs64/labs64.io-authproxy). See also [Policy-as-Code Authorization](/platform/authorization/) and [Zero-Trust Edge Proxy](/platform/zero-trust/).
+The implementation is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) (`auth-context-java`, `authz-queryplan-jpa`, `auth-policy-cerbos`) and [labs64.io-authgateway](https://github.com/Labs64/labs64.io-authgateway). See also [Policy-as-Code Authorization](/platform/authorization/) and [Zero-Trust Edge Proxy](/platform/zero-trust/).

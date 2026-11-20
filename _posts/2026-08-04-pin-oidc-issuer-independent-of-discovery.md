@@ -112,8 +112,8 @@ payload = jwt.decode(
 - concurrent key refreshes fetch once and never return an empty key set (the key set is replaced as a whole under a lock).
 
 ```bash
-git clone https://github.com/Labs64/labs64.io-authproxy.git
-cd labs64.io-authproxy/traefik-authproxy
+git clone https://github.com/Labs64/labs64.io-authgateway.git
+cd labs64.io-authgateway/traefik-authproxy
 python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt pytest httpx
 python -m pytest tests/test_oidc_issuer.py -v

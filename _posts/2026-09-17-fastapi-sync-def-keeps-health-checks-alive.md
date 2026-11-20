@@ -143,4 +143,4 @@ In the Auth Gateway, the same change ended the restart loop under load.
 - **If a handler blocks, use `def`.** Reserve `async def` for code that only awaits.
 - **Test behaviour under contention,** not only the happy path, so the fix cannot regress unnoticed.
 
-The code is in [labs64.io-authproxy](https://github.com/Labs64/labs64.io-authproxy) (`tests/test_auth_decision.py` holds the regression test); the [Zero-Trust Edge Proxy](/platform/zero-trust/) page shows where the gateway fits. AuditFlow hit the same issue in its sink service, described in [Bounded waits beat fail-fast](/blog/2026/09/02/auditflow-bounded-waits-concurrency/).
+The code is in [labs64.io-authgateway](https://github.com/Labs64/labs64.io-authgateway) (`tests/test_auth_decision.py` holds the regression test); the [Zero-Trust Edge Proxy](/platform/zero-trust/) page shows where the gateway fits. AuditFlow hit the same issue in its sink service, described in [Bounded waits beat fail-fast](/blog/2026/09/02/auditflow-bounded-waits-concurrency/).
