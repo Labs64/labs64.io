@@ -1,0 +1,9 @@
+# Pricing FAQ: rendered on /pricing/ and as FAQPage structured data (see _includes/jsonld.html).
+- q: "Can I mix Open Source and Enterprise modules?"
+  a: "Yes. You can start with the Community edition and upgrade specific modules to Enterprise licenses as your compliance or support requirements evolve."
+- q: 'What is the "Managed SaaS option"?'
+  a: "Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment. Contact us for a custom quote."
+- q: "What is Open Core?"
+  a: "Open core means the Community Edition — core, SDKs, contracts, clients, and every shipped integration — is Apache 2.0 and free forever, with nothing ever taken back or relicensed. Enterprise Edition is a separate, additive layer: extra modules, endpoints, and capabilities under a commercial license, built on top of the same Community release rather than a fork of it."
+- q: "How do I upgrade from Community to Enterprise?"
+  a: "Upgrading is a seamless process of swapping out the community Docker images for enterprise-licensed images in your Helm configuration. Contact our sales team and we will provide you with the enterprise registry credentials."

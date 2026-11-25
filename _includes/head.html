@@ -24,6 +24,11 @@
       {% endfor %}
     {% endif %}
 
+    {%- comment -%} Share card: an explicit page image, else img/og/<slug>.png (see scripts/generate-og.py), else the site default. {%- endcomment -%}
+    {%- if page.url == '/' -%}{%- assign l64_slug = 'home' -%}{%- else -%}{%- assign l64_slug = page.url | split: '/' | join: '-' | remove_first: '-' -%}{%- endif -%}
+    {%- if page.image.url -%}{%- assign l64_og_image = page.image.url | prepend: site.baseurl | prepend: site.url -%}
+    {%- elsif site.data.og contains l64_slug -%}{%- capture l64_og_image -%}{{ site.url }}{{ site.baseurl }}/img/og/{{ l64_slug }}.png{%- endcapture -%}{%- assign l64_og_card = true -%}
+    {%- else -%}{%- assign l64_og_image = '/img/labs64io-twittercard.png' | prepend: site.baseurl | prepend: site.url -%}{%- endif -%}
     {% include cookieconsent.html %}
     {% include analytics.html %}
     {% include opengraph.html %}

@@ -1,82 +1,133 @@
-{% if page.layout == 'post' %}
+{%- comment -%}
+Structured data (JSON-LD). Every page gets a WebPage; the home page also gets Organization and WebSite;
+non-home pages get a BreadcrumbList; shipped module pages get a SoftwareApplication built from
+_data/modules.yml (never a hand-written status or version); /pricing/ gets a FAQPage from _data/faq-pricing.yml;
+posts keep their Article.
+{%- endcomment -%}
+{%- assign l64_url = page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url -%}
+{%- assign l64_org = site.url | append: '/#organization' -%}
+{%- assign l64_mod = nil -%}
+{%- if page.url contains '/products/' -%}{%- assign l64_mod = site.data.modules | where: "url", page.url | first -%}{%- endif -%}
+{%- if page.layout == 'post' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": {{ page.title | jsonify }},
   "description": {{ page.description | default: site.description | jsonify }},
-  "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+  "url": {{ l64_url | jsonify }},
   "datePublished": "{{ page.date | date_to_xmlschema }}",
   "dateModified": "{{ page.date | date_to_xmlschema }}",
-  {% if page.image.url %}"image": "{{ page.image.url | prepend: site.baseurl | prepend: site.url }}",{% endif %}
+  "image": {{ l64_og_image | jsonify }},
   "author": {
     "@type": "{% if page.author.url %}Organization{% else %}Person{% endif %}",
-    "name": "{% if page.author.name %}{{ page.author.name }}{% else %}{{ site.title }}{% endif %}"{% if page.author.url %},
-    "url": "{{ page.author.url }}"{% endif %}
+    "name": {{ page.author.name | default: site.title | jsonify }}{% if page.author.url %},
+    "url": {{ page.author.url | jsonify }}{% endif %}
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ site.title }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ '/img/labs64-avatar-30x30.png' | prepend: site.baseurl | prepend: site.url }}"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
-  }
+  "publisher": { "@id": {{ l64_org | jsonify }} },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ l64_url | jsonify }} }
 }
 </script>
-{% elsif page.url == '/' or page.url == '/index.html' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "{{ site.title }}",
-  "url": "{{ '/' | prepend: site.baseurl | prepend: site.url }}",
-  "logo": "{{ '/img/labs64-logo.png' | prepend: site.baseurl | prepend: site.url }}",
-  "description": "{{ site.description }}"
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ site.url | append: '/' | jsonify }} },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": {{ site.url | append: '/blog/' | jsonify }} },
+    { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": {{ l64_url | jsonify }} }
+  ]
 }
 </script>
-{% elsif page.url contains '/products/' %}
+{%- elsif page.url == '/' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "{{ page.title }}",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "description": "{{ page.description }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": "{{ site.title }}"
-  }
-}
-</script>
-{% elsif page.url == '/pricing/' %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Can I mix Open Source and Enterprise modules?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can start with the Community edition and upgrade specific modules to Enterprise licenses as your compliance or support requirements evolve."
-      }
+      "@type": "Organization",
+      "@id": {{ l64_org | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "legalName": {{ site.copyright | jsonify }},
+      "url": {{ site.url | append: '/' | jsonify }},
+      "logo": {{ '/img/labs64-logo.png' | prepend: site.baseurl | prepend: site.url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "email": {{ site.email | jsonify }},
+      "sameAs": ["https://github.com/Labs64", "https://github.com/Labs64/labs64.io-workspace"]
     },
     {
-      "@type": "Question",
-      "name": "What is the \"Managed SaaS option\"?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment."
-      }
+      "@type": "WebSite",
+      "@id": {{ site.url | append: '/#website' | jsonify }},
+      "url": {{ site.url | append: '/' | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "publisher": { "@id": {{ l64_org | jsonify }} },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": {{ l64_url | jsonify }},
+      "url": {{ l64_url | jsonify }},
+      "name": {{ page.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": { "@id": {{ site.url | append: '/#website' | jsonify }} },
+      "primaryImageOfPage": {{ l64_og_image | jsonify }}
     }
   ]
 }
 </script>
-{% endif %}
+{%- else -%}
+{%- comment -%} Breadcrumb trail: Home > section > page {%- endcomment -%}
+{%- if page.url contains '/products/' and page.url != '/products/' -%}{%- assign l64_sec_name = 'Modules' -%}{%- assign l64_sec_url = '/products/' -%}
+{%- elsif page.url contains '/platform/' -%}{%- assign l64_sec_name = 'Architecture' -%}{%- assign l64_sec_url = '/architecture/' -%}
+{%- else -%}{%- assign l64_sec_name = nil -%}{%- endif -%}
+{%- assign l64_pname = l64_mod.name | default: page.title -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": {{ l64_url | jsonify }},
+      "url": {{ l64_url | jsonify }},
+      "name": {{ page.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": { "@id": {{ site.url | append: '/#website' | jsonify }} },
+      "primaryImageOfPage": {{ l64_og_image | jsonify }}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ site.url | append: '/' | jsonify }} }{% if l64_sec_name %},
+        { "@type": "ListItem", "position": 2, "name": {{ l64_sec_name | jsonify }}, "item": {{ l64_sec_url | prepend: site.baseurl | prepend: site.url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ l64_pname | jsonify }}, "item": {{ l64_url | jsonify }} }{% else %},
+        { "@type": "ListItem", "position": 2, "name": {{ l64_pname | jsonify }}, "item": {{ l64_url | jsonify }} }{% endif %}
+      ]
+    }{% if l64_mod and l64_mod.group == 'available' %},
+    {
+      "@type": "SoftwareApplication",
+      "name": {{ l64_mod.name | jsonify }},
+      "description": {{ l64_mod.tagline | jsonify }},
+      "url": {{ l64_url | jsonify }},
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Business workflow microservice",
+      "operatingSystem": "Kubernetes",
+      {% if l64_mod.version %}"softwareVersion": {{ l64_mod.version | jsonify }},{% endif %}
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "isAccessibleForFree": true,
+      {% if l64_mod.repo != "" %}"sameAs": {{ l64_mod.repo | jsonify }},{% endif %}
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "publisher": { "@id": {{ l64_org | jsonify }} }
+    }{% endif %}{% if page.url == '/pricing/' %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for f in site.data["faq-pricing"] %}
+        { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
+{%- endif -%}
