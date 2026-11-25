@@ -10,7 +10,7 @@
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="author" content="{{ site.copyright }}">
     <meta name="copyright" content="{{ site.copyright }}">
-    <meta name="robots" content="INDEX, FOLLOW">
+    <meta name="robots" content="{% if page.noindex %}NOINDEX, NOFOLLOW{% else %}INDEX, FOLLOW{% endif %}">
 
     <!-- Prefetch resources -->
     {% if site.dns_prefetch %}
@@ -34,11 +34,14 @@
     <!-- Custom Fonts, CSS -->
     <link rel="stylesheet" href="{{ '/css/roboto.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/font-awesome.4.5.0.min.css' | relative_url }}">
+    {% if page.use_slick %}
     <link rel="stylesheet" href="{{ '/css/slick.1.8.1.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/slick-theme.1.8.1.css' | relative_url }}">
+    {% endif %}
     <link rel="stylesheet" href="{{ '/css/bootstrap.min.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/css/labs64.css' | relative_url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
     <link rel="stylesheet" href="{{ '/css/labs64-style.css' | relative_url }}#{{ site.time | date:'%Y%m%d%H%M' }}">
+    {% if page.use_modern %}<link rel="stylesheet" href="{{ '/css/labs64-modern.css' | relative_url }}?v={{ site.time | date:'%Y%m%d%H%M' }}">{% endif %}
     <link rel="shortcut icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | relative_url }}">
     <link rel="apple-touch-icon" type="image/x-icon" href="{{ '/img/labs64-avatar-18x18.png' | relative_url }}">
 

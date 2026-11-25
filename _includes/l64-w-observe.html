@@ -1,0 +1,20 @@
+{%- comment -%} Zig-zag widget: traces, metrics, logs. All values are synthetic. {%- endcomment -%}
+<div class="L64M"><div class="L64M_wd" data-l64-observe>
+  <div class="L64M_wd_hd"><b>See every hop</b><span class="L64M_badge">synthetic data</span></div>
+  <div class="L64M_sub" role="tablist" aria-label="Signal">
+    <button type="button" role="tab" aria-selected="true" data-k="traces">Traces · Tempo</button>
+    <button type="button" role="tab" aria-selected="false" data-k="metrics">Metrics · Prometheus</button>
+    <button type="button" role="tab" aria-selected="false" data-k="logs">Logs · Loki</button>
+  </div>
+  <div class="L64M_obs" data-view="traces">
+    <div class="L64M_sp"><span>auth-gateway</span><div><i style="--l:0%;--w:14%"></i></div></div>
+    <div class="L64M_sp"><span>checkout</span><div><i style="--l:14%;--w:72%"></i></div></div>
+    <div class="L64M_sp"><span>payment-gateway</span><div><i style="--l:30%;--w:40%"></i></div></div>
+    <div class="L64M_sp"><span>auditflow</span><div><i class="e" style="--l:72%;--w:24%"></i></div></div>
+  </div>
+  <div class="L64M_obs" data-view="metrics" hidden>
+    <svg viewBox="0 0 320 120" role="img" aria-label="Synthetic request rate chart"><path class="area" d="M0 120V84L30 78 60 90 90 64 120 70 150 44 180 52 210 30 240 40 270 22 300 34 320 26V120z"/><path class="line" d="M0 84L30 78 60 90 90 64 120 70 150 44 180 52 210 30 240 40 270 22 300 34 320 26"/></svg>
+    <div class="L64M_obs_cap"><span>http_server_requests</span><b>sample</b></div>
+  </div>
+  <div class="L64M_obs L64M_obs--logs" data-view="logs" hidden><div data-logs></div></div>
+</div></div>

@@ -1,0 +1,10 @@
+{%- comment -%}
+Small interactive widget, data-driven from _data/widgets.yml.
+Usage: {% include l64-wx.html id="api-design" %}
+{%- endcomment -%}
+{%- assign l64_cfg = site.data.widgets[include.id] -%}
+{%- assign l64_avail = site.data.modules | where: "group", "available" | map: "name" -%}
+<div class="L64M"><div class="L64M_wd L64M_wx" data-l64-wx="{{ l64_cfg.type }}" data-cfg="{{ l64_cfg | jsonify | escape }}" data-mods="{{ l64_avail | jsonify | escape }}">
+  <div class="L64M_wd_hd"><b>{{ l64_cfg.title }}</b><span class="L64M_badge">{{ l64_cfg.badge }}</span></div>
+  <div class="L64M_wx_body"></div>
+</div></div>

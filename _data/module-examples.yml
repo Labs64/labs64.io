@@ -1,0 +1,127 @@
+# Illustrative request/response examples for the home page module explorer.
+# Endpoints, fields and example values are taken from each module's OpenAPI contract
+# (the spec in the module repository). Values are samples, bodies are abridged.
+# Module names, taglines and status are NOT stored here: they live in modules.yml.
+#
+# kind: example  -> request + response
+# kind: contract -> one block (an OpenAPI snippet)
+# kind: none     -> text only (no public API yet)
+
+auditflow:
+  kind: example
+  summary: "Publish an audit event"
+  method: POST
+  path: /api/v1/audit/publish
+  request: |-
+    {
+      "eventType": "order.shipped",
+      "sourceSystem": "warehouse/dispatch",
+      "tenantId": "V12345678",
+      "eventTime": "2025-11-30T10:14:55Z",
+      "extra": {
+        "orderRef": "ORD-4711",
+        "carrier": "DHL"
+      }
+    }
+  status: "200 OK"
+  response: |-
+    X-Audit-Event-Id: fedcba98-7654-3210-fedc-ba9876543210
+    X-Audit-Received-At: 2025-11-30T10:15:30Z
+  note: "Only eventType and sourceSystem are required. Supply a stable eventId and a retry is processed at most once."
+
+checkout:
+  kind: example
+  summary: "Create a purchase order"
+  method: POST
+  path: /api/v1/purchase-orders
+  request: |-
+    {
+      "currency": "EUR",
+      "items": [
+        { "name": "Team plan", "price": 4900, "quantity": 1 }
+      ]
+    }
+  status: "201 Created"
+  response: |-
+    {
+      "id": "7c1e2d9a-...",
+      "currency": "EUR",
+      "items": [
+        { "name": "Team plan", "price": 4900, "quantity": 1 }
+      ],
+      "netAmount": 4900
+    }
+  note: "Prices are in minor units. Totals are computed server-side. Handing a checkout transaction to the Payment Gateway is not built yet."
+
+payment-gateway:
+  kind: example
+  summary: "Pay a payment"
+  method: POST
+  path: /api/v1/payments/{paymentId}/pay
+  request: |-
+    {
+      "checkout": {
+        "returnUrl": "https://checkout.example.com/payment/return",
+        "cancelUrl": "https://checkout.example.com/payment/cancel"
+      }
+    }
+  status: "200 OK"
+  response: |-
+    {
+      "payment": { "...": "..." },
+      "paymentTransaction": { "...": "..." },
+      "nextAction": { "type": "REDIRECT" }
+    }
+  note: "Create the payment first with POST /payments. The provider is chosen by paymentProviderId."
+
+reporting:
+  kind: example
+  summary: "Query one metric"
+  method: POST
+  path: /metrics/query
+  request: |-
+    {
+      "metric": "calls",
+      "from": "2020-01-01T00:00:00Z",
+      "to": "2100-01-01T00:00:00Z",
+      "interval": "none"
+    }
+  status: "200 OK"
+  response: |-
+    {
+      "metric": "calls",
+      "points": [
+        { "value": 128 }
+      ]
+    }
+  note: "Reports run over stored events and each caller sees only their own tenant."
+
+auth-gateway:
+  kind: contract
+  summary: "Declare access in the OpenAPI contract"
+  path: "openapi.yaml, per operation"
+  request: |-
+    /audit/publish:
+      post:
+        operationId: publishEvent
+        x-labs64:
+          auth:
+            tenant: true
+            scopes:
+              - audit-event:write
+  note: "The gateway reads these rules and checks identity and policy before the request reaches the module."
+
+customer-portal:
+  kind: none
+  summary: "A front-end shell today"
+  note: "A Vue 3 single-page app served as static files. A Java backend is planned but not built yet."
+
+invoicing:
+  kind: none
+  summary: "Planned"
+  note: "Not built yet."
+
+ai-mcp-gateway:
+  kind: none
+  summary: "Being explored"
+  note: "Not built yet."

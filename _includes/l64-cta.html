@@ -1,0 +1,15 @@
+{%- comment -%}
+Closing call-to-action band. Usage:
+{% include l64-cta.html title="Ready to ...?" text="One line." label="Get started" href="/docs/getting-started/" label2="Optional" href2="https://..." %}
+Hrefs starting with "/" get relative_url. Labels may contain a Font Awesome icon.
+{%- endcomment -%}
+{%- if include.href contains '://' or include.href contains 'mailto:' -%}{%- assign l64_a1 = include.href -%}{%- else -%}{%- assign l64_a1 = include.href | relative_url -%}{%- endif -%}
+{%- if include.href2 contains '://' or include.href2 contains 'mailto:' -%}{%- assign l64_a2 = include.href2 -%}{%- else -%}{%- assign l64_a2 = include.href2 | relative_url -%}{%- endif -%}
+<div class="L64M"><section class="L64M_cta"><div class="in">
+  <h2>{{ include.title }}</h2>
+  <p>{{ include.text }}</p>
+  <div class="acts">
+    <a class="L64M_btn L64M_btn--solid L64M_btn--lg" href="{{ l64_a1 }}">{{ include.label }}</a>
+    {%- if include.href2 %}<a class="L64M_btn L64M_btn--lg" href="{{ l64_a2 }}">{{ include.label2 }}</a>{% endif %}
+  </div>
+</div></section></div>

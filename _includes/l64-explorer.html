@@ -1,0 +1,50 @@
+{%- comment -%}
+Clickable module grid. Selecting a module shows a real request and response from its OpenAPI contract.
+Names, taglines, urls and status come from _data/modules.yml; examples from _data/module-examples.yml.
+{%- endcomment -%}
+{%- assign l64_ex = site.data["module-examples"] -%}
+<div class="L64M_ex" data-l64-explorer>
+  <div class="L64M_ex_grid" role="tablist" aria-label="Modules">
+    {%- for m in site.data.modules -%}
+    <button type="button" role="tab" class="L64M_tile{% if m.group == 'planned' %} is-planned{% endif %}" id="ex-tab-{{ m.id }}" aria-controls="ex-panel-{{ m.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-id="{{ m.id }}">
+      <span class="L64M_tile_ic">{% include l64-icon.html id=m.id %}</span>
+      <span class="L64M_tile_name">{{ m.name }}</span>
+      <span class="L64M_tile_tag">{{ m.tagline }}</span>
+      <span class="L64M_tile_st">{% include module-status.html id=m.id %}</span>
+    </button>
+    {%- endfor -%}
+  </div>
+  <div class="L64M_ex_panels">
+    {%- for m in site.data.modules -%}
+    {%- assign ex = l64_ex[m.id] -%}
+    <div class="L64M_pn" id="ex-panel-{{ m.id }}" role="tabpanel" aria-labelledby="ex-tab-{{ m.id }}"{% unless forloop.first %} hidden{% endunless %}>
+      <div class="L64M_pn_hd">
+        <div><h3>{{ m.name }}</h3><p>{{ ex.summary }}</p></div>
+        {% include module-status.html id=m.id %}
+      </div>
+      {%- if ex.kind == 'example' -%}
+      <div class="L64M_req"><span class="L64M_verb">{{ ex.method }}</span><code>{{ ex.path }}</code></div>
+      <div class="L64M_sub" role="tablist" aria-label="Request or response">
+        <button type="button" role="tab" aria-selected="true" data-view="req">Request</button>
+        <button type="button" role="tab" aria-selected="false" data-view="res">Response</button>
+        <span class="L64M_badge" data-badge>not sent</span>
+      </div>
+      <pre class="L64M_code" data-hl data-view-pane="req"><code>{{ ex.request | escape }}</code></pre>
+      <pre class="L64M_code" data-hl data-view-pane="res" hidden><code>{{ ex.response | escape }}</code></pre>
+      <div class="L64M_pn_ft">
+        <button type="button" class="L64M_btn L64M_btn--solid" data-send data-status="{{ ex.status }}">Send request</button>
+        <p>{{ ex.note }}</p>
+      </div>
+      {%- elsif ex.kind == 'contract' -%}
+      <div class="L64M_req"><span class="L64M_verb L64M_verb--doc">YAML</span><code>{{ ex.path }}</code></div>
+      <pre class="L64M_code" data-hl><code>{{ ex.request | escape }}</code></pre>
+      <div class="L64M_pn_ft"><p>{{ ex.note }}</p></div>
+      {%- else -%}
+      <div class="L64M_pn_none"><p>{{ ex.note }}</p></div>
+      {%- endif -%}
+      <div class="L64M_pn_links"><a href="{{ m.url | relative_url }}">About {{ m.name }} →</a>{% if m.repo != "" %}<a href="{{ m.repo }}">Repository</a>{% endif %}</div>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+<p class="L64M_cap">Endpoints and fields come from each module's OpenAPI contract. Values are samples, bodies are abridged, and "Send request" is a simulation.</p>

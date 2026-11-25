@@ -1,0 +1,30 @@
+{%- comment -%}
+Simulated AuditFlow publish: send an event, see the response, the stored (redacted) event and delivery to sinks.
+Endpoint and response headers follow openapi-audit-v1.yaml. Everything else is a simulation.
+{%- endcomment -%}
+<div class="L64M_demo" data-l64-demo>
+  <div class="L64M_dp">
+    <div class="L64M_sub" role="tablist" aria-label="Request format">
+      <button type="button" role="tab" aria-selected="true" data-lang="curl">cURL</button>
+      <button type="button" role="tab" aria-selected="false" data-lang="json">JSON body</button>
+      <span class="L64M_badge">sample request</span>
+    </div>
+    <pre class="L64M_code L64M_code--tall"><code data-code></code></pre>
+    <div class="L64M_send">
+      <label><input type="checkbox" data-fail> Make ELK fail</label>
+      <button class="L64M_btn L64M_btn--solid" data-go type="button">Send event</button>
+    </div>
+  </div>
+  <div class="L64M_dp L64M_dp--res" aria-live="polite">
+    <div class="L64M_blk"><div class="L64M_bh"><b>Response</b><span class="L64M_badge" data-rb>waiting</span></div><pre class="L64M_dd" data-resp><span class="idle">Send an event to see the response.</span></pre></div>
+    <div class="L64M_blk"><div class="L64M_bh"><b>Stored event</b><span class="L64M_badge" data-sb>none yet</span></div><pre class="L64M_dd" data-stored><span class="idle">Sensitive fields are redacted before delivery.</span></pre></div>
+    <div class="L64M_blk"><div class="L64M_bh"><b>Delivery</b></div>
+      <div class="L64M_dl">
+        <div class="L64M_sink" data-sink="s3"><span class="ic">S3</span><div><b>S3</b><small>Sink of record</small></div><span class="stt">idle</span></div>
+        <div class="L64M_sink" data-sink="dd"><span class="ic">DD</span><div><b>Datadog</b><small>Logs and events</small></div><span class="stt">idle</span></div>
+        <div class="L64M_sink" data-sink="elk"><span class="ic">EL</span><div><b>ELK</b><small>Search and analysis</small></div><span class="stt">idle</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="L64M_cap">The endpoint and response headers follow the AuditFlow OpenAPI contract. Event values, redaction and sink timings are a simulation.</p>

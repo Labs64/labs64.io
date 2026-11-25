@@ -1,0 +1,30 @@
+{%- comment -%}
+"Follow a request": click a stop or send a request through the platform and watch a trace build up.
+Module names come from modules.yml. Timings are synthetic.
+{%- endcomment -%}
+{%- assign l64_m = site.data.modules -%}
+<div class="L64M_path" data-l64-path>
+  <ol class="L64M_path_nodes" style="--n:5">
+    <li><button type="button" data-step="0" aria-pressed="true"><span class="ic"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="8" rx="1.5"/><path d="M5 14h6M8 11v3"/></svg></span><span class="nm">Your app</span></button></li>
+    <li><button type="button" data-step="1" aria-pressed="false"><span class="ic">{% include l64-icon.html id="auth-gateway" %}</span><span class="nm">{{ l64_m | where: "id", "auth-gateway" | map: "name" | first }}</span></button></li>
+    <li><button type="button" data-step="2" aria-pressed="false"><span class="ic">{% include l64-icon.html id="payment-gateway" %}</span><span class="nm">{{ l64_m | where: "id", "payment-gateway" | map: "name" | first }}</span></button></li>
+    <li><button type="button" data-step="3" aria-pressed="false"><span class="ic">{% include l64-icon.html id="auditflow" %}</span><span class="nm">{{ l64_m | where: "id", "auditflow" | map: "name" | first }}</span></button></li>
+    <li class="later"><button type="button" data-step="4" aria-pressed="false"><span class="ic">{% include l64-icon.html id="reporting" %}</span><span class="nm">{{ l64_m | where: "id", "reporting" | map: "name" | first }}</span><em>later</em></button></li>
+  </ol>
+  <div class="L64M_path_track" aria-hidden="true"><i data-dot></i></div>
+  <div class="L64M_path_body">
+    <div class="L64M_path_info" aria-live="polite">
+      <h3 data-title>Your app</h3>
+      <p data-text>Calls a module API with a bearer token. Every call goes through one authenticated edge.</p>
+      <code data-call>POST /api/v1/payments</code>
+      <a class="L64M_more" data-link href="{{ '/architecture/' | relative_url }}">Read the architecture →</a>
+    </div>
+    <div class="L64M_trace" role="img" aria-label="Synthetic trace of the request">
+      <div class="L64M_bar"><span>POST /payments</span><span class="r">synthetic trace</span></div>
+      <div class="L64M_sp" data-row="1"><span>auth-gateway</span><div><i style="--l:0%;--w:12%"></i></div></div>
+      <div class="L64M_sp" data-row="2"><span>payment-gateway</span><div><i style="--l:14%;--w:56%"></i></div></div>
+      <div class="L64M_sp" data-row="3"><span>auditflow</span><div><i class="e" style="--l:62%;--w:32%"></i></div></div>
+    </div>
+  </div>
+  <div class="L64M_path_ctl"><button type="button" class="L64M_btn L64M_btn--solid" data-run>Send a request</button><span class="L64M_cap">Click any stop to read what it does.</span></div>
+</div>

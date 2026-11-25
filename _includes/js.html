@@ -11,6 +11,9 @@
 {% if page.use_packery %}
 <script src="{{ '/js/packery.pkgd.1.4.3.min.js' | relative_url }}"></script>
 {% endif %}
+{% if page.use_modern %}
+<script src="{{ '/js/labs64-modern.js' | relative_url }}?v={{ site.time | date:'%Y%m%d%H%M' }}" defer></script>
+{% endif %}
 {% if site.addthis_pub_id %}
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ site.addthis_pub_id }}" async="async"></script>
 {% endif %}

@@ -1,0 +1,61 @@
+{%- comment -%}
+Static, styled illustration for a platform page. No script, no animation.
+Data comes from _data/widgets.yml. Usage: {% include l64-fig.html id="api-design" %}
+{%- endcomment -%}
+{%- assign c = site.data.widgets[include.id] -%}
+<div class="L64M"><figure class="L64M_fig2">
+<figcaption class="L64M_wd_hd"><b>{{ c.title }}</b><span class="L64M_badge">{{ c.badge }}</span></figcaption>
+{%- case c.type -%}
+{%- when 'steps' -%}
+<ol class="L64M_tl2{% if c.ghost %} is-ghost{% endif %}">
+{%- for st in c.steps -%}
+<li><span class="n">{{ forloop.index }}</span><div><b>{{ st.n }}</b>{% if st.s %}<small>{{ st.s }}</small>{% endif %}<p>{{ st.d }}</p></div></li>
+{%- endfor -%}
+</ol>
+{%- when 'tabs' -%}
+{%- for t in c.tabs -%}
+<div class="L64M_grp"><h4>{{ t.n }}</h4>
+{%- for r in t.rows -%}<div class="rw"><b>{{ r.h }}</b><span>{{ r.t }}</span></div>{%- endfor -%}
+{%- if t.code -%}<pre class="L64M_code L64M_code--sm"><code>{{ t.code | escape }}</code></pre>{%- endif -%}
+</div>
+{%- endfor -%}
+{%- when 'try' -%}
+<ol class="L64M_chain">{%- for n in c.nodes -%}<li>{{ n }}</li>{%- endfor -%}</ol>
+<div class="L64M_scen">
+{%- for o in c.options -%}
+{%- assign l64_bad = false -%}{%- assign l64_dup = false -%}
+{%- for s in o.states -%}{%- if s == 'stop' -%}{%- assign l64_bad = true -%}{%- elsif s == 'dup' -%}{%- assign l64_dup = true -%}{%- endif -%}{%- endfor -%}
+<div class="s{% if l64_bad %} bad{% elsif l64_dup %} dup{% else %} ok{% endif %}"><b>{{ o.n }}</b><span>{{ o.r | escape | newline_to_br }}</span></div>
+{%- endfor -%}
+</div>
+{%- when 'pods' -%}
+{%- if c.mode == 'heal' -%}
+<div class="L64M_pods L64M_pods--x"><div class="L64M_pod run"><i></i>pod-1<small>Running</small></div><div class="L64M_pod down"><i></i>pod-2<small>Crashed</small></div><div class="L64M_pod run"><i></i>pod-3<small>Running</small></div><div class="L64M_pod run"><i></i>pod-4<small>Running</small></div></div>
+<p class="L64M_figcap">A failed pod is restarted while traffic stays on the healthy ones.</p>
+{%- else -%}
+<div class="L64M_ladder">
+<div><span>Low load</span><div class="L64M_pods L64M_pods--x"><div class="L64M_pod run"><i></i>1 pod</div></div></div>
+<div><span>Busy</span><div class="L64M_pods L64M_pods--x"><div class="L64M_pod run"><i></i>1</div><div class="L64M_pod run"><i></i>2</div><div class="L64M_pod run"><i></i>3</div></div></div>
+<div><span>Spike</span><div class="L64M_pods L64M_pods--x"><div class="L64M_pod run"><i></i>1</div><div class="L64M_pod run"><i></i>2</div><div class="L64M_pod run"><i></i>3</div><div class="L64M_pod run"><i></i>4</div><div class="L64M_pod run"><i></i>5</div></div></div>
+</div>
+<p class="L64M_figcap">The autoscaler adds instances as load rises and removes them when it falls.</p>
+{%- endif -%}
+{%- when 'token' -%}
+<div class="L64M_tok2"><span class="a">eyJhbGciOiJSUzI1NiJ9</span>.<span class="b">eyJzdWIiOiJ1c2VyLTdmM2EifQ</span>.<span class="c">c2lnbmF0dXJl</span></div>
+<pre class="L64M_code L64M_code--sm"><code>header:  { "alg": "RS256" }
+payload: { "sub": "user-7f3a",
+           "scope": "purchase-order:write",
+           "exp": "short-lived" }</code></pre>
+<p class="L64M_figcap">Header, payload and signature. Any module can verify it without a session lookup.</p>
+{%- when 'otel' -%}
+<div class="L64M_two2">
+<div><h4>Agent on</h4><div class="L64M_obs L64M_obs--x"><div class="L64M_sp is-on"><span>auth-gateway</span><div><i style="--l:0%;--w:18%"></i></div></div><div class="L64M_sp is-on"><span>checkout</span><div><i style="--l:18%;--w:70%"></i></div></div><div class="L64M_sp is-on"><span>auditflow</span><div><i class="e" style="--l:70%;--w:26%"></i></div></div></div></div>
+<div><h4>Agent off</h4><div class="L64M_obs_empty">No spans. Nothing is traced.</div></div>
+</div>
+<p class="L64M_figcap">The same image runs either way. Only the deployment configuration changes.</p>
+{%- when 'observe' -%}
+<div class="L64M_grp"><h4>Traces · Tempo</h4><div class="L64M_obs L64M_obs--x"><div class="L64M_sp is-on"><span>checkout</span><div><i style="--l:10%;--w:70%"></i></div></div><div class="L64M_sp is-on"><span>auditflow</span><div><i class="e" style="--l:68%;--w:26%"></i></div></div></div></div>
+<div class="L64M_grp"><h4>Metrics · Prometheus</h4><div class="L64M_obs"><svg viewBox="0 0 320 90" role="img" aria-label="Synthetic request rate chart"><path class="area" d="M0 90V62L30 58 60 66 90 46 120 50 150 32 180 38 210 22 240 30 270 16 300 26 320 20V90z"/><path class="line" d="M0 62L30 58 60 66 90 46 120 50 150 32 180 38 210 22 240 30 270 16 300 26 320 20"/></svg></div></div>
+<div class="L64M_grp"><h4>Logs · Loki</h4><div class="L64M_obs--logs L64M_obs--logs-sm"><div><span class="tm">07:35:20</span> <span class="lv">INFO</span> checkout · order created</div><div><span class="tm">07:35:22</span> <span class="lv w">WARN</span> payment-gateway · provider slow, retrying</div><div><span class="tm">07:35:23</span> <span class="lv">INFO</span> auditflow · event accepted</div></div></div>
+{%- endcase -%}
+</figure></div>

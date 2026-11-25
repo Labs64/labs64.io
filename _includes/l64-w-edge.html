@@ -1,0 +1,21 @@
+{%- comment -%}
+Zig-zag widget: send a request through the edge. Flow follows the Architecture page
+(Traefik, Auth Gateway, Cerbos PDP, trusted headers, fail closed). Simulation only.
+{%- endcomment -%}
+<div class="L64M"><div class="L64M_wd" data-l64-edge>
+  <div class="L64M_wd_hd"><b>Checked before it reaches a module</b><span class="L64M_badge">simulation</span></div>
+  <div class="L64M_seg L64M_seg--wrap" role="radiogroup" aria-label="Request">
+    <button type="button" role="radio" aria-checked="true" data-k="ok">Valid token</button>
+    <button type="button" role="radio" aria-checked="false" data-k="none">No token</button>
+    <button type="button" role="radio" aria-checked="false" data-k="scope">Not allowed</button>
+    <button type="button" role="radio" aria-checked="false" data-k="route">Unknown route</button>
+  </div>
+  <ol class="L64M_gate">
+    <li data-g="0"><span class="dot"></span><span class="nm">Traefik</span><span class="sb">forwards to the Auth Gateway</span></li>
+    <li data-g="1"><span class="dot"></span><span class="nm">Auth Gateway</span><span class="sb">verifies the OIDC / JWT token</span></li>
+    <li data-g="2"><span class="dot"></span><span class="nm">Cerbos</span><span class="sb">decides: allow or deny</span></li>
+    <li data-g="3"><span class="dot"></span><span class="nm">Your module</span><span class="sb">receives the request</span></li>
+  </ol>
+  <pre class="L64M_dd L64M_edge_out" data-out aria-live="polite"><span class="idle">Press Send to run the request.</span></pre>
+  <div class="L64M_wd_ft"><button type="button" class="L64M_btn L64M_btn--solid" data-send>Send</button></div>
+</div></div>

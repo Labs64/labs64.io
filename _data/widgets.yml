@@ -1,0 +1,440 @@
+# Content for the small interactive widgets that replace the placeholder images on
+# product, platform and company pages. Rendered by _includes/l64-wx.html and js/labs64-modern.js.
+# Every widget states what it shows: "illustrative" means a sample or simulation.
+# Module names, status and urls are NOT stored here: they live in modules.yml.
+#
+# types: steps | tabs | try | pods | fanout | redact | token | otel | deploy
+
+# ---------- platform ----------
+api-design:
+  type: steps
+  title: "Design before code"
+  badge: "process"
+  steps:
+    - {n: "Write the contract", s: "OpenAPI YAML", d: "Teams design the interface in OpenAPI YAML first, before any implementation exists.", code: "paths:\n  /events:\n    post:\n      operationId: publishEvent"}
+    - {n: "Peer review", s: "pull request", d: "The contract is reviewed like code, so the interface is agreed before it is built."}
+    - {n: "Design consensus", s: "agree", d: "Teams settle the shape of the API together while changes are still cheap."}
+    - {n: "Security validation", s: "check", d: "Access rules and sensitive fields are checked against the contract."}
+    - {n: "Then build", s: "implement", d: "Only now does the implementation start, against a contract everyone agreed."}
+
+api-codegen:
+  type: steps
+  title: "From contract to code"
+  badge: "illustrative"
+  steps:
+    - {n: "Contract", s: "openapi-*.yaml", d: "Each module keeps its OpenAPI spec in its repository, for example openapi-audit-v1.yaml."}
+    - {n: "Generate", s: "at build time", d: "The build generates models and interfaces from the contract. No manual boilerplate."}
+    - {n: "Generated sources", s: "target/generated-sources", d: "Models and interfaces land in target/generated-sources, so they never drift from the spec."}
+    - {n: "Your code", s: "implements them", d: "You implement the generated interface and write only business logic."}
+
+rbac:
+  type: try
+  title: "Same module, different roles"
+  badge: "illustrative"
+  nodes: ["Auth Gateway", "Cerbos policy", "Module"]
+  options:
+    - {n: "Customer reads own order", states: [pass, pass, pass], r: "200 OK\npolicy: customers may read their own orders"}
+    - {n: "Customer refunds an order", states: [pass, stop, ""], r: "403 Forbidden\npolicy: refund requires the finance role"}
+    - {n: "Finance refunds an order", states: [pass, pass, pass], r: "200 OK\npolicy: finance may refund"}
+
+policy-review:
+  type: steps
+  title: "Permissions as code"
+  badge: "process"
+  steps:
+    - {n: "Write the policy", s: "Cerbos", d: "Access rules live in policy files next to the code, not inside each service."}
+    - {n: "Code review", s: "pull request", d: "A change to who may do what is reviewed like any other change."}
+    - {n: "Test", s: "automated", d: "Policies are tested, so a rule change cannot silently open access."}
+    - {n: "Audit", s: "history", d: "Every rule is versioned, so you can show who changed access and when."}
+
+sso:
+  type: steps
+  title: "Sign in once"
+  badge: "illustrative"
+  steps:
+    - {n: "Sign in", s: "Keycloak OIDC", d: "The user authenticates once through the federated identity provider."}
+    - {n: "Short-lived JWT", s: "one token", d: "The provider issues a short-lived JWT. No server-side session is kept."}
+    - {n: "Checkout", s: "same token", d: "The same token is accepted when calling Checkout."}
+    - {n: "Payment Gateway", s: "same token", d: "And when calling the Payment Gateway, with no second sign-in."}
+    - {n: "Tooling", s: "same token", d: "Ecosystem tooling uses the same identity too."}
+
+token:
+  type: token
+  title: "A short-lived, stateless token"
+  badge: "sample token"
+
+helm-std:
+  type: steps
+  title: "One deployment pattern"
+  badge: "illustrative"
+  steps:
+    - {n: "Shared Helm library", s: "one chart library", d: "Every module is deployed from the same chart library, so topology and security defaults are consistent."}
+    - {n: "Module chart", s: "per repository", d: "Each of the 10+ repositories publishes a chart that builds on the library."}
+    - {n: "Values overlay", s: "per environment", d: "Environment-specific settings live in values overlays, so the chart itself is never patched."}
+    - {n: "ArgoCD sync", s: "GitOps", d: "ArgoCD applies what Git says. The result is the same topology everywhere."}
+
+heal:
+  type: pods
+  mode: heal
+  title: "Kill a pod"
+  badge: "simulation"
+  note: "Click a pod to crash it. Kubernetes restarts it and keeps traffic on the healthy ones."
+
+hpa:
+  type: pods
+  mode: hpa
+  title: "Load goes up"
+  badge: "simulation"
+  note: "Drag the load. The Horizontal Pod Autoscaler adds or removes instances."
+
+db-per-service:
+  type: try
+  title: "Who may read which data"
+  badge: "illustrative"
+  nodes: ["Checkout", "Checkout DB", "Payment Gateway", "Payment DB"]
+  options:
+    - {n: "Checkout reads its own data", states: [pass, pass, "", ""], r: "allowed\neach module owns its database"}
+    - {n: "Checkout reads the Payment DB", states: [pass, "", "", stop], r: "blocked\nno module connects to another module's schema"}
+    - {n: "Checkout asks Payment Gateway", states: [pass, "", pass, pass], r: "allowed\nit asks across the gateway as a REST call"}
+
+otel:
+  type: otel
+  title: "Instrumentation is configuration"
+  badge: "synthetic data"
+
+poly-java:
+  type: tabs
+  title: "Java and Spring Boot"
+  badge: "illustrative"
+  tabs:
+    - n: "Payment Gateway"
+      rows:
+        - {h: "Spring Boot", t: "High throughput and reliability for payments."}
+        - {h: "Provider SPI", t: "A new payment provider is a separate Maven module."}
+      code: "public class MyProvider implements PaymentProvider {\n    // ...\n}"
+    - n: "AuditFlow API"
+      rows:
+        - {h: "Spring Boot", t: "The high-throughput API that records domain events."}
+        - {h: "REST in, broker out", t: "One call in, buffered on RabbitMQ or Amazon SQS."}
+
+poly-python:
+  type: tabs
+  title: "Python for flexible integrations"
+  badge: "illustrative"
+  tabs:
+    - n: "Sink plugin"
+      rows:
+        - {h: "One file", t: "A sink is a Python file in sinks/, mounted without rebuilding the image."}
+      code: "# sinks/my_sink.py\ndef process(event_data: dict, properties: dict) -> dict:\n    ..."
+    - n: "Transformer plugin"
+      rows:
+        - {h: "One file", t: "A transformer is a Python file in transformers/."}
+      code: "# transformers/my_transformer.py\ndef transform(input_data: dict) -> dict:\n    ..."
+
+# ---------- products ----------
+redact:
+  type: redact
+  title: "Masked before anything is stored"
+  badge: "simulation"
+
+sinks:
+  type: fanout
+  title: "Route to the sinks you use"
+  badge: "simulation"
+  source: "Event"
+  targets:
+    - {n: "S3", s: "sink of record", on: true}
+    - {n: "Datadog", s: "logs and events", on: true}
+    - {n: "ELK", s: "search and analysis", on: true}
+  add: {n: "Your sink", s: "a Python plugin"}
+  addLabel: "Add your own sink"
+  note: "Switch sinks on and off. Sinks are pluggable."
+
+af-how:
+  type: steps
+  title: "How an event travels"
+  badge: "illustrative"
+  steps:
+    - {n: "Your service", s: "records a domain event", d: "Your microservice calls the AuditFlow API with a single REST call."}
+    - {n: "auditflow-api", s: "high-throughput", d: "Accepts the event and answers once the message broker has stored it."}
+    - {n: "Message broker", s: "RabbitMQ or SQS", d: "A configuration choice. Events wait here until the pipeline picks them up."}
+    - {n: "auditflow-sink", s: "routing layer", d: "Routes the event through the tenant's pipeline and forwards it securely."}
+    - {n: "Your sink of record", s: "S3, Datadog, ELK", d: "Long-term storage or the SIEM platform of your choice."}
+
+gw-contract:
+  type: tabs
+  title: "What the gateway reads and sets"
+  badge: "illustrative"
+  tabs:
+    - n: "Rule in the contract"
+      rows:
+        - {h: "Declared per operation", t: "Each operation says whether it is tenant-scoped and which scopes it needs."}
+      code: "x-labs64:\n  auth:\n    tenant: true\n    scopes:\n      - audit-event:write"
+    - n: "Headers it sets"
+      rows:
+        - {h: "Trusted headers", t: "On success the gateway sets the same four headers for every module."}
+      code: "X-Auth-User\nX-Auth-Scopes\nX-Auth-Tenant\nX-Request-ID"
+
+gw-simplify:
+  type: tabs
+  title: "What each service has to do"
+  badge: "illustrative"
+  tabs:
+    - n: "Without a gateway"
+      rows:
+        - {h: "Validate tokens", t: "In every service", tag: "per service"}
+        - {h: "Enforce policy", t: "In every service", tag: "per service"}
+        - {h: "Business logic", t: "The part you wanted to write", tag: "yours"}
+    - n: "Behind the gateway"
+      rows:
+        - {h: "Validate tokens", t: "Done once at the edge", tag: "gateway", off: true}
+        - {h: "Enforce policy", t: "Done once at the edge", tag: "gateway", off: true}
+        - {h: "Business logic", t: "All that is left", tag: "yours"}
+
+co-orders:
+  type: steps
+  title: "From order to transaction"
+  badge: "illustrative"
+  steps:
+    - {n: "Purchase order", s: "items, currency, tax", d: "Checkout owns the order: items, prices, quantities, currency and tax validation."}
+    - {n: "Totals", s: "calculated", d: "Totals are calculated by Checkout, not trusted from the client."}
+    - {n: "Consents", s: "required ones", d: "Required consents must be accepted before checkout proceeds."}
+    - {n: "Transaction", s: "PENDING", d: "Initiating payment creates a Checkout Transaction, stored in Checkout's own PostgreSQL database."}
+    - {n: "Outcome", s: "COMPLETED, FAILED or CANCELED", d: "The status model has these end states. Moving a transaction to them depends on the Payment Gateway hand-off, which is not built yet."}
+
+co-eco:
+  type: steps
+  title: "Checkout and its neighbours"
+  badge: "status"
+  steps:
+    - {n: "Checkout", s: "works today", d: "Orders, customers and checkout transactions over REST, with validation, consents and tenant isolation."}
+    - {n: "Auth Gateway", s: "works today", d: "Identity and scopes come from the gateway's trusted headers."}
+    - {n: "Payment Gateway", s: "not yet", d: "Handing the transaction to the Payment Gateway is not built yet, so there is no redirect to a provider."}
+    - {n: "AuditFlow", s: "not yet", d: "Publishing order and checkout events to AuditFlow is not built yet."}
+
+cp-stack:
+  type: tabs
+  title: "The portal's stack"
+  badge: "from the repository"
+  tabs:
+    - n: "App"
+      rows:
+        - {h: "Vue 3", t: "Composition API, written in TypeScript."}
+        - {h: "Pinia", t: "Client-side state."}
+        - {h: "Bootstrap 5", t: "Styling."}
+    - n: "Tooling"
+      rows:
+        - {h: "Vite", t: "Dev server and build."}
+        - {h: "Vitest", t: "Unit tests."}
+        - {h: "Playwright", t: "End-to-end tests."}
+
+cp-ahead:
+  type: tabs
+  title: "Where the portal stands"
+  badge: "status"
+  tabs:
+    - n: "Exists today"
+      rows:
+        - {h: "Front-end shell", t: "A Vue 3 single-page app with a home page and a cart page."}
+        - {h: "Static image", t: "Served by unprivileged nginx on any cluster."}
+    - n: "Planned"
+      rows:
+        - {h: "Account and subscriptions", t: "Screens exist in the UI but have no backend to call yet.", tag: "no backend"}
+        - {h: "Billing visibility", t: "Same: a preview of the direction, not a working feature.", tag: "no backend"}
+
+pg-spi:
+  type: fanout
+  title: "Add a provider, change nothing else"
+  badge: "illustrative"
+  source: "Your app"
+  hub: "One API"
+  targets:
+    - {n: "Provider one", s: "implements PaymentProvider", on: true}
+    - {n: "Provider two", s: "implements PaymentProvider", on: true}
+  add: {n: "Your provider", s: "a new Maven module"}
+  addLabel: "Add a provider"
+  note: "A new provider is a self-contained module. Existing code stays untouched."
+
+pg-webhook:
+  type: tabs
+  title: "Webhook normalization"
+  badge: "illustrative"
+  tabs:
+    - n: "Provider A"
+      rows:
+        - {h: "1. Verify", t: "The provider's signing secret is configured, so the signature is checked."}
+        - {h: "2. Normalize", t: "A late event never overwrites a finished transaction."}
+      code: "{ \"kind\": \"charge.succeeded\" }\n\n# becomes the same payment state"
+    - n: "Provider B"
+      rows:
+        - {h: "1. Verify", t: "Each provider has its own signing secret."}
+        - {h: "2. Normalize", t: "A different payload ends in the same shape."}
+      code: "{ \"notification\": \"PAID\" }\n\n# becomes the same payment state"
+
+pg-idem:
+  type: try
+  title: "Retries never double-charge"
+  badge: "illustrative"
+  nodes: ["Request 1", "Request 2 (retry)", "Request 3 (retry)", "Charge"]
+  options:
+    - {n: "Pay once", states: [pass, "", "", pass], r: "1 charge\nthe payment is executed once"}
+    - {n: "Retry the same payment", states: [pass, dup, dup, pass], r: "1 charge\nretries are recognised and not charged again"}
+
+ai-concept:
+  type: steps
+  ghost: true
+  title: "An idea, not a product"
+  badge: "exploring · nothing built"
+  steps:
+    - {n: "AI agent", s: "asks for an action", d: "An agent wants to call a commerce operation such as checkout or an account lookup."}
+    - {n: "MCP gateway", s: "agent-callable API", d: "A gateway would offer those operations through a well-defined MCP surface."}
+    - {n: "Existing modules", s: "unchanged", d: "It would sit alongside the existing modules rather than replace any of them."}
+
+inv-scope:
+  type: steps
+  ghost: true
+  title: "Planned scope"
+  badge: "planned · not built"
+  steps:
+    - {n: "Create", s: "invoice", d: "Create invoices automatically."}
+    - {n: "Deliver", s: "to the customer", d: "Deliver them to your customers."}
+    - {n: "Track", s: "status", d: "Track where each invoice stands."}
+    - {n: "Reconcile", s: "with payments", d: "Reconcile them against payments. This is intent, not a shipped module."}
+
+# ---------- company pages ----------
+ent-support:
+  type: tabs
+  title: "Support"
+  badge: "Enterprise"
+  tabs:
+    - n: "What you get"
+      rows:
+        - {h: "Priority channels", t: "Direct channels for urgent questions."}
+        - {h: "Guaranteed response times", t: "Written into your agreement."}
+        - {h: "The engineers who built it", t: "Answers come from the people behind the ecosystem."}
+
+ent-saas:
+  type: tabs
+  title: "Who runs what"
+  badge: "illustrative"
+  tabs:
+    - n: "You run it"
+      rows:
+        - {h: "Kubernetes", t: "Your team operates the cluster.", tag: "you"}
+        - {h: "Upgrades", t: "Your team plans and applies them.", tag: "you"}
+    - n: "We run it"
+      rows:
+        - {h: "Kubernetes", t: "Single-tenant and fully managed, on the cloud provider of your choice.", tag: "us"}
+        - {h: "Architecture consulting", t: "Included alongside the managed deployment.", tag: "us"}
+
+why-own:
+  type: tabs
+  title: "What stays yours"
+  badge: "either edition"
+  tabs:
+    - n: "Open Source"
+      rows:
+        - {h: "Your data", t: "Stays in your systems."}
+        - {h: "Your infrastructure", t: "Run it where you choose."}
+        - {h: "Your deployment strategy", t: "You decide how and when."}
+    - n: "Enterprise managed"
+      rows:
+        - {h: "Your data", t: "Still yours."}
+        - {h: "Your infrastructure", t: "Still your choice of cloud."}
+        - {h: "Your deployment strategy", t: "Complete control over your core business capabilities."}
+
+deploy:
+  type: deploy
+  title: "Deploy only what you need"
+  badge: "illustrative"
+
+os-ce:
+  type: tabs
+  title: "Apache 2.0"
+  badge: "free forever"
+  tabs:
+    - n: "Inspect"
+      rows:
+        - {h: "Read the code", t: "Every Community module is open source."}
+    - n: "Modify"
+      rows:
+        - {h: "Change it", t: "Permissive licence, not copyleft."}
+    - n: "Self-host"
+      rows:
+        - {h: "Run it yourself", t: "On any cloud or bare-metal Kubernetes."}
+
+os-nolimits:
+  type: tabs
+  title: "The same code"
+  badge: "no artificial limits"
+  tabs:
+    - n: "Community"
+      rows:
+        - {h: "Full-featured", t: "The code used in production by Enterprise clients.", tag: "open"}
+        - {h: "Not crippled", t: "No artificial limits on what you can build or scale.", tag: "open"}
+    - n: "Enterprise"
+      rows:
+        - {h: "Additive modules", t: "Extra capability under a commercial licence.", tag: "extra"}
+        - {h: "Nothing taken away", t: "Community stays complete.", tag: "open"}
+
+os-contrib:
+  type: tabs
+  title: "Ways to contribute"
+  badge: "PRs welcome"
+  tabs:
+    - n: "A PSP"
+      rows:
+        - {h: "Payment Gateway", t: "Add a payment provider as a new Maven module implementing PaymentProvider."}
+    - n: "A sink"
+      rows:
+        - {h: "AuditFlow", t: "Add a sink as a Python file with a process() function."}
+    - n: "Helm charts"
+      rows:
+        - {h: "Charts", t: "Improve the shared Helm charts."}
+
+isolation:
+  type: try
+  title: "Reaching an internal service"
+  badge: "illustrative"
+  nodes: ["Internet", "Edge proxy", "Internal service"]
+  options:
+    - {n: "Call the service directly", states: [pass, "", stop], r: "blocked\ninternal services expose no public endpoint"}
+    - {n: "Call it through the edge", states: [pass, pass, pass], r: "200 OK\nthe edge proxy checks identity first"}
+
+pricing-fit:
+  type: fit
+  title: "What matters to you"
+  badge: "from the comparison below"
+  needs:
+    - {label: "I want to read and change the code", ee: false, why: "Source code access is in both editions, and Community is Apache 2.0."}
+    - {label: "I will self-host with Helm and ArgoCD", ee: false, why: "Self-hosting works the same in both editions."}
+    - {label: "Community support on GitHub is enough", ee: false, why: "Community support runs through GitHub issues."}
+    - {label: "I need guaranteed response times", ee: true, why: "Dedicated SLAs and support channels are Enterprise."}
+    - {label: "I want architecture guidance", ee: true, why: "Architectural consulting is Enterprise."}
+    - {label: "I want someone else to run it", ee: true, why: "A managed SaaS deployment is an optional Enterprise add-on."}
+
+edge-gate:
+  type: try
+  title: "What happens to a request"
+  badge: "illustrative"
+  nodes: ["Traefik", "Auth Gateway", "Cerbos", "Your module"]
+  options:
+    - {n: "Valid token", states: [pass, pass, pass, pass], r: "200 OK\nthe module receives the request with trusted headers"}
+    - {n: "No token", states: [pass, stop, "", ""], r: "401 Unauthorized\nthe request stops at the Auth Gateway"}
+    - {n: "Not allowed", states: [pass, pass, stop, ""], r: "403 Forbidden\nCerbos policy denies the action"}
+    - {n: "Unknown route", states: [pass, stop, "", ""], r: "403 Forbidden\nno matching policy: unknown routes fail closed"}
+
+observe-static:
+  type: observe
+  title: "One pipeline, three signals"
+  badge: "synthetic data"
+
+tenancy:
+  type: try
+  title: "Which pipelines see an event"
+  badge: "illustrative"
+  nodes: ["Event", "Tenant's pipelines", "Sinks"]
+  options:
+    - {n: "Event from tenant A", states: [pass, pass, pass], r: "routed\nonly through the pipelines tenant A owns"}
+    - {n: "Event with no tenant", states: [pass, pass, pass], r: "routed\nit belongs to the reserved _platform pseudo-tenant"}
+    - {n: "Tenant A event, tenant B pipelines", states: [pass, stop, ""], r: "never happens\nthere is no global list and no fall-through to another tenant"}
