@@ -503,8 +503,22 @@
     if (m) { m(body, c, mods); }
   }
 
+  /* ---------- home: iceberg ---------- */
+  function initIceberg(root) {
+    var tabs = qsa('[role="tab"]', root), panels = qsa('[role="tabpanel"]', root), zones = qsa('.zone', root);
+    function show(id) {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-zone') === id ? 'true' : 'false'); });
+      panels.forEach(function (p) { p.hidden = p.id !== 'ib-panel-' + id; });
+      zones.forEach(function (z) { z.classList.toggle('is-on', z.getAttribute('data-zone') === id); });
+    }
+    tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.getAttribute('data-zone')); }); });
+    zones.forEach(function (z) { z.addEventListener('click', function () { show(z.getAttribute('data-zone')); }); });
+    show(tabs[0].getAttribute('data-zone'));
+  }
+
   function boot() {
     qsa('[data-l64-explorer]').forEach(initExplorer);
+    qsa('[data-l64-iceberg]').forEach(initIceberg);
     qsa('[data-l64-demo]').forEach(initDemo);
     qsa('[data-l64-path]').forEach(initPath);
     qsa('[data-l64-wx]').forEach(initWx);

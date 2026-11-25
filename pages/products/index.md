@@ -19,13 +19,8 @@ use_modern: true
   {% include l64-explorer.html %}
 </div></section>
 
-<section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
-  <div class="L64M_head"><h2>Adjacent <span class="hl">Labs64 products</span></h2><p>Separate offerings that pair with the ecosystem. They are not part of its repositories.</p></div>
-  <div class="L64M_fit2">
-    <div class="L64M_fitc"><h3>NetLicensing</h3><p style="font-size:15px;color:var(--ink2);font-weight:400;margin-bottom:14px">Entitlement checks, feature, seat and metered licensing.</p><a class="L64M_btn" href="https://netlicensing.io">Visit NetLicensing</a></div>
-    <div class="L64M_fitc"><h3>GuideChimp</h3><p style="font-size:15px;color:var(--ink2);font-weight:400;margin-bottom:14px">Interactive onboarding and product tours.</p><a class="L64M_btn" href="https://www.labs64.com/guidechimp/">Visit GuideChimp</a></div>
-  </div>
-</div></section>
 </div>
 
+{% include l64-areas.html %}
+{% include l64-roadmap.html %}
 {% include l64-paths.html %}

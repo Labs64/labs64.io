@@ -1,0 +1,36 @@
+{%- comment -%}
+"What's next", as it stands today: modules grouped by their status in modules.yml, plus the known gaps
+inside existing modules (_data/roadmap.yml). No dates.
+{%- endcomment -%}
+<div class="L64M"><section class="L64M_sec" id="roadmap"><div class="L64M_w">
+  <div class="L64M_head"><h2>What is next, <span class="hl">as it stands today</span></h2>
+    <p>Nothing here has a date. Status comes straight from the repositories, and moves as work lands.</p></div>
+  <ol class="L64M_road">
+    {%- assign l64_stages = "beta|alpha|planned|exploring" | split: "|" -%}
+    {%- for st in l64_stages -%}
+    <li class="st st--{{ st }}">
+      <span class="node" aria-hidden="true"></span>
+      {%- case st -%}
+      {%- when 'beta' -%}<h3>Beta</h3><p>Deployable and used across the ecosystem. The contract may still change before 1.0.</p>
+      {%- when 'alpha' -%}<h3>Alpha</h3><p>Runs, but is incomplete and has known gaps. Expect breaking changes.</p>
+      {%- when 'planned' -%}<h3>Planned</h3><p>Committed on the roadmap. Not started, so there is nothing to run yet.</p>
+      {%- else -%}<h3>Exploring</h3><p>Design stage only. This may or may not ship.</p>
+      {%- endcase -%}
+      <ul>
+        {%- for m in site.data.modules -%}{%- if m.status == st -%}
+        <li><a href="{{ m.url | relative_url }}">{{ m.name }}</a></li>
+        {%- endif -%}{%- endfor -%}
+      </ul>
+    </li>
+    {%- endfor -%}
+  </ol>
+  <div class="L64M_gaps">
+    <h3>Still to come inside existing modules</h3>
+    <ul>
+      {%- for g in site.data.roadmap -%}
+      {%- assign gm = site.data.modules | where: "id", g.module | first -%}
+      <li><span>{{ g.text }}</span><a class="L64M_ib_chip" href="{{ gm.url | relative_url }}">{{ gm.name }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div></section></div>

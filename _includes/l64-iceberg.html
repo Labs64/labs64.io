@@ -1,0 +1,54 @@
+{%- comment -%}
+Home page "iceberg": the visible tip is the customer layer, the hidden part is what a product also needs.
+Content from _data/iceberg.yml; module names and status from modules.yml.
+{%- endcomment -%}
+<div class="L64M"><section class="L64M_sec" id="why"><div class="L64M_w">
+  <div class="L64M_head"><h2>Your product is the tip. <span class="hl">The rest is below the waterline.</span></h2>
+    <p>Customers see the product. Your team also has to build everything underneath it. Pick a layer to see what covers it today.</p></div>
+  <div class="L64M_ib" data-l64-iceberg>
+    <svg class="L64M_ib_svg" viewBox="0 0 420 480" role="img" aria-label="An iceberg. The tip is the customer layer. Below the waterline are architecture, vendors, compliance and time to market.">
+      <defs>
+        <clipPath id="ibBody"><path d="M64 204H356L348 300L322 390L262 456H160L100 392L76 300Z"/></clipPath>
+        <linearGradient id="ibG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F08B53"/><stop offset="1" stop-color="#E14817"/></linearGradient>
+      </defs>
+      <g class="zone" data-zone="tip">
+        <path d="M118 198L176 112L196 128L236 36L292 148L306 136L342 198Z" fill="#fff" stroke="#F2951C" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M236 36L292 148L306 136L342 198H262L250 128Z" fill="#F9E1C4"/>
+        <text x="228" y="182" text-anchor="middle">Customer layer</text>
+      </g>
+      <rect x="36" y="197" width="348" height="9" rx="4.5" fill="#F2951C"/>
+      <path d="M64 204H356L348 300L322 390L262 456H160L100 392L76 300Z" fill="url(#ibG)"/>
+      <path d="M244 204H356L348 300L322 390L262 456L252 330Z" fill="#7B2A10" opacity=".28"/>
+      <g clip-path="url(#ibBody)">
+        <g class="zone" data-zone="architecture"><rect x="0" y="206" width="420" height="62"/><text x="210" y="243" text-anchor="middle">Architecture and tenancy</text></g>
+        <g class="zone" data-zone="vendors"><rect x="0" y="268" width="420" height="60"/><text x="210" y="304" text-anchor="middle">Vendors and platforms</text></g>
+        <g class="zone" data-zone="compliance"><rect x="0" y="328" width="420" height="60"/><text x="210" y="364" text-anchor="middle">Compliance and security</text></g>
+        <g class="zone" data-zone="time"><rect x="0" y="388" width="420" height="72"/><text x="210" y="428" text-anchor="middle">Time to market</text></g>
+        <path d="M0 268H420M0 328H420M0 388H420" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>
+      </g>
+    </svg>
+    <div class="L64M_ib_side">
+      <div class="L64M_ib_tabs" role="tablist" aria-label="Layers of a product">
+        {%- for c in site.data.iceberg -%}
+        <button type="button" role="tab" id="ib-tab-{{ c.id }}" aria-controls="ib-panel-{{ c.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-zone="{{ c.id }}">{{ c.label }}</button>
+        {%- endfor -%}
+      </div>
+      {%- for c in site.data.iceberg -%}
+      <div class="L64M_ib_panel" id="ib-panel-{{ c.id }}" role="tabpanel" aria-labelledby="ib-tab-{{ c.id }}"{% unless forloop.first %} hidden{% endunless %}>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.text }}</p>
+        {%- if c.modules.size > 0 -%}
+        <div class="L64M_ib_cov"><span class="k">Covered today by</span>
+          {%- for mid in c.modules -%}
+          {%- assign m = site.data.modules | where: "id", mid | first -%}
+          <a class="L64M_ib_chip" href="{{ m.url | relative_url }}">{{ m.name }} {% include module-status.html id=mid %}</a>
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+        <p class="note">{{ c.note }}</p>
+        {%- if c.link -%}<a class="L64M_link" href="{% if c.link.url contains '#' %}{{ c.link.url }}{% else %}{{ c.link.url | relative_url }}{% endif %}">{{ c.link.label }} →</a>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div></section></div>

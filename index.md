@@ -29,6 +29,8 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-iceberg.html %}
+
 {% include l64-paths.html %}
 
 <div class="row">
@@ -120,6 +122,16 @@ use_modern: true
       <p style="margin-top:16px"><a class="L64M_link" href="https://labs64.io/docs/introduction/ai-agents.html">Read the AI-agents guide</a></p>
     </div>
     {% include l64-wx.html id="agent-status" %}
+  </div>
+</div></section>
+</div>
+
+<div class="L64M">
+<section class="L64M_sec L64M_sec--alt" id="who"><div class="L64M_w">
+  <div class="L64M_head"><h2>Who is <span class="hl">behind it</span></h2><p>Labs64 GmbH builds Labs64.IO in Munich, in the open.</p></div>
+  <div class="L64M_fit2 L64M_trust">
+    <div class="L64M_fitc"><h3>Built in the open</h3><p>Every module, the Helm charts and the documentation live in public repositories. Community modules are Apache 2.0, and nothing in them is taken back.</p><a class="L64M_link" href="{{ '/open-source/' | relative_url }}">How we build in the open</a></div>
+    <div class="L64M_fitc"><h3>Labs64 also builds NetLicensing and GuideChimp</h3><p>Two other Labs64 products sit next to the ecosystem. NetLicensing handles entitlement checks and licensing, and GuideChimp gives interactive onboarding and product tours.</p><a class="L64M_link" href="https://netlicensing.io">NetLicensing</a> · <a class="L64M_link" href="https://www.labs64.com/guidechimp/">GuideChimp</a></div>
   </div>
 </div></section>
 </div>

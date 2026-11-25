@@ -1,0 +1,8 @@
+# Known gaps inside existing modules, taken from each module's README ("What works today, and what does not
+# yet", "What is here today"). Module names come from modules.yml. No dates: nothing here is scheduled.
+- text: "Checkout hands the transaction to the Payment Gateway, so a checkout can redirect to a provider"
+  module: checkout
+- text: "Checkout publishes order and checkout events to AuditFlow"
+  module: checkout
+- text: "A Customer Portal backend, with account, subscription and order views"
+  module: customer-portal

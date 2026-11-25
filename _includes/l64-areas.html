@@ -1,0 +1,27 @@
+{%- comment -%}
+Modules grouped as in the documentation's Services & Modules page (modules.yml `area`).
+Status comes from modules.yml. NetLicensing and GuideChimp are adjacent Labs64 products.
+{%- endcomment -%}
+<div class="L64M"><section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
+  <div class="L64M_head"><h2>Three areas, <span class="hl">one foundation</span></h2>
+    <p>Adopt the capability you need today, then grow through shared identity, events and operating practices.</p></div>
+  <div class="L64M_areas">
+    {%- assign l64_areas = "core|commerce|extensions" | split: "|" -%}
+    {%- for a in l64_areas -%}
+    <div class="L64M_area">
+      {%- case a -%}
+      {%- when 'core' -%}<h3>Core Platform</h3><p>Identity, policy, audit and AI-tool access.</p>
+      {%- when 'commerce' -%}<h3>Commerce &amp; Billing</h3><p>Licensing, payments, checkout and invoicing.</p>
+      {%- else -%}<h3>Extensions</h3><p>Customer experiences, communication and insight.</p>
+      {%- endcase -%}
+      <ul>
+        {%- for m in site.data.modules -%}{%- if m.area == a -%}
+        <li><a href="{{ m.url | relative_url }}"><span class="ic">{% include l64-icon.html id=m.id %}</span><b>{{ m.name }}</b><span class="tg">{{ m.tagline }}</span>{% include module-status.html id=m.id %}</a></li>
+        {%- endif -%}{%- endfor -%}
+        {%- if a == 'commerce' -%}<li class="adj"><a href="https://netlicensing.io"><span class="ic"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="5.5" cy="8" r="2.5"/><path d="M8 8h6M12 8v2.5M14 8v1.5"/></svg></span><b>NetLicensing</b><span class="tg">Entitlement checks and licensing</span><span class="adjtag">adjacent product</span></a></li>{%- endif -%}
+        {%- if a == 'extensions' -%}<li class="adj"><a href="https://www.labs64.com/guidechimp/"><span class="ic"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></span><b>GuideChimp</b><span class="tg">Interactive onboarding and product tours</span><span class="adjtag">adjacent product</span></a></li>{%- endif -%}
+      </ul>
+    </div>
+    {%- endfor -%}
+  </div>
+</div></section></div>

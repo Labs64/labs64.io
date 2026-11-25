@@ -1,0 +1,35 @@
+# The "iceberg" on the home page: what sits below the waterline of a product, and which module
+# covers it today. Module names and status come from modules.yml. Covered-by lists only what works
+# today; "note" says what does not.
+- id: tip
+  label: "The part customers see"
+  title: "The customer layer defines your product's value"
+  text: "It is also the part that takes the most time to build from the ground up. Labs64.IO supplies the order and checkout layer and a place for customers to sign in, so your team builds what is unique."
+  modules: [checkout, customer-portal, notifications]
+  note: "Checkout records orders and transactions today; handing them to the Payment Gateway is not built yet. Customer Portal is a front-end shell, and Notifications is planned."
+- id: architecture
+  label: "Architecture and tenancy"
+  title: "Scalable, multi-tenant systems from scratch"
+  text: "Tenant isolation, one authenticated edge and a database per service are decisions you would otherwise take, and test, yourself."
+  modules: [auth-gateway, auditflow, checkout]
+  note: "Every module takes its tenant from the gateway's trusted headers, and AuditFlow keeps tenants apart by construction."
+  link: {label: "Read the architecture", url: "/architecture/"}
+- id: vendors
+  label: "Vendors and platforms"
+  title: "Many disparate platforms behind stable interfaces"
+  text: "Payments, identity and analytics each come with their own API. Put one contract in front of them and a provider becomes something you can change."
+  modules: [payment-gateway, auth-gateway, reporting]
+  note: "Payment Gateway ships Stripe and PayPal providers, Auth Gateway works with any OIDC provider, and Reporting reads the events you already stored. Support tooling is not covered."
+- id: compliance
+  label: "Compliance and security"
+  title: "Authentication, audit logs and the evidence behind them"
+  text: "Who did what, with sensitive fields masked and nothing silently lost, plus access decided in one place and denied when it is unclear."
+  modules: [auditflow, auth-gateway, reporting]
+  note: "These help you enforce and evidence controls. They are not certifications."
+- id: time
+  label: "Time to market"
+  title: "Infrastructure before features"
+  text: "Teams often spend a long time on plumbing before the first feature ships. Here you start with one module, see it running, and add the next when the workflow needs it."
+  modules: []
+  note: "The Quickstart is an evaluation install on any Kubernetes cluster."
+  link: {label: "Pick a path", url: "#paths"}
