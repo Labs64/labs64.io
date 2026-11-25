@@ -3,7 +3,7 @@
 # Never hand-write a status into a page or into navigation.yml.
 #
 # status: beta | alpha | planned | exploring   (there is deliberately no GA tier)
-# version: latest git tag of the module repository (omit when there is no tagged release)
+# Releases are frequent, so versions are deliberately not stored or shown here.
 # group:  available | planned
 
 - id: auditflow
@@ -11,7 +11,6 @@
   tagline: "Publish once, route anywhere, lose nothing"
   url: "/products/auditflow/"
   repo: "https://github.com/Labs64/labs64.io-auditflow"
-  version: "0.1.24"
   status: beta
   group: available
 
@@ -20,7 +19,6 @@
   tagline: "One authenticated edge for every module"
   url: "/products/auth-gateway/"
   repo: "https://github.com/Labs64/labs64.io-authgateway"
-  version: "0.1.10"
   status: beta
   group: available
 
@@ -29,7 +27,6 @@
   tagline: "Whitelabel checkout and order workflow"
   url: "/products/checkout/"
   repo: "https://github.com/Labs64/labs64.io-checkout"
-  version: "0.0.16"
   status: alpha
   group: available
 
@@ -38,7 +35,6 @@
   tagline: "One API across multiple payment providers"
   url: "/products/payment-gateway/"
   repo: "https://github.com/Labs64/labs64.io-payment-gateway"
-  version: "0.0.22"
   status: alpha
   group: available
 
@@ -47,7 +43,6 @@
   tagline: "Reports over stored events, each customer's own"
   url: "/products/reporting/"
   repo: "https://github.com/Labs64/labs64.io-reporting"
-  version: "0.0.14"
   status: alpha
   group: available
 

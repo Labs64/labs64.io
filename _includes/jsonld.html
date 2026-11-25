@@ -112,7 +112,6 @@ posts keep their Article.
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Business workflow microservice",
       "operatingSystem": "Kubernetes",
-      {% if l64_mod.version %}"softwareVersion": {{ l64_mod.version | jsonify }},{% endif %}
       "license": "https://www.apache.org/licenses/LICENSE-2.0",
       "isAccessibleForFree": true,
       {% if l64_mod.repo != "" %}"sameAs": {{ l64_mod.repo | jsonify }},{% endif %}

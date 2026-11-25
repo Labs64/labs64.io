@@ -19,7 +19,7 @@ Names, taglines, urls and status come from _data/modules.yml; examples from _dat
     {%- assign ex = l64_ex[m.id] -%}
     <div class="L64M_pn" id="ex-panel-{{ m.id }}" role="tabpanel" aria-labelledby="ex-tab-{{ m.id }}"{% unless forloop.first %} hidden{% endunless %}>
       <div class="L64M_pn_hd">
-        <div><h3>{{ m.name }}</h3><p>{{ ex.summary }}{% if m.version %} · v{{ m.version }}{% endif %}</p></div>
+        <div><h3>{{ m.name }}</h3><p>{{ ex.summary }}</p></div>
         {% include module-status.html id=m.id %}
       </div>
       {%- if ex.kind == 'example' -%}

@@ -7,7 +7,7 @@ Usage: {% include l64-fit.html id="auditflow" %}
 {%- if f -%}
 <div class="L64M"><section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
   <div class="L64M_head"><h2>Is {{ m.name }} <span class="hl">right for you?</span></h2>
-    <p>Straight from the repository README, including where it is not the right tool.{% if m.version %} Latest release: <code>{{ m.version }}</code>.{% else %} No tagged release yet.{% endif %}</p></div>
+    <p>Straight from the repository README, including where it is not the right tool.</p></div>
   <div class="L64M_fit2">
     <div class="L64M_fitc ok"><h3>A good fit if</h3><ul>{%- for i in f.fit -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>
     <div class="L64M_fitc no"><h3>Probably not what you need if</h3><ul>{%- for i in f.notfit -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>

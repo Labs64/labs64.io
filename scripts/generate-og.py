@@ -2,7 +2,7 @@
 """Generate the Open Graph / Twitter share cards (1200x630) into img/og/ and list them in _data/og.yml.
 
 Run from the repository root:  python3 scripts/generate-og.py
-Needs Pillow. Module names, taglines, status and versions come from _data/modules.yml, so a card
+Needs Pillow. Module names, taglines and status come from _data/modules.yml, so a card
 never says something the module data does not. Re-run after changing a module or adding a page.
 """
 import os
@@ -29,7 +29,7 @@ def modules():
         if not m:
             continue
         get = lambda k: (re.search(rf'^\s+{k}: "?([^"\n]*)"?\s*$', block, re.M) or [None, ""])[1]
-        out.append({"id": m.group(1), "name": get("name"), "tagline": get("tagline"), "status": get("status"), "version": get("version"), "url": get("url")})
+        out.append({"id": m.group(1), "name": get("name"), "tagline": get("tagline"), "status": get("status"), "url": get("url")})
     return out
 
 
@@ -106,7 +106,7 @@ def main():
         ("/platform/telemetry/", "Architecture", "Business Telemetry Abstraction", "Auto-instrumented traces, metrics and logs."),
     ]
     for m in modules():
-        eyebrow = "Module · " + m["status"].capitalize() + (" · v" + m["version"] if m["version"] else "")
+        eyebrow = "Module · " + m["status"].capitalize()
         cards.append((m["url"], eyebrow, m["name"], m["tagline"]))
     slugs = []
     for url, eyebrow, title, sub in cards:
