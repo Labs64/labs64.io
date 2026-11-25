@@ -64,21 +64,23 @@ You can simply run this command from your project root, and `helm-docs` will aut
 First, you need to install the `helm schema` plugin:
 
 ```bash
-helm plugin install https://github.com/ludwigprandtl/helm-schema
+helm plugin install https://github.com/losisin/helm-values-schema-json.git
 ```
+
+On Helm 4.2 and later, plugin signature verification is on by default, so installing from a git URL can fail; see [helm-docs vs helm-schema](/blog/2026/12/21/helm-docs-vs-helm-schema/) for the options.
 
 ### Usage Example
 
 Similarly, you can add a `generate-schema` target to your CI pipelines to automate the schema generation:
 
 ```bash
-helm schema -input charts/authgateway/values.yaml -output charts/authgateway/values.schema.json
-helm schema -input charts/auditflow/values.yaml -output charts/auditflow/values.schema.json
+helm schema --values charts/authgateway/values.yaml --output charts/authgateway/values.schema.json
+helm schema --values charts/auditflow/values.yaml --output charts/auditflow/values.schema.json
 ```
 
 **Explanation:**
 
-* `helm schema --input charts/authgateway/values.yaml`: Specifies the `values.yaml` file from which to infer the JSON schema.
+* `helm schema --values charts/authgateway/values.yaml`: Specifies the `values.yaml` file from which to infer the JSON schema.
 * `--output charts/authgateway/values.schema.json`: Defines the output path for the generated JSON schema file.
 
 Now, running the above commands you will get created `values.schema.json` files for your specified charts. This schema can then be used by IDEs (like *VS Code* with the YAML extension) for auto-completion and validation, or by CI/CD pipelines to ensure `values.yaml` files are correctly structured before deployment.

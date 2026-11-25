@@ -653,3 +653,98 @@
   author: "Labs64.IO"
   publisher: "Labs64.IO"
   creditlink: https://labs64.io
+
+- id: spring-cloud-gateway-path-hero
+  source: /img/blog/spring-cloud-gateway-path-hero.jpg
+  title: "Spring Cloud Gateway Path predicate"
+  caption: "Spring Cloud Gateway Path predicate"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+
+- id: local-k8s-2026-hero
+  source: /img/blog/local-k8s-2026-hero.jpg
+  title: "Local k8s 2026"
+  caption: "Local k8s 2026"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: helm-values-schema-hero
+  source: /img/blog/helm-values-schema-hero.jpg
+  title: "Helm values schema"
+  caption: "Helm values schema"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: helm-docs-vs-schema-hero
+  source: /img/blog/helm-docs-vs-schema-hero.jpg
+  title: "Helm docs vs schema"
+  caption: "Helm docs vs schema"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: traefik-middleware-reference-hero
+  source: /img/blog/traefik-middleware-reference-hero.jpg
+  title: "Traefik middleware reference"
+  caption: "Traefik middleware reference"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: securing-microservices-keycloak-hero
+  source: /img/blog/securing-microservices-keycloak-hero.jpg
+  title: "Securing microservices keycloak"
+  caption: "Securing microservices keycloak"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: what-is-a-justfile-hero
+  source: /img/blog/what-is-a-justfile-hero.jpg
+  title: "What is a justfile"
+  caption: "What is a justfile"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: spring-cloud-gateway-routelocator-hero
+  source: /img/blog/spring-cloud-gateway-routelocator-hero.jpg
+  title: "Spring cloud gateway routelocator"
+  caption: "Spring cloud gateway routelocator"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: spring-cloud-gateway-rate-limiting-hero
+  source: /img/blog/spring-cloud-gateway-rate-limiting-hero.jpg
+  title: "Spring cloud gateway rate limiting"
+  caption: "Spring cloud gateway rate limiting"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: kubectl-top-hero
+  source: /img/blog/kubectl-top-hero.jpg
+  title: "Kubectl top"
+  caption: "Kubectl top"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: multi-psp-gateway-hero
+  source: /img/blog/multi-psp-gateway-hero.jpg
+  title: "Multi psp gateway"
+  caption: "Multi psp gateway"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"
+
+- id: spring-cloud-gateway-properties-hero
+  source: /img/blog/spring-cloud-gateway-properties-hero.jpg
+  title: "Spring cloud gateway properties"
+  caption: "Spring cloud gateway properties"
+  license: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+  author: "Labs64.IO"
+  publisher: "Labs64.IO"

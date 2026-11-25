@@ -70,20 +70,20 @@ Shell scripts can be a pain on different operating systems. A `justfile` helps a
 **Example with arguments and cross-platform commands:**
 
 ```just
-# Set a shell to be used on Windows
-set shell := ["powershell.exe", "-c"]
+# Use PowerShell on Windows only
+[windows]
+set shell := ["powershell.exe", "-NoLogo", "-Command"]
 
-# A recipe with a variable
+# A recipe with an argument
 greet NAME:
-  echo "Hello, NAME!"
+  echo "Hello, {{NAME}}!"
 
 # A cross-platform clean command
-
-@windows:
+[windows]
 clean:
   Remove-Item -Recurse -Force bin, obj
 
-@linux @macos:
+[unix]
 clean:
   rm -rf bin obj
 ```

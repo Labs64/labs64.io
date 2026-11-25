@@ -1,116 +1,156 @@
 ---
 layout: post
-title: "Observing Pod Metrics in Kubernetes"
-description: "Guide to monitor Kubernetes pod metrics using metrics-server for resource optimization, autoscaling, and troubleshooting"
+title: "kubectl top pod shows nothing: fixing metrics-server and the Metrics API"
+description: "Why kubectl top says 'Metrics API not available' or 'Metrics not available for pod', how to install metrics-server, the flags local clusters need, how to query the metrics.k8s.io API directly, and which PromQL queries to use for monitoring."
 author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io
 image:
-  url: /img/blog/pod-metrics-in-kubernetes.jpg
+  url: /img/blog/kubectl-top-hero.jpg
 tags:
-  - Helm
   - Kubernetes
-  - Observability
-  - Metrics
-  - Monitoring
+  - kubectl top
   - metrics-server
-  - Pod Metrics
-  - Resource Utilization
-  - Autoscaling
+  - Metrics API
   - Troubleshooting
+  - Prometheus
 ---
 
-In the dynamic and often complex world of Kubernetes, effectively monitoring the resource utilization of your pods is crucial for maintaining application performance, optimizing resource allocation, and troubleshooting issues. While Kubernetes offers powerful orchestration capabilities, gaining insight into CPU and memory usage at the pod level isn't inherently built into the core API. This is where `metrics-server` steps in as an indispensable component, providing the necessary data for a comprehensive observability strategy.
+> **Update, 25 Nov 2026.** This post was first published in July 2025 as an overview of pod metrics. It is now organised around the problem people actually search for: `kubectl top` returns an error or nothing. The URL has not changed.
 
-## The Challenge of Pod Metric Collection in Kubernetes
+You run `kubectl top pod` to see which workload eats the memory, and the cluster answers with an error instead of a table. The cluster is healthy, the pods are running, and the one command that should show resource use does not work.
 
-Out-of-the-box, the Kubernetes API does not expose raw CPU and memory usage directly. While you can see if a pod is running and its status, getting real-time, granular resource consumption data requires an additional layer. This data is vital for:
+This post explains what `kubectl top` needs, why it fails, and how to fix it step by step. It is written for developers and operators of Kubernetes clusters, including local ones. Facts come from the kubectl source code, the metrics-server README and FAQ (v0.9.1, released 29 Oct 2026, checked 25 Nov 2026) and the kube-state-metrics and cAdvisor documentation. We did not run these commands against a cluster for this update, because no cluster was available in our environment; the error texts are quoted from the kubectl source.
 
-* **Autoscaling:** Horizontal Pod Autoscalers (HPAs) rely on CPU and memory metrics to automatically scale the number of pod replicas up or down based on demand.
-* **Scheduling:** The Kubernetes scheduler can make more informed decisions when it has an understanding of current node and pod resource pressure.
-* **Troubleshooting:** Identifying resource bottlenecks, memory leaks, or CPU-intensive processes within specific pods is significantly easier with accurate metrics.
-* **Capacity Planning:** Understanding historical resource usage helps in forecasting future needs and optimizing cluster size.
+**After reading, you will know:**
 
-## Enter `metrics-server`: The De Facto Solution
+- what `kubectl top` reads, and why it needs metrics-server,
+- the two error messages and what each one means,
+- how to install metrics-server and which flags local clusters need,
+- how to query the Metrics API directly to find the broken part,
+- which PromQL queries answer the monitoring questions that `kubectl top` cannot.
 
-`metrics-server` is a cluster-wide aggregator of resource usage data. It collects CPU and memory metrics from the Kubelets running on each node and exposes them via the Kubernetes Metrics API. This makes these crucial metrics consumable by various Kubernetes components and tools.
+## Background: where `kubectl top` gets its numbers
 
-**How it Works:**
+`kubectl top` does not measure anything itself. It reads the **Metrics API** (`metrics.k8s.io`), an aggregated API of the Kubernetes apiserver. The component that provides it is **metrics-server**: according to its README, it collects resource metrics from the kubelets and exposes them through the apiserver, for use by the Horizontal Pod Autoscaler and the Vertical Pod Autoscaler. The same API can be read by `kubectl top`.
 
-1.  **Kubelet Integration:** Each Kubelet on a node exposes resource metrics for its running pods.
-2.  **`metrics-server` Collection:** `metrics-server` periodically scrapes these endpoints from all Kubelets in the cluster.
-3.  **Aggregation and Storage (in-memory):** It aggregates the collected data and stores it in memory, typically for a short duration (e.g., a few minutes). `metrics-server` is designed for short-term, real-time data access, not long-term storage or historical analysis.
-4.  **Metrics API Exposure:** The aggregated data is then exposed through the standard Kubernetes Metrics API (e.g., `/apis/metrics.k8s.io/v1beta1`).
+![The metrics path: kubelets on each node report CPU and memory, metrics-server collects them, the apiserver serves them as the metrics.k8s.io API, and kubectl top and the autoscalers read that API](/img/blog/metrics-server-path.svg "Where kubectl top gets its numbers"){:class="blog-center"}
 
-## Key Benefits of `metrics-server` for Pod Observability
+The README is clear about the purpose. It is meant only for autoscaling. It warns not to use it to forward metrics to monitoring solutions or as a source for them; for that, collect metrics from the kubelet's `/metrics/resource` endpoint directly, or use a monitoring system such as Prometheus.
 
-* **Enables Horizontal Pod Autoscaling (HPA):** This is perhaps the most critical function. HPAs query the Metrics API provided by `metrics-server` to determine if pods need to be scaled. Without `metrics-server`, HPAs based on CPU or memory utilization simply won't work.
-* **`kubectl top` Functionality:** The popular `kubectl top pod` and `kubectl top node` commands, which provide a quick overview of resource usage, directly rely on `metrics-server` to fetch their data. This offers immediate insight into the current state of your cluster's resource consumption.
-* **Simplified Integration for Other Tools:** Because `metrics-server` exposes metrics via a standard Kubernetes API, it simplifies integration for other monitoring and management tools that need pod-level resource data. Instead of each tool needing to directly scrape Kubelets, they can simply query the Metrics API.
-* **Lightweight and Efficient:** `metrics-server` is designed to be lightweight and consume minimal resources itself, making it a low-overhead addition to your cluster.
-* **Core Kubernetes Ecosystem Component:** It's considered a fundamental component for any production-ready Kubernetes cluster that requires resource-based autoscaling or basic `kubectl top` functionality.
+## The problem: two different errors
 
-## Installation and Usage
+The kubectl source defines both messages, and they point to different causes.
 
-`metrics-server` is typically deployed as a set of pods within your Kubernetes cluster. Installation is straightforward, often involving applying a few YAML manifests or using Helm charts.
-Many managed Kubernetes services (like GKE, EKS, AKS) may include `metrics-server` by default or offer it as an easy-to-enable add-on.
+| Message | Where it comes from | Meaning |
+| --- | --- | --- |
+| `error: Metrics API not available` | kubectl checks the API groups of the server for a supported Metrics API version and finds none | metrics-server is not installed, or its APIService is not registered or not available |
+| `Metrics not available for pod <ns>/<name>, age: <age>` | The Metrics API exists, but returned nothing for the pod, and the pod is older than 2 minutes | The pod is not being scraped; look at metrics-server logs and kubelet access |
+| `metrics not available yet` | Same case for a new pod, younger than 2 minutes (the source uses a fixed two-minute delay) | Wait, then retry |
 
-Below is a common approach to deploying `metrics-server` using Helm:
-```bash
-helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
-helm search repo metrics-server/metrics-server
-helm upgrade --install metrics-server metrics-server/metrics-server --namespace tools --create-namespace
-```
+So the first question is simply whether the Metrics API exists.
 
-### Immediate Impact: kubectl top Before and After
+## The solution: check, install, verify
 
-One of the most immediate and tangible benefits of `metrics-server` is its impact on the `kubectl top` command:
+### Part 1: is the Metrics API registered?
 
 ```bash
-kubectl top pods -n <your-namespace>
-kubectl top nodes
+kubectl get apiservices | grep metrics
+kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes
 ```
 
-Without `metrics-server` running, `kubectl top` simply cannot retrieve resource metrics.
-Once `metrics-server` is deployed and operational, the resource columns become populated, offering instant insights into your pod's consumption.
+The metrics-server FAQ names the APIService `v1beta1.metrics.k8s.io`, and the compatibility matrix lists `metrics.k8s.io/v1beta1` as the API group and version for all current releases. If the first command prints nothing, metrics-server is not installed. If the APIService exists but is not available, the raw call returns an error that points to the cause, and the metrics-server pod logs are the next place to look. If the raw call returns a list of nodes with usage, the API works, and `kubectl top node` should too.
 
-### Pods metrics before installing metrics-server
+### Part 2: install metrics-server
 
-```
-┌────────────────────────────────────── pods(labs64io)[3] ───────────────────────┐
-│ NAME↑                                  READY      STATUS        RESTARTS IP    │
-│ labs64io-authgateway-pmp2n             1/1        Running       5 10.1.12.164  │
-│ labs64io-auditflow-w4xnh               2/2        Running       10 10.1.12.162 │
-│ labs64io-ecommerce-2l7hz               1/1        Running       5 10.1.12.154  │
+The README gives the installation as a single manifest or an official Helm chart:
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
-Notice the absence of CPU and Memory columns.
+Check the **compatibility matrix** first: metrics-server 0.9.x supports Kubernetes 1.34 and newer, 0.8.x supports 1.31 and newer, 0.7.x supports 1.27 and newer. Use a version that matches your apiserver, and note that the README says the apiserver version must be within the supported range.
 
-### Pods metrics after installing metrics-server
+The **requirements** in the README are the usual reasons for a failed install:
 
+- the kube-apiserver must enable the aggregation layer,
+- kubelet certificates must be signed by the cluster certificate authority, or certificate validation must be disabled with `--kubelet-insecure-tls`,
+- the control plane must reach the metrics-server pod on port 10250 (or the node IP and a custom port if `hostNetwork` is enabled),
+- metrics-server must reach every node's kubelet address and port; it picks the first node address from the list given by `--kubelet-preferred-address-types`.
+
+### Part 3: flags for local clusters
+
+Local clusters often have kubelet certificates that are not signed by the cluster CA. The README documents the flag for this case:
+
+- `--kubelet-insecure-tls`: do not verify the CA of the kubelets' serving certificates. The README says it is **for testing purposes only**, and the FAQ lists it among the insecure flags to avoid.
+- `--kubelet-preferred-address-types`: the priority of node address types used to connect to a node. The README gives the default as `Hostname,InternalDNS,InternalIP,ExternalDNS,ExternalIP`, and the FAQ notes the manifests use `InternalIP,ExternalIP,Hostname`.
+
+The FAQ also says the `v1beta1.metrics.k8s.io` APIService is installed with `insecureSkipTLSVerify: true`, and explains how to turn that off for production (set `insecureSkipTLSVerify: false` in the manifest, or `apiService.insecureSkipTLSVerify: false` with Helm).
+
+Whether your local tool needs the flag depends on the tool. Some distributions ship metrics-server already; check with the commands in Part 1 before installing a second one. For a comparison of local cluster tools, see [Run Kubernetes locally in 2026](/blog/2025/06/04/local-k8s/).
+
+### Part 4: use `kubectl top`
+
+Once the API works:
+
+```bash
+kubectl top node
+kubectl top pod -A
+kubectl top pod my-pod --containers
+kubectl top pod -A --sort-by=memory
 ```
-┌───────────────────────────────────────────────────────── pods(labs64io)[3] ──────────────────────────────────────────────────┐
-│ NAME↑                   READY    STATUS     RESTARTS    CPU    MEM     %CPU/R     %CPU/L     %MEM/R     %MEM/L  IP           │
-│ authgateway-pmp2n       1/1      Running           5      7    338          7        n/a         66        n/a  10.1.12.164  │
-│ auditflow-w4xnh         2/2      Running          10      8    384          8        n/a         75        n/a  10.1.12.162  │
-│ ecommerce-2l7hz         1/1      Running           5      7    368          7        n/a         72        n/a  10.1.12.154  │
-```
 
-The `CPU` and `MEM` columns (along with their percentage counterparts relative to requests/limits) are now populated, providing immediate visibility into resource consumption at a glance. This transformation underscores the critical role metrics-server plays in making these metrics accessible.
+From the kubectl source: `--containers` shows per-container usage, and `--sort-by` accepts only `cpu` or `memory`. Values are current usage, not history, and the README says it is not an accurate source of resource usage metrics for other purposes. The scrape interval is stated differently in two places: the README advertises collecting metrics every 15 seconds, while the FAQ gives 60 seconds as the default of the `--metric-resolution` flag and recommends nothing below 15 seconds, because that is the resolution the kubelet itself calculates. Check the flags in your own deployment.
 
-## Limitations and When to Consider More Advanced Solutions
+### Part 5: when you need history, use PromQL
 
-While `metrics-server` is excellent for its intended purpose, it's important to understand its limitations:
+`kubectl top` shows a snapshot. For trends, alerts and restarts, use a monitoring system. The metric names below are from the cAdvisor and kube-state-metrics documentation; label names depend on your scrape configuration, so adjust them.
 
-* **No Long-Term Storage:** `metrics-server` does not store historical data. It's a real-time aggregator for current resource usage.
-* **Limited Metric Types:** It focuses primarily on CPU and memory utilization. For custom metrics, application-specific metrics, or more detailed system-level metrics, you'll need a full-fledged monitoring solution.
-* **No Alerting Capabilities:** `metrics-server` itself doesn't provide alerting. You'll need an external system (like Prometheus and Alertmanager) to trigger alerts based on the metrics it exposes.
+| Question | Query |
+| --- | --- |
+| CPU use per pod (cores) | `sum by (namespace, pod) (rate(container_cpu_usage_seconds_total{container!=""}[5m]))` |
+| Memory per pod (bytes) | `sum by (namespace, pod) (container_memory_working_set_bytes{container!=""})` |
+| Restarts in the last hour | `increase(kube_pod_container_status_restarts_total[1h])` |
+| Pods by phase | `sum by (phase) (kube_pod_status_phase)` |
+| Containers waiting, and why | `kube_pod_container_status_waiting_reason == 1` |
 
-For comprehensive monitoring, historical analysis, custom dashboards, and robust alerting, `metrics-server` is often used in conjunction with a more complete monitoring stack like:
+`container_cpu_usage_seconds_total` is documented as a counter of cumulative CPU time in seconds, which is why you apply `rate()`. `container_memory_working_set_bytes` is a gauge of the current working set. `kube_pod_status_phase` has the phases `Pending`, `Running`, `Succeeded`, `Failed` and `Unknown`, and `kube_pod_container_status_restarts_total` is a counter.
 
-* **Prometheus:** A powerful open-source monitoring system that can scrape metrics from `metrics-server` (and other sources), store them long-term, and provide a query language (PromQL) for analysis.
-* **Grafana:** A popular open-source platform for creating dynamic and interactive dashboards to visualize metrics collected by Prometheus or other data sources.
+## The outcome
 
-## Conclusion
+| Symptom | Check | Fix |
+| --- | --- | --- |
+| `Metrics API not available` | `kubectl get apiservices \| grep metrics` | Install metrics-server matching your Kubernetes version |
+| APIService not available | metrics-server pod logs; port 10250 and kubelet access | Fix network paths and requirements |
+| TLS errors scraping kubelets | Kubelet certificate and CA | Sign certificates properly, or `--kubelet-insecure-tls` for testing only |
+| `Metrics not available for pod` | Pod age and metrics-server logs | Wait up to two minutes, then investigate scraping |
+| Need history or alerts | n/a | Prometheus and the queries above |
 
-`metrics-server` is a foundational component for observing pod metrics in Kubernetes. By providing a standardized and easily consumable API for CPU and memory usage, it enables crucial features like Horizontal Pod Autoscaling and the convenient `kubectl top` command. While not a complete monitoring solution on its own, it serves as a vital building block, empowering operators and developers with the essential resource insights needed to effectively manage and scale their Kubernetes workloads. Without `metrics-server`, the journey to a truly observable and efficient Kubernetes cluster would be significantly more challenging.
+## Trade-offs
+
+- `--kubelet-insecure-tls` makes a local cluster work and removes certificate verification. Use it only where the README does: testing.
+- metrics-server keeps current values in memory. Do not build dashboards or alerts on it.
+- A monitoring stack (Prometheus, kube-state-metrics, cAdvisor) costs memory and care, and gives history.
+- Metrics resolution is a trade between freshness and load on the kubelets.
+
+## Apply it to your own cluster
+
+- Run `kubectl get apiservices | grep metrics` before anything else.
+- Pick the metrics-server version from the compatibility matrix.
+- Keep the insecure TLS flag out of shared and production clusters.
+- Add Prometheus queries for CPU, memory and restarts to your dashboards.
+- Use HPA only after `kubectl top pod` works.
+
+## Key takeaways
+
+- `kubectl top` reads the Metrics API, which metrics-server provides.
+- `Metrics API not available` means the API is not registered; `Metrics not available for pod` means it is registered but has no data.
+- Match the metrics-server version to your Kubernetes version.
+- `--kubelet-insecure-tls` is for testing only, according to the project.
+- For history and alerts, use Prometheus; metrics-server is for autoscaling.
+
+## Related reading
+
+- [Run Kubernetes locally in 2026: kind vs minikube vs k3d vs Docker Desktop](/blog/2025/06/04/local-k8s/)
+- [Kubernetes cheat sheet](/blog/2025/06/07/kubernetes-cheatsheet/)
+- [metrics-server on GitHub](https://github.com/kubernetes-sigs/metrics-server)
