@@ -539,14 +539,14 @@ button.L64M_pod { cursor: pointer; font-family: var(--mono); }
 @media (max-width: 1000px) { .L64M .L64M_areas { grid-template-columns: 1fr; } .L64M .L64M_road { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; } .L64M .L64M_road::before { display: none; } .L64M .L64M_road .st > p { min-height: 0; } }
 @media (max-width: 600px) { .L64M .L64M_road { grid-template-columns: 1fr; } .L64M .L64M_gaps li { flex-direction: column; align-items: flex-start; gap: 6px; } }
 
-/* tiers as a staircase: each step asks for a little more from Labs64.IO and a little less from you */
-.L64M .L64M_tiers { align-items: end; }
+/* tiers as a staircase: bottoms line up, and each step is exactly one stair (24px) taller than the last */
+.L64M .L64M_tiers { align-items: stretch; }
 .L64M .L64M_tier { position: relative; border-top: 5px solid #F2951C; }
-.L64M .L64M_tier--1 { min-height: 300px; }
-.L64M .L64M_tier--2 { min-height: 340px; border-top-color: #E14817; }
-.L64M .L64M_tier--3 { min-height: 380px; border-top-color: #C4562B; }
-.L64M .L64M_tier--4 { min-height: 420px; border-top-color: #7B2A10; }
+.L64M .L64M_tier--1 { margin-top: 72px; }
+.L64M .L64M_tier--2 { margin-top: 48px; border-top-color: #E14817; }
+.L64M .L64M_tier--3 { margin-top: 24px; border-top-color: #C4562B; }
+.L64M .L64M_tier--4 { margin-top: 0; border-top-color: #7B2A10; }
 .L64M .L64M_tier .step { font: 500 11.5px var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--mut); }
-@media (max-width: 1000px) { .L64M .L64M_tiers { align-items: stretch; } .L64M .L64M_tier { min-height: 0; } }
+@media (max-width: 1000px) { .L64M .L64M_tier { margin-top: 0 !important; } }
 .L64M .L64M_trust .L64M_fitc p { font-size: 15.5px; line-height: 1.6; color: var(--ink2); font-weight: 400; margin-bottom: 12px; }
 .L64M .L64M_trust .L64M_fitc h3 { font-size: 20px; }

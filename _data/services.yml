@@ -20,10 +20,6 @@
   url: "https://labs64.io/docs/changelog.html"
   section: "Documentation"
 
-- title: "Docs Repository"
-  url: "https://github.com/Labs64/labs64.io-docs"
-  section: "Documentation"
-
 - title: Blog
   url: "/blog/"
   section: "Documentation"
