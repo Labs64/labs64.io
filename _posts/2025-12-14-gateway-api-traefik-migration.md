@@ -70,7 +70,7 @@ The rendered rule for a protected AuditFlow route runs these filters, in this or
 ![Filter order in one HTTPRoute rule: native header strip first, then Traefik auth, rate limit and buffering, native security headers, Traefik compression and a native URL rewrite](/img/blog/gateway-api-filter-chain.png "Filter order in one HTTPRoute rule"){:class="blog-center"}
 
 - **Native Gateway API filters:** `RequestHeaderModifier` removes incoming `X-Auth-User`, `X-Auth-Scopes` and `X-Auth-Tenant`; `ResponseHeaderModifier` sets security headers such as `Strict-Transport-Security` and `Content-Security-Policy`; `URLRewrite` strips the version prefix (see [Let the gateway own your API version prefix](/blog/2025/11/15/auditflow-traefik-versioning/)).
-- **Traefik middlewares via `ExtensionRef`:** `authgateway-auth` (forward authentication to the [Auth Gateway](/products/auth-gateway/)), `authgateway-ratelimit`, `authgateway-buffering` and `authgateway-compress`.
+- **Traefik middlewares via `ExtensionRef`** (background: [Configuring Traefik Middleware for Kubernetes](/blog/2025/08/01/configuring-traefik-middleware-for-kubernetes/)): `authgateway-auth` (forward authentication to the [Auth Gateway](/products/auth-gateway/)), `authgateway-ratelimit`, `authgateway-buffering` and `authgateway-compress`.
 
 ### Part 3: strip identity headers first, then authenticate
 

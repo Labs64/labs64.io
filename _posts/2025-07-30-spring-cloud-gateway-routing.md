@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Spring Cloud Gateway Routing for Microservices"
-description: "Master Spring Cloud Gateway routing. Learn to configure routes with predicates and filters to manage traffic to your microservices."
+title: "Spring Cloud Gateway Routing: Predicates, Filters and Path=/** in Practice"
+description: "Configure Spring Cloud Gateway routes with Path predicates, filters and StripPrefix, with working YAML examples for routing traffic to your microservices."
 author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io

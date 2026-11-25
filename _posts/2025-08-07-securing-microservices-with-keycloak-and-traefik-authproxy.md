@@ -25,7 +25,7 @@ tags:
   - Auth Gateway
 ---
 
-An auth proxy is a specialized service that centralizes authentication and authorization for multiple microservices. Instead of implementing security logic in every service, you can use a single proxy to handle these concerns at the edge. The **Traefik Auth Proxy** is a great example of this pattern, using Traefik's `forwardAuth` middleware to intercept requests and enforce access policies.
+An auth proxy is a specialized service that centralizes authentication and authorization for multiple microservices. Instead of implementing security logic in every service, you can use a single proxy to handle these concerns at the edge. The **Traefik Auth Proxy** is a great example of this pattern, using Traefik's `forwardAuth` middleware to intercept requests and enforce access policies. For middleware basics, see [Configuring Traefik Middleware for Kubernetes](/blog/2025/08/01/configuring-traefik-middleware-for-kubernetes/).
 
 This article explores a practical implementation we adopted for [Labs64.IO Ecosystem services](https://labs64.io) using a Python-based proxy that integrates with **Keycloak** for token validation and a simple YAML file for **Role-Based Access Control (RBAC)**.
 

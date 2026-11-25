@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Protecting Your APIs with RequestRateLimiter in Spring Cloud Gateway"
-description: "Secure your microservices from traffic spikes. This guide shows how to configure API rate limiting in Spring Cloud Gateway with Redis and a KeyResolver"
+title: "Spring Cloud Gateway Rate Limiting with Redis and RequestRateLimiter"
+description: "Configure Spring Cloud Gateway rate limiting with the Redis RequestRateLimiter filter, a KeyResolver and token bucket settings to protect your APIs from traffic spikes."
 author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io

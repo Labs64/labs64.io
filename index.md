@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Your Agile Business Workflow Powerhouse"
-description: "The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps"
+title: "Open-core, API-first microservices for business workflows"
+description: "Labs64.IO is an open-core ecosystem of API-first microservices for audit, payments and checkout: modular, self-hostable and built for GDPR-aware business workflows."
 permalink: /
 sitemap:
   priority: 0.8

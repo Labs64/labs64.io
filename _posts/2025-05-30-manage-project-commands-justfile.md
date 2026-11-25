@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "A better way to manage project commands"
-description: "Justfile - a single, readable, and cross-platform file that serves as a runnable cheat sheet for your project's commands"
+title: "What Is a Justfile? Manage Project Commands with just (Windows and PowerShell Too)"
+description: "A justfile is a single, readable file of project commands run by the just command runner. Learn the syntax, how it compares to make, and how to use it on Windows with PowerShell."
 author:
   name: Labs64.IO Ecosystem
   url: https://labs64.io

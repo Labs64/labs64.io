@@ -110,7 +110,7 @@ rules:
         port: 8080
 ```
 
-`URLRewrite` with `ReplacePrefixMatch` is part of the standard Gateway API, so this works with any conforming gateway. Labs64.IO uses Traefik, which also runs the shared auth, rate-limit and compression middlewares on the same route.
+`URLRewrite` with `ReplacePrefixMatch` is part of the standard Gateway API, so this works with any conforming gateway. Labs64.IO uses Traefik, which also runs the shared auth, rate-limit and compression middlewares on the same route (see [Configuring Traefik Middleware for Kubernetes](/blog/2025/08/01/configuring-traefik-middleware-for-kubernetes/)).
 
 ## The outcome
 
