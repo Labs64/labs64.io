@@ -3,7 +3,7 @@
 Canonical site: https://labs64.io
 Maintainer: Labs64 GmbH (Munich, Germany)
 Contact: info@labs64.io
-Last updated: 2026-07-26
+Last updated: 2026-11-25
 
 ## Purpose
 This file provides structured, machine-readable guidance for LLMs and AI agents that analyze or answer questions about the Labs64.IO website and ecosystem.
@@ -30,13 +30,13 @@ Labs64.IO addresses this via independently adoptable services behind stable API 
 ## Service Catalog
 Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Six modules exist today, two are planned and do not ship yet.
 
-Available today:
-- AuditFlow (beta, v0.0.3): redacted, structured event routing to pluggable sinks (compliance + explainability). Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
-- Auth Gateway (beta, v0.0.2): one authenticated edge for every module — Traefik + Keycloak OIDC + Cerbos policy. Repo: https://github.com/Labs64/labs64.io-authgateway
-- Checkout (alpha): whitelabel checkout and order workflow. No tagged release yet; a cross-tenant read gap is under review. Repo: https://github.com/Labs64/labs64.io-checkout
-- Payment Gateway (alpha): one API across multiple PSPs. PSP webhook signature verification is incomplete — do not connect to live funds. No tagged release yet. No frontend; payment-gateway-fe is a placeholder. Repo: https://github.com/Labs64/labs64.io-payment-gateway
-- Reporting (alpha): read-only reports over the events AuditFlow stored in ClickHouse and S3; a reviewed metric catalogue per tenant, and each customer sees its own rows only. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-reporting
-- Customer Portal (alpha): self-service portal for your customers. Frontend only today; the backend is not implemented. No tagged release yet. Repo: https://github.com/Labs64/labs64.io-customer-portal
+Available today (versions are the latest git tags):
+- AuditFlow (beta, 0.1.24): redacted, structured event routing to pluggable sinks (compliance + explainability); sensitive fields are masked before anything is stored, delivery is retried with a replayable dead-letter queue. Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
+- Auth Gateway (beta, 0.1.10): one authenticated edge for every module: Traefik + OIDC/JWT verification (Keycloak, Entra ID, Auth0, Okta or any OIDC provider) + Cerbos policy derived from each module's OpenAPI spec; unknown routes fail closed. Repo: https://github.com/Labs64/labs64.io-authgateway
+- Checkout (alpha, 0.0.16): whitelabel checkout and order workflow. Purchase orders, validation, consents and checkout transactions work, tenant-scoped. Handing a transaction to the Payment Gateway and publishing events to AuditFlow are not built yet. Repo: https://github.com/Labs64/labs64.io-checkout
+- Payment Gateway (alpha, 0.0.22): one API across multiple PSPs (Stripe, PayPal and a NoOp test provider), idempotent via Idempotency-Key. Webhook signatures are verified per provider when its signing secret is configured; evaluate with the provider sandboxes before real payments. payment-gateway-fe is a placeholder. Repo: https://github.com/Labs64/labs64.io-payment-gateway
+- Reporting (alpha, 0.0.14): read-only reports over the events AuditFlow stored in ClickHouse and S3; a reviewed metric catalogue per tenant, and each customer sees its own rows only. Repo: https://github.com/Labs64/labs64.io-reporting
+- Customer Portal (alpha): self-service portal for your customers. Frontend shell only today (Vue 3, published image under the `edge` tag); the backend is planned, and there is no tagged release yet. Repo: https://github.com/Labs64/labs64.io-customer-portal
 
 Planned, not shipping yet:
 - Invoicing (planned): billing and invoice automation. Not started; no repository yet.
@@ -50,6 +50,12 @@ Infrastructure patterns used across the modules above:
 - Shared Helm charts + Kubernetes deployment model, distributed via ArgoCD
 - Traefik-based edge gateway and policy enforcement
 - OpenAPI-first contracts between services
+
+## Documentation
+- Docs: https://labs64.io/docs/index.html
+- Quickstart (evaluation install on any Kubernetes cluster): https://labs64.io/docs/getting-started/quickstart.html
+- Using Labs64.IO with AI agents: https://labs64.io/docs/introduction/ai-agents.html
+- Machine-readable docs context: https://labs64.io/docs/llms.txt
 
 ## Commercial Deployment Tiers
 - Tier 1: Community Edition (OSS, self-hosted, community support)

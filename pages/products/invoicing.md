@@ -4,6 +4,7 @@ title: "Invoicing (planned)"
 description: "Planned module for billing and invoice automation. Not yet started."
 permalink: /products/invoicing/
 use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -16,8 +17,8 @@ use_cbpscroller: true
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Invoicing Planned Scope">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="inv-scope" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Planned scope</h2>
@@ -27,15 +28,4 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>See what's already shipping</h2>
-            <span>Invoicing isn't built yet. AuditFlow, Auth Gateway, Checkout, Payment Gateway, and Customer Portal are already live — run one of them to see the ecosystem today.</span>
-            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
-                Get started
-            </a>
-            <p><a href="https://github.com/Labs64/labs64.io-workspace">Or explore Labs64.IO on GitHub</a></p>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="See what's already shipping" text="Invoicing isn't built yet. Six modules are in the repositories today, from AuditFlow to Reporting. Run one of them to see the ecosystem." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="Or explore Labs64.IO on GitHub" href2="https://github.com/Labs64/labs64.io-workspace" %}

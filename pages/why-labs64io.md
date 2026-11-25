@@ -4,6 +4,7 @@ title: "Why Labs64.IO? The Polyglot Microservices Ecosystem"
 description: "Discover why technical teams choose Labs64.IO for building, deploying, and scaling modern digital commerce platforms."
 permalink: /why-labs64io/
 use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -16,8 +17,8 @@ use_cbpscroller: true
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="No Vendor Lock-In">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="why-own" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>No Vendor Lock-In</h2>
@@ -30,14 +31,14 @@ use_cbpscroller: true
                 <h2>Polyglot & Modular</h2>
                 <span>We believe in using the right tool for the job. Our ecosystem embraces a polyglot approach with Java, Python, and Vue 3. Because our architecture is entirely modular, you only deploy the services you actually need.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Polyglot & Modular">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-wx.html id="deploy" %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Built-in Observability">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-w-observe.html %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Built-in Observability</h2>
@@ -47,14 +48,4 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to build?</h2>
-            <span>See the 3-tier path from running one module to running your own cluster.</span>
-            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
-                Get started
-            </a>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="Ready to build?" text="Pick a path: a Quickstart install, one module on Docker, your own cluster, or the full ecosystem from source." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" %}

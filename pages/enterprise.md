@@ -4,6 +4,7 @@ title: "Enterprise Edition"
 description: "Commercial protections, dedicated SLAs, and managed SaaS for the Labs64.IO Ecosystem."
 permalink: /enterprise/
 use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -16,8 +17,8 @@ use_cbpscroller: true
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Commercial Licensing">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-w-open.html %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Commercial Licensing</h2>
@@ -28,16 +29,16 @@ use_cbpscroller: true
         <section class="cbp-so-section">
             <article class="cbp-so-side cbp-so-side-left">
                 <h2>Dedicated Support & SLAs</h2>
-                <span>When billing issues arise, you need immediate answers. Enterprise customers receive priority support channels and guaranteed response times directly from the engineers who built the ecosystem.</span>
+                <span>When something breaks in production, you need immediate answers. Enterprise customers receive priority support channels and guaranteed response times directly from the engineers who built the ecosystem.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Dedicated Support">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-wx.html id="ent-support" %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Managed SaaS Option">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="ent-saas" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Managed SaaS Option</h2>
@@ -47,14 +48,4 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to scale?</h2>
-            <span>Talk to us about commercial licensing, SLAs, and managed deployments.</span>
-            <a href="mailto:info@labs64.io" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                <i class="fa fa-envelope "></i>Contact Sales
-            </a>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="Ready to scale?" text="Talk to us about commercial licensing, SLAs, and managed deployments." label='<i class="fa fa-envelope "></i>Contact Sales' href="mailto:info@labs64.io" %}

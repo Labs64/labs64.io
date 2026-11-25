@@ -3,7 +3,7 @@ layout: page
 title: "Cloud-Native Kubernetes"
 description: "Containerized ecosystem orchestration"
 permalink: /platform/kubernetes/
-use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -13,38 +13,36 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
-        <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Helm Standardization">
-            </figure>
-            <article class="cbp-so-side cbp-so-side-right">
-                <h2>Helm Standardization</h2>
-                <span>We use shared Helm libraries and templates to ensure a consistent, secure deployment topology across all 10+ repositories.</span>
-            </article>
-        </section>
-        <section class="cbp-so-section">
-            <article class="cbp-so-side cbp-so-side-left">
-                <h2>Self-Healing Ecosystem</h2>
-                <span>Kubernetes continuously monitors service health, automatically restarting failed pods and rerouting traffic.</span>
-            </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Self-Healing Ecosystem">
-            </figure>
-        </section>
-
+<div class="L64M">
+<section class="L64M_sec"><div class="L64M_w">
+  <div class="L64M_zzwrap">
+    <div class="L64M_zz">
+      <div class="L64M_zz_txt">
+        <h2>Helm Standardization</h2>
+        <p>We use shared Helm libraries and templates to ensure a consistent, secure deployment topology across all 10+ repositories.</p>
+        <ul>
+          <li>Every module is deployed from one shared chart library.</li>
+          <li>Environment differences live in values overlays, so a chart is never patched.</li>
+          <li>ArgoCD applies the charts the same way everywhere.</li>
+        </ul>
+      </div>
+      {% include l64-fig.html id="helm-std" %}
     </div>
+    <div class="L64M_zz">
+      <div class="L64M_zz_txt">
+        <h2>Self-Healing Ecosystem</h2>
+        <p>Kubernetes continuously monitors service health, automatically restarting failed pods and rerouting traffic.</p>
+        <ul>
+          <li>Failed pods are restarted without anyone paging a human first.</li>
+          <li>Traffic stays on the healthy pods in the meantime.</li>
+          <li>Stateless services make a restart safe.</li>
+        </ul>
+      </div>
+      {% include l64-fig.html id="heal" %}
+    </div>
+  </div>
+  <nav class="L64M_related" aria-label="Related"><span>Related</span><a href="{{ '/platform/scalability/' | relative_url }}">Stateless Scalability</a><a href="{{ '/platform/telemetry/' | relative_url }}">Business Telemetry Abstraction</a><a href="{{ '/architecture/' | relative_url }}">Architecture overview</a></nav>
+</div></section>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to see how it fits together?</h2>
-            <span>See how the shared Helm charts and Kubernetes orchestration tie every module together.</span>
-            <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
-                See how it fits together
-            </a>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="Ready to see how it fits together?" text="See how the shared Helm charts and Kubernetes orchestration tie every module together." label="See how it fits together" href="/architecture/" %}

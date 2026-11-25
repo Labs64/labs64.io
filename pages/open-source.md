@@ -4,6 +4,7 @@ title: "Open Source Community"
 description: "The Labs64.IO Ecosystem is proudly built in the open."
 permalink: /open-source/
 use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -16,8 +17,8 @@ use_cbpscroller: true
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="The Community Edition">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="os-ce" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>The Community Edition</h2>
@@ -30,14 +31,14 @@ use_cbpscroller: true
                 <h2>No Artificial Limits</h2>
                 <span>We don't cripple the open-source version. The Community Edition contains the full-featured code used in production by our Enterprise clients, so you can build and scale without constraints.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="No Artificial Limits">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-wx.html id="os-nolimits" %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Contribute">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="os-contrib" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Contribute to the Ecosystem</h2>
@@ -47,15 +48,4 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Join the community</h2>
-            <span>Explore the code on GitHub, then run it yourself with the guided onboarding path.</span>
-            <a href="https://github.com/Labs64/labs64.io-workspace" class="NL_button button_main NL_dark_btn NL_wide_btn">
-                <i class="fa fa-github "></i>Explore Labs64.IO on GitHub
-            </a>
-            <p><a href="/docs/getting-started/">Or get started running it locally</a></p>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="Join the community" text="Explore the code on GitHub, then run it yourself with the guided onboarding path." label='<i class="fa fa-github "></i>Explore Labs64.IO on GitHub' href="https://github.com/Labs64/labs64.io-workspace" label2="Or get started running it locally" href2="https://labs64.io/docs/getting-started/quickstart.html" %}

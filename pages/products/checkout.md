@@ -1,23 +1,24 @@
 ---
 layout: page
 title: "Checkout: Whitelabel Checkout and Order Workflow"
-description: "A whitelabel checkout page and order workflow for the Labs64.IO Ecosystem — purchase orders, transactions, and payment through one drop-in flow."
+description: "A whitelabel checkout page and order workflow for the Labs64.IO Ecosystem: purchase orders, validation, consents and checkout transactions, with the payment hand-off still to come."
 permalink: /products/checkout/
 use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
         <h1>Checkout: Whitelabel Checkout and Order Workflow</h1>
-        <span>A checkout page and order workflow that can be fully branded to match your company's identity. Checkout takes a buyer from a purchase order through payment initiation to a completed transaction — currency and tax validation, PSP payment execution, and order events published for the rest of the ecosystem to consume.</span>
+        <span>A checkout page and order workflow that can be fully branded to match your company's identity. Checkout takes a buyer from a purchase order to a recorded checkout transaction: currency and tax validation, required consents, and tenant-scoped storage. Handing the transaction to the Payment Gateway and publishing order events are on the way.</span>
     </div>
 </div>
 
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Seamless Integration">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-whitelabel.html %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
                 <h2>Seamless Integration</h2>
@@ -30,33 +31,22 @@ use_cbpscroller: true
                 <h2>Purchase Orders & Transactions</h2>
                 <span>Checkout owns Purchase Orders — items, prices, quantities, currency and tax validation, and calculated totals — and the Checkout Transactions created when a buyer initiates payment, stored in Checkout's own PostgreSQL database. Consent tracking ensures required consents are accepted before checkout proceeds.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Subscription Management">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-wx.html id="co-orders" %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Powered by the Ecosystem">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-wx.html id="co-eco" %}
             </figure>
             <article class="cbp-so-side cbp-so-side-right">
-                <h2>Powered by the Ecosystem</h2>
-                <span>Checkout calls the Labs64.IO Payment Gateway to execute payments and the Auth Gateway for secure identity management, then publishes order and checkout events to AuditFlow for the audit trail — ensuring a frictionless and secure user experience.</span>
+                <h2>Built for the Ecosystem</h2>
+                <span>Checkout is designed to sit behind the Auth Gateway, in front of the Payment Gateway, and to publish order events to AuditFlow. Today it takes its identity and scopes from the Auth Gateway's trusted headers. The hand-off to the Payment Gateway and the AuditFlow events are not built yet, so a checkout transaction is recorded but no payment is executed.</span>
             </article>
         </section>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to integrate Checkout?</h2>
-            <span>Run Checkout locally as part of the guided onboarding path.</span>
-            <a href="/docs/getting-started/" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
-                Get started
-            </a>
-            {%- assign m = site.data.modules | where: "id", "checkout" | first -%}
-            <p><a href="{{ m.repo }}">View the Checkout repository</a></p>
-        </div>
-    </div>
-</div>
+{%- assign m = site.data.modules | where: "id", "checkout" | first -%}
+{% include l64-cta.html title="Ready to integrate Checkout?" text="Run Checkout locally as part of the guided onboarding path." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="View the Checkout repository" href2=m.repo %}

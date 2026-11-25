@@ -3,7 +3,7 @@ layout: page
 title: "Federated Identity Management"
 description: "Keycloak OIDC centralized auth"
 permalink: /platform/identity/
-use_cbpscroller: true
+use_modern: true
 ---
 
 <div class="row NL_main_banner">
@@ -13,38 +13,36 @@ use_cbpscroller: true
     </div>
 </div>
 
-<div class="row">
-    <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
-        <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Seamless Single Sign-On">
-            </figure>
-            <article class="cbp-so-side cbp-so-side-right">
-                <h2>Seamless Single Sign-On</h2>
-                <span>Users authenticate once and gain seamless access across the Payment Gateway, Checkout, and ecosystem tooling.</span>
-            </article>
-        </section>
-        <section class="cbp-so-section">
-            <article class="cbp-so-side cbp-so-side-left">
-                <h2>Standardized Tokens</h2>
-                <span>Short-lived JWTs ensure that authentication states remain secure and completely stateless across all microservices.</span>
-            </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="Standardized Tokens">
-            </figure>
-        </section>
-
+<div class="L64M">
+<section class="L64M_sec"><div class="L64M_w">
+  <div class="L64M_zzwrap">
+    <div class="L64M_zz">
+      <div class="L64M_zz_txt">
+        <h2>Seamless Single Sign-On</h2>
+        <p>Users authenticate once and gain seamless access across the Payment Gateway, Checkout, and ecosystem tooling.</p>
+        <ul>
+          <li>Keycloak provides federated OpenID Connect identity for the whole ecosystem.</li>
+          <li>One sign-in is accepted by every module behind the gateway.</li>
+          <li>The Auth Gateway verifies the token before any module sees the request.</li>
+        </ul>
+      </div>
+      {% include l64-fig.html id="sso" %}
     </div>
+    <div class="L64M_zz">
+      <div class="L64M_zz_txt">
+        <h2>Standardized Tokens</h2>
+        <p>Short-lived JWTs ensure that authentication states remain secure and completely stateless across all microservices.</p>
+        <ul>
+          <li>Short-lived JWTs mean no server-side session store.</li>
+          <li>On success the gateway sets trusted headers: <code>X-Auth-User</code>, <code>X-Auth-Scopes</code>, <code>X-Auth-Tenant</code> and <code>X-Request-ID</code>.</li>
+          <li>Modules trust those headers and do not re-validate the token.</li>
+        </ul>
+      </div>
+      {% include l64-fig.html id="token" %}
+    </div>
+  </div>
+  <nav class="L64M_related" aria-label="Related"><span>Related</span><a href="{{ '/products/auth-gateway/' | relative_url }}">Auth Gateway</a><a href="{{ '/platform/zero-trust/' | relative_url }}">Zero-Trust Edge Proxy</a><a href="{{ '/platform/authorization/' | relative_url }}">Policy-as-Code Authorization</a></nav>
+</div></section>
 </div>
 
-<div class="row">
-    <div class="col-md-12 NL_form_light NL_block">
-        <div class="col-md-8 col-md-offset-2 NL_form_light_text">
-            <h2>Ready to see how it fits together?</h2>
-            <span>See where Keycloak OIDC sits in the request path, alongside the modules that rely on it.</span>
-            <a href="{{ '/architecture/' | relative_url }}" class="NL_button button_main NL_dark_btn NL_wide_btn NL_cta_btn">
-                See how it fits together
-            </a>
-        </div>
-    </div>
-</div>
+{% include l64-cta.html title="Ready to see how it fits together?" text="See where Keycloak OIDC sits in the request path, alongside the modules that rely on it." label="See how it fits together" href="/architecture/" %}

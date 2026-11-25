@@ -14,8 +14,6 @@ permalink: /products/reporting/
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        {% include module-banner.html id="reporting" %}
-
         <h2>A metric is a reviewed definition</h2>
         <p>A catalogue names the table, the aggregation, the dimensions and the filters. Adding a metric adds a catalogue entry, not an endpoint. A request picks names from it and never carries SQL; every value is a bound parameter.</p>
 

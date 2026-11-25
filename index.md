@@ -7,7 +7,7 @@ sitemap:
   priority: 0.8
 no-cache: true
 use_cbpscroller: true
-use_slick: true
+use_modern: true
 ---
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
@@ -15,18 +15,25 @@ use_slick: true
         <span>The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps.</span>
         <div class="row">
             <div id="contact" class="col-md-8 col-md-offset-2">
-                <a href="/docs/getting-started/"
+                <a href="https://labs64.io/docs/getting-started/quickstart.html"
                    class="NL_button button_main NL_light_btn NL_wide_btn" role="button"><i class="fa fa-rocket"></i>Getting Started</a>
             </div>
         </div>
     </div>
 </div>
 
+<div class="L64M">
+<section class="L64M_sec" id="modules"><div class="L64M_w">
+  <div class="L64M_head"><h2>Pick a module. <span class="hl">See the API.</span></h2><p>Every module is an API-first service. Click one to see a real request from its OpenAPI contract, then send it.</p></div>
+  {% include l64-explorer.html %}
+</div></section>
+</div>
+
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-01.png' | relative_url }}" alt="Cloud-Native & Kubernetes Ready" title="Cloud-Native & Kubernetes Ready">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-w-cloud.html %}
             </figure>
             <article id="speed-to-market" class="cbp-so-side cbp-so-side-right">
                 <h2>Cloud-Native & Kubernetes Ready</h2>
@@ -57,14 +64,14 @@ use_slick: true
 
                 <span>We believe in using the right tool for the job. Java for high-performance transactions, Python for flexible integrations, and Vue 3 for reactive UIs. All communicating via strict, OpenAPI-first contracts.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-02.png' | relative_url }}" alt="API-First & Polyglot" title="API-First & Polyglot">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-w-contract.html %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-03.png' | relative_url }}" alt="Built-in Observability" title="Built-in Observability">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-w-observe.html %}
             </figure>
             <article id="core-business" class="cbp-so-side cbp-so-side-right">
                 <h2>Built-in Observability</h2>
@@ -79,14 +86,14 @@ use_slick: true
 
                 <span>Start free with our Apache 2.0 Community Edition — nothing in it is ever taken back. Add our Enterprise Edition when you need extra capability, dedicated SLAs, and expert architecture consulting.</span>
             </article>
-            <figure class="cbp-so-side cbp-so-side-right">
-                <img src="{{ '/img/labs64.io-promo-04.png' | relative_url }}" alt="Open Core, Apache 2.0 Forever" title="Open Core, Apache 2.0 Forever">
+            <figure class="cbp-so-side cbp-so-side-right L64M_fig">
+                {% include l64-w-open.html %}
             </figure>
         </section>
 
         <section class="cbp-so-section">
-            <figure class="cbp-so-side cbp-so-side-left">
-                <img src="{{ '/img/labs64.io-promo-05.png' | relative_url }}" alt="Security & Identity at the Edge" title="Security & Identity at the Edge">
+            <figure class="cbp-so-side cbp-so-side-left L64M_fig">
+                {% include l64-w-edge.html %}
             </figure>
             <article id="security-and-ompliance" class="cbp-so-side cbp-so-side-right">
                 <h2>Security & Identity at the Edge</h2>
@@ -96,3 +103,5 @@ use_slick: true
         </section>
     </div>
 </div>
+
+{% include l64-cta.html title="Ready to build on the ecosystem?" text="Start with one module and add the next when your workflow needs it." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="Read how the modules fit together" href2="/architecture/" %}
