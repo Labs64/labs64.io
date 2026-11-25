@@ -85,6 +85,9 @@ exclude:
   - .dockerignore
   - AGENTS.md
   - CLAUDE.md
+  - DESIGN.md
+  - scripts
+  - renovate.json
 
 defaults:
   -
