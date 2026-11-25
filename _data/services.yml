@@ -8,8 +8,16 @@
   section: "Company"
 
 # Learn
+- title: "Docs"
+  url: "https://labs64.io/docs/index.html"
+  section: "Documentation"
+
 - title: "Architecture"
   url: "/architecture/"
+  section: "Documentation"
+
+- title: "Changelog"
+  url: "https://labs64.io/docs/changelog.html"
   section: "Documentation"
 
 - title: "Docs Repository"

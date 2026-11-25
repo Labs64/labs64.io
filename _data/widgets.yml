@@ -355,13 +355,16 @@ os-ce:
   tabs:
     - n: "Inspect"
       rows:
-        - {h: "Read the code", t: "Every Community module is open source."}
+        - {h: "Public repositories", t: "Every Community module, the Helm charts and the documentation live in public repositories under github.com/Labs64."}
+        - {h: "Contracts", t: "Each module's OpenAPI spec sits in its repository, so you can read the API before you run anything."}
     - n: "Modify"
       rows:
-        - {h: "Change it", t: "Permissive licence, not copyleft."}
+        - {h: "Permissive licence", t: "Apache 2.0 is permissive, not copyleft. Change it, extend it, ship it."}
+        - {h: "Extension points", t: "Plugins and provider modules let you extend without forking a module."}
     - n: "Self-host"
       rows:
-        - {h: "Run it yourself", t: "On any cloud or bare-metal Kubernetes."}
+        - {h: "Any Kubernetes", t: "Shared Helm charts, optimized for ArgoCD, on any cloud or bare metal."}
+        - {h: "Evaluate first", t: "The Quickstart installs the platform and sends a real request through it."}
 
 os-nolimits:
   type: tabs
@@ -438,3 +441,79 @@ tenancy:
     - {n: "Event from tenant A", states: [pass, pass, pass], r: "routed\nonly through the pipelines tenant A owns"}
     - {n: "Event with no tenant", states: [pass, pass, pass], r: "routed\nit belongs to the reserved _platform pseudo-tenant"}
     - {n: "Tenant A event, tenant B pipelines", states: [pass, stop, ""], r: "never happens\nthere is no global list and no fall-through to another tenant"}
+
+rp-catalogue:
+  type: steps
+  title: "A request never becomes SQL"
+  badge: "illustrative"
+  steps:
+    - {n: "Your backend", s: "asks by name", d: "It authenticates the customer and picks names: a metric, a range, up to two dimensions and filters."}
+    - {n: "Catalogue", s: "reviewed YAML", d: "One file per tenant names the table, the aggregation, the dimensions and the filters. An invalid file stops the rollout."}
+    - {n: "Bound parameters", s: "never SQL", d: "Every value is a bound parameter. Adding a metric adds a catalogue entry, not an endpoint."}
+    - {n: "ClickHouse", s: "reader user + row policy", d: "Limits sit on the ClickHouse user, and a row policy applies the same scope as the query."}
+    - {n: "Series", s: "the customer's numbers", d: "The service returns that customer's rows only."}
+
+rp-scope:
+  type: tabs
+  title: "The same metric, two customers"
+  badge: "from the README demo"
+  tabs:
+    - n: "Customer acme"
+      rows:
+        - {h: "Scope header", t: "The backend sets X-Reporting-Scope to the customer."}
+        - {h: "Result", t: "A value of 3 for the demo tenant."}
+      code: "POST /metrics/query\nX-Reporting-Scope: acme\n\n{ \"metric\": \"calls\", \"interval\": \"none\" }\n\n# value 3"
+    - n: "Customer globex"
+      rows:
+        - {h: "Scope header", t: "Same request, a different scope."}
+        - {h: "Result", t: "A value of 1: only globex's rows."}
+      code: "POST /metrics/query\nX-Reporting-Scope: globex\n\n{ \"metric\": \"calls\", \"interval\": \"none\" }\n\n# value 1"
+
+rp-ops:
+  type: tabs
+  title: "What the API offers"
+  badge: "from the OpenAPI contract"
+  tabs:
+    - n: "Metrics"
+      rows:
+        - {h: "POST /metrics/list", t: "The metrics this caller may query."}
+        - {h: "POST /metrics/query", t: "A series of one metric."}
+    - n: "Events"
+      rows:
+        - {h: "POST /events/search", t: "Events, newest first, paged by cursor."}
+        - {h: "POST /events/get", t: "One event."}
+        - {h: "POST /events/body", t: "One event as archived, request and response bodies included."}
+    - n: "Traces"
+      rows:
+        - {h: "POST /traces/get", t: "Every event of one correlation ID."}
+        - {h: "POST /status", t: "How fresh the data is."}
+
+notif-scope:
+  type: steps
+  ghost: true
+  title: "Intended behaviour"
+  badge: "planned · not built"
+  steps:
+    - {n: "Domain event", s: "in", d: "Receives meaningful events, such as a completed payment or an issued invoice."}
+    - {n: "Preferences", s: "tenant and recipient", d: "Applies recipient and tenant controls for eligible notifications."}
+    - {n: "Template", s: "tenant-aware", d: "Renders a reusable, tenant-aware message template."}
+    - {n: "Channel", s: "email, webhooks", d: "Delivers through configured channels such as email and webhooks."}
+    - {n: "Status", s: "recorded", d: "Records accepted, delivered and failed attempts."}
+
+agent-status:
+  type: tabs
+  title: "When a call is refused"
+  badge: "from the AI-agents guide"
+  tabs:
+    - n: "401"
+      rows:
+        - {h: "Meaning", t: "No token, or an invalid one."}
+        - {h: "Agent should", t: "Get a fresh token. Retrying with the same one will not help."}
+    - n: "403"
+      rows:
+        - {h: "Meaning", t: "Valid token, but the scope is missing or no policy covers the route."}
+        - {h: "Agent should", t: "Stop and ask for the scope. Retrying will not help."}
+    - n: "429"
+      rows:
+        - {h: "Meaning", t: "Rate or quota limit."}
+        - {h: "Agent should", t: "Wait for the Retry-After period, then retry."}

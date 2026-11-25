@@ -1,0 +1,72 @@
+# "Is it right for you?" content, taken from each module's README ("A good fit if", "Probably not what
+# you need if", "What works today"). Module names, status and versions are NOT stored here: see modules.yml.
+auditflow:
+  fit:
+    - 'You must answer "who did what, when, from where" across several services, and each service does it differently today.'
+    - "Records and events have to move between systems that speak different formats, and you are tired of rebuilding that glue for every consumer."
+    - "Data has to reach more than one place, and each place has its own rules, without hand-wiring every route."
+    - "Personal or confidential data must never reach a downstream store, and redaction at the door is a hard requirement."
+    - "You can not afford silent loss: a downstream outage must delay delivery, not drop evidence."
+    - "Business units or customers need their own routing and credentials, isolated from each other."
+  notfit:
+    - "You only need traces, metrics or infrastructure logs: reach for OpenTelemetry, Prometheus or your observability platform."
+    - "You want to intercept raw HTTP traffic at a proxy or sidecar: AuditFlow is event-driven and your services decide what to publish."
+    - "You want AuditFlow itself to be the queryable store: it deliberately has no database; your sinks own retention and query."
+auth-gateway:
+  fit:
+    - "Several services sit behind one entry point and you want authentication and authorization decided in one place."
+    - "You already have (or will have) an OIDC provider such as Keycloak, Entra ID, Auth0 or Okta."
+    - "You want authorization derived from the API contract instead of hand-maintained route lists."
+  notfit:
+    - "You run a single service with its own auth and no plan to add more."
+    - "You need a general-purpose ingress or CDN: this is the authentication and authorization layer that sits next to one."
+checkout:
+  fit:
+    - "You sell digital or physical goods and want an order and checkout service you can brand and host yourself."
+    - "Consents (terms, marketing, data processing) must be captured per order and enforced before checkout."
+    - "You are building on the Labs64.IO platform and want orders, payments and audit to fit together."
+  notfit:
+    - "You need payments executed end to end today: Checkout currently records the transaction and does not yet hand it to the Payment Gateway."
+    - "You want a complete shop (catalogue, cart, inventory): Checkout starts at the purchase order."
+  works:
+    - "Purchase orders, customers and checkout transactions over REST"
+    - "Validation of currency, tax, time window, extras and consents"
+    - "Tenant isolation and scope-based authorization through the gateway"
+    - "A themable Vue 3 page with i18n and runtime configuration"
+  notyet:
+    - "Handing the transaction to the Payment Gateway, so no redirect to a provider yet"
+    - "Publishing events to AuditFlow"
+    - "The checkout page driving the final checkout call (it loads and renders an order)"
+payment-gateway:
+  fit:
+    - "You take payments through more than one provider, or expect to switch or add one without touching every application."
+    - "Several applications or merchants (tenants) need payments, and you want credentials and rules kept per tenant."
+    - "You want payment lifecycle events in your audit trail without writing the glue."
+  notfit:
+    - "You have one provider and one application and are happy with its SDK: the abstraction would be overhead."
+    - "You need a hosted storefront, subscriptions billing UI or invoicing: this is the payment API layer, not a billing suite."
+reporting:
+  fit:
+    - "You already store events in ClickHouse, with or without AuditFlow, and several customers share a table."
+    - "Your backend authenticates the customer and can say what its plan allows."
+  notfit:
+    - "You want a BI tool for your own staff: Grafana or Athena on the same stores serves that better."
+    - "You need dashboards, schedules or exports out of the box: this is the API under them."
+customer-portal:
+  fit:
+    - "You are on the Labs64.IO platform and want a customer-facing app that deploys the same way as the services."
+    - "You prefer a static, cache-friendly front end served on a public route, with no authentication in the app."
+    - "You want a Vue 3 starting point you can extend, with unit and end-to-end tests already wired."
+  notfit:
+    - "You need a finished self-service product today: this is a shell with a home page and a cart page, and the backend is planned."
+    - "You need server-side rendering or a CMS."
+  works:
+    - "A Vue 3 + Vite + TypeScript single-page app with a home page and a shopping-cart page"
+    - "A multi-stage Docker build served by unprivileged nginx"
+    - "Unit tests (Vitest), end-to-end tests (Playwright) and ESLint"
+    - "A Helm chart and a published edge image"
+  notyet:
+    - "customer-portal-be, a Java backend"
+    - "Account, subscription and order views backed by the platform APIs"
+    - "Runtime configuration through a mounted file"
+    - "A tagged release image"

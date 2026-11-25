@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="telemetry" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See how Business Telemetry threads through the request path across every module." label="See how it fits together" href="/architecture/" %}

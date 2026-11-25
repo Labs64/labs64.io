@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="zero-trust" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See where the Auth Gateway sits in the request path, in front of every module." label="See how it fits together" href="/architecture/" %}

@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="authorization" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See where Cerbos policy evaluation sits in the request path, alongside the modules it protects." label="See how it fits together" href="/architecture/" %}

@@ -1,0 +1,17 @@
+{%- comment -%}
+"Go deeper" row of blog posts for a module or topic, from _data/deepdives.yml.
+Usage: {% include l64-deepdive.html key="auditflow" %}
+{%- endcomment -%}
+{%- assign l64_slugs = site.data.deepdives[include.key] -%}
+{%- if l64_slugs -%}
+<div class="L64M"><section class="L64M_sec"><div class="L64M_w">
+  <div class="L64M_head"><h2>Go <span class="hl">deeper</span></h2><p>Design notes from the people who build it.</p></div>
+  <div class="L64M_posts">
+    {%- for s in l64_slugs -%}
+    {%- assign p = site.posts | where: "slug", s | first -%}
+    {%- if p -%}<a class="L64M_post" href="{{ p.url | relative_url }}"><span class="d">{{ p.date | date: "%b %-d, %Y" }}</span><b>{{ p.title }}</b></a>{%- endif -%}
+    {%- endfor -%}
+  </div>
+  <p class="L64M_cap"><a class="L64M_link" href="{{ '/blog/' | relative_url }}">All posts</a></p>
+</div></section></div>
+{%- endif -%}

@@ -28,7 +28,7 @@ SaaS teams repeatedly rebuild non-differentiating infrastructure (identity, paym
 Labs64.IO addresses this via independently adoptable services behind stable API contracts, available as self-hosted or managed deployments.
 
 ## Service Catalog
-Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Six modules exist today, two are planned and do not ship yet.
+Module status is single-sourced from the site's module data and rendered in the navigation menu and on the `/architecture/` page; the status scale is beta / alpha / planned / exploring, and no module has reached a stable 1.0 release yet. Six modules exist today, three are planned or being explored and do not ship yet.
 
 Available today (versions are the latest git tags):
 - AuditFlow (beta, 0.1.24): redacted, structured event routing to pluggable sinks (compliance + explainability); sensitive fields are masked before anything is stored, delivery is retried with a replayable dead-letter queue. Contract not yet frozen. Repo: https://github.com/Labs64/labs64.io-auditflow
@@ -40,6 +40,7 @@ Available today (versions are the latest git tags):
 
 Planned, not shipping yet:
 - Invoicing (planned): billing and invoice automation. Not started; no repository yet.
+- Notifications (planned): transactional and operational messages. An advance design guide in the documentation; not built, no repository.
 - AI & MCP Gateway (exploring): agent-callable commerce APIs. Design stage only; not scheduled.
 
 Adjacent Labs64 products (separate offerings, not part of this ecosystem's repositories):
@@ -52,6 +53,8 @@ Infrastructure patterns used across the modules above:
 - OpenAPI-first contracts between services
 
 ## Documentation
+- Module overview on this site: https://labs64.io/products/
+- Changelog: https://labs64.io/docs/changelog.html
 - Docs: https://labs64.io/docs/index.html
 - Quickstart (evaluation install on any Kubernetes cluster): https://labs64.io/docs/getting-started/quickstart.html
 - Using Labs64.IO with AI agents: https://labs64.io/docs/introduction/ai-agents.html

@@ -48,4 +48,23 @@ use_modern: true
     </div>
 </div>
 
+<div class="L64M">
+<section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
+  <div class="L64M_head"><h2>Is Labs64.IO <span class="hl">for you?</span></h2>
+    <p>The honest version. No module has reached 1.0 yet, and each module page says what works today.</p></div>
+  <div class="L64M_fit2">
+    <div class="L64M_fitc ok"><h3>A good fit if</h3><ul>
+      <li>You need building blocks such as identity and policy at the edge, audit trails, payments and reporting, and would rather not rebuild them for every product.</li>
+      <li>You can run services on Kubernetes, or take the managed option, and want to start with one module.</li>
+      <li>You want stable, OpenAPI-first contracts between services and an open-core licence you can read.</li>
+    </ul></div>
+    <div class="L64M_fitc no"><h3>Probably not what you need if</h3><ul>
+      <li>You need a finished, all-in-one SaaS product with a polished UI today: the Customer Portal is a shell.</li>
+      <li>You run a single service with its own authentication and have no plan to add more.</li>
+      <li>You want a complete shop or an invoicing suite today: Checkout starts at the purchase order, and Invoicing is planned.</li>
+    </ul></div>
+  </div>
+</div></section>
+</div>
+
 {% include l64-cta.html title="Ready to build?" text="Pick a path: a Quickstart install, one module on Docker, your own cluster, or the full ecosystem from source." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" %}

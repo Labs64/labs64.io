@@ -133,4 +133,6 @@ use_modern: true
 
 </div>
 
+{% include l64-deepdive.html key="architecture" %}
+
 {% include l64-cta.html title="Ready to see it run?" text="The documentation covers the architecture in depth, and the Quickstart puts the platform on a Kubernetes cluster." label="Read the architecture docs" href="https://labs64.io/docs/introduction/architecture.html" label2="Quickstart" href2="https://labs64.io/docs/getting-started/quickstart.html" %}

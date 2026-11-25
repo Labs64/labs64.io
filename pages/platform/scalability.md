@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="scalability" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See how stateless services fit into the request path and scale across the module map." label="See how it fits together" href="/architecture/" %}

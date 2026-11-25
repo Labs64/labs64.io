@@ -11,7 +11,7 @@ use_modern: true
 ---
 <div class="row NL_main_banner">
     <div class="col-md-8 col-md-offset-2 NL_about">
-        <h1>Labs64.IO Ecosystem: Agile Business Workflow Powerhouse</h1>
+        <h1>Open-core microservices for business workflows</h1>
         <span>The Labs64.IO Ecosystem offers a comprehensive suite of interconnected microservices designed to streamline and automate critical business workflow steps.</span>
         <div class="row">
             <div id="contact" class="col-md-8 col-md-offset-2">
@@ -28,6 +28,8 @@ use_modern: true
   {% include l64-explorer.html %}
 </div></section>
 </div>
+
+{% include l64-paths.html %}
 
 <div class="row">
     <div id="cbp-so-scroller" class="cbp-so-scroller NL_intro">
@@ -102,6 +104,24 @@ use_modern: true
             </article>
         </section>
     </div>
+</div>
+
+<div class="L64M">
+<section class="L64M_sec" id="agents"><div class="L64M_w">
+  <div class="L64M_zz">
+    <div class="L64M_zz_txt">
+      <h2>Built for AI agents too</h2>
+      <p>An agent uses Labs64.IO the way any other client does: it gets a token, calls a REST API and reads an OpenAPI contract.</p>
+      <ul>
+        <li>Give each agent its own identity and only the scopes its task needs.</li>
+        <li>Read the OpenAPI contract instead of guessing, and generate a client or a tool definition from it.</li>
+        <li>Send an <code>Idempotency-Key</code> so a retried call is safe, and read the status to know what to do next.</li>
+      </ul>
+      <p style="margin-top:16px"><a class="L64M_link" href="https://labs64.io/docs/introduction/ai-agents.html">Read the AI-agents guide</a></p>
+    </div>
+    {% include l64-wx.html id="agent-status" %}
+  </div>
+</div></section>
 </div>
 
 {% include l64-cta.html title="Ready to build on the ecosystem?" text="Start with one module and add the next when your workflow needs it." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="Read how the modules fit together" href2="/architecture/" %}

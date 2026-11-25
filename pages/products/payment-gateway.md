@@ -48,5 +48,8 @@ use_modern: true
     </div>
 </div>
 
+{% include l64-fit.html id="payment-gateway" %}
+{% include l64-deepdive.html key="payment-gateway" %}
+
 {%- assign m = site.data.modules | where: "id", "payment-gateway" | first -%}
 {% include l64-cta.html title="Ready to integrate the Payment Gateway?" text="Run Payment Gateway locally as part of the guided onboarding path." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="View the Payment Gateway repository" href2=m.repo %}

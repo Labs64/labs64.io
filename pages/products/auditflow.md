@@ -55,5 +55,8 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-fit.html id="auditflow" %}
+{% include l64-deepdive.html key="auditflow" %}
+
 {%- assign m = site.data.modules | where: "id", "auditflow" | first -%}
 {% include l64-cta.html title="Ready to integrate AuditFlow?" text="Run AuditFlow locally as part of the guided onboarding path." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="View the AuditFlow repository" href2=m.repo %}

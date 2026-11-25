@@ -1,0 +1,22 @@
+{%- comment -%}
+"Is it right for you?" for a module page, from _data/module-facts.yml (taken from the module README).
+Usage: {% include l64-fit.html id="auditflow" %}
+{%- endcomment -%}
+{%- assign f = site.data["module-facts"][include.id] -%}
+{%- assign m = site.data.modules | where: "id", include.id | first -%}
+{%- if f -%}
+<div class="L64M"><section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
+  <div class="L64M_head"><h2>Is {{ m.name }} <span class="hl">right for you?</span></h2>
+    <p>Straight from the repository README, including where it is not the right tool.{% if m.version %} Latest release: <code>{{ m.version }}</code>.{% else %} No tagged release yet.{% endif %}</p></div>
+  <div class="L64M_fit2">
+    <div class="L64M_fitc ok"><h3>A good fit if</h3><ul>{%- for i in f.fit -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>
+    <div class="L64M_fitc no"><h3>Probably not what you need if</h3><ul>{%- for i in f.notfit -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>
+  </div>
+  {%- if f.works -%}
+  <div class="L64M_fit2 L64M_fit2--status">
+    <div class="L64M_fitc ok"><h3>Works today</h3><ul>{%- for i in f.works -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>
+    <div class="L64M_fitc plan"><h3>Not yet</h3><ul>{%- for i in f.notyet -%}<li>{{ i }}</li>{%- endfor -%}</ul></div>
+  </div>
+  {%- endif -%}
+</div></section></div>
+{%- endif -%}

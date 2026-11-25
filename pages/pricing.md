@@ -65,13 +65,24 @@ use_modern: true
   <p class="L64M_cap" style="max-width:700px"><strong>No take-backs:</strong> nothing that ships in the Community Edition is ever removed or relicensed. Enterprise Edition only adds — it never forks the Community codebase or changes its behavior.</p>
 </div></section>
 
+<section class="L64M_sec"><div class="L64M_w">
+  <div class="L64M_head"><h2>Four ways to <span class="hl">operate it</span></h2>
+    <p>Choose the operating model that matches your team's appetite for running infrastructure. The exact commercial packaging and service availability are agreed separately; these describe the intended shape.</p></div>
+  <div class="L64M_tiers">
+    <div class="L64M_tier"><h3>Community Edition</h3><dl><dt>You operate</dt><dd>Your cluster, integrations, upgrades and support process.</dd><dt>Labs64.IO</dt><dd>Public software and documentation.</dd><dt>Best fit</dt><dd>Teams evaluating or self-supporting.</dd></dl></div>
+    <div class="L64M_tier"><h3>Managed SaaS</h3><dl><dt>You operate</dt><dd>Minimal platform infrastructure.</dd><dt>Labs64.IO</dt><dd>Operates the agreed managed environment.</dd><dt>Best fit</dt><dd>Teams focused on product delivery.</dd></dl></div>
+    <div class="L64M_tier"><h3>Assisted Enterprise</h3><dl><dt>You operate</dt><dd>Your environment, with shared operational responsibility.</dd><dt>Labs64.IO</dt><dd>Guidance, enablement and agreed support.</dd><dt>Best fit</dt><dd>Regulated or enterprise-owned platforms.</dd></dl></div>
+    <div class="L64M_tier"><h3>Bespoke</h3><dl><dt>You operate</dt><dd>A tailored environment and integration model.</dd><dt>Labs64.IO</dt><dd>Solution design and delivery by agreement.</dd><dt>Best fit</dt><dd>Specialized constraints or integrations.</dd></dl></div>
+  </div>
+  <p class="L64M_cap">Every tier shares the same foundations: explicit identity, secret management, tenant boundaries, backups, observability and an incident response path. <a class="L64M_link" href="https://labs64.io/docs/operate-manage/deployment-tiers.html">Read the deployment tiers</a>.</p>
+</div></section>
+
 <section class="L64M_sec L64M_sec--alt"><div class="L64M_w">
   <div class="L64M_head"><h2>Frequently asked <span class="hl">questions</span></h2></div>
   <div class="L64M_faq">
-    <details><summary>Can I mix Open Source and Enterprise modules?</summary><p>Yes. You can start with the Community edition and upgrade specific modules to Enterprise licenses as your compliance or support requirements evolve.</p></details>
-    <details><summary>What is the "Managed SaaS option"?</summary><p>Instead of self-hosting, our expert team can deploy, manage, and scale the Labs64.IO ecosystem for you in a dedicated, secure cloud environment. <a href="mailto:info@labs64.io">Contact us</a> for a custom quote.</p></details>
-    <details><summary>What is Open Core?</summary><p>Open core means the Community Edition — core, SDKs, contracts, clients, and every shipped integration — is Apache 2.0 and free forever, with nothing ever taken back or relicensed. Enterprise Edition is a separate, additive layer: extra modules, endpoints, and capabilities under a commercial license, built on top of the same Community release rather than a fork of it.</p></details>
-    <details><summary>How do I upgrade from Community to Enterprise?</summary><p>Upgrading is a seamless process of swapping out the community Docker images for enterprise-licensed images in your Helm configuration. Contact our sales team and we will provide you with the enterprise registry credentials.</p></details>
+    {%- for f in site.data["faq-pricing"] -%}
+    <details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+    {%- endfor -%}
   </div>
 </div></section>
 

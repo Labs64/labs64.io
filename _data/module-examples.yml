@@ -125,3 +125,8 @@ ai-mcp-gateway:
   kind: none
   summary: "Being explored"
   note: "Not built yet."
+
+notifications:
+  kind: none
+  summary: "Planned"
+  note: "An advance design guide in the documentation. Not built yet."

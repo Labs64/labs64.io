@@ -40,6 +40,10 @@
                     </a>
                     <div class="NL_dropdown-menu" role="menu">
                         <div class="NL_dropdown-grid">
+                            <a class="NL_dropdown-item" href="{{ '/products/' | relative_url }}" role="menuitem">
+                                <span class="NL_dropdown-item-title">All modules</span>
+                                <span class="NL_dropdown-item-desc">Status, releases and a real request for each</span>
+                            </a>
                             {% for mid in page.modules %}
                             {% assign m = site.data.modules | where: "id", mid | first %}
                             {% if m %}
@@ -64,7 +68,12 @@
                     </a>
                     <div class="NL_dropdown-menu" role="menu">
                         <div class="NL_dropdown-grid">
+                            {% assign l64_g = '' %}
                             {% for subitem in page.subitems %}
+                            {% if subitem.group and subitem.group != l64_g %}
+                            <span class="NL_dropdown-group" role="presentation">{{ subitem.group }}</span>
+                            {% assign l64_g = subitem.group %}
+                            {% endif %}
                             {% if subitem.url contains 'http' %}
                             {% assign sublink = subitem.url %}
                             {% else %}

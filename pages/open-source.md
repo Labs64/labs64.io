@@ -48,4 +48,16 @@ use_modern: true
     </div>
 </div>
 
+<div class="L64M">
+<section class="L64M_sec"><div class="L64M_w">
+  <div class="L64M_head"><h2>Where to <span class="hl">start</span></h2><p>Run it, read how the repositories fit together, then send a pull request.</p></div>
+  <nav class="L64M_related L64M_related--center" aria-label="Where to start">
+    <a href="https://labs64.io/docs/development/contributing.html">Contributing guide</a>
+    <a href="https://labs64.io/docs/development/workspace-repositories.html">Workspace repositories</a>
+    <a href="https://labs64.io/docs/getting-started/run-the-full-ecosystem-locally.html">Run the full ecosystem locally</a>
+    <a href="https://github.com/topics/labs64-io">Labs64.IO on GitHub</a>
+  </nav>
+</div></section>
+</div>
+
 {% include l64-cta.html title="Join the community" text="Explore the code on GitHub, then run it yourself with the guided onboarding path." label='<i class="fa fa-github "></i>Explore Labs64.IO on GitHub' href="https://github.com/Labs64/labs64.io-workspace" label2="Or get started running it locally" href2="https://labs64.io/docs/getting-started/quickstart.html" %}

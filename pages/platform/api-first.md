@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="api-first" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See where OpenAPI contracts sit in the request path, alongside every module that shares them." label="See how it fits together" href="/architecture/" %}

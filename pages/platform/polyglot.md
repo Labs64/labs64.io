@@ -45,4 +45,6 @@ use_modern: true
 </div></section>
 </div>
 
+{% include l64-deepdive.html key="polyglot" %}
+
 {% include l64-cta.html title="Ready to see how it fits together?" text="See how the Java, Python, and Vue services fit together across the module map." label="See how it fits together" href="/architecture/" %}

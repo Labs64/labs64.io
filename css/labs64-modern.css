@@ -446,3 +446,38 @@ button.L64M_pod { cursor: pointer; font-family: var(--mono); }
 .L64M .L64M_related--center { justify-content: center; margin: 0 auto; padding-top: 0; border-top: 0; max-width: 900px; }
 .L64M a.L64M_link { color: var(--umber); font-weight: 500; border-bottom: 1px dotted var(--umber); }
 @media (max-width: 900px) { .L64M .L64M_pcards, .L64M .L64M_pcards--3 { grid-template-columns: 1fr; } }
+
+/* ---------- fit blocks, deep dives, paths ---------- */
+.L64M .L64M_fit2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto 20px; }
+.L64M .L64M_fitc { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px 26px; }
+.L64M .L64M_fitc h3 { font-size: 18px; font-weight: 500; margin-bottom: 12px; color: var(--umber); }
+.L64M .L64M_fitc ul { display: grid; gap: 10px; }
+.L64M .L64M_fitc li { display: flex; gap: 12px; font-size: 15px; line-height: 1.55; color: var(--ink2); font-weight: 400; }
+.L64M .L64M_fitc li::before { content: ""; width: 16px; height: 16px; border-radius: 50%; flex: none; margin-top: 3px; background: #E3F4EA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-5' fill='none' stroke='%231C7A4B' stroke-width='1.7'/%3E%3C/svg%3E"); }
+.L64M .L64M_fitc.no { background: #FFFAF6; border-color: #F3DCC6; }
+.L64M .L64M_fitc.no li::before, .L64M .L64M_fitc.plan li::before { background: #FDE9DC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 8h6' fill='none' stroke='%23A93009' stroke-width='1.7'/%3E%3C/svg%3E"); }
+.L64M .L64M_fitc.plan { background: #FFFAF6; border-color: #F3DCC6; }
+.L64M .L64M_fitc code { background: var(--cream); color: var(--umber); border-radius: 4px; padding: 1px 6px; font-size: .9em; }
+.L64M .L64M_posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; max-width: 1040px; margin: 0 auto; }
+.L64M .L64M_post { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; transition: border-color .2s; }
+.L64M .L64M_post:hover { border-color: var(--ember); }
+.L64M .L64M_post .d { font: 400 12px var(--mono); color: var(--mut); }
+.L64M .L64M_post b { font-size: 15.5px; font-weight: 500; color: var(--umber); line-height: 1.35; }
+.L64M .L64M_paths { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.L64M .L64M_path_card { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px; transition: border-color .2s, box-shadow .2s; }
+.L64M .L64M_path_card:hover { border-color: var(--ember); box-shadow: 0 10px 24px -16px rgba(225,72,23,.45); }
+.L64M .L64M_path_card .k { font: 500 12px var(--mono); color: var(--ember-t); text-transform: uppercase; letter-spacing: .04em; }
+.L64M .L64M_path_card h3 { font-size: 20px; font-weight: 500; color: var(--umber); }
+.L64M .L64M_path_card p { font-size: 14.5px; line-height: 1.55; color: var(--ink2); font-weight: 400; }
+.L64M .L64M_path_card ul { display: grid; gap: 4px; margin-top: auto; padding-top: 6px; }
+.L64M .L64M_path_card li { font-size: 13px; line-height: 1.45; color: var(--mut); font-weight: 400; }
+.L64M .L64M_path_card code { font-size: .92em; background: var(--cream); border-radius: 3px; padding: 0 4px; }
+.L64M .L64M_path_card .go { font-size: 14px; font-weight: 500; color: var(--ember-t); margin-top: 6px; }
+.L64M .L64M_tiers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; max-width: 1080px; margin: 0 auto; }
+.L64M .L64M_tier { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.L64M .L64M_tier h3 { font-size: 18px; font-weight: 500; color: var(--umber); }
+.L64M .L64M_tier dl { display: grid; gap: 10px; }
+.L64M .L64M_tier dt { font: 500 11.5px 'Roboto', sans-serif; letter-spacing: .05em; text-transform: uppercase; color: var(--mut); }
+.L64M .L64M_tier dd { font-size: 14.5px; line-height: 1.5; color: var(--ink2); font-weight: 400; margin: 2px 0 0; }
+@media (max-width: 1000px) { .L64M .L64M_paths, .L64M .L64M_tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); } .L64M .L64M_posts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .L64M .L64M_paths, .L64M .L64M_tiers, .L64M .L64M_posts, .L64M .L64M_fit2 { grid-template-columns: 1fr; } }

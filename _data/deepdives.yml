@@ -1,0 +1,17 @@
+# Blog posts shown as "Go deeper" on module and platform pages. Values are post slugs
+# (the file name without its date). Titles and dates come from the posts themselves.
+auditflow: [auditflow-extra-vocabulary, auditflow-event-time-policy, auditflow-pipeline-steps, auditflow-bounded-waits-concurrency, auditflow-s3-sink-budget, payment-eventing-correlation-ids]
+auth-gateway: [trusted-header-contract, cerbos-authorization-three-tier-pep, oauth2-auth-migration, pin-oidc-issuer-independent-of-discovery, direct-internal-calls-replacing-oauth-hop, robot-framework-edge-suite]
+payment-gateway: [psp-abstraction-spi, adding-stripe-to-payment-gateway, why-we-moved-payment-idempotency-from-postgresql-to-redis, payment-state-policy-provider-outcomes, paypal-currency-precision, self-describing-payment-gateway-schemas]
+checkout: [ecosystem-architecture, trusted-header-contract, openapi-auth-resource-references]
+reporting: [auditflow-event-time-policy, auditflow-extra-vocabulary, auditflow-pipeline-steps]
+customer-portal: [ecosystem-architecture, k8s-readonly-root-emptydir-tmp]
+api-first: [oauth2-auth-migration, openapi-auth-resource-references, self-describing-payment-gateway-schemas]
+authorization: [cerbos-authorization-three-tier-pep, oauth2-auth-migration, openapi-auth-resource-references]
+identity: [pin-oidc-issuer-independent-of-discovery, direct-internal-calls-replacing-oauth-hop, trusted-header-contract]
+kubernetes: [ecosystem-architecture, k8s-readonly-root-emptydir-tmp, gateway-api-traefik-migration, labs64-workspace-tooling]
+polyglot: [psp-abstraction-spi, fastapi-sync-def-keeps-health-checks-alive, auditflow-extra-vocabulary]
+scalability: [auditflow-bounded-waits-concurrency, auditflow-s3-sink-budget, why-we-moved-payment-idempotency-from-postgresql-to-redis]
+telemetry: [payment-eventing-correlation-ids, pod-metrics-in-kubernetes, master-kubernetes-probes]
+zero-trust: [trusted-header-contract, gateway-api-traefik-migration, pin-oidc-issuer-independent-of-discovery, robot-framework-edge-suite]
+architecture: [ecosystem-architecture, trusted-header-contract, cerbos-authorization-three-tier-pep, gateway-api-traefik-migration]

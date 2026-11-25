@@ -48,5 +48,8 @@ use_modern: true
     </div>
 </div>
 
+{% include l64-fit.html id="checkout" %}
+{% include l64-deepdive.html key="checkout" %}
+
 {%- assign m = site.data.modules | where: "id", "checkout" | first -%}
 {% include l64-cta.html title="Ready to integrate Checkout?" text="Run Checkout locally as part of the guided onboarding path." label="Get started" href="https://labs64.io/docs/getting-started/quickstart.html" label2="View the Checkout repository" href2=m.repo %}
