@@ -35,7 +35,7 @@ use_modern: true
     {% include l64-path.html %}
     <div class="L64M_prose">
       <p><strong>Traefik</strong> receives every request and forwards it to the <strong>Auth Gateway</strong> at <code>/auth</code> before routing it anywhere else. The Auth Gateway verifies the OIDC/JWT token on the request, then asks the central <strong>Cerbos PDP</strong> for the authorization decision — policy evaluation is centralized, not duplicated per module.</p>
-      <p>On success, the Auth Gateway emits the trusted header contract that every upstream module relies on: <code>X-Auth-User</code>, <code>X-Auth-Scopes</code>, <code>X-Auth-Tenant</code> (set to <code>-</code> when the request is tenant-less), and <code>X-Request-ID</code>. All four are set on every 2xx response, and Traefik's <code>authResponseHeaders</code> always overwrite whatever a client supplied, so a module can trust these headers without re-validating them. Routes that don't match a known policy <strong>fail closed</strong> — they're rejected, not silently allowed through.</p>
+      <p>On success, the Auth Gateway emits the trusted header contract that every upstream module relies on: <code class="nw">X-Auth-User</code>, <code class="nw">X-Auth-Scopes</code>, <code class="nw">X-Auth-Tenant</code> (set to <code>-</code> when the request is tenant-less), and <code class="nw">X-Request-ID</code>. All four are set on every 2xx response, and Traefik's <code>authResponseHeaders</code> always overwrite whatever a client supplied, so a module can trust these headers without re-validating them. Routes that don't match a known policy <strong>fail closed</strong> — they're rejected, not silently allowed through.</p>
     </div>
   </div>
 </section>
