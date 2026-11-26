@@ -19,7 +19,7 @@ tags:
 
 A hosted checkout looks simple: create a session, send the customer to the provider's payment page, wait for confirmation. In a demo it works on the first try. In production, the network drops a request, a webhook arrives twice, and the customer's browser comes back at the same moment as the provider's confirmation. Each of those can turn into a double charge or a payment shown as failed although the money arrived.
 
-This post shows how the [Labs64.IO Payment Gateway](/products/payment-gateway/) integrates Stripe Checkout so that those situations are harmless ([pull request #22](https://github.com/Labs64/labs64.io-payment-gateway/pull/22)). It is written for developers and integrators building any Stripe Checkout integration; the rules apply to other hosted checkouts as well.
+This post shows how the [Labs64.IO Payment Gateway](/products/payment-gateway/) integrates Stripe Checkout so that those situations are harmless ([pull request #22](https://github.com/Labs64/labs64.io-payment-gateway/pull/22){:target="_blank"}{:rel="noopener nofollow"}). It is written for developers and integrators building any Stripe Checkout integration; the rules apply to other hosted checkouts as well.
 
 **After reading, you will know:**
 
@@ -144,4 +144,4 @@ The full setup is in the [Stripe guide](https://labs64.io/docs/modules/payment-g
 - **One locked update path, final states final:** the second writer finds the result and does nothing.
 - **Test the contract offline, the integration online:** a stand-in for the API logic, a smoke test for the real provider.
 
-The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway) under `payment-gateway-providers/stripe`; it plugs into the SPI described in [One payment API, many PSPs](/blog/2026/01/26/psp-abstraction-spi/).
+The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"} under `payment-gateway-providers/stripe`; it plugs into the SPI described in [One payment API, many PSPs](/blog/2026/01/26/psp-abstraction-spi/).

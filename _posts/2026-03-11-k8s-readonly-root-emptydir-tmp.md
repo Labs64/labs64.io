@@ -137,4 +137,4 @@ Rendering the chart with `helm template` shows `readOnlyRootFilesystem: true` on
 - **Prefer disk-backed `emptyDir`,** because memory-backed files count against the container's memory limit.
 - **It is one layer of several.** Pair it with non-root users, no privilege escalation and dropped capabilities.
 
-The Labs64.IO chart conventions are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts), and the [Cloud-Native Kubernetes](/platform/kubernetes/) page describes the platform they deploy.
+The Labs64.IO chart conventions are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts){:target="_blank"}{:rel="noopener nofollow"}, and the [Cloud-Native Kubernetes](/platform/kubernetes/) page describes the platform they deploy.

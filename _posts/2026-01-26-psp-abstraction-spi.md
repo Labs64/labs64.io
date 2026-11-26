@@ -150,4 +150,4 @@ To write your own provider: create a module under `payment-gateway-providers/<na
 - **Untrusted input can only cause a lookup.** Webhook payloads are verified before they can change anything.
 - **Tenants enable providers with data.** Credentials per tenant, in configuration, never in code.
 
-The SPI lives in `payment-gateway-providers/providers-spi` in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway); the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover configuration and usage.
+The SPI lives in `payment-gateway-providers/providers-spi` in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}; the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover configuration and usage.

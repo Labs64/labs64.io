@@ -128,4 +128,4 @@ curl -sS -i -X POST http://localhost:8080/audit/publish \
 - **Data passed between steps must not be forgeable.** Reserve the field and reject it at ingest.
 - **Couple only what depends on each other;** keep independent destinations independent.
 
-The full rules, including batching behaviour, are in [Pipeline steps and the step context](https://labs64.io/docs/modules/auditflow/configuring-pipelines/); the implementation is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow). The S3 sink used in step 1 is the subject of [When S3 hangs](/blog/2026/11/14/auditflow-s3-sink-budget/).
+The full rules, including batching behaviour, are in [Pipeline steps and the step context](https://labs64.io/docs/modules/auditflow/configuring-pipelines/); the implementation is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"}. The S3 sink used in step 1 is the subject of [When S3 hangs](/blog/2026/11/14/auditflow-s3-sink-budget/).

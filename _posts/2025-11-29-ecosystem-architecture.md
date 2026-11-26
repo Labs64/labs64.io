@@ -132,4 +132,4 @@ The identity provider is a plug as well: any OIDC provider with the client-crede
 - **Check infrastructure before installing.** A preflight job turns firewall and credential mistakes into a clear failure instead of a crashing service.
 - **The gateway is where modules become a platform.** Authentication, authorization, routing and rate limiting live there once, not in every module.
 
-The charts are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts). The [Architecture overview](/architecture/) and the [Cloud-Native Kubernetes](/platform/kubernetes/) page give the bigger picture, and [Let the gateway own your API version prefix](/blog/2025/11/15/auditflow-traefik-versioning/) shows how one of those routes works in detail.
+The charts are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts){:target="_blank"}{:rel="noopener nofollow"}. The [Architecture overview](/architecture/) and the [Cloud-Native Kubernetes](/platform/kubernetes/) page give the bigger picture, and [Let the gateway own your API version prefix](/blog/2025/11/15/auditflow-traefik-versioning/) shows how one of those routes works in detail.

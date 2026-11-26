@@ -18,7 +18,7 @@ tags:
 
 For years, getting HTTP traffic into a Kubernetes cluster meant choosing an ingress controller and then writing its own YAML dialect. Every Helm chart that shipped such routing rules was tied to that one controller, and moving to another meant rewriting every chart.
 
-This post explains how the [Labs64.IO Helm charts](https://github.com/Labs64/labs64.io-helm-charts) moved from Traefik's own `IngressRoute` resource to the standard **Kubernetes Gateway API**, what that changed, where Traefik is still needed, and one ordering rule that turned out to be a security requirement. It is written for platform engineers and chart authors who are planning the same move.
+This post explains how the [Labs64.IO Helm charts](https://github.com/Labs64/labs64.io-helm-charts){:target="_blank"}{:rel="noopener nofollow"} moved from Traefik's own `IngressRoute` resource to the standard **Kubernetes Gateway API**, what that changed, where Traefik is still needed, and one ordering rule that turned out to be a security requirement. It is written for platform engineers and chart authors who are planning the same move.
 
 **After reading, you will know:**
 

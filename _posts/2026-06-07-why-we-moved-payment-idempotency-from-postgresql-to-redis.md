@@ -19,7 +19,7 @@ tags:
 
 A client retry, a network blip or a load balancer timeout must never charge a customer twice. The client cannot know whether its first "pay" request reached the server before the connection dropped, so it sends it again. Whether that second request becomes a second charge is entirely up to the server.
 
-This post explains the standard defence, the **idempotency key**, and how the [Labs64.IO Payment Gateway](/products/payment-gateway/) implements it with Redis and two small Lua scripts after first doing it in PostgreSQL ([pull request #31](https://github.com/Labs64/labs64.io-payment-gateway/pull/31)). It is written for backend developers and architects who design APIs where a repeated request must not repeat a side effect.
+This post explains the standard defence, the **idempotency key**, and how the [Labs64.IO Payment Gateway](/products/payment-gateway/) implements it with Redis and two small Lua scripts after first doing it in PostgreSQL ([pull request #31](https://github.com/Labs64/labs64.io-payment-gateway/pull/31){:target="_blank"}{:rel="noopener nofollow"}). It is written for backend developers and architects who design APIs where a repeated request must not repeat a side effect.
 
 **After reading, you will know:**
 
@@ -163,4 +163,4 @@ docker rm -f idem-demo
 - **An owner token makes takeover safe,** so a request that comes back to life cannot overwrite the real result.
 - **Fail closed:** without the idempotency store, no payment should run.
 
-The Java side is `RedisIdempotencyRepository` in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway). The same two-script pattern fits webhook deduplication and any other "exactly once within a window" problem.
+The Java side is `RedisIdempotencyRepository` in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}. The same two-script pattern fits webhook deduplication and any other "exactly once within a window" problem.

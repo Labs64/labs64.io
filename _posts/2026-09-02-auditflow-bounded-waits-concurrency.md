@@ -124,4 +124,4 @@ The original fix used 4 as the per-tenant cap; it is 32 today after the delivery
 - **Bounded wait, then defer:** give pressure a moment to clear, then step aside without penalty.
 - **Under load, slower is better than lossy,** especially for an audit trail.
 
-The code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow): `TenantConcurrencyLimiter.java` in `auditflow-be` and `sink.py` in `auditflow-sink`. The same blocking-call problem in a FastAPI gateway is described in [Why sync def keeps FastAPI health checks alive](/blog/2026/09/17/fastapi-sync-def-keeps-health-checks-alive/).
+The code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"}: `TenantConcurrencyLimiter.java` in `auditflow-be` and `sink.py` in `auditflow-sink`. The same blocking-call problem in a FastAPI gateway is described in [Why sync def keeps FastAPI health checks alive](/blog/2026/09/17/fastapi-sync-def-keeps-health-checks-alive/).

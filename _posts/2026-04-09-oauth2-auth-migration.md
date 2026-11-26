@@ -37,7 +37,7 @@ Before this change, every Labs64.IO service carried its own security code: a dev
 
 ## The solution in three parts
 
-The Payment Gateway's switch is [pull request #9](https://github.com/Labs64/labs64.io-payment-gateway/pull/9), which replaced its in-app Spring Security stack with the shared auth-context starter.
+The Payment Gateway's switch is [pull request #9](https://github.com/Labs64/labs64.io-payment-gateway/pull/9){:target="_blank"}{:rel="noopener nofollow"}, which replaced its in-app Spring Security stack with the shared auth-context starter.
 
 ### Part 1: declare the rule on the operation
 
@@ -69,7 +69,7 @@ There is no `public: true` flag. An operation without any requirement is *inferr
 2. Cerbos resource policies for the central policy decision point (see [One policy decision point, three enforcement points](/blog/2026/03/26/cerbos-authorization-three-tier-pep/)).
 3. A routing manifest and a list of public paths for the gateway.
 
-The [integration guide](https://github.com/Labs64/labs64.io-commons/blob/master/auth-context-java/INTEGRATION.md) walks through the `pom.xml` changes.
+The [integration guide](https://github.com/Labs64/labs64.io-commons/blob/master/auth-context-java/INTEGRATION.md){:target="_blank"}{:rel="noopener nofollow"} walks through the `pom.xml` changes.
 
 ### Part 3: enforce at runtime without tokens
 

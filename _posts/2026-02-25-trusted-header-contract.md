@@ -128,7 +128,7 @@ The Java starter is on Maven Central:
 </dependency>
 ```
 
-To run the library tests and read the vectors, check out [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) and run `mvn -B verify`.
+To run the library tests and read the vectors, check out [labs64.io-commons](https://github.com/Labs64/labs64.io-commons){:target="_blank"}{:rel="noopener nofollow"} and run `mvn -B verify`.
 
 ## Key takeaways
 

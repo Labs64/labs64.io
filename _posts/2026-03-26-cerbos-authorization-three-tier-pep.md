@@ -19,7 +19,7 @@ tags:
 
 In a multi-tenant platform, authorization tends to fall apart into pieces. The gateway checks who may call which endpoint. Each service checks its own business rules. And every query that lists data has a hand-written `WHERE tenant_id = ?` that somebody must remember. When each piece has its own rules and its own engine, one change to a permission means edits in several places, and one forgotten filter means one tenant can see another's data.
 
-This post shows how Labs64.IO moved from in-process policy evaluation (Cedar, at the edge and in each service) to **one central policy decision point**, [Cerbos](https://cerbos.dev), asked by three small enforcement points. It is written for architects and security-minded developers who design authorization across services and data access.
+This post shows how Labs64.IO moved from in-process policy evaluation (Cedar, at the edge and in each service) to **one central policy decision point**, [Cerbos](https://cerbos.dev){:target="_blank"}{:rel="noopener nofollow"}, asked by three small enforcement points. It is written for architects and security-minded developers who design authorization across services and data access.
 
 **After reading, you will know:**
 
@@ -174,4 +174,4 @@ Because policies are generated, the thing to test is the *decisions*. `auth-poli
 - **Authorization can shape queries,** not only block requests: query plans become database filters.
 - **Fail closed and test decisions.** Errors mean deny, and a truth table proves the policies do what the contract says.
 
-The implementation is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) (`auth-context-java`, `authz-queryplan-jpa`, `auth-policy-cerbos`) and [labs64.io-authgateway](https://github.com/Labs64/labs64.io-authgateway). See also [Policy-as-Code Authorization](/platform/authorization/) and [Zero-Trust Edge Proxy](/platform/zero-trust/).
+The implementation is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons){:target="_blank"}{:rel="noopener nofollow"} (`auth-context-java`, `authz-queryplan-jpa`, `auth-policy-cerbos`) and [labs64.io-authgateway](https://github.com/Labs64/labs64.io-authgateway){:target="_blank"}{:rel="noopener nofollow"}. See also [Policy-as-Code Authorization](/platform/authorization/) and [Zero-Trust Edge Proxy](/platform/zero-trust/).

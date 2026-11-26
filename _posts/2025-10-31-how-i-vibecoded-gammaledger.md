@@ -88,7 +88,7 @@ Then came the leap: creating the actual skeleton.
 
 I used Perplexity Labs to generate a basic HTML/CSS/JavaScript scaffold. Nothing fancy - a responsive layout, a mock dashboard structure, placeholder forms for entering positions. It wasn't production code; it was a wireframe in executable form. The beauty was that I could *immediately see* whether my mental model actually worked in practice.
 
-That skeleton became my GitHub repository: [GammaLedger](https://github.com/r-brown/GammaLedger){:target="_blank"}.
+That skeleton became my GitHub repository: [GammaLedger](https://github.com/r-brown/GammaLedger){:target="_blank"}{:rel="noopener nofollow"}.
 
 ## The Iterative Leap: GitHub Copilot in Agentic Mode
 
@@ -106,7 +106,7 @@ The workflow became something like this:
 
 4. **Iterate and validate** against actual use cases - real OFX files from Interactive Brokers, real position data from my trading account.
 
-This agentic approach became the engine of [GammaLedger's](https://gammaledger.com){:target="_blank"} development. Features that would have taken days of research, trial, and error could be prototyped in hours.
+This agentic approach became the engine of [GammaLedger's](https://gammaledger.com){:target="_blank"}{:rel="noopener nofollow"} development. Features that would have taken days of research, trial, and error could be prototyped in hours.
 
 ## The AI Stack: Pluralism in Problem-Solving
 
@@ -225,4 +225,4 @@ The lesson: **Embrace AI as a collaborator, but keep human judgment on the thron
 
 ---
 
-*[GammaLedger](https://gammaledger.com){:target="_blank"} is an open-source options tracking application built with AI-assisted development, [available on GitHub](https://github.com/r-brown/GammaLedger){:target="_blank"}. It demonstrates that modern AI tools can help solve meaningful problems, but the human vision driving those tools remains irreplaceable.*
+*[GammaLedger](https://gammaledger.com){:target="_blank"}{:rel="noopener nofollow"} is an open-source options tracking application built with AI-assisted development, [available on GitHub](https://github.com/r-brown/GammaLedger){:target="_blank"}{:rel="noopener nofollow"}. It demonstrates that modern AI tools can help solve meaningful problems, but the human vision driving those tools remains irreplaceable.*

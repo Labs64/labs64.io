@@ -145,5 +145,5 @@ The route then uses a `chain`: `forwardAuth` first, because it needs the caller'
 
 - [Traefik middleware on Kubernetes: a complete reference](/blog/2026/12/28/traefik-middleware-kubernetes-reference/)
 - [Auth Gateway](/products/auth-gateway/)
-- [Traefik forwardAuth documentation](https://doc.traefik.io/traefik/v3.8/reference/routing-configuration/http/middlewares/forwardauth/)
-- [Keycloak: configuring a reverse proxy](https://www.keycloak.org/server/reverseproxy)
+- [Traefik forwardAuth documentation](https://doc.traefik.io/traefik/v3.8/reference/routing-configuration/http/middlewares/forwardauth/){:target="_blank"}{:rel="noopener nofollow"}
+- [Keycloak: configuring a reverse proxy](https://www.keycloak.org/server/reverseproxy){:target="_blank"}{:rel="noopener nofollow"}

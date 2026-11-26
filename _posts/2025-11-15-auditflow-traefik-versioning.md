@@ -51,7 +51,7 @@ The root cause: a routing decision (which URL reaches which code) is made inside
 
 ## The solution: route-level prefix, root-mapped service
 
-The fix moves the prefix into three places that are about routing, and out of the code entirely. The change came with the Traefik-owned API versioning work in the Helm charts repository ([pull request #2](https://github.com/Labs64/labs64.io-helm-charts/pull/2)).
+The fix moves the prefix into three places that are about routing, and out of the code entirely. The change came with the Traefik-owned API versioning work in the Helm charts repository ([pull request #2](https://github.com/Labs64/labs64.io-helm-charts/pull/2){:target="_blank"}{:rel="noopener nofollow"}).
 
 1. **The spec** declares the prefix once, as a server URL.
 2. **The Helm chart** names the route and asks the gateway to strip the prefix.
@@ -127,7 +127,7 @@ A client calls `POST /auditflow/api/v1/audit/publish`. The gateway matches the p
 
 ## Trade-offs
 
-- **The prefix is still written twice:** in the spec's `servers` entry and in the chart's route. If they disagree, generated clients call a path the gateway does not route. A test that calls the service through the gateway, like those in the [Labs64.IO regression suite](https://github.com/Labs64/labs64.io-tests), catches that.
+- **The prefix is still written twice:** in the spec's `servers` entry and in the chart's route. If they disagree, generated clients call a path the gateway does not route. A test that calls the service through the gateway, like those in the [Labs64.IO regression suite](https://github.com/Labs64/labs64.io-tests){:target="_blank"}{:rel="noopener nofollow"}, catches that.
 - **Links the service builds itself need care.** A service that returns absolute URLs (pagination, `Location` headers) does not know its public prefix. Return relative links, or pass the public base URL in configuration.
 - **Local runs without a gateway use root paths.** Convenient for development; just remember it when you copy a URL from a log.
 
@@ -154,4 +154,4 @@ helm template af charts/auditflow --set gateway.enabled=true \
 - **The Gateway API can do the rewrite natively** with `URLRewrite` and `ReplacePrefixMatch`, so the setup is portable across gateway implementations.
 - **Two declarations need one test.** The spec and the route must agree; an edge test makes sure they do.
 
-The charts are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts), and the AuditFlow contract (`openapi-audit-v1.yaml`) is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow). See also [API-First / Contract-Driven](/platform/api-first/) and [Modules, not a monolith](/blog/2025/11/29/ecosystem-architecture/).
+The charts are in [labs64.io-helm-charts](https://github.com/Labs64/labs64.io-helm-charts){:target="_blank"}{:rel="noopener nofollow"}, and the AuditFlow contract (`openapi-audit-v1.yaml`) is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"}. See also [API-First / Contract-Driven](/platform/api-first/) and [Modules, not a monolith](/blog/2025/11/29/ecosystem-architecture/).

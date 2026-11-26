@@ -152,4 +152,4 @@ docker compose -f docker-compose.images.yml logs payment-gateway | grep '"correl
 - **Audit events should carry the same ID,** so logs and the audit trail tell one story.
 - **Side effects must not block the core operation.** Send them after commit, asynchronously, and decide consciously whether best effort is enough.
 
-The events and their configuration are described in the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/); the code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway). For the observability side of the platform, see [Telemetry](/platform/telemetry/).
+The events and their configuration are described in the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/); the code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}. For the observability side of the platform, see [Telemetry](/platform/telemetry/).

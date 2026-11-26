@@ -39,7 +39,7 @@ The Loki transformer used to get both things wrong:
 - **It dropped data.** Every `extra` key it did not recognise was discarded. An `invoiceRef` sent by a publisher never reached Loki.
 - **It invented data.** Missing keys were filled with `unknown_action`, `unknown_status`, `N/A` and a log level of `UNKNOWN`.
 
-The second is the nastier one. A fabricated `unknown_status` looks exactly like a value a publisher really sent, so dashboards filtering on it matched made-up data. The fix ([commit a2352a6](https://github.com/Labs64/labs64.io-auditflow/commit/a2352a6)) was marked as a breaking change for that reason: anyone filtering on the placeholder had to change their query.
+The second is the nastier one. A fabricated `unknown_status` looks exactly like a value a publisher really sent, so dashboards filtering on it matched made-up data. The fix ([commit a2352a6](https://github.com/Labs64/labs64.io-auditflow/commit/a2352a6){:target="_blank"}{:rel="noopener nofollow"}) was marked as a breaking change for that reason: anyone filtering on the placeholder had to change their query.
 
 ## The solution in three parts
 
@@ -143,4 +143,4 @@ Every value in a column was sent by a publisher, and a missing field means the p
 - **Code declares, operators override:** promotion works from code and from configuration, with a clear precedence.
 - **Index dimensions must stay bounded.** Promoting arbitrary keys into Loki labels is a cardinality problem waiting to happen.
 
-To try it, the [AuditFlow quick start](https://labs64.io/docs/modules/auditflow/#quick-start) runs the stack with Docker Compose, including ClickHouse; the code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow) under `auditflow-transformer/`.
+To try it, the [AuditFlow quick start](https://labs64.io/docs/modules/auditflow/#quick-start) runs the stack with Docker Compose, including ClickHouse; the code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"} under `auditflow-transformer/`.

@@ -50,7 +50,7 @@ On top came a client ID and secret per calling service, stored, rotated and conf
 
 ## The solution in four parts
 
-The change shipped as four pull requests: [commons#19](https://github.com/Labs64/labs64.io-commons/pull/19) (header encoding), [auditflow#28](https://github.com/Labs64/labs64.io-auditflow/pull/28) (request-scoped headers in the client), [payment-gateway#36](https://github.com/Labs64/labs64.io-payment-gateway/pull/36) (the publisher) and [helm-charts#16](https://github.com/Labs64/labs64.io-helm-charts/pull/16) (configuration).
+The change shipped as four pull requests: [commons#19](https://github.com/Labs64/labs64.io-commons/pull/19){:target="_blank"}{:rel="noopener nofollow"} (header encoding), [auditflow#28](https://github.com/Labs64/labs64.io-auditflow/pull/28){:target="_blank"}{:rel="noopener nofollow"} (request-scoped headers in the client), [payment-gateway#36](https://github.com/Labs64/labs64.io-payment-gateway/pull/36){:target="_blank"}{:rel="noopener nofollow"} (the publisher) and [helm-charts#16](https://github.com/Labs64/labs64.io-helm-charts/pull/16){:target="_blank"}{:rel="noopener nofollow"} (configuration).
 
 ![Service-to-service call before and after: from a Keycloak token plus an edge hop to one direct call with trusted headers behind a NetworkPolicy](/img/blog/internal-call-before-after.png "Service-to-service call before and after"){:class="blog-center"}
 
@@ -152,4 +152,4 @@ The chart ships with `networkPolicy.enabled: false`, so the policy is something 
 - **One builder, one contract:** header names, prefixes and validation in one library, used by every caller.
 - **The network becomes part of authentication.** Without a NetworkPolicy, trusted headers prove nothing.
 
-The code is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) and [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway); the events are described in the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/#events).
+The code is in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons){:target="_blank"}{:rel="noopener nofollow"} and [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}; the events are described in the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/#events).

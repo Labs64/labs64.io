@@ -45,7 +45,7 @@ TWD -> 2
 
 ## The problem: providers can disagree with ISO
 
-PayPal's [currency codes reference](https://developer.paypal.com/api/rest/reference/currency-codes/) marks three currencies with the note "This currency does not support decimals. If you pass a decimal amount, an error occurs.": HUF, JPY and TWD. JPY matches ISO. **HUF and TWD do not:** ISO gives them two fraction digits, PayPal wants whole numbers. A converter based only on ISO data would send "100.00" for 100 forints and get an error back.
+PayPal's [currency codes reference](https://developer.paypal.com/api/rest/reference/currency-codes/){:target="_blank"}{:rel="noopener nofollow"} marks three currencies with the note "This currency does not support decimals. If you pass a decimal amount, an error occurs.": HUF, JPY and TWD. JPY matches ISO. **HUF and TWD do not:** ISO gives them two fraction digits, PayPal wants whole numbers. A converter based only on ISO data would send "100.00" for 100 forints and get an error back.
 
 Two more traps sit in the same place: silently rounding an amount that does not convert exactly, and printing large amounts in scientific notation such as `1E+6`.
 
@@ -132,4 +132,4 @@ A related guard came with the same work: after approval, PayPal sends the buyer 
 - **Never round money silently.** `RoundingMode.UNNECESSARY` turns an inexact amount into a visible error.
 - **Test the wire format.** A correct helper does not prove a correct request.
 
-The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway) under `payment-gateway-providers/paypal`; the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover the PayPal setup.
+The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"} under `payment-gateway-providers/paypal`; the [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover the PayPal setup.

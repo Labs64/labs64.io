@@ -129,4 +129,4 @@ After migration, Checkout's spec sets `resourceType: PurchaseOrder` on the four 
 - **Fail at build time, not at runtime.** A red pipeline is cheap; a silently missing check is not.
 - **Breaking on purpose can be the safe migration,** because it forces every old declaration to be looked at.
 
-The preprocessor, the annotations and the Spring starter live in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons) (`auth-context-java`); the [Shared Libraries](https://labs64.io/docs/development/shared-libraries.html) page gives the overview.
+The preprocessor, the annotations and the Spring starter live in [labs64.io-commons](https://github.com/Labs64/labs64.io-commons){:target="_blank"}{:rel="noopener nofollow"} (`auth-context-java`); the [Shared Libraries](https://labs64.io/docs/development/shared-libraries.html) page gives the overview.

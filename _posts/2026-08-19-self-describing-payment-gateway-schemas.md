@@ -154,4 +154,4 @@ The second call fails with `42 is not of type 'string'`.
 - **Strictness is a feature with a cost:** `additionalProperties: false` catches typos, but nullability must be modelled correctly.
 - **Schemas describe shape, not behaviour;** documentation still explains what values mean.
 
-To regenerate the schemas yourself, clone [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway), create an empty directory and run `just schemas-dry-run` with it. The [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover the API itself.
+To regenerate the schemas yourself, clone [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}, create an empty directory and run `just schemas-dry-run` with it. The [Payment Gateway docs](https://labs64.io/docs/modules/payment-gateway/) cover the API itself.

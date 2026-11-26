@@ -152,4 +152,4 @@ The response is a `400` naming the five-minute limit. Remove `eventTime` and the
 - **One policy at the door beats fallbacks everywhere.** Stamp and validate once; every consumer can then trust the fields.
 - **Reject early and cheaply,** before quota and before the broker.
 
-The field semantics are in the [AuditFlow docs](https://labs64.io/docs/modules/auditflow/#time-fields-event-time-and-receipt-time); the code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow) (`EventTimePolicy.java`).
+The field semantics are in the [AuditFlow docs](https://labs64.io/docs/modules/auditflow/#time-fields-event-time-and-receipt-time); the code is in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"} (`EventTimePolicy.java`).

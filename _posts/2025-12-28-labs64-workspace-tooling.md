@@ -45,7 +45,7 @@ And once everything runs, the repositories still drift apart quietly: one pom pi
 
 ## The solution in four parts
 
-The [labs64.io-workspace](https://github.com/Labs64/labs64.io-workspace) repository is the contributor entry point. It adds glue, not code.
+The [labs64.io-workspace](https://github.com/Labs64/labs64.io-workspace){:target="_blank"}{:rel="noopener nofollow"} repository is the contributor entry point. It adds glue, not code.
 
 ![From clone to a running platform: just clone, just doctor, just up, just smoke, just check](/img/blog/workspace-just-flow.png "From clone to a running platform"){:class="blog-center"}
 
@@ -79,7 +79,7 @@ A mismatch is a warning, so you see drift without being blocked.
 
 `just up` runs four steps: it generates local secrets, starts a k3d cluster (Kubernetes in Docker) with a local image registry, builds the first-party images in a builder container, and deploys every module from the Helm overrides. `just smoke` then runs fast tests through the gateway; `just status`, `just logs <app>` and `just down` cover daily work, and `just up-otel` adds monitoring.
 
-The local platform has the gateway, authentication and authorization in the request path, like production, so the [regression suite](https://github.com/Labs64/labs64.io-tests) runs against it. Through the modules, a repository's recipes are one command away:
+The local platform has the gateway, authentication and authorization in the request path, like production, so the [regression suite](https://github.com/Labs64/labs64.io-tests){:target="_blank"}{:rel="noopener nofollow"} runs against it. Through the modules, a repository's recipes are one command away:
 
 ```bash
 just helm-charts install-app auditflow    # reinstall one module after a change

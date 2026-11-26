@@ -153,4 +153,4 @@ From the kubectl source: `--containers` shows per-container usage, and `--sort-b
 
 - [Run Kubernetes locally in 2026: kind vs minikube vs k3d vs Docker Desktop](/blog/2025/06/04/local-k8s/)
 - [Kubernetes cheat sheet](/blog/2025/06/07/kubernetes-cheatsheet/)
-- [metrics-server on GitHub](https://github.com/kubernetes-sigs/metrics-server)
+- [metrics-server on GitHub](https://github.com/kubernetes-sigs/metrics-server){:target="_blank"}{:rel="noopener nofollow"}

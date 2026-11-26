@@ -31,7 +31,7 @@ This post explains how the Labs64.IO regression suite tests the platform the way
 
 A black-box test knows only the public interface: URLs, request bodies, status codes and headers. Testing *at the edge* adds one rule: every request goes through the same gateway, authentication and authorization as production traffic. In Labs64.IO that is Traefik plus the [Auth Gateway](/products/auth-gateway/), which asks a central Cerbos service for every decision.
 
-The suite uses [Robot Framework](https://robotframework.org/), a keyword-driven test framework whose cases read close to plain English, so integrators and product owners can review them.
+The suite uses [Robot Framework](https://robotframework.org/){:target="_blank"}{:rel="noopener nofollow"}, a keyword-driven test framework whose cases read close to plain English, so integrators and product owners can review them.
 
 ## The problem: security regressions are invisible to happy-path tests
 
@@ -50,7 +50,7 @@ All tests call the platform at its public address (`http://gateway.localhost` lo
 
 ### Part 2: a scope matrix where only credentials change
 
-AuditFlow's `authz.robot` (in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow), `tests/e2e/`) states its contract: wrong scope → `403`, correct scope → `200`, missing or malformed credentials → `401` before any authorization decision. Two of its cases:
+AuditFlow's `authz.robot` (in [labs64.io-auditflow](https://github.com/Labs64/labs64.io-auditflow){:target="_blank"}{:rel="noopener nofollow"}, `tests/e2e/`) states its contract: wrong scope → `403`, correct scope → `200`, missing or malformed credentials → `401` before any authorization decision. Two of its cases:
 
 ```robotframework
 Reject missing authorization (401)
@@ -98,7 +98,7 @@ The edge suite is half of a two-part guarantee: each backend also proves it fail
 | Gateway route missing or wrong | not seen (internal port) | test fails at the edge |
 | Contract, policy and routes drift apart | not seen | impossible: one source |
 
-The shared and generated suites live in [labs64.io-tests](https://github.com/Labs64/labs64.io-tests); each module keeps its own e2e suite in its repository, and the test recipes run them together:
+The shared and generated suites live in [labs64.io-tests](https://github.com/Labs64/labs64.io-tests){:target="_blank"}{:rel="noopener nofollow"}; each module keeps its own e2e suite in its repository, and the test recipes run them together:
 
 ```bash
 git clone https://github.com/Labs64/labs64.io-tests.git && cd labs64.io-tests

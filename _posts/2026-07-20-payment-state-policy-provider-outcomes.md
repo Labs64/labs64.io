@@ -18,7 +18,7 @@ tags:
 
 A customer's order is worth 149 euros. Your system asks the payment provider to capture the money, and the request times out. Did the money move? You do not know. If you mark the payment `FAILED` anyway and the capture actually went through, the customer has been charged and told it failed. That means an angry support ticket, and a double charge if they simply try again.
 
-This post explains the rule the [Labs64.IO Payment Gateway](/products/payment-gateway/) follows since [pull request #43](https://github.com/Labs64/labs64.io-payment-gateway/pull/43): **a technical failure of the provider call is never a payment outcome.** It is written for developers and architects of payment integrations, and of any system that changes state based on a third party's answer.
+This post explains the rule the [Labs64.IO Payment Gateway](/products/payment-gateway/) follows since [pull request #43](https://github.com/Labs64/labs64.io-payment-gateway/pull/43){:target="_blank"}{:rel="noopener nofollow"}: **a technical failure of the provider call is never a payment outcome.** It is written for developers and architects of payment integrations, and of any system that changes state based on a third party's answer.
 
 **After reading, you will know:**
 
@@ -142,4 +142,4 @@ A parameterized test runs once for every enum value and asserts that the transac
 - **Record the reason, not a verdict.** A detail code on a pending transaction helps operators without blocking the real outcome.
 - **Know your framework's rollback rules.** `noRollbackFor` keeps the recorded reason when an exception is rethrown.
 
-The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway): `ProviderExecutionFailure` in the provider SPI, the services in `payment-gateway-be`. For how providers plug in, see [One payment API, many PSPs](/blog/2026/01/26/psp-abstraction-spi/).
+The code is in [labs64.io-payment-gateway](https://github.com/Labs64/labs64.io-payment-gateway){:target="_blank"}{:rel="noopener nofollow"}: `ProviderExecutionFailure` in the provider SPI, the services in `payment-gateway-be`. For how providers plug in, see [One payment API, many PSPs](/blog/2026/01/26/psp-abstraction-spi/).
