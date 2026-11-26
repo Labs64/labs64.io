@@ -10,6 +10,27 @@
 {% endif %}
 {% if page.use_packery %}
 <script src="{{ '/js/packery.pkgd.1.4.3.min.js' | relative_url }}"></script>
+<script>
+    // Packery positions the cards before their images have a height, so lay out again as each one loads.
+    (function () {
+        var grid = document.querySelector('.js-packery');
+        if (!grid) {
+            return;
+        }
+
+        function relayout() {
+            var packery = Packery.data(grid);
+            if (packery) {
+                packery.layout();
+            }
+        }
+
+        // load and error do not bubble, so listen in the capture phase.
+        grid.addEventListener('load', relayout, true);
+        grid.addEventListener('error', relayout, true);
+        window.addEventListener('load', relayout);
+    })();
+</script>
 {% endif %}
 {% if page.use_modern %}
 <script src="{{ '/js/labs64-modern.js' | relative_url }}?v={{ site.time | date:'%Y%m%d%H%M' }}" defer></script>
